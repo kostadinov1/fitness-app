@@ -13,11 +13,30 @@
 
 # misc
 .DS_Store
+.env
 .env.local
+.env.test
+.env.dev
+.env.development
+.env.prod
+.env.production
 .env.development.local
 .env.test.local
 .env.production.local
 
+
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/public/images
+/nginx
+
+.gitignore
+
+.dockerignore
+Dockerfile
+.yml
+.yaml
+docker-compose.yml

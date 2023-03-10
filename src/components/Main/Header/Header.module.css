@@ -1,0 +1,43 @@
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--teal-green);
+}
+
+.logo {
+background-color: white;
+margin-left: 2em;
+}
+
+.ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin-left: 8em;
+    margin-right: auto;
+    list-style: none;
+}
+
+.li {
+    padding: 0.2em 0.6em;
+}
+li:hover {
+    background-color: var(--dark-blue);
+}
+.link {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+
+}
+.link:hover {
+    color: var(--kelly-green);
+}
+
+.menu_icon {
+    margin-right: 2em;
+}

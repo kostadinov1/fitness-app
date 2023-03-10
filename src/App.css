@@ -1,0 +1,12 @@
+:root {
+    /* --- COLORS --- */
+    --dark-blue: #063340;
+    --teal-green: #088280;
+    --green: #008000;
+    --kelly-green: #04D010;
+}
+
+
+#body {
+    background-color: var(--dark-blue);
+}
