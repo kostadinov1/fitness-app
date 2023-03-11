@@ -1,0 +1,41 @@
+.activities {
+    /* margin-top: 0px; */
+    position: relative;
+    min-height: 100vh;
+    display: inline-flex;
+}
+
+.sider {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    /* gap: 1em; */
+
+    /* margin: 2em 4em; */
+    padding: 1.2em;
+    border: 1px solid var(--text);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
+    min-width: 12vw;
+}
+
+.activities h1 {
+
+}
+
+.acty_box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    /* gap: 1em; */
+
+    /* margin: 2em 4em; */
+    padding: 1.2em;
+    border: 1px solid var(--sec);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
+
+}
+

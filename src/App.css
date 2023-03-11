@@ -1,26 +1,45 @@
 :root {
     /* --- Colors --- */
-    --prime: #093656;
-    --sub: #d25100;
-    --accent: #008000;
-    --ele: #000000;
-    --bg: #F0F0F4;
-    --text: #0b0b27;
+    --prime:  #2998ad;
+    --sec: #002e40;
+    --acc-1: #fc8f3a;
+    --acc-2: rgb(125,220,31);
+    --acc-3: #e6f4f1;
+    --text: #e6f4f1;
+
+    --bg: #126b7d;
 
     /* --- Values --- */
     --b-radius: 6px;
-    --bg-color: rgba(0, 0, 0, 0.2);
+    --bg-color: rgba(209, 205, 21, 0.967);
 }
 
 
 #body {
-    background-color: var(--prime);
+    position: relative;
+    background-color: var(--bg);
     color: var(--text);
 }
+#main {
+    position: relative;
+    top: 6em;
+}
+a {
+    text-decoration: none;
+    color: var(--text);
+  }
+  a:hover {
+    color: var(--prime);
+}
 
-* {
-    box-sizing: border-box;
+
+.section_title {
+    margin: 0.1em 10em 0.1em 10em;
+    padding: 0.3em 2em;
+    
+    background-color: var(--accent);
+    text-align: center;
+    font-size: 2rem;
 }
-*:hover {
-    box-sizing: border-box;
-}
+
+  

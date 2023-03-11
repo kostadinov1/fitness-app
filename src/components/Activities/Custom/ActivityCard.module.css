@@ -1,0 +1,19 @@
+
+.card {
+    flex: 1 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 45vh;
+
+    background-image: url('');
+    background-color: var(--prime);
+    padding: 1em;
+    border: 1px solid var(-);
+    border-radius: var(--b-radius);
+    overflow: scroll;
+    color: var(--text);
+}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getAllActivities } from '../../../api/activities';
+import ActivityCard from '../Custom/ActivityCard';
 import styles from './AllActivities.module.css';
 
 function AllActivities() {
@@ -18,13 +20,19 @@ function AllActivities() {
         )
     }, [])
     
-
     return (
-        <section className={styles.activites}>
-            <h1>Activities</h1>
+        <section className={styles.activities}>
+            <div className={styles.sider}>
+                <ul>
+                    <li><Link to={'/'}></Link>Create Activity</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
+            </div>
             <div className={styles.acty_box}>
+            {/* <h1 className='section_title'>Activities</h1> */}
                 {activites ? activites.map((activity) => 
-                           <h4>Activity: {activity.name}</h4>
+                           <ActivityCard activity={activity} />
                         ): <h1>No activites Yet!</h1>
                 }
             </div>

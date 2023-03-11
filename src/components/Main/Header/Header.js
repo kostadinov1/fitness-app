@@ -18,7 +18,7 @@ function Header() {
   return (
     <section className={styles.header}>
       <img alt='' className={styles.logo} />
-      <h1>fithub</h1>
+      <h1>Fit Hub</h1>
       <ul className={styles.ul}>
         <li className={styles.li}>
           <Link to={'/'} className={styles.link}>Home</Link>

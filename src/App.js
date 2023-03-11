@@ -1,4 +1,5 @@
 import './App.css';
+import './reset.css'
 import { Route, Routes } from 'react-router-dom';
 
 import Header from './components/Main/Header/Header.js'
@@ -14,7 +15,7 @@ function App() {
   return (
     <section id='body'>
     <Header/>
-    <main>
+    <main id='main'>
       <Routes >
         <Route path='*' element={<Error404 />}/>
         <Route path='/' element={<Home />}/>
@@ -22,7 +23,6 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/all-exercises' element={<AllExercises />} />
         <Route path='/all-activities' element={<AllActivities />} />
-
 
       </Routes>
     </main>
