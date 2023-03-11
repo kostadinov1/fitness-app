@@ -4,11 +4,16 @@
     flex-wrap: wrap;
     align-items: center;
     background-color: var(--teal-green);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--b-radius);
 }
 
 .logo {
-background-color: white;
+color: var(--dark-blue);
 margin-left: 2em;
+}
+.header h1 {
+    color: var(--dark-blue);
 }
 
 .ul {
@@ -24,10 +29,10 @@ margin-left: 2em;
     padding: 0.2em 0.6em;
 }
 li:hover {
-    background-color: var(--dark-blue);
+    /* background-color: var(--dark-blue); */
 }
 .link {
-    color: var(--dark-blue);
+    color: var(--light-gray);
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
@@ -35,9 +40,23 @@ li:hover {
 
 }
 .link:hover {
-    color: var(--kelly-green);
+color: var(--kelly-green);
+}
+
+.auth_icons {
+    margin: 0px 2em;
+}
+.auth_icons * {
+    color: var(--dark-blue);
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 0px 0.1em;
+}
+.auth_icons *:hover {
+    color: var(--light-gray);
 }
 
 .menu_icon {
     margin-right: 2em;
+    color: var(--dark-blue);
 }

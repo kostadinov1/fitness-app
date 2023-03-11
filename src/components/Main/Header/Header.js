@@ -3,7 +3,7 @@ import styles from './Header.module.css'
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MenuOutlined } from '@ant-design/icons'
+import { MenuOutlined, PoweroffOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
 
 function Header() {
   return (
@@ -18,7 +18,7 @@ function Header() {
           <Link to={'/'} className={styles.link}>Dashboard</Link>
           </li>
         <li className={styles.li}>
-          <Link to={'/'} className={styles.link}>Exercises</Link>
+          <Link to={'/all-exercises'} className={styles.link}>Exercises</Link>
           </li>
         <li className={styles.li}>
           <Link to={'/'} className={styles.link}>Activities</Link>
@@ -30,7 +30,20 @@ function Header() {
           <Link to={'/'} className={styles.link}>Contacts</Link>
         </li>
       </ul>
-      <MenuOutlined className={styles.menu_icon}/>
+      <div className={styles.auth_icons}>
+        <Link to={'/register'}>
+          <UserAddOutlined className={styles.register_icon}/>
+        </Link>
+        <Link to={'/login'}>
+          <UserOutlined className={styles.login_icon}/>
+        </Link>
+        <Link to={'/'}>
+          <PoweroffOutlined className={styles.logout_icon}/>
+        </Link>
+      </div>
+        <Link to={'/'}>
+         <MenuOutlined className={styles.menu_icon}/>
+        </Link>
     </section >
   )
 }

@@ -37,8 +37,10 @@
 .card {
     height: 100%;
     width: 100%;
-    background-color: rebeccapurple;
     overflow: hidden;
+    background-color: var(--teal-green);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--b-radius);
 }
 .img {
     width: 100%;
