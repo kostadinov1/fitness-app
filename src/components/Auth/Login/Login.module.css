@@ -15,15 +15,18 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 2em 4em;
-    border: 0.1em solid var(--kelly-green);
+    border: 0.1em solid var(--light-gray);
+    border-radius: var(--b-radius);
+    overflow: scroll;
 }
 
-.form * { 
+.form > * { 
     padding: 0.3em;
+    /* color: var(--light-gray); */
 }
 
 .form_box h1 {
     padding: 1em 2em;
-    color: var(--dark-blue);
+    color: var(--light-gray);
     background-color: var(--teal-green);
 }

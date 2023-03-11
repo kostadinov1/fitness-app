@@ -18,32 +18,30 @@ function Register() {
           registerService(email, password)
         } else {
           console.log('Passwords Do Not Match!')
+          alert('Passwords DO NOT MATCH!')
         }
     }
     const onEmailChange = (e) => {
         e.preventDefault()
         console.log('target.email', e.target.value)
         setEmail(e.target.value)
-        console.log('email change handler',email)
 
     }
     const onPasswordChange = (e) => {
         e.preventDefault()
         setPassword(e.target.value)
-        console.log(password)
         
     }
     const onRepassChange = (e) => {
         e.preventDefault(e.target.value)
         setRepass(e.target.value)
-        console.log(repass)
         
     }
 
     return (
     <section className={styles.register}>
       <div className={styles.form_box}>
-        <h1>Register Here</h1>
+        <h1>REGISTER</h1>
         <form onSubmit={onRegister} className={styles.form}>
             <label>Email</label>
             <input value={email} id='email' onChange={onEmailChange} name='email' type={'email'} className={styles.email_input}></input>

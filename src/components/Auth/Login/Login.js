@@ -1,22 +1,43 @@
+import { useState, React } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { loginService } from '../../../api/auth';
 import styles from './Login.module.css'
-import React from 'react'
 
-function Login() {
-  return (
+
+function Register() {
+    const navigate = useNavigate()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+
+    const onLogin = (e) => {
+        e.preventDefault()
+        loginService(email, password)
+        navigate('/');
+    }
+    const onEmailChange = (e) => {
+        e.preventDefault()
+        setEmail(e.target.value)
+    }
+    const onPasswordChange = (e) => {
+        e.preventDefault()
+        setPassword(e.target.value)
+    }
+
+    return (
     <section className={styles.login}>
       <div className={styles.form_box}>
-        <h1>Login</h1>
-        <form onSubmit={''} className={styles.form}>
+        <h1>LOGIN</h1>
+        <form onSubmit={onLogin} className={styles.form}>
             <label>Email</label>
-            <input name='email' type={'email'} className={styles.email_input}></input>
+            <input value={email} id='email' onChange={onEmailChange} name='email' type={'email'} className={styles.email_input}></input>
             <label>Password</label>
-            <input name='password' type={'password'} className={styles.pass_input}></input>
-
-            <button type='submit'>Login</button>
+            <input value={password} onChange={onPasswordChange} name='password' type={'password'} className={styles.pass_input}></input>
+            <button type='submit' >Login</button>
         </form>
       </div>
     </section>
   )
 }
 
-export default Login
+export default Register

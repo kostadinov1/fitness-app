@@ -28,9 +28,9 @@ const registerService = async (email, password) => {
 }
 
 const loginService = async (email, password) => {
-    const url = baseURL + '/accounts/login'
+    const url = baseURL + '/accounts/login/'
     const data = {
-        "email": email,
+        "username": email,
         "password": password,
     }
     try {
@@ -54,19 +54,15 @@ const loginService = async (email, password) => {
 
 }
 
-const logoutService = async (email, password) => {
-    const url = baseURL + '/accounts/logout'
-    const data = {
-        "email": email,
-        "password": password,
-    }
+const logoutService = async (id) => {
+    const url = baseURL + '/accounts/logout/' + id;
+
     try {
         let response = await fetch(url, {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data)
             })
             let logout = await response.json()
         if (response.ok) {
