@@ -3,17 +3,17 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    background-color: var(--teal-green);
-    border: 1px solid var(--light-gray);
+    background-color: var(--sub);
+    border: 1px solid var(--);
     border-radius: var(--b-radius);
 }
 
 .logo {
-color: var(--dark-blue);
+color: var(--text);
 margin-left: 2em;
 }
 .header h1 {
-    color: var(--dark-blue);
+    color: var(--text);
 }
 
 .ul {

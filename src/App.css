@@ -1,18 +1,21 @@
 :root {
-    /* --- COLORS --- */
-    --dark-blue: #063340;
-    --teal-green: #036f90;
-    --green: #008000;
-    --kelly-green: #06da14;
-    --light-gray: #F0F0F4;
+    /* --- Colors --- */
+    --prime: #093656;
+    --sub: #d25100;
+    --accent: #008000;
+    --ele: #000000;
+    --bg: #F0F0F4;
+    --text: #0b0b27;
 
+    /* --- Values --- */
     --b-radius: 6px;
     --bg-color: rgba(0, 0, 0, 0.2);
 }
 
 
 #body {
-    background-color: var(--dark-blue);
+    background-color: var(--prime);
+    color: var(--text);
 }
 
 * {

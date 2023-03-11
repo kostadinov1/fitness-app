@@ -1,11 +1,20 @@
 import styles from './Header.module.css'
 
 
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { MenuOutlined, PoweroffOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
+import { logoutService } from '../../../api/auth'
 
 function Header() {
+  const id = useParams()
+
+                                
+
+  const onLogout = (e) => {
+    logoutService(id)
+  }
+
   return (
     <section className={styles.header}>
       <img alt='' className={styles.logo} />
@@ -21,7 +30,7 @@ function Header() {
           <Link to={'/all-exercises'} className={styles.link}>Exercises</Link>
           </li>
         <li className={styles.li}>
-          <Link to={'/'} className={styles.link}>Activities</Link>
+          <Link to={'/all-activities'} className={styles.link}>Activities</Link>
           </li>
         <li className={styles.li}>
           <Link to={'/'} className={styles.link}>About Us</Link>
@@ -38,11 +47,11 @@ function Header() {
           <UserOutlined className={styles.login_icon}/>
         </Link>
         <Link to={'/'}>
-          <PoweroffOutlined className={styles.logout_icon}/>
+          <PoweroffOutlined onSubmit={onLogout} className={styles.logout_icon}/>
         </Link>
       </div>
         <Link to={'/'}>
-         <MenuOutlined className={styles.menu_icon}/>
+         <MenuOutlined  className={styles.menu_icon}/>
         </Link>
     </section >
   )

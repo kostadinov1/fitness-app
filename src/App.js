@@ -8,6 +8,7 @@ import Register from './components/Auth/Register/Register';
 import Login from './components/Auth/Login/Login';
 import Error404 from './components/Errors/Error404';
 import AllExercises from './components/Exercises/AllExercises/AllExercises';
+import AllActivities from './components/Activities/AllActivities/AllActivities';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/all-exercises' element={<AllExercises />} />
+        <Route path='/all-activities' element={<AllActivities />} />
+
 
       </Routes>
     </main>
