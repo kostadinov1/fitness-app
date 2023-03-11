@@ -13,15 +13,18 @@ function Register() {
         e.preventDefault()
         console.log(email, password);
         if (password === repass) {
+          console.log('Passwords Match!')
+
           registerService(email, password)
         } else {
-          alert('Passwords Do Not Match!')
+          console.log('Passwords Do Not Match!')
         }
     }
     const onEmailChange = (e) => {
         e.preventDefault()
-        setEmail(e.target.velue)
-        console.log(email)
+        console.log('target.email', e.target.value)
+        setEmail(e.target.value)
+        console.log('email change handler',email)
 
     }
     const onPasswordChange = (e) => {
@@ -43,7 +46,7 @@ function Register() {
         <h1>Register Here</h1>
         <form onSubmit={onRegister} className={styles.form}>
             <label>Email</label>
-            <input value={email} onChange={onEmailChange} name='email' type={'email'} className={styles.email_input}></input>
+            <input value={email} id='email' onChange={onEmailChange} name='email' type={'email'} className={styles.email_input}></input>
             <label>Password</label>
             <input value={password} onChange={onPasswordChange} name='password' type={'password'} className={styles.pass_input}></input>
             <label>Repeat Password</label>
