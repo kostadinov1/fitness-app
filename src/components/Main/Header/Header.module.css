@@ -8,24 +8,28 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    background-color: var(--sec);
+    background-color: var(--sec-2);
     border: 1px solid var(--);
-    border-radius: var(--b-radius);
+    /* border-radius: var(--b-radius); */
 }
 .header > * {
     /* background-color: var(--prime); */
-    padding: 0.1em 0.5em;
     color: var(--acc-3);
 }
 
 .logo {
-color: var(--text);
-margin-left: 2em;
+    color: var(--text);
+    margin-left: 2em;
 }
 .header h1 {
-    color: var(--text);
+    padding: 0em 0.2em;
+    color: var(--sec);
+    background-color: var(--prime);
     font-size: 1.8rem;
     border-radius: var(--b-radius);
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+
 }
 
 .ul {
@@ -51,7 +55,10 @@ li:hover {
     text-decoration: none;
     font-weight: 500;
     font-size: 1.2rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.1rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+
+
 
 }
 .link:hover {

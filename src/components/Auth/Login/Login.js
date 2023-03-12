@@ -1,7 +1,7 @@
 import { useState, React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginService } from '../../../api/auth';
-import styles from './Login.module.css'
+import styles from '../AuthForm/AuthForm.module.css'
 
 
 function Register() {
@@ -25,15 +25,27 @@ function Register() {
     }
 
     return (
-    <section className={styles.login}>
+    <section className={styles.auth_section}>
       <div className={styles.form_box}>
         <h1>LOGIN</h1>
         <form onSubmit={onLogin} className={styles.form}>
             <label>Email</label>
-            <input value={email} id='email' onChange={onEmailChange} name='email' type={'email'} className={styles.email_input}></input>
+            <input 
+                value={email}   
+                id='email'
+                onChange={onEmailChange}
+                name='email'
+                type={'email'} className={styles.email_input} 
+                placeholder='enter your email' />
             <label>Password</label>
-            <input value={password} onChange={onPasswordChange} name='password' type={'password'} className={styles.pass_input}></input>
-            <button type='submit' >Login</button>
+            <input 
+                value={password}    
+                onChange={onPasswordChange}
+                name='password'
+                type={'password'}
+                className={styles.pass_input} 
+                placeholder='enter your password' />
+            <button className={styles.button} type='submit' >Login</button>
         </form>
       </div>
     </section>

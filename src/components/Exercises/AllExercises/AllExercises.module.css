@@ -29,7 +29,7 @@
     padding: 1.2em;
     border: 1px solid var(--sec);
     border-radius: var(--b-radius);
-    background-color: var(--dimmer);
+    background-color: var(--sec);
 
 }
 
@@ -50,7 +50,7 @@
     padding: 1.2em;
     border: 1px solid var(--sec);
     border-radius: var(--b-radius);
-    background-color: var(--sec);
+    background-color: transparent;
 
 }
 

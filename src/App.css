@@ -1,29 +1,37 @@
 :root {
     /* --- Colors --- */
-    --prime:  #2998ad;
+    --prime: #76acb8;
     --sec: #002e40;
+    --sec-2: #001e2a;
+    --prime-2: #0c4652;
     --acc-1: #fc8f3a;
     --acc-2: rgb(125,220,31);
     --acc-3: antiquewhite;
     --text: #e6f4f1;
 
     --bg: #126b7d;
-    --dimmer: rgba(0, 0, 0, 0.345);
+    --dimmer: rgba(0, 5, 6, 0.607);
 
     /* --- Values --- */
-    --b-radius: 6px;
+    --b-radius: 8px;
     --bg-color: rgba(209, 205, 21, 0.967);
+
+    /* --- Fonts --- */
+    /* font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Nova Mono', monospace; */
 }
 
 
 #body {
     position: relative;
-    background-color: var(--bg);
+    background-color: var(--prime);
     color: var(--text);
+    font-family: 'Montserrat', sans-serif;
 }
 #main {
     position: relative;
-    top: 6em;
+    top: 4em;
 }
 a {
     text-decoration: none;
@@ -31,6 +39,17 @@ a {
   }
   a:hover {
     color: var(--prime);
+}
+
+button {
+    padding: 0.4em 1.8em;
+    border: 1px solid var(--sec);
+    border-radius: var(--b-radius);
+    background-color: var(--acc-1);
+    color: var(--text);
+}
+button:hover {
+    -webkit-transform: scale(1.01);
 }
 
 

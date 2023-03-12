@@ -13,7 +13,7 @@
     height: 100%;
     width: 100%;
 
-    background-color: var(--dimmer);
+    background-color: var(--sec);
     /* background-image: url('/public/images/backgrounds/background-05.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
