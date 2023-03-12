@@ -8,7 +8,7 @@
     --text: #e6f4f1;
 
     --bg: #126b7d;
-    --dimmer: rgba(0,0,0, 0.3);
+    --dimmer: rgba(0, 0, 0, 0.345);
 
     /* --- Values --- */
     --b-radius: 6px;
@@ -34,13 +34,13 @@ a {
 }
 
 
-.section_title {
+/* .section_title {
     margin: 0.1em 10em 0.1em 10em;
     padding: 0.3em 2em;
     
     background-color: var(--accent);
     text-align: center;
     font-size: 2rem;
-}
+} */
 
   

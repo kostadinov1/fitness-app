@@ -1,6 +1,8 @@
 import styles from './AllExercises.module.css'
 import React, { useEffect, useState } from 'react'
 import { getAllExercises } from '../../../api/exercises'
+import { Link } from 'react-router-dom'
+import ExerciseCard from './ExerciseCard/ExerciseCard'
 
 function AllExercises() {
 
@@ -21,11 +23,40 @@ function AllExercises() {
 
     return (
         <section className={styles.exercises}>
-            <h1>Exercises</h1>
-            <div className={styles.exer_box}>
+            <div className={styles.sider_1}>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><Link to={'/'}></Link>Create Exercise</li>
+                    <li><Link to={'/'}></Link>Create Activity</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Activities</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
+            </div>
+            <div className={styles.sider_2}>
+            <h4>More Links</h4>
+
+                <ul>
+                    <li><Link to={'/'}></Link>Create Exercise</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
+                <ul>
+                    <li><Link to={'/'}></Link>Create Exercise</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
+                <ul>
+                    <li><Link to={'/'}></Link>Create Exercise</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
+            </div>
+            <div className={styles.exy_box}>
+            {/* <h1 className='section_title'>Activities</h1> */}
                 {exercises ? exercises.map((exercise) => 
-                           <h4>Exercise: {exercise.name}</h4>
-                        ): <h1>No Exersises Yet!</h1>
+                           <ExerciseCard exercise={exercise} />
+                        ): <h1>No activites Yet!</h1>
                 }
             </div>
         </section>

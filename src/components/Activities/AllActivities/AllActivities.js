@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllActivities } from '../../../api/activities';
-import ActivityCard from '../Custom/ActivityCard';
+import ActivityCard from './ActivityCard/ActivityCard';
 import styles from './AllActivities.module.css';
 
 function AllActivities() {
@@ -23,7 +23,7 @@ function AllActivities() {
     return (
         <section className={styles.activities}>
             <div className={styles.sider_1}>
-                <h4>Quick Links</h4>
+                <h4>Quick</h4>
                 <ul>
                     <li><Link to={'/'}></Link>Create Activity</li>
                     <li><Link to={'/'}></Link>Exercises</li>
@@ -31,8 +31,6 @@ function AllActivities() {
                 </ul>
             </div>
             <div className={styles.sider_2}>
-            <h4>More Links</h4>
-
                 <ul>
                     <li><Link to={'/'}></Link>Create Activity</li>
                     <li><Link to={'/'}></Link>Exercises</li>

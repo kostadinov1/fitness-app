@@ -1,3 +1,56 @@
 .exercises {
+    /* margin-top: 0px; */
+    position: relative;
     min-height: 100vh;
+    display: grid;
+    gap: 0.6em;
+    padding: 1em;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+                    "one three three three three three"
+                    "two three three three three three"
+                    "two three three three three three"
+                    "two three three three three three";
+
+    border: 1px solid var(--prime);
+    border-radius: var(--b-radius);
 }
+
+.sider_1 {
+    grid-area: one;
+    padding: 1.2em;
+    border: 1px solid var(--sec);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
+}
+
+.sider_2 {
+    grid-area: two;
+    padding: 1.2em;
+    border: 1px solid var(--sec);
+    border-radius: var(--b-radius);
+    background-color: var(--dimmer);
+
+}
+
+.exercises h4 {
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: var(--b-radius);
+    border-bottom: 3px solid var(--acc-1);
+    border-top: 1px solid var(--acc-1);
+}
+
+.exy_box {
+    grid-area: three;
+    display: grid;
+    
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4em;
+    padding: 1.2em;
+    border: 1px solid var(--sec);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
+
+}
+
