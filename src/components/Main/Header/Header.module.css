@@ -22,7 +22,7 @@
     margin-left: 2em;
 }
 .header h1 {
-    padding: 0em 0.2em;
+    padding: 0em 0.6em;
     color: var(--text);
     background-color: var(--prime);
     font-size: 1.8rem;
@@ -57,7 +57,7 @@ li:hover {
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
     font-family: 'Montserrat Alternates', sans-serif;
-    
+
 }
 .link:hover {
 color: var(--accent);

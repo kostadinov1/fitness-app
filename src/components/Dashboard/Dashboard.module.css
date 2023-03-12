@@ -1,5 +1,123 @@
-
-
 .dashboard {
-    min-height: 100vh;
+
 }
+.grid {
+    min-height: 100vh;
+    display: grid;
+    gap: 0.4em;
+    grid-template-columns:  repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas: 
+                    "one one two two three four four four"
+                    "one one two two three four four four"
+                    "one one six six six six six six"
+                    "five five six six six six six six"
+                    "seven seven seven seven seven seven eight eight"
+                    "seven seven seven seven seven seven eight eight"
+                    "nine nine ten ten ten ten ten ten"
+                    "nine nine ten ten ten ten ten ten"
+                    ;
+
+    padding: 1em 1em 4em 1em;
+    /* background-color: brown; */
+}
+
+.grid_card_1  {
+    grid-area: one;
+}
+.grid_card_1 img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    /* background-color: brown; */
+}
+.grid_card_2 {
+    grid-area: two;
+}
+.grid_card_3 {
+    grid-area: three;
+}
+.grid_card_4 {
+    grid-area: four;
+}
+.grid_card_4 img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 20em;
+
+    /* background-color: brown; */
+}
+.grid_card_5 {
+    grid-area: five;
+}
+.grid_card_6 {
+    grid-area: six;
+}
+.grid_card_7 {
+    grid-area: seven;
+}
+.grid_card_8 {
+    grid-area: eight;
+}
+.grid_card_9 {
+    grid-area: nine;
+}
+.grid_card_10 {
+    grid-area: ten;
+}
+
+.grid_card {
+    background-color: var(--sec);
+    padding: 1em;
+    width: 100%;
+    max-height: 100vh;
+    background-color: var(--sec);
+    /* background-image: url('/public/images/backgrounds/background-05.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    overflow: scroll;
+    color: var(--text);
+}
+
+
+.grid_card h3 {
+    grid-area: one;
+    text-align: center;
+    font-size: 0.8rem;
+    border-radius: var(--b-radius);
+    border-top: 1px solid var(--acc-1);
+    border-bottom: 2px solid var(--acc-1);
+
+}
+.card_info {
+    grid-area: two;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    padding: 2em;
+    color: var(--acc-3);
+
+}
+
+.card_actions {
+    grid-area: three;
+    display: flex;
+    gap: 0.6em;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.card_action > * {
+    padding: 0.4em 1.8em;
+    border: 1px solid var(--sec-1);
+    border-radius: var(--b-radius);
+    background-color: var(--acc-1);
+    color: var(--text);
+}
+
+
+

@@ -17,7 +17,7 @@
     /* background-image: url('/public/images/backgrounds/background-05.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
-    border: 1px solid var(--bg);
+    border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     overflow: scroll;
     color: var(--text);
