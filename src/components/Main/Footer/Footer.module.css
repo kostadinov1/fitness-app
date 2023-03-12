@@ -1,4 +1,7 @@
 .footer {
+    position: relative;
+    bottom: 0px;
+    width: 100vw;
     min-height: 20vh;
     background-color: var(--sec);
 }

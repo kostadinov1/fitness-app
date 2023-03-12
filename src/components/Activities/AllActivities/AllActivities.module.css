@@ -2,22 +2,34 @@
     /* margin-top: 0px; */
     position: relative;
     min-height: 100vh;
-    display: inline-flex;
+    display: grid;
+    gap: 1em;
+    padding: 1em;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+                    "one three three three three three"
+                    "two three three three three three"
+                    "two three three three three three"
+                    "two three three three three three";
+
+    border: 1px solid var(--prime);
+    border-radius: var(--b-radius);
 }
 
-.sider {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    /* gap: 1em; */
-
-    /* margin: 2em 4em; */
+.sider_1 {
+    grid-area: one;
     padding: 1.2em;
-    border: 1px solid var(--text);
+    border: 1px solid var(--sec);
     border-radius: var(--b-radius);
     background-color: var(--sec);
-    min-width: 12vw;
+}
+
+.sider_2 {
+    grid-area: two;
+    padding: 1.2em;
+    border: 1px solid var(--sec);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
 }
 
 .activities h1 {
@@ -25,13 +37,12 @@
 }
 
 .acty_box {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    /* gap: 1em; */
-
-    /* margin: 2em 4em; */
+    grid-area: three;
+    display: grid;
+    
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    margin: 2em 4em;
     padding: 1.2em;
     border: 1px solid var(--sec);
     border-radius: var(--b-radius);

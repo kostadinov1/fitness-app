@@ -4,10 +4,11 @@
     --sec: #002e40;
     --acc-1: #fc8f3a;
     --acc-2: rgb(125,220,31);
-    --acc-3: #e6f4f1;
+    --acc-3: antiquewhite;
     --text: #e6f4f1;
 
     --bg: #126b7d;
+    --dimmer: rgba(0,0,0, 0.3);
 
     /* --- Values --- */
     --b-radius: 6px;

@@ -1,19 +1,64 @@
 
 .card {
-    flex: 1 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+                "one one one one"
+                "two two two two"
+                "two two two two"
+                "two two two two"
+                "three three three three";
+    padding: 2em;
 
-    min-height: 45vh;
+    height: 100%;
+    width: 100%;
 
-    background-image: url('');
-    background-color: var(--prime);
-    padding: 1em;
+    background-color: var(--dimmer);
+    /* background-image: url('/public/images/backgrounds/background-05.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
     border: 1px solid var(-);
     border-radius: var(--b-radius);
     overflow: scroll;
     color: var(--text);
 }
+
+.card h3 {
+    grid-area: one;
+    text-align: center;
+    font-size: 1.6rem;
+    border-radius: var(--b-radius);
+    border-bottom: 3px solid var(--acc-1);
+    border-top: 1px solid var(--acc-1);
+
+}
+.card_info {
+    grid-area: two;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    padding: 2em;
+    color: var(--acc-3);
+
+}
+
+.card_actions {
+    grid-area: three;
+    display: flex;
+    gap: 0.6em;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.card_action > * {
+    padding: 0.4em 1.8em;
+    border: 1px solid var(--sec);
+    border-radius: var(--b-radius);
+    background-color: var(--acc-1);
+    color: var(--text);
+
+
+}
+

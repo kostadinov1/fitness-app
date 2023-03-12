@@ -22,7 +22,27 @@ function AllActivities() {
     
     return (
         <section className={styles.activities}>
-            <div className={styles.sider}>
+            <div className={styles.sider_1}>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><Link to={'/'}></Link>Create Activity</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
+            </div>
+            <div className={styles.sider_2}>
+            <h4>More Links</h4>
+
+                <ul>
+                    <li><Link to={'/'}></Link>Create Activity</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
+                <ul>
+                    <li><Link to={'/'}></Link>Create Activity</li>
+                    <li><Link to={'/'}></Link>Exercises</li>
+                    <li><Link to={'/'}></Link>Profile</li>
+                </ul>
                 <ul>
                     <li><Link to={'/'}></Link>Create Activity</li>
                     <li><Link to={'/'}></Link>Exercises</li>
