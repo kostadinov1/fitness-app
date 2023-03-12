@@ -24,7 +24,7 @@ function Header() {
           <Link to={'/'} className={styles.link}>Home</Link>
           </li>
         <li className={styles.li}>
-          <Link to={'/'} className={styles.link}>Dashboard</Link>
+          <Link to={'/dashboard'} className={styles.link}>Dashboard</Link>
           </li>
         <li className={styles.li}>
           <Link to={'/all-exercises'} className={styles.link}>Exercises</Link>
@@ -33,10 +33,10 @@ function Header() {
           <Link to={'/all-activities'} className={styles.link}>Activities</Link>
           </li>
         <li className={styles.li}>
-          <Link to={'/'} className={styles.link}>About Us</Link>
+          <Link to={'/about-us'} className={styles.link}>About Us</Link>
           </li>
         <li className={styles.li}>
-          <Link to={'/'} className={styles.link}>Contacts</Link>
+          <Link to={'/contacts'} className={styles.link}>Contacts</Link>
         </li>
       </ul>
       <div className={styles.auth_icons}>
@@ -46,7 +46,7 @@ function Header() {
         <Link to={'/login'}>
           <UserOutlined className={styles.login_icon}/>
         </Link>
-        <Link to={'/'}>
+        <Link to={'/logout'}>
           <PoweroffOutlined onSubmit={onLogout} className={styles.logout_icon}/>
         </Link>
       </div>

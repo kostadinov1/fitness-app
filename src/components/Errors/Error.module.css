@@ -3,6 +3,8 @@
 }
 
 .info_box {
+    position: relative;
+    top: 3em;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -13,9 +15,10 @@
     
     max-width: 50vw;
     min-height: 50vh;
-    margin: 6em auto;
+    margin: 0em auto;
+    padding: 2em;
     
-    background-color: var(-);
+    background-color: var(--prime-2);
     border: 0.2em solid var(--light-gray);
     border-radius: var(--b-radius);
     overflow: hidden;
@@ -23,7 +26,7 @@
 
 .info_box > * {
     padding: 1em;
-    border: 0.1em solid var(--light-gray);
+    border: 0.1em solid var(--prime);
     border-radius: var(--b-radius);
     overflow: hidden;
 }

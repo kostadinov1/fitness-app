@@ -10,6 +10,7 @@ import Login from './components/Auth/Login/Login';
 import Error404 from './components/Errors/Error404';
 import AllExercises from './components/Exercises/AllExercises/AllExercises';
 import AllActivities from './components/Activities/AllActivities/AllActivities';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -19,11 +20,12 @@ function App() {
       <Routes >
         <Route path='*' element={<Error404 />}/>
         <Route path='/' element={<Home />}/>
+        <Route path='/dashboard' element={<Dashboard />}/>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/all-exercises' element={<AllExercises />} />
         <Route path='/all-activities' element={<AllActivities />} />
-
+        
       </Routes>
     </main>
     <Footer />

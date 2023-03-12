@@ -1,12 +1,12 @@
 import React from 'react'
-import './Dashboard.module.css'
+import styles from './Dashboard.module.css'
 
 
 function Dashboard() {
   return (
-    <div>
+    <section className={styles.dashboard}>
       
-    </div>
+    </section>
   )
 }
 

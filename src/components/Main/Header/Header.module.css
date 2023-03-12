@@ -23,7 +23,7 @@
 }
 .header h1 {
     padding: 0em 0.2em;
-    color: var(--sec);
+    color: var(--text);
     background-color: var(--prime);
     font-size: 1.8rem;
     border-radius: var(--b-radius);
@@ -57,9 +57,7 @@ li:hover {
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
     font-family: 'Montserrat Alternates', sans-serif;
-
-
-
+    
 }
 .link:hover {
 color: var(--accent);
@@ -69,7 +67,7 @@ color: var(--accent);
     margin: 0px 2em;
     padding: 0.4em;
     border-radius: var(--b-radius);
-
+    background-color: var(--prime);
 }
 .auth_icons * {
     color: var(--dark-blue);
@@ -82,11 +80,13 @@ color: var(--accent);
 }
 
 .menu_icon {
+    background-color: var(--prime);
+    
     margin-right: 2em;
     color: var(--text);
-    padding: 0.4em;
+    padding: 0.9em;
     border-radius: var(--b-radius);
 }
 .menu_icon:hover {
-    color: var(--accent);
+    color: var(--acc-1);
 }
