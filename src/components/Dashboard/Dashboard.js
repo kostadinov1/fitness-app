@@ -1,4 +1,5 @@
 import React from 'react'
+import CardReel from '../Cards/CardReel/CardReel'
 import styles from './Dashboard.module.css'
 
 
@@ -50,11 +51,13 @@ function Dashboard() {
             <div className={`${styles.grid_card} ${styles.grid_card_6}`}>
                 <h3>Activities</h3>
                     {/* ------- ITEMS ---------- */}
+                    <CardReel />
                     
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_7}`}>
                 <h3>Exercises</h3>
                     {/* ------- ITEMS ---------- */}
+                    <CardReel />
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_8}`}>
@@ -80,6 +83,7 @@ function Dashboard() {
             <div className={`${styles.grid_card} ${styles.grid_card_10}`}>
                 <h3>BLOCKS</h3>
                     {/* ------- ITEMS ---------- */}
+                    <CardReel />
 
             </div>
         </div>
