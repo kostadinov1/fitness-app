@@ -1,8 +1,9 @@
 .footer {
     position: relative;
+    top: 3em;
     bottom: 0px;
     width: 100vw;
-    min-height: 20vh;
+    min-height: 16vh;
     background-color: var(--sec);
 }
 

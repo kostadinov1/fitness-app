@@ -11,6 +11,7 @@ import Error404 from './components/Errors/Error404';
 import AllExercises from './components/Exercises/AllExercises/AllExercises';
 import AllActivities from './components/Activities/AllActivities/AllActivities';
 import Dashboard from './components/Dashboard/Dashboard';
+import CreateExercise from './components/Exercises/CreateExercise/CreateExercise';
 
 function App() {
   return (
@@ -18,14 +19,26 @@ function App() {
     <Header/>
     <main id='main'>
       <Routes >
-        <Route path='*' element={<Error404 />}/>
+          {/* <<< ------ Core ------- >>>*/}        
         <Route path='/' element={<Home />}/>
         <Route path='/dashboard' element={<Dashboard />}/>
+
+          {/* <<< ------ Auth ------- >>>*/}
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+
+          {/* <<< ------ Exercises------- >>> */}
         <Route path='/all-exercises' element={<AllExercises />} />
-        <Route path='/all-activities' element={<AllActivities />} />
-        
+        <Route path='/create-exercise' element={<CreateExercise />}/>
+        <Route path='/exercise/:id' element={<AllExercises />} />
+        <Route path='/edit-exercise/:id' element={<CreateExercise />}/>
+
+
+          {/* <<< ------ Activities------- >>> */}
+        <Route path='/all-activities' element={<AllActivities />} />  
+
+          {/* <<< ------ Errors------- >>> */}
+        <Route path='*' element={<Error404 />}/>
       </Routes>
     </main>
     <Footer />

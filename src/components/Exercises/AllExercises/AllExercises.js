@@ -26,7 +26,7 @@ function AllExercises() {
             <div className={styles.sider_1}>
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><Link to={'/'}></Link>Create Exercise</li>
+                    <li><Link to={'/create-exercise'}>Create Exercise</Link></li>
                     <li><Link to={'/'}></Link>Create Activity</li>
                     <li><Link to={'/'}></Link>Exercises</li>
                     <li><Link to={'/'}></Link>Activities</li>
@@ -55,7 +55,7 @@ function AllExercises() {
             <div className={styles.exy_box}>
             {/* <h1 className='section_title'>Activities</h1> */}
                 {exercises ? exercises.map((exercise) => 
-                           <ExerciseCard exercise={exercise} />
+                           <ExerciseCard exercise={exercise} key={exercise.id}/>
                         ): <h1>No activites Yet!</h1>
                 }
             </div>
