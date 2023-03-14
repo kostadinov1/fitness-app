@@ -56,10 +56,10 @@ const getExercise  = async (id) => {
 }
 
 const editExercise  = async (id, exerciseProps) => {
-    const url = baseURL + '/activity/edit-exercise/' + id
+    const url = baseURL + `/activity/edit-exercise/${id}/`
     try {
         let response = await fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 "content-type": "application/json"
             },

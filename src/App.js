@@ -12,6 +12,7 @@ import AllExercises from './components/Exercises/AllExercises/AllExercises';
 import AllActivities from './components/Activities/AllActivities/AllActivities';
 import Dashboard from './components/Dashboard/Dashboard';
 import CreateExercise from './components/Exercises/CreateExercise/CreateExercise';
+import EditExercise from './components/Exercises/EditExercise/EditExercise';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         <Route path='/all-exercises' element={<AllExercises />} />
         <Route path='/create-exercise' element={<CreateExercise />}/>
         <Route path='/exercise/:id' element={<AllExercises />} />
-        <Route path='/edit-exercise/:id' element={<CreateExercise />}/>
+        <Route path='/edit-exercise/:id' element={<EditExercise />}/>
 
 
           {/* <<< ------ Activities------- >>> */}

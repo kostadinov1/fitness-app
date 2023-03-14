@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import styles from './ExerciseCard.module.css'
 
 
-function exerciseCard({exercise}) {
+function ExerciseCard({exercise}) {
+
   return (
     <Link to={'/exercise/id'}>
     <div className={styles.card}>
@@ -20,7 +21,7 @@ function exerciseCard({exercise}) {
         </div>
         <div className={styles.card_actions}>
             <div className={styles.card_action}>
-                <Link to={'/'}>
+                <Link to={`/edit-exercise/${exercise.id}`}>
                     <ExperimentOutlined />
                     Edit
                 </Link>
@@ -38,4 +39,4 @@ function exerciseCard({exercise}) {
 }
 
 
-export default exerciseCard
+export default ExerciseCard
