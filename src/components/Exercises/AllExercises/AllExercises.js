@@ -30,7 +30,7 @@ function AllExercises() {
                     <li><Link to={'/'}></Link>Create Activity</li>
                     <li><Link to={'/'}></Link>Exercises</li>
                     <li><Link to={'/'}></Link>Activities</li>
-                    <li><Link to={'/'}></Link>Profile</li>
+                    <li><Link to='/'>Profile</Link></li>
                 </ul>
             </div>
             <div className={styles.sider_2}>
@@ -41,16 +41,7 @@ function AllExercises() {
                     <li><Link to={'/'}></Link>Exercises</li>
                     <li><Link to={'/'}></Link>Profile</li>
                 </ul>
-                <ul>
-                    <li><Link to={'/'}></Link>Create Exercise</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Profile</li>
-                </ul>
-                <ul>
-                    <li><Link to={'/'}></Link>Create Exercise</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Profile</li>
-                </ul>
+
             </div>
             <div className={styles.exy_box}>
             {/* <h1 className='section_title'>Activities</h1> */}

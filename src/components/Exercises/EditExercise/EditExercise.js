@@ -11,13 +11,10 @@ function EditExercise() {
     const [exercise, setExercise] = useState({})
     const navigate = useNavigate()
 
-    console.log(exercise)
     useEffect(() => {
         getExercise(id)
-        .then((res) => { 
-            setExercise(res)
-            console.log('res in useEffect', res)})
-        .catch((res) => { console.log('res in useEffect', res)})
+        .then((res) => { setExercise(res)})
+        .catch((res) => { console.log('___IN___ useEffect:', res)})
     }, [])
 
     const onEdit = (e) => {

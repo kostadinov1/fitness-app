@@ -40,7 +40,7 @@ const createExercise  = async (exerciseProps) => {
 }
 
 const getExercise  = async (id) => {
-    const url = baseURL + '/activity/get-exercise/' + id
+    const url = baseURL + `/activity/get-exercise/${id}/`
     try {
         let response = await fetch(url)
         let exercise = await response.json()        
@@ -78,10 +78,10 @@ const editExercise  = async (id, exerciseProps) => {
 }
 
 const deleteExercise  = async (id) => {
-    const url = baseURL + '/activity/delete-exercise/' + id
+    const url = baseURL + `/activity/delete-exercise/${id}/`
     try {
         let response = await fetch(url, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 "content-type": "application/json"
             },

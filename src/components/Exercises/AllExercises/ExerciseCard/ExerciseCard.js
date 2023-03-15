@@ -1,13 +1,22 @@
 import { ExperimentOutlined } from '@ant-design/icons'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { deleteExercise } from '../../../../api/exercises'
 import styles from './ExerciseCard.module.css'
 
 
 function ExerciseCard({exercise}) {
+    const navigate = useNavigate()
+
+    const onDelete = () => {
+        deleteExercise(exercise.id)
+            .then((res) => {console.log(res, 'res in exercise rac')
+                navigate('/dashboard')
+                            })
+            .catch((res) => console.log(res, 'res in exercise rac'))
+    }   
 
   return (
-    <Link to={'/exercise/id'}>
     <div className={styles.card}>
         <div className={styles.card_info}>
             <h3>{exercise.name}</h3>
@@ -21,20 +30,17 @@ function ExerciseCard({exercise}) {
         </div>
         <div className={styles.card_actions}>
             <div className={styles.card_action}>
-                <Link to={`/edit-exercise/${exercise.id}`}>
-                    <ExperimentOutlined />
+                <Link to={`/edit-exercise/${exercise.id}/`}>
                     Edit
                 </Link>
             </div>
             <div className={styles.card_action}>
-                <Link to={'/'}>
-                    <ExperimentOutlined />
+            <Link  onClick={onDelete}>
                     Delete
                 </Link>
             </div>
         </div>
     </div>
-    </Link>
   )
 }
 

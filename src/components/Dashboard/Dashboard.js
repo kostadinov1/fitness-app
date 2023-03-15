@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import CardReel from '../Cards/CardReel/CardReel'
 import ListCard from '../Cards/ListCard/ListCard'
 import styles from './Dashboard.module.css'
 
+
+const items = ['link1', 'item2']
 
 function Dashboard() {
   return (
@@ -12,12 +15,17 @@ function Dashboard() {
                 <img src='/images/defaults/default-user.png' alt='' />
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_2}`}>
-                <h3>TOTALS</h3>
-                <ListCard />
+                <h3>LINKS</h3>
+                <ul>
+                    <li><Link to='/all-exercises'>All Exercises</Link></li>
+                    <li><Link to='/all-activities'>All Activities</Link></li>
+                    <li><Link to='/'></Link></li>
+                    <li><Link to='/'></Link></li>
+                </ul>
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_3}`}>
                 <h3>RECORDS</h3>
-                <ListCard />
+                {/* <ListCard /> */}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_4}`}>
                 <h3>CHARTS</h3>
@@ -41,12 +49,12 @@ function Dashboard() {
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_8}`}>
                 <h3>Exercises STATS</h3>
-                <ListCard />
+                {/* <ListCard /> */}
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_9}`}>
                 <h3>Blocks STATS</h3>
-                <ListCard />
+                {/* <ListCard /> */}
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_10}`}>
