@@ -1,4 +1,63 @@
 
 .edit_activity {
     
+    position: relative;
+    top: 3em;
+    min-height: 100vh;
+}
+
+.form_box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 40vw;
+    margin: 0 auto;
+    padding: 2em;
+
+    background-color: var(--prime-2);
+    border: 1px solid var(--acc-1);
+}
+.form_box h1 {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.form > * {
+    padding: 0.4em;
+}
+
+.name_type {
+    display: flex;
+
+}
+.name_type input {
+    width: 100%;
+}
+.texts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+.numbers input {
+    width: 3em;
+    margin: 0 0.4em;
+}
+
+
+
+.form button {
+    margin-top: 1.4em;
 }

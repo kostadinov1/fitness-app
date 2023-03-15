@@ -1,24 +1,44 @@
 import styles from './CreateActivity.module.css'
 
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { createActivity, getActivity, listActivityTypes } from '../../../api/activities'
 
 function CreateActivity() {
-  
     const navigate = useNavigate()
+    const [activity, setActivity] = useState({})
+    const [activityTypes, setActivityTypes] = useState([])
+    console.log(activity)
+  
     const [formData, setFormData] = useState({
-            // name: "demo exercise",
-            // description: "optimal progress",
-            // reps: 1,
-            // sets: 1,
-            // cues: "optimal progress",
-            // weights_in_kg: 1,
-            // calories_burned: 1,
-            // type: null,
+            name: "demo exercise",
+            duration: null,
+            description: null,
+            distance: null,
+            pace: null,
+            speed: null,
+            heart_rate: null,
+            rpe: null,
+            exercises: null,
+            type: null,
+            goal: null,
+            microcycle: null,
+
     })
+
+
+  useEffect(() => {
+
+
+      listActivityTypes()
+          .then((res) => { setActivityTypes(res)})
+          .catch((res) => { console.log('___IN___ useEffect:', res)})
+  }, [])
     const onCreate = (e) => {
         e.preventDefault()
-        // createExercise(formData)
+        createActivity(formData)
+        .then((res) => { setActivity(res)})
+        .catch((res) => { console.log('___IN___ useEffect:', res)})
         navigate('/')
     }
     const onValueChange = (e) => {
@@ -27,93 +47,92 @@ function CreateActivity() {
 
 
     return (
-        <section className={styles.create_exercise}>
+        <section className={styles.create_activity}>
       <div className={styles.form_box}>
-        <h1>Create Exercise</h1>
+        <h1>Create Activity</h1>
         <form onSubmit={onCreate} className={styles.form}>
-            <div className={styles.name_type}>
+                
                 <label>Name</label>
                 <input
-                    value={formData.name}
+                    value={activity.name}
                     onChange={onValueChange}
                     name='name' 
                     className={styles.form_input}  
                     placeholder='Choose a good name' />
+
                 <label>Type</label>
-                <select 
-                    value={formData.type}
+                {/* <select 
+                    value={activity.type}
                     onChange={onValueChange}
                     name='type'
                     type={''} 
                     className={styles.form_input}>
-                    <option value={"1"}>Bodyweight </option>
-                </select>
-            </div>
-            <div className={styles.texts}>
+                        { activityTypes ? 
+                        activityTypes.map((ActivityType) =>
+                                         <option value={`${ActivityType.name}`}>{ActivityType.name}</option>)
+                        : <option>No Types yet</option>
+                        }
+                </select> */}
+
                 <label>Description</label>
                 <textarea 
-                    value={formData.description}
+                    value={activity.description}
                     onChange={onValueChange}
-
                     name='description'
                     type={'text'} 
                     className={styles.form_input}  
-                    placeholder='Short Description'></textarea >
-                <label>Cues</label>
-                <textarea 
-                    value={formData.cues}
-                    onChange={onValueChange}
+                    placeholder='Short Description'>
+                </textarea >
 
-                    name='cues'
-                    type={'text'} 
-                    className={styles.form_input}  
-                    placeholder='Name some cues'></textarea>
-            </div>
-            <div className={styles.numbers}>
-                <label>Reps</label>
+                <label>Duration</label>
                 <input 
-                    value={formData.reps}
+                    value={activity.duration}
                     onChange={onValueChange}
-
-                    name='reps'
                     type={'number'}
-                    className={styles.form_input}  
-                    placeholder='How many Reps?'></input>
-
-                <label>Sets</label>
+                    placeholder='0'
+                />
+                <label>Distance</label>
                 <input 
-                    value={formData.sets}
+                    value={activity.distance}
                     onChange={onValueChange}
-
-                    name='sets'
                     type={'number'}
-                    className={styles.form_input}  
-                    placeholder='How many Sets?'></input>
-                <label>Weights KG</label>
+                    placeholder='0'
+                />
+                <label>Pace</label>
                 <input 
-                    value={formData.weights_in_kg}
+                    value={activity.pace}
                     onChange={onValueChange}
-
-                    name='weight_in_kg'
                     type={'number'}
-                    lassName={styles.form_input}  
-                    placeholder='What weights?'></input>
-                <label>Calories</label>
-                <input
-                    value={formData.calories_burned}
+                    placeholder='0'
+                />
+                <label>Speed</label>
+                <input 
+                    value={activity.speed}
                     onChange={onValueChange}
-
-                    name={'calories_burned'} 
                     type={'number'}
-                    className={styles.form_input}  
-                    placeholder='Calories burned'></input>
-            </div>
-            <button>Create</button>
+                    placeholder='0'
+                />
+                <label>Heart Rate</label>
+                <input 
+                    value={activity.heart_rate}
+                    onChange={onValueChange}
+                    type={'number'}
+                    placeholder='0'
+                />
+                <label>RPE</label>
+                <input 
+                    value={activity.rpe}
+                    onChange={onValueChange}
+                    type={'number'}
+                    placeholder='0'
+                />
+            <button >Create</button>
         </form>
-
+  
       </div>
     </section>
   )
-}
+  }
+
 
 export default CreateActivity

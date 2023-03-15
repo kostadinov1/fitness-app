@@ -26,13 +26,15 @@ function ActivityCard({activity}) {
 
             <span className={`${styles.card_cell_3} ${styles.card_cell}`}>Duration: {activity.duration}</span>
             <span className={`${styles.card_cell_4} ${styles.card_cell}`}>Type: {activity.type}</span>
-
-            <span className={`${styles.card_cell_5} ${styles.card_cell}`}>Distance: {activity.sets}</span>
-            <span className={`${styles.card_cell_6} ${styles.card_cell}`}>Pace: {activity.reps}</span>
-            <span className={`${styles.card_cell_7} ${styles.card_cell}`}>Speed: {activity.weights}</span>
-
-            <span className={`${styles.card_cell_8} ${styles.card_cell}`}>Hear Rate: {activity.cues}</span>
-            <span className={`${styles.card_cell_9} ${styles.card_cell}`}>RPE: {activity.rpe}</span>
+            {activity.type == 3 ?<>
+                <span className={`${styles.card_cell_5} ${styles.card_cell}`}>Distance: {activity.sets}</span>
+                <span className={`${styles.card_cell_6} ${styles.card_cell}`}>Pace: {activity.reps}</span>
+                <span className={`${styles.card_cell_7} ${styles.card_cell}`}>Speed: {activity.weights}</span>
+                <span className={`${styles.card_cell_8} ${styles.card_cell}`}>Hear Rate: {activity.cues}</span>
+                <span className={`${styles.card_cell_9} ${styles.card_cell}`}>RPE: {activity.rpe}</span>
+            </>
+        : null    
+        }
 
             <span className={`${styles.card_cell_10} ${styles.card_cell}`}>Exercises: {activity.exercises}</span>
 

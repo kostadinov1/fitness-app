@@ -104,7 +104,6 @@ const listExerciseTypes = async () => {
         let response = await fetch(url)
         let exerciseTypes = await response.json()        
         if (response.ok) {
-            console.log('in service', exerciseTypes)
             return exerciseTypes
         }
         else {

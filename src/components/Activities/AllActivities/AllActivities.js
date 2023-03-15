@@ -11,9 +11,7 @@ function AllActivities() {
     useEffect(() => {
         getAllActivities().then(
             (res) => {
-                console.log(res)
                 setActivities(res)
-                console.log(activites)
             }
         ).catch(
            (res) => console.log('this is the error in component',res)
@@ -25,27 +23,17 @@ function AllActivities() {
             <div className={styles.sider_1}>
                 <h4>Quick</h4>
                 <ul>
-                    <li><Link to={'/'}></Link>Create Activity</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Profile</li>
+                    <li><Link to={'/create-activity'}>Create Activity</Link></li>
+                    <li><Link to={'/all-exercises'}>Exercises</Link></li>
+                    <li><Link to={'/'}>Profile</Link></li>
                 </ul>
             </div>
             <div className={styles.sider_2}>
                 <ul>
-                    <li><Link to={'/'}></Link>Create Activity</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Profile</li>
+                    <li><Link to={'/'}>Create Activity</Link></li>
+                    <li><Link to={'/'}>Exercises</Link></li>
                 </ul>
-                <ul>
-                    <li><Link to={'/'}></Link>Create Activity</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Profile</li>
-                </ul>
-                <ul>
-                    <li><Link to={'/'}></Link>Create Activity</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Profile</li>
-                </ul>
+
             </div>
             <div className={styles.acty_box}>
             {/* <h1 className='section_title'>Activities</h1> */}

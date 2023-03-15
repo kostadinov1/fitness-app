@@ -40,6 +40,7 @@ const createActivity  = async (activityProps) => {
 }
 
 const getActivity  = async (id) => {
+    console.log('id in api service:', id)
     const url = baseURL + `/activity/get-activity/${id}/`
     try {
         let response = await fetch(url)
@@ -51,11 +52,12 @@ const getActivity  = async (id) => {
             throw activity
         }
     } catch {
-        console.log('this is an error in the api service')
+        console.log('__IN__api_catch')
     }
 }
 
 const editActivity  = async (id, activityProps) => {
+    console.log('acitvityProps in api', activityProps)
     const url = baseURL + `/activity/edit-activity/${id}/`
     try {
         let response = await fetch(url, {
@@ -104,7 +106,6 @@ const listActivityTypes = async () => {
         let response = await fetch(url)
         let activitiesTypes = await response.json()        
         if (response.ok) {
-            console.log('in service', activitiesTypes)
             return activitiesTypes
         }
         else {
