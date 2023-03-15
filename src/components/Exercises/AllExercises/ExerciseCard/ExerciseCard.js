@@ -7,6 +7,7 @@ import styles from './ExerciseCard.module.css'
 
 function ExerciseCard({exercise}) {
     const navigate = useNavigate()
+    
 
     const onDelete = () => {
         deleteExercise(exercise.id)

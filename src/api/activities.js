@@ -98,11 +98,28 @@ const deleteActivity  = async (id) => {
     }
 }
 
-
+const listActivityTypes = async () => {
+    const url = baseURL + '/activity/list-activity-types/'
+    try {
+        let response = await fetch(url)
+        let activitiesTypes = await response.json()        
+        if (response.ok) {
+            console.log('in service', activitiesTypes)
+            return activitiesTypes
+        }
+        else {
+            throw activitiesTypes
+        }
+    } catch {
+        console.log('this is an error in the api service')
+    }
+}
 export {
     getAllActivities,
     getActivity,
     createActivity,
     editActivity,
     deleteActivity,
+    listActivityTypes,
+
 }

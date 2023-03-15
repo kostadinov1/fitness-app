@@ -2,19 +2,25 @@
 
 import styles from './EditExercise.module.css'
 import React, { useEffect, useState } from 'react'
-import { editExercise, getExercise } from '../../../api/exercises'
+import { editExercise, getExercise, listExerciseTypes } from '../../../api/exercises'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
 function EditExercise() {
     const {id} = useParams()
-    const [exercise, setExercise] = useState({})
     const navigate = useNavigate()
+    const [exercise, setExercise] = useState({})
+    const [exerciseTypes, setExerciseTypes] = useState([])
+    console.log(exerciseTypes)
 
     useEffect(() => {
         getExercise(id)
-        .then((res) => { setExercise(res)})
-        .catch((res) => { console.log('___IN___ useEffect:', res)})
+            .then((res) => { setExercise(res)})
+            .catch((res) => { console.log('___IN___ useEffect:', res)})
+        listExerciseTypes()
+            .then((res) => { setExerciseTypes(res)
+                        console.log(res)})
+            .catch((res) => { console.log('___IN___ useEffect:', res)})
     }, [])
 
     const onEdit = (e) => {
@@ -47,13 +53,10 @@ function EditExercise() {
                     name='type'
                     type={''} 
                     className={styles.form_input}>
-                    <option value={"1"}>Bodyweight </option>
-                    <option value={"Kayaking"}>Kayaking </option>
-                    <option value={"Climbing"}>Climbing </option>
-                    <option value={"Hiking"}>Hiking </option>
-                    <option value={"Swimming"}>Swimming </option>
-                    <option value={"Running"}>Running</option>
-                    <option value={"Resistance Training"}>Resistance Training</option>
+                        { exerciseTypes ? 
+                        exerciseTypes.map((exerciseType) =>
+                            <option value={`${exerciseType.name}`}>{exerciseType.name}</option>)
+                            : <option>No Types yet</option>}
                 </select>
             </div>
             <div className={styles.texts}>
@@ -61,7 +64,6 @@ function EditExercise() {
                 <textarea 
                     value={exercise.description}
                     onChange={onValueChange}
-
                     name='description'
                     type={'text'} 
                     className={styles.form_input}  
@@ -70,7 +72,6 @@ function EditExercise() {
                 <textarea 
                     value={exercise.cues}
                     onChange={onValueChange}
-
                     name='cues'
                     type={'text'} 
                     className={styles.form_input}  
@@ -81,16 +82,13 @@ function EditExercise() {
                 <input 
                     value={exercise.reps}
                     onChange={onValueChange}
-
                     name='reps'
                     type={'number'}
                     className={styles.form_input}></input>
-
                 <label>Sets</label>
                 <input 
                     value={exercise.sets}
                     onChange={onValueChange}
-
                     name='sets'
                     type={'number'}
                     className={styles.form_input}></input>
@@ -111,17 +109,6 @@ function EditExercise() {
                     type={'number'}
                     className={styles.form_input}></input>
             </div>
-            {/* <div className={styles.image}>
-                <label>Image</label>
-                <input
-                    // value={exercise.image}
-                    // onChange={(e)=> {setFormData({"image": e.target.value})}}
-                    name='image' 
-                    type={'file'}
-                    className={styles.form_input}
-                    placeholder='Upload Image'></input>
-            </div>            */}
-
             <button>Edit</button>
         </form>
 

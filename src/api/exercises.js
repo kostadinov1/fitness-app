@@ -98,11 +98,30 @@ const deleteExercise  = async (id) => {
     }
 }
 
+const listExerciseTypes = async () => {
+    const url = baseURL + '/activity/list-exercise-types/'
+    try {
+        let response = await fetch(url)
+        let exerciseTypes = await response.json()        
+        if (response.ok) {
+            console.log('in service', exerciseTypes)
+            return exerciseTypes
+        }
+        else {
+        console.log('this is an error in the api service')
+
+            throw exerciseTypes
+        }
+    } catch {
+        console.log('this is an error in the api service')
+    }
+}
 
 export {
     getAllExercises,
     createExercise,
     getExercise,
     editExercise,
-    deleteExercise
+    deleteExercise,
+    listExerciseTypes
 }
