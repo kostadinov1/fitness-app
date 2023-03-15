@@ -13,6 +13,10 @@ import AllActivities from './components/Activities/AllActivities/AllActivities';
 import Dashboard from './components/Dashboard/Dashboard';
 import CreateExercise from './components/Exercises/CreateExercise/CreateExercise';
 import EditExercise from './components/Exercises/EditExercise/EditExercise';
+import CreateActivity from './components/Activities/CreateActivity/CreateActivity';
+import EditActivity from './components/Activities/EditActivity/EditActivity';
+import Activity from './components/Activities/Activity/Activity';
+import ExerciseCard from './components/Exercises/Exercise/Exercise';
 
 function App() {
   return (
@@ -31,12 +35,14 @@ function App() {
           {/* <<< ------ Exercises------- >>> */}
         <Route path='/all-exercises' element={<AllExercises />} />
         <Route path='/create-exercise' element={<CreateExercise />}/>
-        <Route path='/exercise/:id' element={<AllExercises />} />
+        <Route path='/exercise/:id' element={<ExerciseCard />} />
         <Route path='/edit-exercise/:id' element={<EditExercise />}/>
-
 
           {/* <<< ------ Activities------- >>> */}
         <Route path='/all-activities' element={<AllActivities />} />  
+        <Route path='/create-activity' element={<CreateActivity />}/>
+        <Route path='/activity/:id' element={<Activity />} />
+        <Route path='/edit-activity/:id' element={<EditActivity />}/>
 
           {/* <<< ------ Errors------- >>> */}
         <Route path='*' element={<Error404 />}/>

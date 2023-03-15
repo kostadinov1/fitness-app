@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteExercise } from '../../../../api/exercises'
 import styles from './ExerciseCard.module.css'
@@ -6,12 +6,6 @@ import styles from './ExerciseCard.module.css'
 
 function ExerciseCard({exercise}) {
     const navigate = useNavigate()
-    const [currentExercise, setCurrentExecise] = useState({})
-
-    useEffect(() => {
-
-    }, [])
-
 
     const onDelete = () => {
         deleteExercise(exercise.id)

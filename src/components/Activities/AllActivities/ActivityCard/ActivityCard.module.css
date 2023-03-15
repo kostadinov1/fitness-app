@@ -8,8 +8,6 @@
                 "two two two two"
                 "two two two two"
                 "three three three three";
-    padding: 2em;
-
     height: 100%;
     width: 100%;
 
@@ -17,7 +15,7 @@
     /* background-image: url('/public/images/backgrounds/background-05.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
-    border: 1px solid var(--bg);
+    border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     overflow: scroll;
     color: var(--text);
@@ -34,31 +32,48 @@
 }
 .card_info {
     grid-area: two;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    justify-content: center;
-    padding: 2em;
-    color: var(--acc-3);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.3em;
 
+    grid-template-areas: 
+                    "one one one one one one"
+                    "two two two two two two"
+                    "three three three four four four"
+                    "five five six six seven seven"
+                    "eight eight eight nine nine nine"
+                    "ten ten ten ten ten ten"
+                    "eleven eleven eleven twelve twelve twelve";
+                    padding: 2em;
+                    color: var(--acc-3);
 }
+    .card_cell {
+        display: grid;
+        align-items: center;
+        justify-content: start;
+        padding: 0.4em;
+        border: 1px solid var(--acc-1);
+        border-radius: var(--b-radius);
+    }
+    .card_cell_1 {grid-area: one;}
+    .card_cell_2 {grid-area: two;}
+    .card_cell_3 {grid-area: three;}
+    .card_cell_4 {grid-area: four;}
+    .card_cell_5 {grid-area: five;}
+    .card_cell_6 {grid-area: six;}
+    .card_cell_7 {grid-area: seven;}
+    .card_cell_8 {grid-area: eight;}
+    .card_cell_9 {grid-area: nine;}
+    .card_cell_10 {grid-area: ten;}
+    .card_cell_11 {grid-area: eleven;}
+    .card_cell_12 {grid-area: twelve;}
 
-.card_actions {
-    grid-area: three;
-    display: flex;
-    gap: 0.6em;
-    margin-left: auto;
-    margin-right: auto;
-    
-}
-
-.card_action > * {
-    padding: 0.4em 1.8em;
-    border: 1px solid var(--sec);
-    border-radius: var(--b-radius);
-    background-color: var(--acc-1);
-    color: var(--text);
+    .card_cell_link {
+        justify-content: center;
+        background-color: var(--acc-1);
+        color: var(--sec-2);
+        font-weight: bold;
+    }
 
 
-}
 
