@@ -17,6 +17,7 @@ function EditExercise() {
         getExercise(id)
             .then((res) => { setExercise(res)})
             .catch((res) => { console.log('___IN___ useEffect:', res)})
+
         listExerciseTypes()
             .then((res) => { setExerciseTypes(res)
                         console.log(res)})
@@ -55,8 +56,9 @@ function EditExercise() {
                     className={styles.form_input}>
                         { exerciseTypes ? 
                         exerciseTypes.map((exerciseType) =>
-                            <option value={`${exerciseType.name}`}>{exerciseType.name}</option>)
-                            : <option>No Types yet</option>}
+                                         <option value={`${exerciseType.name}`}>{exerciseType.name}</option>)
+                        : <option>No Types yet</option>
+                        }
                 </select>
             </div>
             <div className={styles.texts}>
@@ -109,7 +111,7 @@ function EditExercise() {
                     type={'number'}
                     className={styles.form_input}></input>
             </div>
-            <button>Edit</button>
+            <button >Edit</button>
         </form>
 
       </div>
