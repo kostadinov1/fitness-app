@@ -6,9 +6,8 @@ import { createActivity, getActivity, listActivityTypes } from '../../../api/act
 
 function CreateActivity() {
     const navigate = useNavigate()
-    const [activity, setActivity] = useState({})
+
     const [activityTypes, setActivityTypes] = useState([])
-    console.log(activity)
   
     const [formData, setFormData] = useState({
             name: "demo exercise",
@@ -23,110 +22,170 @@ function CreateActivity() {
             type: null,
             goal: null,
             microcycle: null,
-
     })
 
 
   useEffect(() => {
-
-
       listActivityTypes()
-          .then((res) => { setActivityTypes(res)})
+          .then((res) => {
+            // console.log('res activityTYpes', res)
+            setActivityTypes(res)})
           .catch((res) => { console.log('___IN___ useEffect:', res)})
   }, [])
     const onCreate = (e) => {
         e.preventDefault()
         createActivity(formData)
-        .then((res) => { setActivity(res)})
+        .then((res) => {console.log('CREATED', res)})
         .catch((res) => { console.log('___IN___ useEffect:', res)})
         navigate('/')
     }
     const onValueChange = (e) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     } 
+    // const onTypeChange = (e) => {
+    //     console.log('E.TARGET.VALUE.ID ',e.target.value.id)
+    //     setFormData({...formData, [e.target.name]: e.target.value.id})
+
+    // }
 
 
     return (
-        <section className={styles.create_activity}>
+      <section className={styles.create_activity}>
       <div className={styles.form_box}>
         <h1>Create Activity</h1>
         <form onSubmit={onCreate} className={styles.form}>
-                
-                <label>Name</label>
-                <input
-                    value={activity.name}
-                    onChange={onValueChange}
-                    name='name' 
-                    className={styles.form_input}  
-                    placeholder='Choose a good name' />
 
-                <label>Type</label>
-                {/* <select 
-                    value={activity.type}
-                    onChange={onValueChange}
-                    name='type'
-                    type={''} 
-                    className={styles.form_input}>
-                        { activityTypes ? 
-                        activityTypes.map((ActivityType) =>
-                                         <option value={`${ActivityType.name}`}>{ActivityType.name}</option>)
-                        : <option>No Types yet</option>
-                        }
-                </select> */}
+                <div className={`${styles.form_input} ${styles.form_item_box_1} ${styles.item}`}>
+                    <label>
+                        Name
+                        </label>
+                    <input
+                        value={formData.name}
+                        onChange={onValueChange}
+                        name='name' 
+                        className={styles.form_input}  
+                        placeholder='Choose a good name' />
+                </div>
 
-                <label>Description</label>
-                <textarea 
-                    value={activity.description}
-                    onChange={onValueChange}
-                    name='description'
-                    type={'text'} 
-                    className={styles.form_input}  
-                    placeholder='Short Description'>
-                </textarea >
+                <div className={`${styles.form_input} ${styles.form_item_box_2} ${styles.item}`}>
+                        {/* TODO : create request activityType: str need id? */}
+                    <label>
+                        Type
+                        </label>
+                    <select 
+                        value={formData.type}
+                        onChange={onValueChange}
+                        name='type'
+                        className={styles.form_input}>
+                            { activityTypes ? 
+                            activityTypes.map((ActivityType) =>
+                                <option value={`${ActivityType.name}`}>{ActivityType.name}</option>)
+                                : <option>No Types yet</option>}
+                    </select>
+                </div>
 
-                <label>Duration</label>
-                <input 
-                    value={activity.duration}
-                    onChange={onValueChange}
-                    type={'number'}
-                    placeholder='0'
-                />
-                <label>Distance</label>
-                <input 
-                    value={activity.distance}
-                    onChange={onValueChange}
-                    type={'number'}
-                    placeholder='0'
-                />
-                <label>Pace</label>
-                <input 
-                    value={activity.pace}
-                    onChange={onValueChange}
-                    type={'number'}
-                    placeholder='0'
-                />
-                <label>Speed</label>
-                <input 
-                    value={activity.speed}
-                    onChange={onValueChange}
-                    type={'number'}
-                    placeholder='0'
-                />
-                <label>Heart Rate</label>
-                <input 
-                    value={activity.heart_rate}
-                    onChange={onValueChange}
-                    type={'number'}
-                    placeholder='0'
-                />
-                <label>RPE</label>
-                <input 
-                    value={activity.rpe}
-                    onChange={onValueChange}
-                    type={'number'}
-                    placeholder='0'
-                />
-            <button >Create</button>
+                <div className={`${styles.form_input} ${styles.form_item_box_3} ${styles.item}`}>
+                    <label>
+                        Description
+                        </label>
+                    <textarea 
+                        value={formData.description}
+                        onChange={onValueChange}
+                        name='description'
+                        type={'text'} 
+                        className={styles.form_input}  
+                        placeholder='Short Description'>
+                    </textarea >
+                </div>
+
+                <div className={`${styles.form_num_input} ${styles.form_item_box_4} ${styles.item}`}>
+                    <label>
+                        Duration
+                        </label>
+                    <input 
+                        value={formData.duration}
+                        onChange={onValueChange}
+                        type={'number'}
+                        min={0}
+                        max={1000}
+                        placeholder='0'
+                        />
+                </div>
+
+                <div className={`${styles.form_num_input} ${styles.form_item_box_5} ${styles.item}`}>
+                    <label>
+                        Distance
+                        </label>
+                    <input 
+                        value={formData.distance}
+                        onChange={onValueChange}
+                        type={'number'}
+                        min={0}
+                        max={10000000}
+                        placeholder='0'
+                        />
+                </div>
+
+                <div className={`${styles.form_num_input} ${styles.form_item_box_6} ${styles.item}`}>
+                    <label>
+                        Pace
+                        </label>
+                    <input 
+                        value={formData.pace}
+                        onChange={onValueChange}
+                        type={'number'}
+                        min={0}
+                        max={20}
+                        placeholder='0'
+                        />
+                </div>
+
+                <div className={`${styles.form_num_input} ${styles.form_item_box_7} ${styles.item}`}>
+                    <label>
+                        Speed
+                        </label>
+                    <input 
+                        value={formData.speed}
+                        onChange={onValueChange}
+                        type={'number'}
+                        min={0}
+                        max={1000}
+                        placeholder='0'
+                        />
+                </div>
+
+                <div className={`${styles.form_num_input} ${styles.form_item_box_8} ${styles.item}`}>
+                    <label>
+                    Heart Rate
+                    </label>
+                    <input 
+                        value={formData.heart_rate}
+                        onChange={onValueChange}
+                        type={'number'}
+                        min={0}
+                        max={220}
+                        placeholder='0'
+                        />
+                </div>
+
+                <div className={`${styles.form_num_input} ${styles.form_item_box_9} ${styles.item}`}>
+                    <label>
+                        RPE
+                        </label>
+                    <input 
+                        value={formData.rpe}
+                        onChange={onValueChange}
+                        type={'number'}
+                        min={0}
+                        max={10}
+                        placeholder='0'
+                        />
+                </div>
+
+            <button  className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>
+                Create
+            </button>
+
         </form>
   
       </div>
