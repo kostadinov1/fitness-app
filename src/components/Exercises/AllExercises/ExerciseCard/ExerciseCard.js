@@ -10,7 +10,7 @@ function ExerciseCard({exercise}) {
     const onDelete = () => {
         deleteExercise(exercise.id)
             .then((res) => {console.log(res, 'res in exercise rac')
-                navigate('/dashboard')
+                navigate('/all-exercises')
                             })
             .catch((res) => console.log(res, 'res in exercise rac'))
     }   

@@ -1,9 +1,8 @@
-.create_exercise {
+.create_activity {
     position: relative;
     top: 3em;
     min-height: 100vh;
 }
-
 .form_box {
     position: relative;
     display: flex;
@@ -18,8 +17,6 @@
     text-align: center;
     font-size: 1.8rem;
 }
-
-
 .form {
     display: grid;
     gap: 1em;
@@ -33,7 +30,6 @@
                 "eight nine"
                 "ten ten";
     background-color: var(--prime-2);
-    
 }
 .item {
     display: grid;
@@ -41,20 +37,11 @@
     padding: 1em;
     border: 1px solid var(--sec-2);
     border-radius: var(--b-radius);
-
 }
 .item > input {
     border-radius: var(--b-radius);
     padding: 0.5em;
 }
-
-
-
-/* .form > * {
-    display: grid;
-    width: 100%;
-} */
-
 
 .form_item_box_1 {
     grid-area: one;
@@ -86,12 +73,7 @@
 }
 .form_item_box_10 {
     grid-area: ten;
-
 }
-
-
-
-
 
 .form button {
     margin-top: 1.4em;

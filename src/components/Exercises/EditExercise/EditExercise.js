@@ -56,7 +56,7 @@ function EditExercise() {
                     className={styles.form_input}>
                         { exerciseTypes ? 
                         exerciseTypes.map((exerciseType) =>
-                                         <option value={`${exerciseType.name}`}>{exerciseType.name}</option>)
+                                         <option value={`${exerciseType.id}`}>{exerciseType.name}</option>)
                         : <option>No Types yet</option>
                         }
                 </select>

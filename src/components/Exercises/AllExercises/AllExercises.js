@@ -18,7 +18,7 @@ function AllExercises() {
         ).catch(
            (res) => console.log('this is the error in component',res)
         )
-    }, [])
+    }, [exercises])
     
 
     return (

@@ -1,8 +1,7 @@
 import styles from './CreateActivity.module.css'
-
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { createActivity, getActivity, listActivityTypes } from '../../../api/activities'
+import { useNavigate } from 'react-router-dom'
+import { createActivity,  listActivityTypes } from '../../../api/activities'
 
 function CreateActivity() {
     const navigate = useNavigate()
@@ -10,7 +9,7 @@ function CreateActivity() {
     const [activityTypes, setActivityTypes] = useState([])
   
     const [formData, setFormData] = useState({
-            name: "demo exercise",
+            name: null,
             duration: null,
             description: null,
             distance: null,
@@ -24,11 +23,9 @@ function CreateActivity() {
             microcycle: null,
     })
 
-
   useEffect(() => {
       listActivityTypes()
           .then((res) => {
-            // console.log('res activityTYpes', res)
             setActivityTypes(res)})
           .catch((res) => { console.log('___IN___ useEffect:', res)})
   }, [])
@@ -41,12 +38,7 @@ function CreateActivity() {
     }
     const onValueChange = (e) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
-    } 
-    // const onTypeChange = (e) => {
-    //     console.log('E.TARGET.VALUE.ID ',e.target.value.id)
-    //     setFormData({...formData, [e.target.name]: e.target.value.id})
-
-    // }
+    }
 
 
     return (
@@ -78,8 +70,8 @@ function CreateActivity() {
                         name='type'
                         className={styles.form_input}>
                             { activityTypes ? 
-                            activityTypes.map((ActivityType) =>
-                                <option value={`${ActivityType.name}`}>{ActivityType.name}</option>)
+                            activityTypes.map((activityType) =>
+                                <option value={`${activityType.id}`}>{activityType.name}</option>)
                                 : <option>No Types yet</option>}
                     </select>
                 </div>

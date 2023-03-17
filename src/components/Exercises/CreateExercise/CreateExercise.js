@@ -1,28 +1,37 @@
 import styles from './CreateExercise.module.css'
-import React, { useState } from 'react'
-import { createExercise } from '../../../api/exercises'
+import React, { useEffect, useState } from 'react'
+import { createExercise, listExerciseTypes } from '../../../api/exercises'
 import { useNavigate } from 'react-router-dom'
 
 
 function CreateExercise() {
     
     const navigate = useNavigate()
+    const [exerciseTypes, setExerciseTypes] = useState([])
     const [formData, setFormData] = useState({
-            name: "demo exercise",
-            description: "optimal progress",
-            reps: 1,
-            sets: 1,
-            cues: "optimal progress",
-            weights_in_kg: 1,
-            calories_burned: 1,
+            name: null,
+            description: null,
+            reps: null,
+            sets: null,
+            cues: null,
+            weights_in_kg: null,
+            calories_burned: null,
             type: null,
     })
+    useEffect(() => {
+        listExerciseTypes()
+            .then((res) => {
+              setExerciseTypes(res)})
+            .catch((res) => { console.log('___IN___ useEffect:', res)})
+    }, [])
+
     const onCreate = (e) => {
         e.preventDefault()
         createExercise(formData)
         navigate('/')
     }
     const onValueChange = (e) => {
+        console.log('EXERCISEtyPE :: ==== ::', e.target.value)
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     } 
 
@@ -42,19 +51,15 @@ function CreateExercise() {
                     placeholder='Choose a good name' />
                 <label>Type</label>
                 <select 
-                    value={formData.type}
-                    onChange={onValueChange}
-                    name='type'
-                    type={''} 
-                    className={styles.form_input}>
-                    <option value={"1"}>Bodyweight </option>
-                    <option value={"Kayaking"}>Kayaking </option>
-                    <option value={"Climbing"}>Climbing </option>
-                    <option value={"Hiking"}>Hiking </option>
-                    <option value={"Swimming"}>Swimming </option>
-                    <option value={"Running"}>Running</option>
-                    <option value={"Resistance Training"}>Resistance Training</option>
-                </select>
+                        value={formData.type}
+                        onChange={onValueChange}
+                        name='type'
+                        className={styles.form_input}>
+                            { exerciseTypes ? 
+                            exerciseTypes.map((exerciseType) =>
+                                <option value={`${exerciseType.id}`}>{exerciseType.name}</option>)
+                                : <option>No Types yet</option>}
+                    </select>
             </div>
             <div className={styles.texts}>
                 <label>Description</label>
