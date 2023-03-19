@@ -1,7 +1,8 @@
-import { useState, React } from 'react';
+import { useState, React, useContext } from 'react';
 import styles from '../AuthForm/AuthForm.module.css'
 import { loginService, registerService } from '../../../api/auth'
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../contexts/UserContext';
 
 
 function Register() {
@@ -9,27 +10,26 @@ function Register() {
     const [password, setPassword] = useState('');
     const [repass, setRepass] = useState('');
     const navigate = useNavigate()
+    const {user, setUser} = useContext(UserContext)
 
 
     const onRegister = (e) => {
         e.preventDefault()
-        console.log(email, password);
         if (password === repass) {
-          
-          registerService(email, password)
-          .then((res) => {
-            loginService(email, password)
-            console.log('__register__', res);})
-            navigate('/')
-        .catch((res) => {console.log('__register__', res);})
-        } else {
-          alert('Passwords DO NOT MATCH!')
-        }
+            registerService(email, password)
+            .then((res) => {
+                    setUser(res)
+                    loginService(email, password)})
+                    navigate('/')
+            .catch((res) => {
+                console.log('__reger_catch__', res);})
+          } else {
+            alert('Passwords DO NOT MATCH!')
+          }
     }
     const onEmailChange = (e) => {
         e.preventDefault()
         setEmail(e.target.value)
-
     }
     const onPasswordChange = (e) => {
         e.preventDefault()
@@ -37,10 +37,10 @@ function Register() {
         
     }
     const onRepassChange = (e) => {
-        e.preventDefault(e.target.value)
+        e.preventDefault()
         setRepass(e.target.value)
-        
     }
+
 
     return (
     <section className={styles.auth_section}>

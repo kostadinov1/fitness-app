@@ -10,7 +10,7 @@ const items = ['link1', 'item2']
 
 function Dashboard() {
 
-    const { user, setUser }= useContext(UserContext)
+    const { user, setUser }= useContext(UserContext) 
 
   return (
     <section className={styles.dashboard}>

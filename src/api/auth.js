@@ -56,14 +56,16 @@ const loginService = async (email, password) => {
 
 }
 
-const logoutService = async (id) => {
-    const url = baseURL + `/accounts/logout/${id}/`;
+const logoutService = async (user) => {
+    console.log('user in logout service ', user)
+    const url = baseURL + `/accounts/logout/${user.user_id}/`;
 
     try {
         let response = await fetch(url, {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
+                 "Authorization": `Token ${user.token}`,
             },
             })
             let logout = await response.json()

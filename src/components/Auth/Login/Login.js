@@ -11,13 +11,13 @@ function Login() {
     const [password, setPassword] = useState('');
     const { user, setUser }= useContext(UserContext)
     
+    // console.log('user in login', user)
 
     const onLogin = (e) => {
         e.preventDefault()
         loginService(email, password)
             .then((res) => {
                 setUser({...res, isAuthenticated: true})
-                console.log('user in login', user)
                 navigate('/dashboard');
             })
             .catch((res) => {console.log('__login__', res);})

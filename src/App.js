@@ -38,12 +38,14 @@ function App() {
                     <main id='main'>
                         <Routes >
                             {/* <<< ------ Core ------- >>>*/}        
-                        <Route path='/' element={<Home />}/>
-                        <Route path='/dashboard' element={<Dashboard />}/>
+                        {user.isAuthenticated === true ?
+                            <Route path='/dashboard' element={<Dashboard />}/>
+                            :<Route path='/' element={<Home />}/>
+                        }
 
                             {/* <<< ------ Auth ------- >>>*/}
                         <Route path='/register' element={<Register />} />
-                        <Route path='/login' element={<Login />} />
+                        <Route path='/login' element={<Login />} />,
 
                             {/* <<< ------ Exercises------- >>> */}
                         <Route path='/all-exercises' element={<AllExercises />} />

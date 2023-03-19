@@ -1,6 +1,4 @@
 import styles from './Header.module.css'
-
-
 import { Link, useNavigate } from 'react-router-dom'
 import { MenuOutlined, PoweroffOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
 import { logoutService } from '../../../api/auth'
@@ -9,12 +7,12 @@ import { useContext } from 'react'
 
 function Header() {
     const navigate = useNavigate()
-    const {user, setUser} = useContext(UserContext)               
+    const {user, setUser} = useContext(UserContext)        
 
     const onLogout = (e) => {
         e.preventDefault()
-        logoutService(user.user_id)
-            .then(({res}) => {
+        logoutService(user)
+            .then((res) => {
                 setUser({user_id: null,
                         token: null,
                         email: null,
@@ -25,12 +23,13 @@ function Header() {
             .catch((res) => {console.log('__LOGOUT__error', res)})
     }
 
+    
   return (
         <section className={styles.header}>
         <img alt='' className={styles.logo} />
         <h1>Fit Hub</h1>
         <ul className={styles.ul}>
-            {!user.isAuthenticated ? 
+            {user.isAuthenticated === false? 
                <li className={styles.li}>
                     <Link to={'/'} className={styles.link}>Home</Link>
                 </li>
@@ -55,15 +54,22 @@ function Header() {
             </li>
         </ul>
         <div className={styles.auth_icons}>
-            <Link to={'/register'}>
-            <UserAddOutlined className={styles.register_icon}/>
-            </Link>
-            <Link to={'/login'}>
-            <UserOutlined className={styles.login_icon}/>
-            </Link>
-            <Link to={'/'}>
-            <PoweroffOutlined onClick={onLogout} className={styles.logout_icon}/>
-            </Link>
+            {user.isAuthenticated === false ?
+                <>
+                    <Link to={'/register'}>
+                        <UserAddOutlined className={styles.register_icon}/>
+                        register
+                    </Link>
+                    <Link to={'/login'}>
+                        <UserOutlined className={styles.login_icon}/>
+                        login
+                    </Link>
+                </>
+                :<Link onClick={onLogout}>
+                    <PoweroffOutlined  className={styles.logout_icon}/>
+                    logout
+                 </Link>
+            }
         </div>
             <Link to={'/'}>
             <MenuOutlined  className={styles.menu_icon}/>
