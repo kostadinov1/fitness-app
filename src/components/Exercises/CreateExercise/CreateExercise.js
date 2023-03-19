@@ -28,10 +28,9 @@ function CreateExercise() {
     const onCreate = (e) => {
         e.preventDefault()
         createExercise(formData)
-        navigate('/')
+        navigate('/all-exercises')
     }
     const onValueChange = (e) => {
-        console.log('EXERCISEtyPE :: ==== ::', e.target.value)
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     } 
 

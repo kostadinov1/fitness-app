@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../contexts/UserContext'
 import CardReel from '../Cards/CardReel/CardReel'
 import ListCard from '../Cards/ListCard/ListCard'
 import styles from './Dashboard.module.css'
@@ -8,6 +9,9 @@ import styles from './Dashboard.module.css'
 const items = ['link1', 'item2']
 
 function Dashboard() {
+
+    const { user, setUser }= useContext(UserContext)
+
   return (
     <section className={styles.dashboard}>
         <div className={styles.grid}>

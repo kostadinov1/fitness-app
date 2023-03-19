@@ -9,13 +9,9 @@ function AllActivities() {
     const [activites, setActivities] = useState([])
 
     useEffect(() => {
-        getAllActivities().then(
-            (res) => {
-                setActivities(res)
-            }
-        ).catch(
-           (res) => console.log('this is the error in component',res)
-        )
+        getAllActivities()
+            .then((res) => { setActivities(res) })
+            .catch((res) => console.log('this is the error in component',res))
     }, [])
     
     return (
@@ -33,12 +29,11 @@ function AllActivities() {
                     <li><Link to={'/'}>Create Activity</Link></li>
                     <li><Link to={'/'}>Exercises</Link></li>
                 </ul>
-
             </div>
             <div className={styles.acty_box}>
             {/* <h1 className='section_title'>Activities</h1> */}
                 {activites ? activites.map((activity) => 
-                           <ActivityCard activity={activity} />
+                           <ActivityCard activity={activity} key={activity.id}/>
                         ): <h1>No activites Yet!</h1>
                 }
             </div>

@@ -9,16 +9,11 @@ function AllExercises() {
     const [exercises, setExercises] = useState([])
 
     useEffect(() => {
-        getAllExercises().then(
-            (res) => {
-                console.log('res',res)
-                setExercises(res)
-                console.log('exercises', exercises)
-            }
+        getAllExercises().then((res) => { setExercises(res)}
         ).catch(
            (res) => console.log('this is the error in component',res)
         )
-    }, [exercises])
+    }, [])
     
 
     return (

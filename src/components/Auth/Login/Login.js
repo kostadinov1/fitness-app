@@ -1,19 +1,26 @@
-import { useState, React } from 'react';
+import { useState, React, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginService } from '../../../api/auth';
+import { UserContext } from '../../../contexts/UserContext';
 import styles from '../AuthForm/AuthForm.module.css'
 
 
-function Register() {
+function Login() {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const { user, setUser }= useContext(UserContext)
+    
 
     const onLogin = (e) => {
         e.preventDefault()
         loginService(email, password)
-        navigate('/');
+            .then((res) => {
+                setUser({...res, isAuthenticated: true})
+                console.log('user in login', user)
+                navigate('/dashboard');
+            })
+            .catch((res) => {console.log('__login__', res);})
     }
     const onEmailChange = (e) => {
         e.preventDefault()
@@ -52,4 +59,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Login

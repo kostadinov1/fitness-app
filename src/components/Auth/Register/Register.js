@@ -1,29 +1,33 @@
 import { useState, React } from 'react';
 import styles from '../AuthForm/AuthForm.module.css'
-import { registerService } from '../../../api/auth'
+import { loginService, registerService } from '../../../api/auth'
+import { useNavigate } from 'react-router-dom';
 
 
 function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repass, setRepass] = useState('');
+    const navigate = useNavigate()
 
 
     const onRegister = (e) => {
         e.preventDefault()
         console.log(email, password);
         if (password === repass) {
-          console.log('Passwords Match!')
-
+          
           registerService(email, password)
+          .then((res) => {
+            loginService(email, password)
+            console.log('__register__', res);})
+            navigate('/')
+        .catch((res) => {console.log('__register__', res);})
         } else {
-          console.log('Passwords Do Not Match!')
           alert('Passwords DO NOT MATCH!')
         }
     }
     const onEmailChange = (e) => {
         e.preventDefault()
-        console.log('target.email', e.target.value)
         setEmail(e.target.value)
 
     }

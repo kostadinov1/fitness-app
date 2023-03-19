@@ -18,39 +18,53 @@ import EditActivity from './components/Activities/EditActivity/EditActivity';
 import Activity from './components/Activities/Activity/Activity';
 import ExerciseCard from './components/Exercises/Exercise/Exercise';
 
+import { UserContext } from './contexts/UserContext';
+import { useState } from 'react';
+
 function App() {
-  return (
-    <section id='body'>
-    <Header/>
-    <main id='main'>
-      <Routes >
-          {/* <<< ------ Core ------- >>>*/}        
-        <Route path='/' element={<Home />}/>
-        <Route path='/dashboard' element={<Dashboard />}/>
 
-          {/* <<< ------ Auth ------- >>>*/}
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
+    const [user, setUser] = useState({
+        user_id: null,
+        token: null,
+        email: null,
+        isAuthenticated: false,
+    })
+       
 
-          {/* <<< ------ Exercises------- >>> */}
-        <Route path='/all-exercises' element={<AllExercises />} />
-        <Route path='/create-exercise' element={<CreateExercise />}/>
-        <Route path='/exercise/:id' element={<ExerciseCard />} />
-        <Route path='/edit-exercise/:id' element={<EditExercise />}/>
+    return (
+        <UserContext.Provider value={{user, setUser}}>
+            <section id='body'>
+                <Header/>
+                    <main id='main'>
+                        <Routes >
+                            {/* <<< ------ Core ------- >>>*/}        
+                        <Route path='/' element={<Home />}/>
+                        <Route path='/dashboard' element={<Dashboard />}/>
 
-          {/* <<< ------ Activities------- >>> */}
-        <Route path='/all-activities' element={<AllActivities />} />  
-        <Route path='/create-activity' element={<CreateActivity />}/>
-        <Route path='/activity/:id' element={<Activity />} />
-        <Route path='/edit-activity/:id' element={<EditActivity />}/>
+                            {/* <<< ------ Auth ------- >>>*/}
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/login' element={<Login />} />
 
-          {/* <<< ------ Errors------- >>> */}
-        <Route path='*' element={<Error404 />}/>
-      </Routes>
-    </main>
-    <Footer />
-  </section>
-  );
-}
+                            {/* <<< ------ Exercises------- >>> */}
+                        <Route path='/all-exercises' element={<AllExercises />} />
+                        <Route path='/create-exercise' element={<CreateExercise />}/>
+                        <Route path='/exercise/:id' element={<ExerciseCard />} />
+                        <Route path='/edit-exercise/:id' element={<EditExercise />}/>
+
+                            {/* <<< ------ Activities------- >>> */}
+                        <Route path='/all-activities' element={<AllActivities />} />  
+                        <Route path='/create-activity' element={<CreateActivity />}/>
+                        <Route path='/activity/:id' element={<Activity />} />
+                        <Route path='/edit-activity/:id' element={<EditActivity />}/>
+
+                            {/* <<< ------ Errors------- >>> */}
+                        <Route path='*' element={<Error404 />}/>
+                        </Routes>
+                    </main>
+                <Footer />
+            </section>
+        </UserContext.Provider>
+    );
+    }
 
 export default App;

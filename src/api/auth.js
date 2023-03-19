@@ -16,6 +16,7 @@ const registerService = async (email, password) => {
             })
             let register = await response.json()
         if (response.ok) {
+            console.log('REGISTER in service', register)
             return register
         }
         else {
@@ -43,6 +44,7 @@ const loginService = async (email, password) => {
             })
             let login = await response.json()
         if (response.ok) {
+            console.log('LOGIN in service', login)
             return login
         }
         else {
@@ -55,7 +57,7 @@ const loginService = async (email, password) => {
 }
 
 const logoutService = async (id) => {
-    const url = baseURL + '/accounts/logout/' + id;
+    const url = baseURL + `/accounts/logout/${id}/`;
 
     try {
         let response = await fetch(url, {
@@ -66,7 +68,10 @@ const logoutService = async (id) => {
             })
             let logout = await response.json()
         if (response.ok) {
+            console.log('catch in service')
+
             return logout
+            
         }
         else {
             throw ('throw in service', logout)

@@ -80,7 +80,7 @@ const editActivity  = async (id, activityProps) => {
 }
 
 const deleteActivity  = async (id) => {
-    const url = baseURL + `/activity/edit-activity/${id}/`
+    const url = baseURL + `/activity/delete-activity/${id}/`
     try {
         let response = await fetch(url, {
             method: 'DELETE',
