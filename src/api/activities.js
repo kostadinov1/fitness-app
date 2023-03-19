@@ -61,7 +61,7 @@ const editActivity  = async (id, activityProps) => {
     const url = baseURL + `/activity/edit-activity/${id}/`
     try {
         let response = await fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 "content-type": "application/json"
             },

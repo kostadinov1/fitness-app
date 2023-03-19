@@ -38,26 +38,30 @@ function App() {
                     <main id='main'>
                         <Routes >
                             {/* <<< ------ Core ------- >>>*/}        
+                        <Route path='/' element={<Home />}/>
+                        
                         {user.isAuthenticated === true ?
+                        <>{/* <<< ------ Core ------- >>>*/}        
                             <Route path='/dashboard' element={<Dashboard />}/>
-                            :<Route path='/' element={<Home />}/>
-                        }
+
+                            {/* <<< ------ Exercises------- >>> */}
+                            <Route path='/all-exercises' element={<AllExercises />} />
+                            <Route path='/create-exercise' element={<CreateExercise />}/>
+                            <Route path='/exercise/:id' element={<ExerciseCard />} />
+                            <Route path='/edit-exercise/:id' element={<EditExercise />}/>
+
+                                {/* <<< ------ Activities------- >>> */}
+                            <Route path='/all-activities' element={<AllActivities />} />  
+                            <Route path='/create-activity' element={<CreateActivity />}/>
+                            <Route path='/activity/:id' element={<Activity />} />
+                            <Route path='/edit-activity/:id' element={<EditActivity />}/>
+                        </>
+                            :null}
 
                             {/* <<< ------ Auth ------- >>>*/}
                         <Route path='/register' element={<Register />} />
                         <Route path='/login' element={<Login />} />,
 
-                            {/* <<< ------ Exercises------- >>> */}
-                        <Route path='/all-exercises' element={<AllExercises />} />
-                        <Route path='/create-exercise' element={<CreateExercise />}/>
-                        <Route path='/exercise/:id' element={<ExerciseCard />} />
-                        <Route path='/edit-exercise/:id' element={<EditExercise />}/>
-
-                            {/* <<< ------ Activities------- >>> */}
-                        <Route path='/all-activities' element={<AllActivities />} />  
-                        <Route path='/create-activity' element={<CreateActivity />}/>
-                        <Route path='/activity/:id' element={<Activity />} />
-                        <Route path='/edit-activity/:id' element={<EditActivity />}/>
 
                             {/* <<< ------ Errors------- >>> */}
                         <Route path='*' element={<Error404 />}/>

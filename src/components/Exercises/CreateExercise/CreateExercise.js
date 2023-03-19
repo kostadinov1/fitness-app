@@ -1,11 +1,13 @@
 import styles from './CreateExercise.module.css'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { createExercise, listExerciseTypes } from '../../../api/exercises'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../../contexts/UserContext'
 
 
 function CreateExercise() {
-    
+    const {user} = useContext(UserContext)
+
     const navigate = useNavigate()
     const [exerciseTypes, setExerciseTypes] = useState([])
     const [formData, setFormData] = useState({
@@ -17,6 +19,7 @@ function CreateExercise() {
             weights_in_kg: null,
             calories_burned: null,
             type: null,
+            user: user.user_id
     })
     useEffect(() => {
         listExerciseTypes()

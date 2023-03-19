@@ -1,9 +1,11 @@
 
 
 import styles from './EditExercise.module.css'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { editExercise, getExercise, listExerciseTypes } from '../../../api/exercises'
 import { useNavigate, useParams } from 'react-router-dom'
+import { UserContext } from '../../../contexts/UserContext'
+
 
 
 function EditExercise() {
@@ -11,7 +13,7 @@ function EditExercise() {
     const navigate = useNavigate()
     const [exercise, setExercise] = useState({})
     const [exerciseTypes, setExerciseTypes] = useState([])
-    console.log(exerciseTypes)
+    const { user } = useContext(UserContext)
 
     useEffect(() => {
         getExercise(id)
@@ -26,7 +28,7 @@ function EditExercise() {
 
     const onEdit = (e) => {
         e.preventDefault()
-        editExercise(id, exercise)
+        editExercise(id, {...exercise, user: user.user_id})
         navigate('/all-exercises')
     }
     const onValueChange = (e) => {

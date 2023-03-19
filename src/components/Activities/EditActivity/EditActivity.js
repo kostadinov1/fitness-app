@@ -1,16 +1,18 @@
 import styles from './EditActivity.module.css'
 
 
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { editActivity, getActivity, listActivityTypes } from '../../../api/activities'
+import { UserContext } from '../../../contexts/UserContext'
 
 function EditActivity() {
   const {id} = useParams()
   const navigate = useNavigate()
   const [activity, setActivity] = useState({})
   const [activityTypes, setActivityTypes] = useState([])
-  console.log(activity)
+  const { user } = useContext(UserContext)
+
 
   useEffect(() => {
     console.log('id',id)
@@ -25,8 +27,7 @@ function EditActivity() {
 
   const onEdit = (e) => {
       e.preventDefault()
-      console.log('activity',activity)
-      editActivity(Number(id), activity)
+      editActivity(Number(id), {...activity, user:user.user_id})
       navigate('/all-activities')
   }
   const onValueChange = (e) => {

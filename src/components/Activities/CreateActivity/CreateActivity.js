@@ -1,10 +1,12 @@
 import styles from './CreateActivity.module.css'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createActivity,  listActivityTypes } from '../../../api/activities'
+import { UserContext } from '../../../contexts/UserContext'
 
 function CreateActivity() {
     const navigate = useNavigate()
+    const {user} = useContext(UserContext)
 
     const [activityTypes, setActivityTypes] = useState([])
   
@@ -21,6 +23,7 @@ function CreateActivity() {
             type: null,
             goal: null,
             microcycle: null,
+            user: user.user_id
     })
 
   useEffect(() => {
@@ -32,9 +35,9 @@ function CreateActivity() {
     const onCreate = (e) => {
         e.preventDefault()
         createActivity(formData)
-        .then((res) => {console.log('CREATED', res)})
-        .catch((res) => { console.log('___IN___ useEffect:', res)})
-        navigate('/')
+            .then((res) => {console.log('CREATED', res)})
+            .catch((res) => { console.log('___IN___ useEffect:', res)})
+        navigate('/all-activities')
     }
     const onValueChange = (e) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
