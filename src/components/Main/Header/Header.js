@@ -8,7 +8,7 @@ import { useContext } from 'react'
 function Header() {
     const navigate = useNavigate()
     const {user, setUser} = useContext(UserContext)        
-
+           
     const onLogout = (e) => {
         e.preventDefault()
         logoutService(user)
@@ -23,7 +23,7 @@ function Header() {
             .catch((res) => {console.log('__LOGOUT__error', res)})
     }
 
-    
+
   return (
         <section className={styles.header}>
         <img alt='' className={styles.logo} />
@@ -57,18 +57,12 @@ function Header() {
             {user.isAuthenticated === false ?
                 <>
                     <Link to={'/register'}>
-                        <UserAddOutlined className={styles.register_icon}/>
-                        register
-                    </Link>
+                        <UserAddOutlined className={styles.register_icon}/> register</Link>
                     <Link to={'/login'}>
-                        <UserOutlined className={styles.login_icon}/>
-                        login
-                    </Link>
+                        <UserOutlined className={styles.login_icon}/> login</Link>
                 </>
                 :<Link onClick={onLogout}>
-                    <PoweroffOutlined  className={styles.logout_icon}/>
-                    logout
-                 </Link>
+                    <PoweroffOutlined  className={styles.logout_icon}/> logout</Link>
             }
         </div>
             <Link to={'/'}>

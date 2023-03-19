@@ -2,6 +2,7 @@ import { useState, React, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginService } from '../../../api/auth';
 import { UserContext } from '../../../contexts/UserContext';
+import { setUserData } from '../../../hooks/userUtils';
 import styles from '../AuthForm/AuthForm.module.css'
 
 
@@ -18,6 +19,7 @@ function Login() {
         loginService(email, password)
             .then((res) => {
                 setUser({...res, isAuthenticated: true})
+                setUserData(res)
                 navigate('/dashboard');
             })
             .catch((res) => {console.log('__login__', res);})

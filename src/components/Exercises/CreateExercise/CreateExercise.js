@@ -37,13 +37,12 @@ function CreateExercise() {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     } 
 
-
+    
     return (
         <section className={styles.create_exercise}>
-      <div className={styles.form_box}>
-        <h1>Create Exercise</h1>
         <form onSubmit={onCreate} className={styles.form}>
-            <div className={styles.name_type}>
+        <h1>Create Exercise</h1>
+            <div className={`${styles.form_field} ${styles.form_field_1}`}>
                 <label>Name</label>
                 <input
                     value={formData.name}
@@ -51,6 +50,8 @@ function CreateExercise() {
                     name='name' 
                     className={styles.form_input}  
                     placeholder='Choose a good name' />
+            </div>
+            <div className={`${styles.form_field} ${styles.form_field_2}`}>
                 <label>Type</label>
                 <select 
                         value={formData.type}
@@ -59,20 +60,21 @@ function CreateExercise() {
                         className={styles.form_input}>
                             { exerciseTypes ? 
                             exerciseTypes.map((exerciseType) =>
-                                <option value={`${exerciseType.id}`}>{exerciseType.name}</option>)
-                                : <option>No Types yet</option>}
-                    </select>
+                            <option value={`${exerciseType.id}`}>{exerciseType.name}</option>)
+                            : <option>No Types yet</option>}
+                </select>
             </div>
-            <div className={styles.texts}>
+            <div className={`${styles.form_field} ${styles.form_field_3}`}>   
                 <label>Description</label>
                 <textarea 
                     value={formData.description}
                     onChange={onValueChange}
-
                     name='description'
                     type={'text'} 
                     className={styles.form_input}  
                     placeholder='Short Description'></textarea >
+            </div>
+            <div className={`${styles.form_field} ${styles.form_field_4}`}>
                 <label>Cues</label>
                 <textarea 
                     value={formData.cues}
@@ -83,60 +85,58 @@ function CreateExercise() {
                     className={styles.form_input}  
                     placeholder='Name some cues'></textarea>
             </div>
-            <div className={styles.numbers}>
+            <div className={`${styles.form_field} ${styles.form_field_5}`}>
                 <label>Reps</label>
                 <input 
                     value={formData.reps}
                     onChange={onValueChange}
-
+                    min={0}
+                    max={1000}
                     name='reps'
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='How many Reps?'></input>
-
+            </div>
+            <div className={`${styles.form_field} ${styles.form_field_6}`}>   
                 <label>Sets</label>
                 <input 
                     value={formData.sets}
                     onChange={onValueChange}
-
+                    min={0}
+                    max={1000}
                     name='sets'
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='How many Sets?'></input>
+            </div>
+            <div className={`${styles.form_field} ${styles.form_field_7}`}>
                 <label>Weights KG</label>
                 <input 
                     value={formData.weights_in_kg}
                     onChange={onValueChange}
-
+                    min={0}
+                    max={1000}
                     name='weight_in_kg'
                     type={'number'}
                     lassName={styles.form_input}  
                     placeholder='What weights?'></input>
+            </div>
+            <div className={`${styles.form_field} ${styles.form_field_8}`}>
                 <label>Calories</label>
                 <input
                     value={formData.calories_burned}
                     onChange={onValueChange}
-
+                    min={0}
+                    max={100000}
                     name={'calories_burned'} 
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='Calories burned'></input>
             </div>
-            {/* <div className={styles.image}>
-                <label>Image</label>
-                <input
-                    // value={formData.image}
-                    // onChange={(e)=> {setFormData({"image": e.target.value})}}
-                    name='image' 
-                    type={'file'}
-                    className={styles.form_input}
-                    placeholder='Upload Image'></input>
-            </div>            */}
-
-            <button >Create</button>
+            <button
+                className={`${styles.form_field} ${styles.form_field_9}`}
+             >Create</button>
         </form>
-
-      </div>
     </section>
   )
 }

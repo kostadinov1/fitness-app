@@ -37,13 +37,11 @@ function App() {
                 <Header/>
                     <main id='main'>
                         <Routes >
+                            <Route path='/' element={<Home />}/>
                             {/* <<< ------ Core ------- >>>*/}        
-                        <Route path='/' element={<Home />}/>
-                        
                         {user.isAuthenticated === true ?
-                        <>{/* <<< ------ Core ------- >>>*/}        
+                        <>
                             <Route path='/dashboard' element={<Dashboard />}/>
-
                             {/* <<< ------ Exercises------- >>> */}
                             <Route path='/all-exercises' element={<AllExercises />} />
                             <Route path='/create-exercise' element={<CreateExercise />}/>
@@ -56,6 +54,8 @@ function App() {
                             <Route path='/activity/:id' element={<Activity />} />
                             <Route path='/edit-activity/:id' element={<EditActivity />}/>
                         </>
+
+
                             :null}
 
                             {/* <<< ------ Auth ------- >>>*/}
