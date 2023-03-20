@@ -1,0 +1,128 @@
+.exercise {
+    /* margin-top: 0px; */
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    gap: 0.6em;
+    padding: 0.8em;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+                    "one three three three three three"
+                    "two three three three three three"
+                    "two three three three three three"
+                    "two three three three three three";
+
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+}
+.sider_1 {
+    grid-area: one;
+    padding: 1.2em;
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
+
+}
+.sider_2 {
+    grid-area: two;
+    padding: 1.2em;
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
+}
+
+.view {
+    grid-area: three;
+    display: grid;
+    
+    grid-template-columns: 2fr 1fr;
+    gap: 0.6em;
+    padding: 0.2em;
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+}
+
+    .card {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: 
+        "one one one one"
+                    "two two two two"
+                    "two two two two"
+                    "two two two two"
+                    "three three three three";
+                    width: 100%;
+        background-color: var(--sec);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 1px solid var(--acc-1);
+        border-radius: var(--b-radius);
+        overflow: scroll;
+        color: var(--text);
+        min-width: 50em;
+    }
+
+    .card h3 {
+        grid-area: one;
+        text-align: center;
+        font-size: 1.6rem;
+        border-radius: var(--b-radius);
+        border-bottom: 3px solid var(--acc-1);
+        border-top: 1px solid var(--acc-1);
+
+    }
+    .card_info {
+        grid-area: two;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.3em;
+
+        grid-template-areas: 
+                        "one one one"
+                        "eight eight nine"
+                        "two two two"
+                        "three four five"
+                        "six six seven";
+                        padding: 2em;
+                        color: var(--acc-3);
+    }
+        .card_cell {
+            display: grid;
+            align-items: center;
+            justify-content: start;
+            padding: 0.4em;
+            border: 1px solid var(--acc-1);
+            border-radius: var(--b-radius);
+        }
+        .card_cell_1 {
+            margin: auto 2em;
+            grid-area: one;}
+        .card_cell_2 {grid-area: two;}
+        .card_cell_3 {grid-area: three;}
+        .card_cell_4 {grid-area: four;}
+        .card_cell_5 {grid-area: five;}
+        .card_cell_6 {grid-area: six;}
+        .card_cell_7 {grid-area: seven;}
+        .card_cell_8 {grid-area: eight;}
+        .card_cell_9 {grid-area: nine;}
+
+        .card_cell_link {
+            justify-content: center;
+            background-color: var(--acc-1);
+            color: var(--sec-2);
+            font-weight: bold;
+        }
+    .details {
+        background-color: var(--sec);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 1px solid var(--acc-1);
+        border-radius: var(--b-radius);
+        overflow: scroll;
+        color: var(--text);
+
+        padding: 1em;
+    }
+
+
+

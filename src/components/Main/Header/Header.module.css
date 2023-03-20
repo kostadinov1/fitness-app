@@ -29,7 +29,9 @@
     border-radius: var(--b-radius);
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 700;
-
+}
+.header h1:hover {
+    color: var(--acc-1);
 }
 
 .ul {

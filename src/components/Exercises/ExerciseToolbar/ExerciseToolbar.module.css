@@ -1,0 +1,6 @@
+
+.exercise_toolbar {
+    background-color: brown;
+    display: inline-flex;
+    max-height: 2em;
+}

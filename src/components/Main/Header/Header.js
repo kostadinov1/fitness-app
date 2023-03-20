@@ -27,23 +27,24 @@ function Header() {
   return (
         <section className={styles.header}>
         <img alt='' className={styles.logo} />
-        <h1>Fit Hub</h1>
+        <Link to={'/'}>
+            <h1>Fit Hub</h1>
+        </Link>
         <ul className={styles.ul}>
             {user.isAuthenticated === false? 
                <li className={styles.li}>
                     <Link to={'/'} className={styles.link}>Home</Link>
                 </li>
               : <>
-               <li className={styles.li}>
+                <li className={styles.li}>
                     <Link to={'/dashboard'} className={styles.link}>Dashboard</Link>
                 </li>
-
-            <li className={styles.li}>
-            <Link to={'/all-exercises'} className={styles.link}>Exercises</Link>
-            </li>
-            <li className={styles.li}>
-            <Link to={'/all-activities'} className={styles.link}>Activities</Link>
-            </li>
+                <li className={styles.li}>
+                    <Link to={'/all-exercises'} className={styles.link}>Exercises</Link>
+                </li>
+                <li className={styles.li}>
+                    <Link to={'/all-activities'} className={styles.link}>Activities</Link>
+                </li>
               </>
         }
             <li className={styles.li}>

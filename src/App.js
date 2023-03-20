@@ -55,7 +55,6 @@ function App() {
                             <Route path='/activity/:id' element={<Activity />} />
                             <Route path='/edit-activity/:id' element={<EditActivity />}/>
                         </>
-
                             :null}
 
                             {/* <<< ------ Auth ------- >>>*/}
