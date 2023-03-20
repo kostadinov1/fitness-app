@@ -28,7 +28,7 @@ function EditExercise() {
 
     const onEdit = (e) => {
         e.preventDefault()
-        editExercise(id, {...exercise, user: user.user_id})
+        editExercise(user, id, {...exercise, user: user.user_id})
         navigate('/all-exercises')
     }
     const onValueChange = (e) => {

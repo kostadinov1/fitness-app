@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllActivities } from '../../../api/activities';
+import { UserContext } from '../../../contexts/UserContext';
 import ActivityCard from './ActivityCard/ActivityCard';
 import styles from './AllActivities.module.css';
 
 function AllActivities() {
-
+    const {user} = useContext(UserContext)
     const [activites, setActivities] = useState([])
 
     useEffect(() => {
-        getAllActivities()
+        getAllActivities(user)
             .then((res) => { setActivities(res) })
             .catch((res) => console.log('this is the error in component',res))
     }, [])

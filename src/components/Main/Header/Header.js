@@ -53,6 +53,7 @@ function Header() {
             <Link to={'/contacts'} className={styles.link}>Contacts</Link>
             </li>
         </ul>
+        <span>{user.email}</span>
         <div className={styles.auth_icons}>
             {user.isAuthenticated === false ?
                 <>

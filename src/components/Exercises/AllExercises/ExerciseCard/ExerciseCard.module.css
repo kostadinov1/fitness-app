@@ -8,9 +8,8 @@
                 "two two two two"
                 "two two two two"
                 "three three three three";
-    height: 100%;
     width: 100%;
-
+    max-height: 60vh;
     background-color: var(--sec);
     /* background-image: url('/public/images/backgrounds/background-05.jpg'); */
     background-repeat: no-repeat;

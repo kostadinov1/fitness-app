@@ -30,7 +30,7 @@ function CreateExercise() {
 
     const onCreate = (e) => {
         e.preventDefault()
-        createExercise(formData)
+        createExercise(user, formData)
         navigate('/all-exercises')
     }
     const onValueChange = (e) => {

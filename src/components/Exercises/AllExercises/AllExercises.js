@@ -1,15 +1,16 @@
 import styles from './AllExercises.module.css'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getAllExercises } from '../../../api/exercises'
 import { Link } from 'react-router-dom'
 import ExerciseCard from './ExerciseCard/ExerciseCard'
+import { UserContext } from '../../../contexts/UserContext'
 
 function AllExercises() {
-
+    const {user} = useContext(UserContext)
     const [exercises, setExercises] = useState([])
 
     useEffect(() => {
-        getAllExercises().then((res) => { setExercises(res)}
+        getAllExercises(user).then((res) => { setExercises(res)}
         ).catch(
            (res) => console.log('this is the error in component',res)
         )

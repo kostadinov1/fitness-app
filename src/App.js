@@ -20,6 +20,7 @@ import ExerciseCard from './components/Exercises/Exercise/Exercise';
 
 import { UserContext } from './contexts/UserContext';
 import { useState } from 'react';
+import Exercise from './components/Exercises/Exercise/Exercise';
 
 function App() {
 
@@ -45,7 +46,7 @@ function App() {
                             {/* <<< ------ Exercises------- >>> */}
                             <Route path='/all-exercises' element={<AllExercises />} />
                             <Route path='/create-exercise' element={<CreateExercise />}/>
-                            <Route path='/exercise/:id' element={<ExerciseCard />} />
+                            <Route path='/exercise/:id' element={<Exercise />} />
                             <Route path='/edit-exercise/:id' element={<EditExercise />}/>
 
                                 {/* <<< ------ Activities------- >>> */}
@@ -54,7 +55,6 @@ function App() {
                             <Route path='/activity/:id' element={<Activity />} />
                             <Route path='/edit-activity/:id' element={<EditActivity />}/>
                         </>
-
 
                             :null}
 

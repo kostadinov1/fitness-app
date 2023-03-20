@@ -1,10 +1,16 @@
 import baseURL from './baseURL'
 
 
-const getAllExercises = async () => {
+const getAllExercises = async (user) => {
     const url = baseURL + '/activity/list-exercises/'
     try {
-        let response = await fetch(url)
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "content-type": "application/json",
+                "Authorization": `Token ${user.token}`,
+            },
+            })
         let exercises = await response.json()        
         if (response.ok) {
             return exercises
@@ -17,13 +23,15 @@ const getAllExercises = async () => {
     }
 }
 
-const createExercise  = async (exerciseProps) => {
+const createExercise  = async (user, exerciseProps) => {
     const url = baseURL + '/activity/create-exercise/'
     try {
         let response = await fetch(url, {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "Authorization": `Token ${user.token}`,
+
             },
             body: JSON.stringify(exerciseProps)
             })
@@ -55,13 +63,16 @@ const getExercise  = async (id) => {
     }
 }
 
-const editExercise  = async (id, exerciseProps) => {
+const editExercise  = async (user, id, exerciseProps) => {
     const url = baseURL + `/activity/edit-exercise/${id}/`
     try {
         let response = await fetch(url, {
             method: 'PUT',
             headers: {
-                "content-type": "application/json"
+                
+                "content-type": "application/json",
+                "Authorization": `Token ${user.token}`,
+
             },
             body: JSON.stringify(exerciseProps)
             })
@@ -77,13 +88,15 @@ const editExercise  = async (id, exerciseProps) => {
     }
 }
 
-const deleteExercise  = async (id) => {
-    const url = baseURL + `/activity/delete-exercise/${id}/`
+const deleteExercise  = async (user) => {
+    const url = baseURL + `/activity/delete-exercise/${user.id}/`
     try {
         let response = await fetch(url, {
             method: 'DELETE',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "Authorization": `Token ${user.token}`,
+
             },
             })
         let deleted = await response.json()        

@@ -34,7 +34,7 @@ function CreateActivity() {
   }, [])
     const onCreate = (e) => {
         e.preventDefault()
-        createActivity(formData)
+        createActivity(user, formData)
             .then((res) => {console.log('CREATED', res)})
             .catch((res) => { console.log('___IN___ useEffect:', res)})
         navigate('/all-activities')
