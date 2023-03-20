@@ -2,8 +2,8 @@
     /* --- Colors --- */
     --prime: #058faeee;
     --prime-2: #0c4652;
-    --sec: #002e40;
-    --sec-2: #001e2a;
+    --sec: #002e40c8;
+    --sec-2: #001e2af1;
     --acc-1: #fc8f3a;
     --acc-2: rgb(125,220,31);
     --acc-3: antiquewhite;
@@ -21,7 +21,9 @@
     font-family: 'Montserrat Alternates', sans-serif;
     font-family: 'Nova Mono', monospace; */
 }
-
+* {
+    /* overflow: hidden; */
+}
 
 #body {
     position: relative;
@@ -32,6 +34,7 @@
 #main {
     position: relative;
     top: 4em;
+
 }
 a {
     text-decoration: none;

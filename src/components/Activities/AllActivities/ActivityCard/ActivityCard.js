@@ -18,7 +18,10 @@ function ActivityCard({activity}) {
   return (
     <div className={styles.card}>
         <div className={styles.card_info}>
-            <h3 className={styles.card_cell_1}>{activity.name}</h3>
+                <Link to={`/activity/${activity.id}`}>
+                    <h3 className={styles.card_cell_1}>
+                    {activity.name}</h3>
+                </Link>
             <span className={`${styles.card_cell_2} ${styles.card_cell}`}>
                 Info: {activity.description}</span>
             <span className={`${styles.card_cell_3} ${styles.card_cell}`}>

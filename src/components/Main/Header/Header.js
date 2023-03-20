@@ -4,10 +4,11 @@ import { MenuOutlined, PoweroffOutlined, UserAddOutlined, UserOutlined } from '@
 import { logoutService } from '../../../api/auth'
 import { UserContext } from '../../../contexts/UserContext'
 import { useContext } from 'react'
+import { clearUserData } from '../../../utils/userUtils'
 
 function Header() {
     const navigate = useNavigate()
-    const {user, setUser} = useContext(UserContext)        
+    const {user, setUser, loggedIn, setLoggedIn,} = useContext(UserContext)        
            
     const onLogout = (e) => {
         e.preventDefault()
@@ -18,6 +19,10 @@ function Header() {
                         email: null,
                         isAuthenticated: false,
                         })
+                clearUserData()
+                localStorage.clear()
+                setLoggedIn(false)
+
                 console.log('__LOGOUT__', res)})
                 navigate('/')
             .catch((res) => {console.log('__LOGOUT__error', res)})
@@ -31,7 +36,7 @@ function Header() {
             <h1>Fit Hub</h1>
         </Link>
         <ul className={styles.ul}>
-            {user.isAuthenticated === false? 
+            {loggedIn === false? 
                <li className={styles.li}>
                     <Link to={'/'} className={styles.link}>Home</Link>
                 </li>
@@ -56,7 +61,7 @@ function Header() {
         </ul>
         <span>{user.email}</span>
         <div className={styles.auth_icons}>
-            {user.isAuthenticated === false ?
+            {loggedIn === false ?
                 <>
                     <Link to={'/register'}>
                         <UserAddOutlined className={styles.register_icon}/> register</Link>

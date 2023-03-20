@@ -16,34 +16,59 @@ import EditExercise from './components/Exercises/EditExercise/EditExercise';
 import CreateActivity from './components/Activities/CreateActivity/CreateActivity';
 import EditActivity from './components/Activities/EditActivity/EditActivity';
 import Activity from './components/Activities/Activity/Activity';
-import ExerciseCard from './components/Exercises/Exercise/Exercise';
-
 import { UserContext } from './contexts/UserContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Exercise from './components/Exercises/Exercise/Exercise';
+import AboutUs from './components/AboutUs/AboutUs';
+import Contacts from './components/Contacts/Contacts';
+import { getUserData } from './utils/userUtils';
 
 function App() {
 
+    const [loggedIn, setLoggedIn] = useState(false)
     const [user, setUser] = useState({
         user_id: null,
         token: null,
         email: null,
         isAuthenticated: false,
     })
+
+    const userSessionStorage = () => {
+        const userSession = getUserData()
+        console.log('user data', userSession);
+        if (userSession) {
+            setLoggedIn(true)
+            setUser(getUserData)
+        } else {
+            setLoggedIn(false)
+        }
+    }
        
+    useEffect(() => {
+        userSessionStorage()
+        if (loggedIn) {
+            setUser(getUserData)
+        }
+    }, [])
 
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <UserContext.Provider value={{user, setUser, loggedIn, setLoggedIn}}>
             <section id='body'>
                 <Header/>
                     <main id='main'>
                         <Routes >
+                                {/* <<< ------ Core ------- >>>*/}         
                             <Route path='/' element={<Home />}/>
-                            {/* <<< ------ Core ------- >>>*/}        
-                        {user.isAuthenticated === true ?
+                            <Route path='/about-us' element={<AboutUs />}/>
+                            <Route path='/contacts' element={<Contacts />}/>
+                            
+                            {/* <<< ------ AUTH ------- >>>*/}         
+                        {loggedIn?
                         <>
+                                {/* <<< ------ Core Auth ------- >>>*/}         
                             <Route path='/dashboard' element={<Dashboard />}/>
-                            {/* <<< ------ Exercises------- >>> */}
+
+                                {/* <<< ------ Exercises------- >>> */}
                             <Route path='/all-exercises' element={<AllExercises />} />
                             <Route path='/create-exercise' element={<CreateExercise />}/>
                             <Route path='/exercise/:id' element={<Exercise />} />
@@ -55,15 +80,15 @@ function App() {
                             <Route path='/activity/:id' element={<Activity />} />
                             <Route path='/edit-activity/:id' element={<EditActivity />}/>
                         </>
-                            :null}
+                            : <Route path='/' element={<Home />}/>
+                        }
 
-                            {/* <<< ------ Auth ------- >>>*/}
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/login' element={<Login />} />,
+                                {/* <<< ------ Auth ------- >>>*/}
+                            <Route path='/register' element={<Register />} />
+                            <Route path='/login' element={<Login />} />,
 
-
-                            {/* <<< ------ Errors------- >>> */}
-                        <Route path='*' element={<Error404 />}/>
+                                {/* <<< ------ Errors------- >>> */}
+                            <Route path='*' element={<Error404 />}/>
                         </Routes>
                     </main>
                 <Footer />

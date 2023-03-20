@@ -2,7 +2,7 @@ import { useState, React, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginService } from '../../../api/auth';
 import { UserContext } from '../../../contexts/UserContext';
-import { setUserData } from '../../../hooks/userUtils';
+import { setUserData } from '../../../utils/userUtils';
 import styles from '../AuthForm/AuthForm.module.css'
 
 
@@ -10,19 +10,22 @@ function Login() {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { user, setUser }= useContext(UserContext)
+    const { user, setUser, loggedIn, setLoggedIn }= useContext(UserContext)
     
     // console.log('user in login', user)
 
     const onLogin = (e) => {
         e.preventDefault()
-        loginService(email, password)
+            loginService(email, password)
             .then((res) => {
+                console.log(res.status)
                 setUser({...res, isAuthenticated: true})
+                setLoggedIn(true)
                 setUserData(res)
                 navigate('/dashboard');
             })
-            .catch((res) => {console.log('__login__', res);})
+            .catch((res) => {console.log('__login__', res)})
+      
     }
     const onEmailChange = (e) => {
         e.preventDefault()
@@ -30,7 +33,9 @@ function Login() {
     }
     const onPasswordChange = (e) => {
         e.preventDefault()
-        setPassword(e.target.value)
+            setPassword(e.target.value)
+
+
     }
 
     return (

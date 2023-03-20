@@ -2,7 +2,6 @@ import styles from './Exercise.module.css'
 
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import ExerciseToolbar from '../ExerciseToolbar/ExerciseToolbar'
 import { UserContext } from '../../../contexts/UserContext'
 import { deleteExercise, getExercise } from '../../../api/exercises'
 
