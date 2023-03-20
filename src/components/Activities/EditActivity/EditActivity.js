@@ -24,6 +24,7 @@ function EditActivity() {
         e.preventDefault()
         editActivity(user, Number(id), {...activity, user:user.user_id})
         navigate('/all-activities')
+        
     }
     const onValueChange = (e) => {
         setActivity((state) => ({...state, [e.target.name]: e.target.value}))

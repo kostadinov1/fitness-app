@@ -1,6 +1,7 @@
 import styles from './CreateExercise.module.css'
 import React, { useContext, useEffect, useState } from 'react'
 import { createExercise, listExerciseTypes } from '../../../api/exercises'
+import { getAllActivities } from '../../../api/activities'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 
@@ -10,6 +11,12 @@ function CreateExercise() {
 
     const navigate = useNavigate()
     const [exerciseTypes, setExerciseTypes] = useState([])
+
+
+    const [activities, setActivities] = useState([])
+
+
+
     const [formData, setFormData] = useState({
             name: null,
             description: null,
@@ -19,6 +26,7 @@ function CreateExercise() {
             weights_in_kg: null,
             calories_burned: null,
             type: null,
+            activity: null,
             user: user.user_id
     })
     useEffect(() => {
@@ -26,6 +34,9 @@ function CreateExercise() {
             .then((res) => {
               setExerciseTypes(res)})
             .catch((res) => { console.log('___IN___ useEffect:', res)})
+        getAllActivities(user)
+            .then((res) => setActivities(res))            
+            .catch((res) => {console.log('res', res)})
     }, [])
 
     const onCreate = (e) => {
@@ -39,9 +50,11 @@ function CreateExercise() {
 
     
     return (
+
         <section className={styles.create_exercise}>
-        <form onSubmit={onCreate} className={styles.form}>
         <h1>Create Exercise</h1>
+        <form onSubmit={onCreate} className={styles.form}>
+
             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                 <label>Name</label>
                 <input
@@ -51,6 +64,7 @@ function CreateExercise() {
                     className={styles.form_input}  
                     placeholder='Choose a good name' />
             </div>
+            
             <div className={`${styles.form_field} ${styles.form_field_2}`}>
                 <label>Type</label>
                 <select 
@@ -64,6 +78,7 @@ function CreateExercise() {
                             : <option>No Types yet</option>}
                 </select>
             </div>
+
             <div className={`${styles.form_field} ${styles.form_field_3}`}>   
                 <label>Description</label>
                 <textarea 
@@ -133,9 +148,25 @@ function CreateExercise() {
                     className={styles.form_input}  
                     placeholder='Calories burned'></input>
             </div>
-            <button
-                className={`${styles.form_field} ${styles.form_field_9}`}
-             >Create</button>
+
+            <button className={`${styles.form_field} ${styles.form_field_9}`}>
+                Create
+            </button>
+
+
+            <div className={`${styles.form_field} ${styles.form_field_10}`}>
+                <label>Activity</label>
+                <select 
+                    value={formData.activity}
+                    onChange={onValueChange}
+                    name='type'
+                    className={styles.form_input}>
+                        { activities ? 
+                        activities.map((activity) =>
+                        <option value={`${activity.id}`}>{activity.name}</option>)
+                        : <option>No Activities yet</option>}
+                </select>
+            </div>
         </form>
     </section>
   )

@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { editExercise, getExercise, listExerciseTypes } from '../../../api/exercises'
 import { useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
+import { getAllActivities } from '../../../api/activities'
 
 
 
@@ -14,6 +15,7 @@ function EditExercise() {
     const [exercise, setExercise] = useState({})
     const [exerciseTypes, setExerciseTypes] = useState([])
     const { user } = useContext(UserContext)
+    const [activities, setActivities] = useState([])
 
     useEffect(() => {
         getExercise(id)
@@ -24,6 +26,10 @@ function EditExercise() {
             .then((res) => { setExerciseTypes(res)
                         console.log(res)})
             .catch((res) => { console.log('___IN___ useEffect:', res)})
+
+        getAllActivities(user)
+            .then((res) => setActivities(res))            
+            .catch((res) => {console.log('res', res)})
     }, [])
 
     const onEdit = (e) => {
@@ -134,6 +140,20 @@ function EditExercise() {
             <button
                 className={`${styles.form_field} ${styles.form_field_9}`}
              >Edit</button>
+
+<div className={`${styles.form_field} ${styles.form_field_10}`}>
+                <label>Activity</label>
+                <select 
+                    value={exercise.activity}
+                    onChange={onValueChange}
+                    name='activity'
+                    className={styles.form_input}>
+                        { activities ? 
+                        activities.map((activity) =>
+                        <option value={`${activity.id}`}>{activity.name}</option>)
+                        : <option>No Activities yet</option>}
+                </select>
+            </div>
         </form>
     </section>
   )
