@@ -1,14 +1,15 @@
 import styles from './ActivityCard.module.css'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteActivity } from '../../../../api/activities'
+import { UserContext } from '../../../../contexts/UserContext'
 
 function ActivityCard({activity}) {
-
+    const { user, setUser} = useContext(UserContext)
     const navigate = useNavigate()
 
     const onDelete = () => {
-        deleteActivity(activity.id)
+        deleteActivity(user, activity.id)
             .then((res) => {console.log(res, 'res in onDelete res')
                 navigate('/all-activities')
                             })

@@ -3,6 +3,7 @@ import styles from '../AuthForm/AuthForm.module.css'
 import { loginService, registerService } from '../../../api/auth'
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../contexts/UserContext';
+import { setUserData } from '../../../utils/userUtils';
 
 
 function Register() {
@@ -10,7 +11,7 @@ function Register() {
     const [password, setPassword] = useState('');
     const [repass, setRepass] = useState('');
     const navigate = useNavigate()
-    const {user, setUser} = useContext(UserContext)
+    const {user, setUser, loggedIn, setLoggedIn} = useContext(UserContext)
 
 
     const onRegister = (e) => {
@@ -18,7 +19,9 @@ function Register() {
         if (password === repass) {
             registerService(email, password)
             .then((res) => {
-                    setUser(res)
+                    setUser({...res, isAuthenticated: true})
+                    setLoggedIn(true)
+                    setUserData(res)
                     loginService(email, password)})
                     navigate('/')
             .catch((res) => {

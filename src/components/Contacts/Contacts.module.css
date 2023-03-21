@@ -2,3 +2,63 @@
 .contacts {
     min-height: 100vh;
 }
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    height: 60vh;
+    overflow: hidden;
+}
+
+.banner {
+    height: 100%;
+}
+
+.banner img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+.form_box {
+    background-color: var(--prime-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 60em; */
+    /* margin: auto auto; */
+}
+
+.form {
+    display: grid;
+    gap: 0.6em;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "one two"
+                         "three three"
+                         "four four";
+}
+
+
+.field_1 {
+    display: grid;
+    grid-area: one;
+}
+.field_2 {
+    display: grid;
+    grid-area: two;
+}
+.field_3 {
+    display: grid;
+    grid-area: three;
+}
+.field_4 {
+    display: grid;
+    grid-area: four;
+}

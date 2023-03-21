@@ -88,8 +88,8 @@ const editExercise  = async (user, id, exerciseProps) => {
     }
 }
 
-const deleteExercise  = async (user) => {
-    const url = baseURL + `/activity/delete-exercise/${user.id}/`
+const deleteExercise  = async (user, exerciseID) => {
+    const url = baseURL + `/activity/delete-exercise/${exerciseID}/`
     try {
         let response = await fetch(url, {
             method: 'DELETE',

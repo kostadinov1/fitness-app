@@ -1,4 +1,9 @@
 
 .list_card {
-    
+    grid-area: one;
+    padding: 1.2em;
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    background-color: var(--sec);
+
 }

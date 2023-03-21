@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllActivities } from '../../../api/activities';
 import { UserContext } from '../../../contexts/UserContext';
+import ListCard from '../../Cards/ListCard/ListCard';
 import ActivityCard from './ActivityCard/ActivityCard';
 import styles from './AllActivities.module.css';
 
@@ -17,14 +18,7 @@ function AllActivities() {
     
     return (
         <section className={styles.activities}>
-            <div className={styles.sider_1}>
-                <h4>Quick</h4>
-                <ul>
-                    <li><Link to={'/create-activity'}>Create Activity</Link></li>
-                    <li><Link to={'/all-exercises'}>Exercises</Link></li>
-                    <li><Link to={'/'}>Profile</Link></li>
-                </ul>
-            </div>
+            <ListCard></ListCard>
             <div className={styles.sider_2}>
                 <ul>
                     <li><Link to={'/'}>Create Activity</Link></li>

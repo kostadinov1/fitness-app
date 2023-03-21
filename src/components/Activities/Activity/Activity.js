@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { deleteActivity, getActivity } from '../../../api/activities'
+import ListCard from '../../Cards/ListCard/ListCard'
 
 function Activity() {
 
@@ -35,14 +36,7 @@ function Activity() {
 
 return (
   <section className={styles.exercise}>
-      <div className={styles.sider_1}>
-      <h4>Quick</h4>
-              <ul>
-                  <li><Link to={'/create-activity'}>Create Activity</Link></li>
-                  <li><Link to={'/all-exercises'}>Exercises</Link></li>
-                  <li><Link to={'/'}>Profile</Link></li>
-              </ul>
-      </div>    
+    <ListCard></ListCard>
       <div className={styles.sider_2}>
       <h4>Quick</h4>
               <ul>

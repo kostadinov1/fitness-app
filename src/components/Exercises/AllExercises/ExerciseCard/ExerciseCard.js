@@ -10,7 +10,7 @@ function ExerciseCard({exercise}) {
     const { user } = useContext(UserContext)
     
     const onDelete = () => {
-        deleteExercise(exercise.id, user.id)
+        deleteExercise(user, exercise.id)
             .then((res) => {console.log(res, 'res in exercise rac')
                 navigate('/all-exercises')
                             })

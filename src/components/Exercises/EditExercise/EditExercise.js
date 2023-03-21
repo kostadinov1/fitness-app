@@ -44,8 +44,8 @@ function EditExercise() {
     
     return (
         <section className={styles.edit_exercise}>
-        <form onSubmit={onEdit} className={styles.form}>
         <h1>Edit Exercise</h1>
+        <form onSubmit={onEdit} className={styles.form}>
             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                 <label>Name</label>
                 <input
@@ -150,7 +150,7 @@ function EditExercise() {
                     className={styles.form_input}>
                         { activities ? 
                         activities.map((activity) =>
-                        <option value={`${activity.id}`}>{activity.name}</option>)
+                        <option value={activity.id}>{activity.name}</option>)
                         : <option>No Activities yet</option>}
                 </select>
             </div>

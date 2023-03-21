@@ -74,7 +74,7 @@ function CreateExercise() {
                         className={styles.form_input}>
                             { exerciseTypes ? 
                             exerciseTypes.map((exerciseType) =>
-                            <option value={`${exerciseType.id}`}>{exerciseType.name}</option>)
+                            <option value={exerciseType.id}>{exerciseType.name}</option>)
                             : <option>No Types yet</option>}
                 </select>
             </div>
@@ -159,11 +159,11 @@ function CreateExercise() {
                 <select 
                     value={formData.activity}
                     onChange={onValueChange}
-                    name='type'
+                    name='activity'
                     className={styles.form_input}>
                         { activities ? 
                         activities.map((activity) =>
-                        <option value={`${activity.id}`}>{activity.name}</option>)
+                        <option value={activity.id}>{activity.name}</option>)
                         : <option>No Activities yet</option>}
                 </select>
             </div>

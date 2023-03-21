@@ -4,6 +4,7 @@ import { getAllExercises } from '../../../api/exercises'
 import { Link } from 'react-router-dom'
 import ExerciseCard from './ExerciseCard/ExerciseCard'
 import { UserContext } from '../../../contexts/UserContext'
+import ListCard from '../../Cards/ListCard/ListCard'
 
 function AllExercises() {
     const {user} = useContext(UserContext)
@@ -19,16 +20,7 @@ function AllExercises() {
 
     return (
         <section className={styles.exercises}>
-            <div className={styles.sider_1}>
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><Link to={'/create-exercise'}>Create Exercise</Link></li>
-                    <li><Link to={'/'}></Link>Create Activity</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Activities</li>
-                    <li><Link to='/'>Profile</Link></li>
-                </ul>
-            </div>
+            <ListCard></ListCard>
             <div className={styles.sider_2}>
             <h4>More Links</h4>
 

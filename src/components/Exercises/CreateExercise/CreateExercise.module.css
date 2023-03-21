@@ -9,7 +9,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas: 
-                    /* "ten ten ten ten" */
                     "one one one one"
                     "ten ten ten ten"
                     "two two two two"
