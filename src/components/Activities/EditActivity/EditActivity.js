@@ -42,9 +42,9 @@ function EditActivity() {
                           Name
                           </label>
                       <input
+                          name='name' 
                           value={activity.name}
                           onChange={onValueChange}
-                          name='name' 
                           className={styles.form_input}  
                           placeholder='Choose a good name' />
                   </div>
@@ -55,9 +55,9 @@ function EditActivity() {
                           Type
                           </label>
                       <select 
+                          name='type'
                           value={activity.type}
                           onChange={onValueChange}
-                          name='type'
                           className={styles.form_input}>
                               { activityTypes ? 
                               activityTypes.map((activityType) =>
@@ -71,9 +71,9 @@ function EditActivity() {
                           Description
                           </label>
                       <textarea 
+                          name='description'
                           value={activity.description}
                           onChange={onValueChange}
-                          name='description'
                           type={'text'} 
                           className={styles.form_input}  
                           placeholder='Short Description'>
@@ -85,6 +85,7 @@ function EditActivity() {
                           Duration
                           </label>
                       <input 
+                          name='duration'  
                           value={activity.duration}
                           onChange={onValueChange}
                           type={'number'}
@@ -99,6 +100,7 @@ function EditActivity() {
                           Distance
                           </label>
                       <input 
+                          name='distance'  
                           value={activity.distance}
                           onChange={onValueChange}
                           type={'number'}
@@ -113,6 +115,7 @@ function EditActivity() {
                           Pace
                           </label>
                       <input 
+                          name='pace'
                           value={activity.pace}
                           onChange={onValueChange}
                           type={'number'}
@@ -127,6 +130,7 @@ function EditActivity() {
                           Speed
                           </label>
                       <input 
+                          name='speed'
                           value={activity.speed}
                           onChange={onValueChange}
                           type={'number'}
@@ -141,6 +145,7 @@ function EditActivity() {
                       Heart Rate
                       </label>
                       <input 
+                          name='heart_rate'
                           value={activity.heart_rate}
                           onChange={onValueChange}
                           type={'number'}
@@ -155,6 +160,7 @@ function EditActivity() {
                           RPE
                           </label>
                       <input 
+                          name='rpe'
                           value={activity.rpe}
                           onChange={onValueChange}
                           type={'number'}

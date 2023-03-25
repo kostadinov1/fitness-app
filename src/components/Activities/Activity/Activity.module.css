@@ -43,14 +43,7 @@
 }
 
     .card {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: 
-        "one one one one"
-                    "two two two two"
-                    "two two two two"
-                    "two two two two"
-                    "three three three three";
+
                     width: 100%;
         background-color: var(--sec);
         background-repeat: no-repeat;
@@ -59,43 +52,42 @@
         border-radius: var(--b-radius);
         overflow: scroll;
         color: var(--text);
-        min-width: 50em;
-    }
+        min-height: 100vh;
 
-    .card h3 {
-        grid-area: one;
-        text-align: center;
-        font-size: 1.6rem;
-        border-radius: var(--b-radius);
-        border-bottom: 3px solid var(--acc-1);
-        border-top: 1px solid var(--acc-1);
+
 
     }
+
     .card_info {
         grid-area: two;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 0.3em;
+        height: 80%;
 
         grid-template-areas: 
-                        "one one one"
-                        "eight eight nine"
-                        "two two two"
-                        "three four five"
-                        "six six seven";
-                        padding: 2em;
-                        color: var(--acc-3);
+                        "one one one one one one"
+                        "two two two two two two"
+                        "three three four four five five"
+                        "six six seven seven eight eight"
+                        "nine nine nine ten ten ten"
+                        "eleven eleven eleven twelve twelve twelve";
+        padding: 2em;
+        color: var(--acc-3);
     }
         .card_cell {
             display: grid;
             align-items: center;
             justify-content: start;
+            font-size: 1.1rem;
             padding: 0.4em;
             border: 1px solid var(--acc-1);
             border-radius: var(--b-radius);
         }
         .card_cell_1 {
-            margin: auto 2em;
+            display: grid;
+            align-items: center;
+            font-size: 3rem;
             grid-area: one;}
         .card_cell_2 {grid-area: two;}
         .card_cell_3 {grid-area: three;}
@@ -105,6 +97,12 @@
         .card_cell_7 {grid-area: seven;}
         .card_cell_8 {grid-area: eight;}
         .card_cell_9 {grid-area: nine;}
+        .card_cell_10 {grid-area: ten;}
+        .card_cell_11 {
+            
+            grid-area: eleven;}
+        .card_cell_12 {
+            grid-area: twelve;}
 
         .card_cell_link {
             justify-content: center;

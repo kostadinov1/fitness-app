@@ -1,16 +1,35 @@
 import styles from './ActivityCard.module.css'
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getActivity, getAllActivitiExercises } from '../../../../api/activities'
+import { UserContext } from '../../../../contexts/UserContext'
+import '../../../../App.css'
 
 
 function ActivityCard({activity, onDelete}) {
+    const [activityExercices, setActivityExercises] = useState([])
+    const {user} = useContext(UserContext)
+
+    useEffect(() => {
+        getActivity(activity.id)
+            .then((res) => {
+                setActivityExercises(res.exercises)
+                console.log('res in useEffect', res)
+            })
+            .catch((res) => {
+  
+            })
+    }, [])
+  
+  
+
 
   return (
     <div className={styles.card}>
         <div className={styles.card_info}>
-                <Link to={`/activity/${activity.id}`}>
-                    <h3 className={styles.card_cell_1}>
-                    {activity.name}</h3>
+                <Link className={`${styles.card_cell_1} ${'title_outlined'}`} to={`/activity/${activity.id}`}>
+                    <p >
+                    {activity.name}</p>
                 </Link>
             <span className={`${styles.card_cell_2} ${styles.card_cell}`}>
                 Info: {activity.description}</span>
@@ -34,7 +53,16 @@ function ActivityCard({activity, onDelete}) {
                 : null    
                 }
             <span className={`${styles.card_cell_10} ${styles.card_cell}`}>
-                Exercises: {activity.exercises}</span>
+                Exercises: {activityExercices.length !== 0 ?
+                 activityExercices.map((ex) => 
+                                <span className={`${styles.exercise} ${''}`}
+         >
+                                    {ex.name}
+
+                                </span>)
+                            : <h5>NO EXERCISES</h5>
+                }
+            </span>
             <Link className={`${styles.card_cell_11} ${styles.card_cell} ${styles.card_cell_link}`} 
                 to={`/edit-activity/${activity.id}/`}>
                 Edit

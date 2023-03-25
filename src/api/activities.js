@@ -17,8 +17,8 @@ const getAllActivities = async (user) => {
         else {
             throw activities
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
 
@@ -48,7 +48,6 @@ const createActivity  = async (user, activityProps) => {
 }
 
 const getActivity  = async (id) => {
-    console.log('id in api service:', id)
     const url = baseURL + `/activity/get-activity/${id}/`
     try {
         let response = await fetch(url)
@@ -63,6 +62,7 @@ const getActivity  = async (id) => {
         console.log('__IN__api_catch')
     }
 }
+
 
 const editActivity  = async (user, id, activityProps) => {
     console.log('acitvityProps in api', activityProps)
@@ -125,6 +125,30 @@ const listActivityTypes = async () => {
         console.log('this is an error in the api service')
     }
 }
+
+const getAllActivityExercises = async (activityID) => {
+    const url = baseURL + `/activity/list-activity-exercises/`
+    try {
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "content-type": "application/json",
+
+            },
+            body: JSON.stringify(activityID)
+            })
+        let activityExercices = await response.json()        
+        if (response.ok) {
+            return activityExercices
+        }
+        else {
+            throw activityExercices
+        }
+    } catch(err){
+        alert(err.message)
+    }
+}
+
 export {
     getAllActivities,
     getActivity,
@@ -132,5 +156,7 @@ export {
     editActivity,
     deleteActivity,
     listActivityTypes,
+    getAllActivityExercises,
+
 
 }

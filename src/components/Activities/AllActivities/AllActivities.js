@@ -15,6 +15,7 @@ function AllActivities() {
     useEffect(() => {
         getAllActivities(user)
             .then((res) => { setActivities(res) 
+                console.log(activites)
                              })
             .catch((res) => console.log('this is the error in component',res))
     }, [user, setActivities])
