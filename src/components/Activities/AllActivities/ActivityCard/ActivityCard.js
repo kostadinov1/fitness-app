@@ -1,20 +1,9 @@
 import styles from './ActivityCard.module.css'
-import React, { useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { deleteActivity } from '../../../../api/activities'
-import { UserContext } from '../../../../contexts/UserContext'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-function ActivityCard({activity}) {
-    const { user, setUser} = useContext(UserContext)
-    const navigate = useNavigate()
 
-    const onDelete = () => {
-        deleteActivity(user, activity.id)
-            .then((res) => {console.log(res, 'res in onDelete res')
-                navigate('/all-activities')
-                            })
-            .catch((res) => console.log(res, 'res in onDelete res'))
-    }   
+function ActivityCard({activity, onDelete}) {
 
   return (
     <div className={styles.card}>
@@ -29,7 +18,7 @@ function ActivityCard({activity}) {
                 Duration: {activity.duration}</span>
             <span className={`${styles.card_cell_4} ${styles.card_cell}`}>
                 Type: {activity.type}</span>
-            {activity.type == 3 ?
+            {activity.type === 3 ?
                 <>
                     <span className={`${styles.card_cell_5} ${styles.card_cell}`}>
                         Distance: {activity.sets}</span>
@@ -51,7 +40,7 @@ function ActivityCard({activity}) {
                 Edit
             </Link>
             <Link className={`${styles.card_cell_12} ${styles.card_cell} ${styles.card_cell_link}`}  
-                onClick={onDelete}>
+                onClick={() => onDelete(activity.id)}>
                 Delete
             </Link>
 

@@ -1,21 +1,11 @@
-import React, { useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { deleteExercise } from '../../../../api/exercises'
-import { UserContext } from '../../../../contexts/UserContext'
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 import styles from './ExerciseCard.module.css'
 
 
-function ExerciseCard({exercise}) {
-    const navigate = useNavigate()
-    const { user } = useContext(UserContext)
+function ExerciseCard({exercise, onDelete}) {
     
-    const onDelete = () => {
-        deleteExercise(user, exercise.id)
-            .then((res) => {console.log(res, 'res in exercise rac')
-                navigate('/all-exercises')
-                            })
-            .catch((res) => console.log(res, 'res in exercise rac'))
-    }   
 
   return (
     <div className={styles.card}>
@@ -32,7 +22,7 @@ function ExerciseCard({exercise}) {
                 Edit
                 </Link>
             <Link className={`${styles.card_cell_9} ${styles.card_cell} ${styles.card_cell_link}`}  
-                onClick={onDelete}>
+                onClick={() => {onDelete(exercise.id)}}>
                 Delete
                 </Link>
         </div>

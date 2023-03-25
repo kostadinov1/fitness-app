@@ -35,7 +35,6 @@ function App() {
 
     const userSessionStorage = () => {
         const userSession = getUserData()
-        console.log('user data', userSession);
         if (userSession) {
             setLoggedIn(true)
             setUser(getUserData)
@@ -49,7 +48,8 @@ function App() {
         if (loggedIn) {
             setUser(getUserData)
         }
-    }, [])
+        // else clearLocalStorage
+    }, [loggedIn])
 
     return (
         <UserContext.Provider value={{user, setUser, loggedIn, setLoggedIn}}>
