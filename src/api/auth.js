@@ -22,10 +22,9 @@ const registerService = async (email, password) => {
         else {
             throw ('throw in service', register)
         }
-    } catch {
-        console.log('catch in service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
-
 }
 
 const loginService = async (email, password) => {
@@ -50,12 +49,10 @@ const loginService = async (email, password) => {
         else {
             throw ('throw in service', login)
         }
-    } catch {
-        console.log('catch in service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
-
 }
-
 const logoutService = async (user) => {
     console.log('user in logout service ', user)
     const url = baseURL + `/accounts/logout/${user.user_id}/`;
@@ -78,10 +75,9 @@ const logoutService = async (user) => {
         else {
             throw ('throw in service', logout)
         }
-    } catch {
-        console.log('catch in service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
-
 }
 
 export {

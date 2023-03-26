@@ -4,7 +4,7 @@ import '../../../App.css'
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
-import { deleteActivity, getActivity, getAllActivityExercises  } from '../../../api/activities'
+import { deleteActivity, getActivity } from '../../../api/activities'
 import ListCard from '../../Cards/ListCard/ListCard'
 import { PlusCircleOutlined } from '@ant-design/icons'
 
@@ -75,15 +75,14 @@ return (
           <div className={styles.details}>
               <hr></hr>
               <h4  className={`${'title_outlined'}`}>Exercises</h4>
-              <Link to={'/create-exercise'}><PlusCircleOutlined></PlusCircleOutlined> Add Exercise</Link>
+              <Link className={`${styles.add_exercise_icon}`} to={'/create-exercise'}><PlusCircleOutlined></PlusCircleOutlined> Add Exercise</Link>
+              <hr></hr>
+
                 {activityExercices.length !== 0 ?
-                 activityExercices.map((ex) => 
-                                <span className={`${styles.exercise} ${'title_outlined'}`}
-                                    key={ex.id}
-                                    ><Link to={`/exercise/${ex.id}/`}>
+                 activityExercices.map((ex) =>                           
+                                    <Link key={ex.id} className={`${styles.exercise_link} ${'title_outlined'}`} to={`/exercise/${ex.id}/`}>
                                     {ex.name}
-                                    </Link>
-                                </span>)
+                                    </Link>)
                             :<>
                              <h5>NO EXERCISES</h5>
                             </>

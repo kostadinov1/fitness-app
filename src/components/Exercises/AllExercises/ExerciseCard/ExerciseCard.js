@@ -10,7 +10,7 @@ function ExerciseCard({exercise, onDelete}) {
   return (
     <div className={styles.card}>
         <div className={styles.card_info}>
-            <h3 className={styles.card_cell_1}><Link to={`/exercise/${exercise.id}`}>{exercise.name}</Link></h3>
+            <h3 className={`${styles.card_cell_1} ${'title_outlined'}`}><Link to={`/exercise/${exercise.id}`}>{exercise.name}</Link></h3>
             <span className={`${styles.card_cell_2} ${styles.card_cell}`}>Info: {exercise.description}</span>
             <span className={`${styles.card_cell_3} ${styles.card_cell}`}>Sets: {exercise.sets}</span>
             <span className={`${styles.card_cell_4} ${styles.card_cell}`}>Reps: {exercise.reps}</span>

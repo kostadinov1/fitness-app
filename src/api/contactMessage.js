@@ -18,11 +18,10 @@ const createContactMessage  = async (data) => {
         else {
             throw created
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
-
 export {
     createContactMessage,
     

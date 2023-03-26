@@ -42,8 +42,8 @@ const createActivity  = async (user, activityProps) => {
         else {
             throw created
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
 
@@ -58,11 +58,10 @@ const getActivity  = async (id) => {
         else {
             throw activity
         }
-    } catch {
-        console.log('__IN__api_catch')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
-
 
 const editActivity  = async (user, id, activityProps) => {
     console.log('acitvityProps in api', activityProps)
@@ -83,8 +82,8 @@ const editActivity  = async (user, id, activityProps) => {
         else {
             throw edited
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
 
@@ -105,11 +104,10 @@ const deleteActivity  = async (user, activityID) => {
         else {
             throw deleted
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
-
 const listActivityTypes = async () => {
     const url = baseURL + '/activity/list-activity-types/'
     try {
@@ -121,33 +119,11 @@ const listActivityTypes = async () => {
         else {
             throw activitiesTypes
         }
-    } catch {
-        console.log('this is an error in the api service')
-    }
-}
-
-const getAllActivityExercises = async (activityID) => {
-    const url = baseURL + `/activity/list-activity-exercises/`
-    try {
-        let response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                "content-type": "application/json",
-
-            },
-            body: JSON.stringify(activityID)
-            })
-        let activityExercices = await response.json()        
-        if (response.ok) {
-            return activityExercices
-        }
-        else {
-            throw activityExercices
-        }
     } catch(err){
-        alert(err.message)
+        console.log('catch Err', err.message)
     }
 }
+
 
 export {
     getAllActivities,
@@ -156,7 +132,6 @@ export {
     editActivity,
     deleteActivity,
     listActivityTypes,
-    getAllActivityExercises,
 
 
 }

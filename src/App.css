@@ -61,6 +61,8 @@ button:hover {
     font-weight: bold;
     font-size: 1.6rem;
     border-radius: var(--b-radius);
-    border-bottom: 3px solid var(--acc-1);
-    border-top: 1px solid var(--acc-1);
+    border-top: 0.1em solid var(--acc-1);
+    border-bottom: 0.2em solid var(--acc-1);
+    margin-top: auto;
+    margin-bottom: auto;
 }

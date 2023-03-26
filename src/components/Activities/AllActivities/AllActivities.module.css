@@ -27,7 +27,7 @@
 .sider_2 {
     grid-area: two;
     padding: 1.2em;
-    border: 1px solid var(--sec);
+    border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     background-color: var(--sec);
 
@@ -48,7 +48,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
     padding: 1.2em;
-    border: 1px solid var(--sec);
+    border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     background-color: var(--prime);
 

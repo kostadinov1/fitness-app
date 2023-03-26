@@ -1,7 +1,7 @@
 .exercise {
     /* margin-top: 0px; */
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     display: grid;
     gap: 0.6em;
     padding: 0.8em;
@@ -16,6 +16,7 @@
     border-radius: var(--b-radius);
 }
 .sider_1 {
+
     grid-area: one;
     padding: 1.2em;
     border: 1px solid var(--acc-1);
@@ -24,6 +25,7 @@
 
 }
 .sider_2 {
+
     grid-area: two;
     padding: 1.2em;
     border: 1px solid var(--acc-1);
@@ -34,6 +36,7 @@
 .view {
     grid-area: three;
     display: grid;
+    align-items: start;
     
     grid-template-columns: 2fr 1fr;
     gap: 0.6em;
@@ -118,8 +121,17 @@
         border-radius: var(--b-radius);
         overflow: scroll;
         color: var(--text);
-
+        min-height: 100vh;
         padding: 1em;
+    }
+
+    .details h4 {
+        margin-bottom: 0.4em;
+    }
+
+    .exercise_link {
+        margin: 0.4em;
+        padding: 0.2em 0.6em;
     }
 
 

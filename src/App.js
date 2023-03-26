@@ -48,7 +48,7 @@ function App() {
         if (loggedIn) {
             setUser(getUserData)
         }
-        // else clearLocalStorage
+
     }, [loggedIn])
 
     return (

@@ -18,8 +18,8 @@ const getAllExercises = async (user) => {
         else {
             throw exercises
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
 
@@ -42,8 +42,8 @@ const createExercise  = async (user, exerciseProps) => {
         else {
             throw created
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
 
@@ -58,8 +58,8 @@ const getExercise  = async (id) => {
         else {
             throw exercise
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
 
@@ -83,11 +83,10 @@ const editExercise  = async (user, id, exerciseProps) => {
         else {
             throw edited
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
-
 const deleteExercise  = async (user, exerciseID) => {
     const url = baseURL + `/activity/delete-exercise/${exerciseID}/`
     try {
@@ -106,11 +105,10 @@ const deleteExercise  = async (user, exerciseID) => {
         else {
             throw deleted
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
-
 const listExerciseTypes = async () => {
     const url = baseURL + '/activity/list-exercise-types/'
     try {
@@ -124,8 +122,8 @@ const listExerciseTypes = async () => {
 
             throw exerciseTypes
         }
-    } catch {
-        console.log('this is an error in the api service')
+    } catch(err){
+        console.log('catch Err', err.message)
     }
 }
 
