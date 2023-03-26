@@ -51,7 +51,7 @@ function Exercise() {
                     <span className={`${styles.card_cell_2} ${styles.card_cell}`}>Info: {exercise.description}</span>
                     <span className={`${styles.card_cell_3} ${styles.card_cell}`}>Sets: {exercise.sets}</span>
                     <span className={`${styles.card_cell_4} ${styles.card_cell}`}>Reps: {exercise.reps}</span>
-                    <span className={`${styles.card_cell_5} ${styles.card_cell}`}>KG: {exercise.weights}</span>
+                    <span className={`${styles.card_cell_5} ${styles.card_cell}`}>KG: {exercise.weights_in_kg}</span>
                     <span className={`${styles.card_cell_6} ${styles.card_cell}`}>Cues: {exercise.cues}</span>
                     <span className={`${styles.card_cell_7} ${styles.card_cell}`}>Type: {exercise.type}</span>
                     <Link className={`${styles.card_cell_8} ${styles.card_cell} ${styles.card_cell_link}`} 

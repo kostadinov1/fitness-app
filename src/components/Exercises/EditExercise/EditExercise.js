@@ -1,12 +1,9 @@
-
-
 import styles from './EditExercise.module.css'
 import React, { useContext, useEffect, useState } from 'react'
 import { editExercise, getExercise, listExerciseTypes } from '../../../api/exercises'
 import { useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { getAllActivities } from '../../../api/activities'
-
 
 
 function EditExercise() {
@@ -44,14 +41,16 @@ function EditExercise() {
     
     return (
         <section className={styles.edit_exercise}>
-        <h1>Edit Exercise</h1>
         <form onSubmit={onEdit} className={styles.form}>
+        <div className={`${styles.form_field} ${styles.form_field_11} ${'title_outlined'}`}>
+            Edit Exercise
+                </div>
             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                 <label>Name</label>
                 <input
+                    name='name' 
                     value={exercise.name}
                     onChange={onValueChange}
-                    name='name' 
                     className={styles.form_input}  
                     placeholder='Choose a good name' />
             </div>
@@ -71,9 +70,9 @@ function EditExercise() {
             <div className={`${styles.form_field} ${styles.form_field_3}`}>   
                 <label>Description</label>
                 <textarea 
+                    name='description'
                     value={exercise.description}
                     onChange={onValueChange}
-                    name='description'
                     type={'text'} 
                     className={styles.form_input}  
                     placeholder='Short Description'></textarea >
@@ -81,10 +80,9 @@ function EditExercise() {
             <div className={`${styles.form_field} ${styles.form_field_4}`}>
                 <label>Cues</label>
                 <textarea 
+                    name='cues'
                     value={exercise.cues}
                     onChange={onValueChange}
-
-                    name='cues'
                     type={'text'} 
                     className={styles.form_input}  
                     placeholder='Name some cues'></textarea>
@@ -92,11 +90,11 @@ function EditExercise() {
             <div className={`${styles.form_field} ${styles.form_field_5}`}>
                 <label>Reps</label>
                 <input 
+                    name='reps'
                     value={exercise.reps}
                     onChange={onValueChange}
                     min={0}
                     max={1000}
-                    name='reps'
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='How many Reps?'></input>
@@ -104,11 +102,11 @@ function EditExercise() {
             <div className={`${styles.form_field} ${styles.form_field_6}`}>   
                 <label>Sets</label>
                 <input 
+                    name='sets'
                     value={exercise.sets}
                     onChange={onValueChange}
                     min={0}
                     max={1000}
-                    name='sets'
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='How many Sets?'></input>
@@ -116,11 +114,11 @@ function EditExercise() {
             <div className={`${styles.form_field} ${styles.form_field_7}`}>
                 <label>Weights KG</label>
                 <input 
+                    name='weights_in_kg'
                     value={exercise.weights_in_kg}
                     onChange={onValueChange}
                     min={0}
                     max={1000}
-                    name='weight_in_kg'
                     type={'number'}
                     lassName={styles.form_input}  
                     placeholder='What weights?'></input>
@@ -128,11 +126,11 @@ function EditExercise() {
             <div className={`${styles.form_field} ${styles.form_field_8}`}>
                 <label>Calories</label>
                 <input
+                    name={'calories_burned'} 
                     value={exercise.calories_burned}
                     onChange={onValueChange}
                     min={0}
                     max={100000}
-                    name={'calories_burned'} 
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='Calories burned'></input>
@@ -144,9 +142,9 @@ function EditExercise() {
 <div className={`${styles.form_field} ${styles.form_field_10}`}>
                 <label>Activity</label>
                 <select 
+                    name='activity'
                     value={exercise.activity}
                     onChange={onValueChange}
-                    name='activity'
                     className={styles.form_input}>
                         { activities ? 
                         activities.map((activity) =>

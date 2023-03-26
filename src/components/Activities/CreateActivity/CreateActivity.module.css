@@ -7,7 +7,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 40vw;
+    max-width: 90vw;
     margin: 0 auto;
     padding: 2em;
     background-color: var(--prime-2);
@@ -21,15 +21,12 @@
 .form {
     display: grid;
     gap: 1em;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
-                "one one"
-                "two two"
-                "three three"
-                "four five"
-                "six seven"
-                "eight nine"
-                "ten ten";
+                "one one one one four five"
+                "two two two two six seven"
+                "three three three three eight nine"
+                "ten ten ten ten ten ten";
     background-color: var(--prime-2);
 }
 .item {

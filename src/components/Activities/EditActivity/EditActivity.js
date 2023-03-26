@@ -61,7 +61,9 @@ function EditActivity() {
                           className={styles.form_input}>
                               { activityTypes ? 
                               activityTypes.map((activityType) =>
-                                  <option value={`${activityType.id}`}>{activityType.name}</option>)
+                                  <option 
+                                    key={activityType.id}
+                                    value={`${activityType.id}`}>{activityType.name}</option>)
                                   : <option>No Types yet</option>}
                       </select>
                   </div>

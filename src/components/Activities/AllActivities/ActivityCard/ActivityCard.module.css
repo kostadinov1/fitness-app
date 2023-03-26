@@ -54,6 +54,7 @@
         padding: 0.4em;
         border: 1px solid var(--acc-1);
         border-radius: var(--b-radius);
+        overflow: scroll;
     }
     .card_cell_1 {
         display: grid;

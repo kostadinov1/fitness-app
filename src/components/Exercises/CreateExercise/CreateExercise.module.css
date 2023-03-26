@@ -4,21 +4,19 @@
     min-height: 100vh;
 }
 
-
 .form {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
-                    "one one one one"
-                    "ten ten ten ten"
-                    "two two two two"
-                    "three three three three"
-                    "four four four four"
-                    "five five six six"
-                    "seven seven eight eight"
-                    "nine nine nine nine";
+    "eleven eleven eleven eleven eleven eleven"
+                        "one one one one ten ten"
+                        "two two two two five six"
+                        "three three three three seven eight"
+                        "four four four four four four"
+                        "nine nine nine nine nine nine"
+;
     background-color: var(--prime-2);
-    max-width: 45vw;
+    max-width: 90vw;
     gap: 0.4em;
     margin: auto auto;
     overflow: hidden;
@@ -36,14 +34,10 @@
     padding: 0.4em;
 }
 
-
-
-
 .form button {
     margin-top: 1.4em;
     display: grid;
 }
-
 
 .form_field_1 { grid-area: one;}
 .form_field_2 { grid-area: two;}
@@ -55,6 +49,8 @@
 .form_field_8 { grid-area: eight;}
 .form_field_9 { grid-area: nine;}
 .form_field_10 { grid-area: ten;}
+.form_field_11 { grid-area: eleven;}
+
 .form h1 {
     border-top: 1px solid var(--acc-1);
     border-bottom: 6px solid var(--acc-1);

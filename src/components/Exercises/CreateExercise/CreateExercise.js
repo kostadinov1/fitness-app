@@ -52,15 +52,16 @@ function CreateExercise() {
     return (
 
         <section className={styles.create_exercise}>
-        <h1>Create Exercise</h1>
         <form onSubmit={onCreate} className={styles.form}>
-
+            <div className={`${styles.form_field} ${styles.form_field_11} ${'title_outlined'}`}>
+            Create Exercise
+                </div>
             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                 <label>Name</label>
                 <input
+                    name='name' 
                     value={formData.name}
                     onChange={onValueChange}
-                    name='name' 
                     className={styles.form_input}  
                     placeholder='Choose a good name' />
             </div>
@@ -68,13 +69,13 @@ function CreateExercise() {
             <div className={`${styles.form_field} ${styles.form_field_2}`}>
                 <label>Type</label>
                 <select 
+                        name='type'
                         value={formData.type}
                         onChange={onValueChange}
-                        name='type'
                         className={styles.form_input}>
                             { exerciseTypes ? 
                             exerciseTypes.map((exerciseType) =>
-                            <option value={exerciseType.id}>{exerciseType.name}</option>)
+                            <option value={exerciseType.name} key={exerciseType.id}>{exerciseType.name}</option>)
                             : <option>No Types yet</option>}
                 </select>
             </div>
@@ -82,9 +83,9 @@ function CreateExercise() {
             <div className={`${styles.form_field} ${styles.form_field_3}`}>   
                 <label>Description</label>
                 <textarea 
+                    name='description'
                     value={formData.description}
                     onChange={onValueChange}
-                    name='description'
                     type={'text'} 
                     className={styles.form_input}  
                     placeholder='Short Description'></textarea >
@@ -92,10 +93,9 @@ function CreateExercise() {
             <div className={`${styles.form_field} ${styles.form_field_4}`}>
                 <label>Cues</label>
                 <textarea 
+                    name='cues'
                     value={formData.cues}
                     onChange={onValueChange}
-
-                    name='cues'
                     type={'text'} 
                     className={styles.form_input}  
                     placeholder='Name some cues'></textarea>
@@ -103,11 +103,11 @@ function CreateExercise() {
             <div className={`${styles.form_field} ${styles.form_field_5}`}>
                 <label>Reps</label>
                 <input 
+                    name='reps'
                     value={formData.reps}
                     onChange={onValueChange}
                     min={0}
                     max={1000}
-                    name='reps'
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='How many Reps?'></input>
@@ -115,35 +115,35 @@ function CreateExercise() {
             <div className={`${styles.form_field} ${styles.form_field_6}`}>   
                 <label>Sets</label>
                 <input 
+                    name='sets'
                     value={formData.sets}
                     onChange={onValueChange}
                     min={0}
                     max={1000}
-                    name='sets'
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='How many Sets?'></input>
             </div>
             <div className={`${styles.form_field} ${styles.form_field_7}`}>
-                <label>Weights KG</label>
+                <label>Total Weights KG</label>
                 <input 
+                    name='weights_in_kg'
                     value={formData.weights_in_kg}
                     onChange={onValueChange}
                     min={0}
                     max={1000}
-                    name='weight_in_kg'
                     type={'number'}
                     lassName={styles.form_input}  
                     placeholder='What weights?'></input>
             </div>
             <div className={`${styles.form_field} ${styles.form_field_8}`}>
-                <label>Calories</label>
+                <label>Total Calories</label>
                 <input
+                    name={'calories_burned'} 
                     value={formData.calories_burned}
                     onChange={onValueChange}
                     min={0}
                     max={100000}
-                    name={'calories_burned'} 
                     type={'number'}
                     className={styles.form_input}  
                     placeholder='Calories burned'></input>
@@ -155,7 +155,7 @@ function CreateExercise() {
 
 
             <div className={`${styles.form_field} ${styles.form_field_10}`}>
-                <label>Activity</label>
+                <label>Related Activity</label>
                 <select 
                     value={formData.activity}
                     onChange={onValueChange}
@@ -163,7 +163,7 @@ function CreateExercise() {
                     className={styles.form_input}>
                         { activities ? 
                         activities.map((activity) =>
-                        <option value={activity.id}>{activity.name}</option>)
+                        <option value={activity.id} key={activity.id}>{activity.name}</option>)
                         : <option>No Activities yet</option>}
                 </select>
             </div>

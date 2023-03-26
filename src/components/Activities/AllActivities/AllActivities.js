@@ -25,9 +25,9 @@ function AllActivities() {
         deleteActivity(user, activityID)
             .then((res) => {console.log(res, 'res in onDelete res')
                 setModified(true)
-                // navigate('/all-activities')
+                navigate('/all-activities')
                             })
-            .catch((res) => console.log(res, 'res in onDelete res'))
+            .catch((res) => '')
     }   
 
     

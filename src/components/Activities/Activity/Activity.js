@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { deleteActivity, getActivity, getAllActivityExercises  } from '../../../api/activities'
 import ListCard from '../../Cards/ListCard/ListCard'
+import { PlusCircleOutlined } from '@ant-design/icons'
 
 function Activity() {
 
@@ -74,14 +75,19 @@ return (
           <div className={styles.details}>
               <hr></hr>
               <h4  className={`${'title_outlined'}`}>Exercises</h4>
+              <Link to={'/create-exercise'}><PlusCircleOutlined></PlusCircleOutlined> Add Exercise</Link>
                 {activityExercices.length !== 0 ?
                  activityExercices.map((ex) => 
                                 <span className={`${styles.exercise} ${'title_outlined'}`}
+                                    key={ex.id}
                                     ><Link to={`/exercise/${ex.id}/`}>
                                     {ex.name}
                                     </Link>
                                 </span>)
-                            : <h5>NO EXERCISES</h5>
+                            :<>
+                             <h5>NO EXERCISES</h5>
+                            </>
+
                 }
 
           </div>
