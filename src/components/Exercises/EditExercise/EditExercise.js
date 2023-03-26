@@ -135,9 +135,9 @@ function EditExercise() {
                     className={styles.form_input}  
                     placeholder='Calories burned'></input>
             </div>
-            <button
-                className={`${styles.form_field} ${styles.form_field_9}`}
-             >Edit</button>
+            <button className={`${styles.form_field} ${styles.form_field_9}`}>
+                Edit
+             </button>
 
 <div className={`${styles.form_field} ${styles.form_field_10}`}>
                 <label>Activity</label>

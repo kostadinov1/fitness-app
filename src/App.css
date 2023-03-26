@@ -13,6 +13,13 @@
     --dimmer: rgba(0, 5, 6, 0.607);
 
     /* --- Values --- */
+    --border-thick: 1px;
+    --border-solid: solid;
+    --border-color: var(red);
+    --border:
+        var(--border-thick)
+        var(--border-solid)
+        var(--border-color);
     --b-radius: 8px;
     --bg-color: rgba(209, 205, 21, 0.967);
 

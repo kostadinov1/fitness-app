@@ -13,7 +13,7 @@
     margin: 0 auto;
     padding: 2em;
     background-color: var(--prime-2);
-    border: 1px solid var(--acc-1);
+    border: 1px solid var(--sec-2);
     border-radius: var(--b-radius);
 }
 .form_box h1 {
