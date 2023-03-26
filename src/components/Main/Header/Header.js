@@ -59,7 +59,7 @@ function Header() {
             <Link to={'/contacts'} className={styles.link}>Contacts</Link>
             </li>
         </ul>
-        <span>{user.email}</span>
+        <Link to={`/profile/${user.id}/`} className={styles.user_email}>{user.email}</Link>
         <div className={styles.auth_icons}>
             {loggedIn === false ?
                 <>

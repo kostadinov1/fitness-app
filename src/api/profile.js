@@ -1,10 +1,5 @@
 import baseURL from './baseURL'
 
-// 'show-profile/<int:pk>/',
-// 'edit-profile/<int:pk>/', 
-// 'delete-profile/<int:pk>/', 
-// 'upload-profile-image/<int:pk>/'
-
 const getProfile  = async (id) => {
     const url = baseURL + `/accounts/show-profile/${id}/`
     try {
