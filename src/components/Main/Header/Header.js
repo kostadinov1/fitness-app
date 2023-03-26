@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { MenuOutlined, PoweroffOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
 import { logoutService } from '../../../api/auth'
 import { UserContext } from '../../../contexts/UserContext'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { clearUserData } from '../../../utils/userUtils'
+import IconMenu from '../IconMenu/IconMenu'
 
 function Header() {
     const navigate = useNavigate()
+    const [toggleMenu, setToggleMenu] = useState(false)
     const {user, setUser, loggedIn, setLoggedIn,} = useContext(UserContext)        
            
     const onLogout = (e) => {
@@ -26,6 +28,17 @@ function Header() {
                 console.log('__LOGOUT__', res)})
                 navigate('/')
             .catch((res) => {console.log('__LOGOUT__error', res)})
+    }
+
+    const onMenuClick = (e) => {
+        e.preventDefault()
+        if (toggleMenu === false) {
+            setToggleMenu(true)
+        } 
+        else {
+            setToggleMenu(false)
+        }
+
     }
 
 
@@ -72,8 +85,12 @@ function Header() {
                     <PoweroffOutlined  className={styles.logout_icon}/> logout</Link>
             }
         </div>
+            {toggleMenu === true ? 
+            <IconMenu></IconMenu>
+            :null            
+        }
             <Link to={'/'}>
-            <MenuOutlined  className={styles.menu_icon}/>
+            <MenuOutlined onClick={onMenuClick} className={styles.menu_icon}/>
             </Link>
         </section >
     )
