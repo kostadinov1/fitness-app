@@ -1,16 +1,43 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getAllActivities } from '../../api/activities'
+import { getAllExercises } from '../../api/exercises'
+import { getProfile } from '../../api/profile'
 import { UserContext } from '../../contexts/UserContext'
 import CardReel from '../Cards/CardReel/CardReel'
-import ListCard from '../Cards/ListCard/ListCard'
 import styles from './Dashboard.module.css'
 
 
-const items = ['link1', 'item2']
-
 function Dashboard() {
 
-    const { user, setUser }= useContext(UserContext) 
+    const { user, setUser } = useContext(UserContext) 
+
+
+    useEffect(() => {
+        getAllExercises(user)
+            .then((res) => {
+                console.log('dash all exers', res);
+            })
+            .catch((res) => {
+                console.log('dash', res);
+            })
+        getAllActivities(user)
+            .then((res) => {
+                console.log('dash all acts', res);
+            })
+            .catch((res) => {
+                console.log('dash', res);
+            })
+        getProfile(user)
+            .then((res) => {
+                console.log('dash profile', res);
+            })
+            .catch((res) => {
+                console.log('dash', res);
+            })
+    }, [])
+
+
 
   return (
     <section className={styles.dashboard}>

@@ -1,9 +1,16 @@
 import baseURL from './baseURL'
 
-const getProfile  = async (id) => {
-    const url = baseURL + `/accounts/show-profile/${id}/`
+const getProfile  = async (user) => {
+    const url = baseURL + `/accounts/show-profile/${user.user_id}/`
     try {
-        let response = await fetch(url)
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                
+                "content-type": "application/json",
+                "Authorization": `Token ${user.token}`,
+            },
+            })
         let profile = await response.json()        
         if (response.ok) {
             return profile
@@ -16,8 +23,8 @@ const getProfile  = async (id) => {
     }
 }
 
-const editProfile  = async (user, id, profileProps) => {
-    const url = baseURL + `/accounts/edit-profile/${id}/`
+const editProfile  = async (user, profileProps) => {
+    const url = baseURL + `/accounts/edit-profile/${user.id}/`
     try {
         let response = await fetch(url, {
             method: 'PUT',

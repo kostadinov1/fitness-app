@@ -38,8 +38,13 @@ function Contacts() {
             </div>
 
             <div className={styles.form_box}>
-                <h1>CONTACTS</h1>
+
                     <form onSubmit={onSend} className={`${styles.form}`}>
+
+                    <div className={`${styles.field_box} ${styles.field_5} ${'title_outlined'}`}>
+                        Contacts
+                        </div>
+
                         <div className={`${styles.field_box} ${styles.field_1}`}>
                             <label htmlFor='email'>Email</label>
                             <input
