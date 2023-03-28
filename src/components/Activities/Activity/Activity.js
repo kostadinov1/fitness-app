@@ -32,7 +32,7 @@ function Activity() {
 
 
   const onDelete = () => {
-      deleteActivity(activity.id, user.id)
+      deleteActivity(user, activity.id)
           .then((res) => {console.log(res, 'res in exercise rac')
               navigate('/all-activities')
                           })

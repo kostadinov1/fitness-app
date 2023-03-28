@@ -13,15 +13,18 @@ function AllExercises() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        getAllExercises(user).then((res) => { setExercises(res)}
+        getAllExercises(user).then((res) => { setExercises(res)
+        console.log(exercises);}
         ).catch()
-    }, [user, ])
+    }, [user,])
 
     const onDelete = (exerciseID) => {
         deleteExercise(user, exerciseID)
             .then((res) => {
+                    setExercises(exercises)
+                    console.log(res, 'ondelete res')
                     setModified(true)
-                    navigate('/all-exercises')
+                    // navigate('/all-exercises')
                             })
             .catch()
     }   

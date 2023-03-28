@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    height: 90vh;
+    height: 94vh;
     padding: 1em;
 
     overflow: hidden;
@@ -32,15 +32,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
     /* max-width: 60em; */
     /* margin: auto auto; */
+    gap: 2em;
+    border-radius: var(--b-radius);
+    border: 1px solid var(--sec-2);
 }
 
 .form {
     position: relative;
-    top: -10em;
+    /* top: -10em; */
     display: grid;
+    padding: 2em;
 
     gap: 0.6em;
     grid-template-columns: 1fr 1fr;
@@ -55,7 +59,7 @@
 .field_box {
     padding: 0.4em;
     border-radius: var(--b-radius);
-    /* border: var(--border); */
+    /* border: 1px solid var(--sec-2); */
 
 }
 
@@ -74,10 +78,25 @@
 }
 .field_4 {
     display: grid;
+    width: 33%;
+    margin: auto auto;
     grid-area: four;
 }
 .field_5 {
     display: grid;
     grid-area: five;
     font-size: 3rem;
+}
+
+.info_box {
+    /* background-color: red; */
+    width: 80%;
+    height: 30%;
+    padding: 2em;
+    border-radius: var(--b-radius);
+    border: 1px solid var(--sec-2);
+
+    letter-spacing: 0.8pt;
+    font-size: large;
+
 }

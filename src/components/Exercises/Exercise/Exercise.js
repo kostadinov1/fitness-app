@@ -25,7 +25,7 @@ function Exercise() {
     }, [])
 
     const onDelete = () => {
-        deleteExercise(exercise.id, user.id)
+        deleteExercise(user, exercise.id)
             .then((res) => {console.log(res, 'res in exercise rac')
                 navigate('/all-exercises')
                             })

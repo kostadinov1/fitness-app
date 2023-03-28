@@ -42,7 +42,7 @@ function Contacts() {
                     <form onSubmit={onSend} className={`${styles.form}`}>
 
                     <div className={`${styles.field_box} ${styles.field_5} ${'title_outlined'}`}>
-                        Contacts
+                        Contact Us
                         </div>
 
                         <div className={`${styles.field_box} ${styles.field_1}`}>
@@ -78,6 +78,13 @@ function Contacts() {
 
                         <button className={`${styles.field_box} ${styles.field_4}`}>Send</button>
                     </form>
+                <div className={`${styles.info_box}`}>
+                    <h3>You can also find Us:</h3>
+                    <div>Adress: Varna, 101 Vladislav Varnenchik</div>
+                    <div>Phone: +334-536345643</div>
+                    <div>Email: support@fithub.bg</div>
+
+                </div>
                 </div>
             </div>
         </section>

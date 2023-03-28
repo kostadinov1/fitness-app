@@ -11,7 +11,7 @@ function Register() {
     const [password, setPassword] = useState('');
     const [repass, setRepass] = useState('');
     const navigate = useNavigate()
-    const {user, setUser, loggedIn, setLoggedIn} = useContext(UserContext)
+    const {setUser,  setLoggedIn} = useContext(UserContext)
 
 
     const onRegister = (e) => {
@@ -19,11 +19,20 @@ function Register() {
         if (password === repass) {
             registerService(email, password)
             .then((res) => {
-                    setUser({...res, isAuthenticated: true})
-                    setLoggedIn(true)
-                    setUserData(res)
-                    loginService(email, password)})
-                    navigate('/')
+                    // setUser({...res, isAuthenticated: true})
+                    // setLoggedIn(true)
+                    // setUserData(res)
+                    loginService(email, password)
+                        .then((res) => {
+                            console.log(res.status)
+                            setUser({...res, isAuthenticated: true})
+                            setLoggedIn(true)
+                            setUserData(res)
+                            navigate('/dashboard');
+                        })
+                })
+
+                    // navigate('/')
             .catch((res) => {
                 console.log('__reger_catch__', res);})
           } else {
