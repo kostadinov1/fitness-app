@@ -1,4 +1,3 @@
-
 .card {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -8,26 +7,15 @@
                 "two two two two"
                 "two two two two"
                 "three three three three";
-    width: 100%;
     max-height: 60vh;
+    width: 100%;
     background-color: var(--sec);
-    /* background-image: url('/public/images/backgrounds/background-05.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     overflow: scroll;
     color: var(--text);
-}
-
-.card h3 {
-    grid-area: one;
-    text-align: center;
-    font-size: 1.6rem;
-    border-radius: var(--b-radius);
-    border-bottom: 3px solid var(--acc-1);
-    border-top: 1px solid var(--acc-1);
-
 }
 .card_info {
     grid-area: two;
@@ -41,7 +29,7 @@
                     "three four five"
                     "six six seven"
                     "eight eight nine";
-                    padding: 2em;
+                    padding: 1.4em;
                     color: var(--acc-3);
 }
     .card_cell {
@@ -51,15 +39,21 @@
         padding: 0.4em;
         border: 1px solid var(--acc-1);
         border-radius: var(--b-radius);
+        font-weight: 500;
+        font-size: 1.1rem;
     }
-    .card_cell_1 {grid-area: one;}
+    .card_cell_1 {
+        font-size: 1.6rem;
+        grid-area: one;}
     .card_cell_2 {grid-area: two;}
     .card_cell_3 {grid-area: three;}
     .card_cell_4 {grid-area: four;}
     .card_cell_5 {grid-area: five;}
     .card_cell_6 {grid-area: six;}
     .card_cell_7 {grid-area: seven;}
-    .card_cell_8 {grid-area: eight;}
+    .card_cell_8 {
+        margin-top: 0.4em;    
+        grid-area: eight;}
     .card_cell_9 {grid-area: nine;}
 
     .card_cell_link {

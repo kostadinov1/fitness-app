@@ -48,6 +48,7 @@ function CreateExercise() {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     } 
 
+    // TODO ADD FORM VALIDAITONS
     
     return (
 

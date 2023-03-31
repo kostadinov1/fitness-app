@@ -14,22 +14,18 @@ function AllActivities() {
 
     useEffect(() => {
         getAllActivities(user)
-            .then((res) => { setActivities(res) 
-                console.log(activites)
-                             })
-            .catch((res) => console.log('this is the error in component',res))
+            .then((res) => { setActivities(res)})
+            .catch((res) => {})
     }, [user, setActivities])
 
-    
     const onDelete = (activityID) => {
         deleteActivity(user, activityID)
-            .then((res) => {console.log(res, 'res in onDelete res')
-                setModified(true)
-                navigate('/all-activities')
-                            })
-            .catch((res) => '')
+            .then((res) => {
+                // navigate('/all-activities')
+            })
+            .catch((res) => {})
+        setModified(true)
     }   
-
     
     return (
         <section className={styles.activities}>

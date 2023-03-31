@@ -43,7 +43,8 @@ function CreateActivity() {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
 
-
+    // TODO ADD FORM VALIDAITONS
+    // TODO validation for unique name - error throw
     return (
       <section className={styles.create_activity}>
       <div className={styles.form_box}>

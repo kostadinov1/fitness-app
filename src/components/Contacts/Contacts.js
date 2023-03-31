@@ -28,6 +28,7 @@ function Contacts() {
                 console.log('res in ERRORonsend', res);
             })    
     }
+    // TODO ADD FORM VALIDAITONS
 
     return (
         <section className={styles.contacts}>

@@ -38,6 +38,7 @@ function EditExercise() {
         setExercise((state) => ({...state, [e.target.name]: e.target.value}))
     } 
 
+    // TODO ADD FORM VALIDAITONS
     
     return (
         <section className={styles.edit_exercise}>

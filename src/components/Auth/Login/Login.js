@@ -12,7 +12,8 @@ function Login() {
     const [password, setPassword] = useState('');
     const { user, setUser, loggedIn, setLoggedIn }= useContext(UserContext)
     
-    // console.log('user in login', user)
+
+    // TODO ADD FORM VALIDAITONS
 
     const onLogin = (e) => {
         e.preventDefault()

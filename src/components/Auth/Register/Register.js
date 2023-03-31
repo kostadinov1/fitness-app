@@ -47,6 +47,7 @@ function Register() {
         setRepass(e.target.value)
     }
 
+    // TODO ADD FORM VALIDAITONS
 
     return (
     <section className={styles.auth_section}>
