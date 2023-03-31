@@ -2,21 +2,16 @@
 .header {
     position: fixed;
     z-index: 1;
-    /* left: 20em; */
     width: 100vw;
-
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     background-color: var(--sec-2);
     border: 1px solid var(--);
-    /* border-radius: var(--b-radius); */
 }
-.header > * {
-    /* background-color: var(--prime); */
-    color: var(--acc-3);
+.header *:hover {
+    color: var(--acc-1);
 }
-
 .logo {
     color: var(--text);
     margin-left: 2em;
@@ -30,10 +25,6 @@
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 700;
 }
-.header h1:hover {
-    color: var(--acc-1);
-}
-
 .ul {
     display: flex;
     flex-wrap: wrap;
@@ -44,14 +35,6 @@
 
     border-radius: var(--b-radius);
 }
-
-.li {
-    padding: 0.2em 0.6em;
-    /* color: var(--prime); */
-}
-li:hover {
-    color: var(--acc-1);
-}
 .link {
     color: var(--text);
     text-decoration: none;
@@ -61,17 +44,13 @@ li:hover {
     font-family: 'Montserrat Alternates', sans-serif;
 
 }
-.link:hover {
-color: var(--accent);
-}
-
 .user_email {
+    color: var(--text);
     font-weight: 400;
     font-size: 1.2rem;
     font-family: 'Montserrat Alternates', sans-serif;
     letter-spacing: 1pt;
 }
-
 .auth_icons {
     margin: 0px 2em;
     padding: 0.4em;
@@ -84,19 +63,11 @@ color: var(--accent);
     font-size: 1rem;
     margin: 0px 0.1em;
 }
-.auth_icons *:hover {
-    color: var(--acc-1);
-}
-
 .menu_icon {
     background-color: var(--prime-2);
-    
     margin-right: 2em;
     color: var(--text);
     font-size: 1.3rem;
     padding: 0.4em;
     border-radius: var(--b-radius);
-}
-.menu_icon:hover {
-    color: var(--acc-1);
 }

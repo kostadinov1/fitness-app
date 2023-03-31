@@ -18,21 +18,15 @@ function Register() {
         e.preventDefault()
         if (password === repass) {
             registerService(email, password)
-            .then((res) => {
-                    // setUser({...res, isAuthenticated: true})
-                    // setLoggedIn(true)
-                    // setUserData(res)
+            .then(() => {
                     loginService(email, password)
                         .then((res) => {
-                            console.log(res.status)
                             setUser({...res, isAuthenticated: true})
                             setLoggedIn(true)
                             setUserData(res)
                             navigate('/dashboard');
                         })
                 })
-
-                    // navigate('/')
             .catch((res) => {
                 console.log('__reger_catch__', res);})
           } else {
