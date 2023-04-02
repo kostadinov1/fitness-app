@@ -7,7 +7,7 @@
                 "two two two two"
                 "two two two two"
                 "three three three three";
-    max-height: 60vh;
+    max-height: 50vh;
     width: 100%;
     background-color: var(--sec);
     background-repeat: no-repeat;
@@ -44,6 +44,8 @@
     }
     .card_cell_1 {
         font-size: 1.6rem;
+        margin-bottom: 0.4em;
+        padding: 0.4em 0em;
         grid-area: one;}
     .card_cell_2 {grid-area: two;}
     .card_cell_3 {grid-area: three;}
@@ -54,7 +56,9 @@
     .card_cell_8 {
         margin-top: 0.4em;    
         grid-area: eight;}
-    .card_cell_9 {grid-area: nine;}
+    .card_cell_9 {
+        margin-top: 0.4em; 
+        grid-area: nine;}
 
     .card_cell_link {
         justify-content: center;

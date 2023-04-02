@@ -48,11 +48,11 @@
     display: grid;
     
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.4em;
-    padding: 0.2em;
+    gap: 1em;
+    padding: 0.6em;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
-    background-color: var(--prime-1);
+    background-color: var(--prime);
 
 }
 

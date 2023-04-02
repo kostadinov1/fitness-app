@@ -5,33 +5,54 @@ import { Link, useNavigate } from 'react-router-dom'
 import ExerciseCard from './ExerciseCard/ExerciseCard'
 import { UserContext } from '../../../contexts/UserContext'
 import ListCard from '../../Cards/ListCard/ListCard'
+import DeleteModal from './DeleteModal/DeleteModal'
 
 function AllExercises() {
     const {user} = useContext(UserContext)
     const [exercises, setExercises] = useState([])
-    const [modified, setModified] =  useState(false)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [currentExerciseID, setCurrentExerciseID] = useState(null)
     const navigate = useNavigate()
 
     useEffect(() => {
-        getAllExercises(user).then((res) => { setExercises(res)
-        console.log(exercises);}
+        getAllExercises(user).then((res) => { setExercises(res)}
         ).catch()
     }, [user,])
 
     const onDelete = (exerciseID) => {
-        deleteExercise(user, exerciseID)
+        setShowDeleteModal(true)
+        setCurrentExerciseID(exerciseID)
+    }
+    const onDeleteCancel = () => {
+        setShowDeleteModal(false)
+    }
+    const onDeleteConfirm = (currentExerciseID) => {
+                deleteExercise(user, currentExerciseID)
             .then((res) => {
-                    setExercises(exercises)
-                    console.log(res, 'ondelete res')
-                    setModified(true)
+                setShowDeleteModal(false)
                     // navigate('/all-exercises')
                             })
             .catch()
-    }   
+    }
+    // const onDelete = (exerciseID) => {
+    //     deleteExercise(user, exerciseID)
+    //         .then((res) => {
+    //                 setExercises(exercises)
+    //                 console.log(res, 'ondelete res')
+    //                 setModified(true)
+    //                 // navigate('/all-exercises')
+    //                         })
+    //         .catch()
+    // }   
 
     
     return (
         <section className={styles.exercises}>
+            {showDeleteModal ? <DeleteModal 
+                                    onDeleteCancel={onDeleteCancel} 
+                                    onDeleteConfirm={onDeleteConfirm}
+                                    currentExerciseID={currentExerciseID}/> 
+                            : null}
             <ListCard></ListCard>
             <div className={styles.sider_2}>
             <h4>More Links</h4>
@@ -42,7 +63,6 @@ function AllExercises() {
                 </ul>
             </div>
             <div className={styles.exy_box}>
-            {/* <h1 className='section_title'>Activities</h1> */}
                 {exercises ? exercises.map((exercise) => 
                            <ExerciseCard exercise={exercise} onDelete={onDelete} key={exercise.id}/>
                         ): <h1>No activites Yet!</h1>

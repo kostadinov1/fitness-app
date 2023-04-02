@@ -3,8 +3,8 @@
     position: relative;
     min-height: 100vh;
     display: grid;
-    gap: 1em;
-    padding: 1em;
+    gap: 0.6em;
+    padding: 0.8em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                     "one three three three three three"
@@ -19,9 +19,10 @@
 .sider_1 {
     grid-area: one;
     padding: 1.2em;
-    border: 1px solid var(--sec);
+    border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     background-color: var(--sec);
+
 }
 
 .sider_2 {
@@ -30,6 +31,7 @@
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     background-color: var(--sec);
+
 
 }
 
@@ -47,7 +49,7 @@
     
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
-    padding: 1.2em;
+    padding: 0.6em;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     background-color: var(--prime);

@@ -8,47 +8,52 @@ import { UserContext } from '../../../contexts/UserContext'
 
 function CreateExercise() {
     const {user} = useContext(UserContext)
-
     const navigate = useNavigate()
     const [exerciseTypes, setExerciseTypes] = useState([])
-
-
     const [activities, setActivities] = useState([])
 
 
 
     const [formData, setFormData] = useState({
-            name: null,
-            description: null,
-            reps: null,
-            sets: null,
-            cues: null,
-            weights_in_kg: null,
-            calories_burned: null,
-            type: null,
-            activity: null,
+            name: '',
+            description: '',
+            reps: 0,
+            sets: 0,
+            cues: '',
+            weights_in_kg: 0,
+            calories_burned: 0,
+            type: undefined,
+            activity: undefined,
             user: user.user_id
     })
+
     useEffect(() => {
         listExerciseTypes()
             .then((res) => {
               setExerciseTypes(res)})
-            .catch((res) => { console.log('___IN___ useEffect:', res)})
+            .catch((res) => {})
         getAllActivities(user)
             .then((res) => setActivities(res))            
             .catch((res) => {console.log('res', res)})
-    }, [])
+    }, [user, ])
 
     const onCreate = (e) => {
         e.preventDefault()
         createExercise(user, formData)
-        navigate('/all-exercises')
+            .then((res) => {
+                console.log('res in onCreate', res)
+                navigate('/all-exercises')
+            })
+            .catch((res) => {
+                console.log('error catch in onCreate', res)
+            })
     }
+
     const onValueChange = (e) => {
+
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     } 
 
-    // TODO ADD FORM VALIDAITONS
     
     return (
 
@@ -59,12 +64,17 @@ function CreateExercise() {
                 </div>
             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                 <label>Name</label>
+                    {formData.name === '' ?
+                         <span className={`${styles.form_error}`}>
+                            You need to enter name
+                          </span> 
+                        : null}
                 <input
                     name='name' 
                     value={formData.name}
                     onChange={onValueChange}
                     className={styles.form_input}  
-                    placeholder='Choose a good name' />
+                    placeholder='Choose Name' />
             </div>
             
             <div className={`${styles.form_field} ${styles.form_field_2}`}>
@@ -89,7 +99,7 @@ function CreateExercise() {
                     onChange={onValueChange}
                     type={'text'} 
                     className={styles.form_input}  
-                    placeholder='Short Description'></textarea >
+                    placeholder='Please enter short description'></textarea >
             </div>
             <div className={`${styles.form_field} ${styles.form_field_4}`}>
                 <label>Cues</label>
@@ -111,7 +121,7 @@ function CreateExercise() {
                     max={1000}
                     type={'number'}
                     className={styles.form_input}  
-                    placeholder='How many Reps?'></input>
+                    placeholder='0-1000'></input>
             </div>
             <div className={`${styles.form_field} ${styles.form_field_6}`}>   
                 <label>Sets</label>
@@ -123,7 +133,7 @@ function CreateExercise() {
                     max={1000}
                     type={'number'}
                     className={styles.form_input}  
-                    placeholder='How many Sets?'></input>
+                    placeholder='0-1000'></input>
             </div>
             <div className={`${styles.form_field} ${styles.form_field_7}`}>
                 <label>Total Weights KG</label>
@@ -134,8 +144,8 @@ function CreateExercise() {
                     min={0}
                     max={1000}
                     type={'number'}
-                    lassName={styles.form_input}  
-                    placeholder='What weights?'></input>
+                    className={styles.form_input}  
+                    placeholder='0-1000'></input>
             </div>
             <div className={`${styles.form_field} ${styles.form_field_8}`}>
                 <label>Total Calories</label>
@@ -147,7 +157,7 @@ function CreateExercise() {
                     max={100000}
                     type={'number'}
                     className={styles.form_input}  
-                    placeholder='Calories burned'></input>
+                    placeholder='0-100000'></input>
             </div>
 
             <button className={`${styles.form_field} ${styles.form_field_9}`}>

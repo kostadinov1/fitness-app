@@ -23,10 +23,10 @@ function ExerciseCard({exercise, onDelete}) {
                     to={`/edit-exercise/${exercise.id}/`}>
                     Edit
                     </Link>
-                {/* <Link className={`${styles.card_cell_9} ${styles.card_cell} ${styles.card_cell_link}`}  
+                <Link className={`${styles.card_cell_9} ${styles.card_cell} ${styles.card_cell_link}`}  
                     onClick={() => {onDelete(exercise.id)}}>
                     Delete
-                    </Link> */}
+                    </Link>
             </div>
         </div>
     )
