@@ -18,19 +18,12 @@
 
 .sider_1 {
     grid-area: one;
-    padding: 1.2em;
-    border: 1px solid var(--acc-1);
-    border-radius: var(--b-radius);
-    background-color: var(--sec);
-
+    overflow: hidden;
 }
 
 .sider_2 {
     grid-area: two;
-    padding: 1.2em;
-    border: 1px solid var(--acc-1);
-    border-radius: var(--b-radius);
-    background-color: var(--sec);
+    overflow: hidden;
 
 
 }

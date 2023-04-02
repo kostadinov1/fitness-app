@@ -6,6 +6,7 @@ import ExerciseCard from './ExerciseCard/ExerciseCard'
 import { UserContext } from '../../../contexts/UserContext'
 import ListCard from '../../Cards/ListCard/ListCard'
 import DeleteModal from './DeleteModal/DeleteModal'
+import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 
 function AllExercises() {
     const {user} = useContext(UserContext)
@@ -46,14 +47,12 @@ function AllExercises() {
                                     setTrigger={setTrigger}
                                     /> 
                             : null}
+            <div className={`${styles.sider_1}`}>
             <ListCard></ListCard>
+
+            </div>
             <div className={styles.sider_2}>
-            <h4>More Links</h4>
-                <ul>
-                    <li><Link to={'/'}></Link>Create Exercise</li>
-                    <li><Link to={'/'}></Link>Exercises</li>
-                    <li><Link to={'/'}></Link>Profile</li>
-                </ul>
+                <UsefulLinksCard></UsefulLinksCard>
             </div>
             <div className={styles.exy_box}>
                 {exercises ? exercises.map((exercise) => 

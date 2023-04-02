@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { deleteActivity, getAllActivities } from '../../../api/activities';
 import { UserContext } from '../../../contexts/UserContext';
 import ListCard from '../../Cards/ListCard/ListCard';
+import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard';
 import ActivityCard from './ActivityCard/ActivityCard';
 import styles from './AllActivities.module.css';
 import DeleteModal from './DeleteModal/DeleteModal';
@@ -47,12 +48,13 @@ function AllActivities() {
                                     setTrigger={setTrigger}
                                     /> 
                             : null}
+            <div className={styles.sider_1}>
+
             <ListCard></ListCard>
+            </div>
             <div className={styles.sider_2}>
-                <ul>
-                    <li><Link to={'/'}>Create Activity</Link></li>
-                    <li><Link to={'/'}>Exercises</Link></li>
-                </ul>
+            <UsefulLinksCard></UsefulLinksCard>
+
             </div>
             <div className={styles.acty_box}>
             {/* <h1 className='section_title'>Activities</h1> */}
