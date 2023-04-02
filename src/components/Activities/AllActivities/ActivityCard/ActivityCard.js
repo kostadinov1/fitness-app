@@ -53,7 +53,7 @@ function ActivityCard({activity, onDelete}) {
                 Exercises: {activityExercices.length !== 0 ?
                  activityExercices.map((ex) => 
                                 <span className={`${styles.exercise} ${''}`}
-                                    key={activityExercices.id}
+                                    key={ex.id}
                                     >
                                     {ex.name}
 

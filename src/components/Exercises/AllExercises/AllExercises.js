@@ -12,6 +12,7 @@ function AllExercises() {
     const [exercises, setExercises] = useState([])
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [currentExerciseID, setCurrentExerciseID] = useState(null)
+    const [trigger, setTrigger] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -26,32 +27,24 @@ function AllExercises() {
     const onDeleteCancel = () => {
         setShowDeleteModal(false)
     }
-    const onDeleteConfirm = (currentExerciseID) => {
+    const onDeleteConfirm = (currentExerciseID, setTrigger) => {
                 deleteExercise(user, currentExerciseID)
             .then((res) => {
                 setShowDeleteModal(false)
+                setTrigger(true)
                     // navigate('/all-exercises')
                             })
             .catch()
     }
-    // const onDelete = (exerciseID) => {
-    //     deleteExercise(user, exerciseID)
-    //         .then((res) => {
-    //                 setExercises(exercises)
-    //                 console.log(res, 'ondelete res')
-    //                 setModified(true)
-    //                 // navigate('/all-exercises')
-    //                         })
-    //         .catch()
-    // }   
-
     
     return (
         <section className={styles.exercises}>
             {showDeleteModal ? <DeleteModal 
                                     onDeleteCancel={onDeleteCancel} 
                                     onDeleteConfirm={onDeleteConfirm}
-                                    currentExerciseID={currentExerciseID}/> 
+                                    currentExerciseID={currentExerciseID}
+                                    setTrigger={setTrigger}
+                                    /> 
                             : null}
             <ListCard></ListCard>
             <div className={styles.sider_2}>

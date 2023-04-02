@@ -5,10 +5,14 @@ import { UserContext } from '../../../contexts/UserContext';
 import ListCard from '../../Cards/ListCard/ListCard';
 import ActivityCard from './ActivityCard/ActivityCard';
 import styles from './AllActivities.module.css';
+import DeleteModal from './DeleteModal/DeleteModal';
 
 function AllActivities() {
     const {user} = useContext(UserContext)
     const [activites, setActivities] = useState([])
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [currentActivityID, setCurrentActivityID] = useState(null)
+    const [trigger, setTrigger] = useState(false)
     const navigate = useNavigate()
     const [modified, setModified] = useState(false)
 
@@ -19,16 +23,30 @@ function AllActivities() {
     }, [user, setActivities])
 
     const onDelete = (activityID) => {
-        deleteActivity(user, activityID)
+        setShowDeleteModal(true)
+        setCurrentActivityID(activityID)
+    }
+    const onDeleteCancel = () => {
+        setShowDeleteModal(false)
+    }
+    const onDeleteConfirm = (currentActivityID, setTrigger) => {
+                deleteActivity(user, currentActivityID)
             .then((res) => {
-                // navigate('/all-activities')
-            })
-            .catch((res) => {})
-        setModified(true)
-    }   
-    
+                setShowDeleteModal(false)
+                setTrigger(true)
+                    // navigate('/all-exercises')
+                            })
+            .catch()
+    }
     return (
         <section className={styles.activities}>
+                        {showDeleteModal ? <DeleteModal 
+                                    onDeleteCancel={onDeleteCancel} 
+                                    onDeleteConfirm={onDeleteConfirm}
+                                    currentActivityID={currentActivityID}
+                                    setTrigger={setTrigger}
+                                    /> 
+                            : null}
             <ListCard></ListCard>
             <div className={styles.sider_2}>
                 <ul>
