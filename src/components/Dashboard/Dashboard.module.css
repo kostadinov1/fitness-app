@@ -2,7 +2,7 @@
 
 }
 .grid {
-    min-height: 100vh;
+    max-height: 200vh;
     display: grid;
     gap: 0.4em;
     grid-template-columns:  repeat(8, 1fr);
@@ -10,10 +10,10 @@
     grid-template-areas: 
                     "one one two three three four four four"
                     "one one two three three four four four"
-                    "one one six six six six six six"
-                    "five five six six six six six six"
-                    "seven seven seven seven seven seven eight eight"
-                    "seven seven seven seven seven seven eight eight"
+                    "one one six six six seven seven seven"
+                    "five five six six six seven seven seven"
+                    "eight eight eight eight eight eight eight eight"
+                    "eight eight eight eight eight eight eight eight"
                     "nine nine ten ten ten ten ten ten"
                     "nine nine ten ten ten ten ten ten"
                     ;
@@ -21,6 +21,7 @@
     padding: 1em 1em 4em 1em;
     /* background-color: brown; */
 }
+
 
 .grid_card_1  {
     grid-area: one;
@@ -33,12 +34,24 @@
 }
 .grid_card_2 {
     grid-area: two;
+    max-height: 30vh;
+    overflow: scroll;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+.grid_card_2 ul {
+    list-style: none;
+
 }
 .grid_card_3 {
     grid-area: three;
+    max-height: 30vh;
+    overflow: scroll;
 }
 .grid_card_4 {
     grid-area: four;
+    max-height: 30vh;
+    overflow: scroll;
 }
 .grid_card_4 img {
     object-fit: cover;
