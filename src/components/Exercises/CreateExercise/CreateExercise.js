@@ -11,13 +11,13 @@ function CreateExercise() {
     const navigate = useNavigate()
     const [exerciseTypes, setExerciseTypes] = useState([])
     const [activities, setActivities] = useState([])
-
+    const [formError, setFormError] = useState(false)
 
 
     const [formData, setFormData] = useState({
             name: '',
             description: '',
-            reps: 0,
+            reps: null,
             sets: 0,
             cues: '',
             weights_in_kg: 0,
@@ -33,7 +33,9 @@ function CreateExercise() {
               setExerciseTypes(res)})
             .catch((res) => {})
         getAllActivities(user)
-            .then((res) => setActivities(res))            
+            .then((res) => {
+                res.
+                setActivities(res)})            
             .catch((res) => {console.log('res', res)})
     }, [user, ])
 
@@ -167,7 +169,8 @@ function CreateExercise() {
 
             <div className={`${styles.form_field} ${styles.form_field_10}`}>
                 <label>Related Activity</label>
-                <select 
+                <select
+                 
                     value={formData.activity}
                     onChange={onValueChange}
                     name='activity'

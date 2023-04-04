@@ -1,14 +1,17 @@
 .auth_section {
     min-height: 100vh;
+    background-color: var(--sec-2);
 }
 .form_box {
+    position: relative;
+    top: -4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     padding: 0em 2em 4em 2em;
-    /* background-color: var(--sec); */
+    background-color: var(--sec-2);
 
 }
 
@@ -37,4 +40,7 @@
 
 .button {
     margin: 1em auto auto auto;
+}
+.form_error {
+    color: red;
 }

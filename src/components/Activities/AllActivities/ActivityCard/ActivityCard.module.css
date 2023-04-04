@@ -79,6 +79,13 @@
         color: var(--sec-2);
         font-weight: bold;
     }
+    .exer {
+        background-color: var(--prime);
+        border: 1px solid var(--text);
+        border-radius: var(--b-radius);
+        padding: 0.2em 0.4em;
+        margin: auto;
+    }
 
 
 

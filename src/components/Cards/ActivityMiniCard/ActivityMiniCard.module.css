@@ -8,8 +8,8 @@
                 "two two two two"
                 "two two two two"
                 "three three three three";
-    height: 100%;
-    width: 100%;
+    max-height: 38vh;
+                width: 100%;
     background-color: var(--sec);
     background-repeat: no-repeat;
     background-size: cover;
@@ -84,7 +84,13 @@
         font-weight: bold;
     }
 
-
+    .exer {
+        background-color: var(--prime);
+        border: 1px solid var(--text);
+        border-radius: var(--b-radius);
+        padding: 0.2em 0.4em;
+        margin: auto;
+    }
 
 
 

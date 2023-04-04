@@ -11,7 +11,7 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { user, setUser, loggedIn, setLoggedIn }= useContext(UserContext)
-    
+    const [formError, setFormError] = useState(false)
 
     // TODO ADD FORM VALIDAITONS
 
@@ -25,7 +25,9 @@ function Login() {
                 setUserData(res)
                 navigate('/dashboard');
             })
-            .catch((res) => {console.log('__login__', res)})
+            .catch((res) => {
+                setFormError(true)
+                console.log('__login__', res)})
       
     }
     const onEmailChange = (e) => {
@@ -44,6 +46,11 @@ function Login() {
       <div className={styles.form_box}>
         <h1>LOGIN</h1>
         <form onSubmit={onLogin} className={styles.form}>
+            {formError ?
+                         <span className={`${styles.form_error}`}>
+                            Wrong Credentials Provided!
+                          </span> 
+                        : null}
             <label>Email</label>
             <input 
                 value={email}   

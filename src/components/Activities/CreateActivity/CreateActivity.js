@@ -11,7 +11,7 @@ function CreateActivity() {
     const [activityTypes, setActivityTypes] = useState([])
   
     const [formData, setFormData] = useState({
-            name: null,
+            name: '',
             duration: null,
             description: null,
             distance: null,
@@ -52,9 +52,13 @@ function CreateActivity() {
         <form onSubmit={onCreate} className={styles.form}>
 
                 <div className={`${styles.form_input} ${styles.form_item_box_1} ${styles.item}`}>
-                    <label>
-                        Name
+                    <label>Name
                         </label>
+                        {formData.name === '' ?
+                         <span className={`${styles.form_error}`}>
+                            You need to enter name
+                          </span> 
+                        : null}
                     <input
                         value={formData.name}
                         onChange={onValueChange}

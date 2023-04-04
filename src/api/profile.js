@@ -24,7 +24,7 @@ const getProfile  = async (user) => {
 }
 
 const editProfile  = async (user, profileProps) => {
-    const url = baseURL + `/accounts/edit-profile/${user.id}/`
+    const url = baseURL + `/accounts/edit-profile/${user.user_id}/`
     try {
         let response = await fetch(url, {
             method: 'PUT',
@@ -46,8 +46,8 @@ const editProfile  = async (user, profileProps) => {
         console.log('catch Err', err.message)
     }
 }
-const deleteProfile  = async (user, profileID) => {
-    const url = baseURL + `/accounts/delete-profile/${profileID}/`
+const deleteProfile  = async (user) => {
+    const url = baseURL + `/accounts/delete-profile/${user.user_id}/`
     try {
         let response = await fetch(url, {
             method: 'DELETE',
@@ -68,7 +68,7 @@ const deleteProfile  = async (user, profileID) => {
     }
 }
 const uploadProfileImage = async (user, fileObj) => {
-    const url = baseURL + `/accounts/upload-profile-image/${user.id}`
+    const url = baseURL + `/accounts/upload-profile-image/${user.user_id}`
     const response = await fetch(url, {
         method: 'put',
         headers: {'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryqTqJIxvkWFYqvP5s',

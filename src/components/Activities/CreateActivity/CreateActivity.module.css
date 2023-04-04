@@ -75,3 +75,8 @@
 .form button {
     margin-top: 1.4em;
 }
+
+
+.form_error {
+    color: red;
+}

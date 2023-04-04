@@ -13,6 +13,7 @@ import ActivityMiniCard from "../Cards/ActivityMiniCard/ActivityMiniCard";
 import ActivityCard from "../Activities/AllActivities/ActivityCard/ActivityCard";
 import ExerciseCard from "../Exercises/AllExercises/ExerciseCard/ExerciseCard";
 import ListCard from "../Cards/ListCard/ListCard";
+import { AimOutlined, CalendarFilled, DeploymentUnitOutlined, FireFilled, HeatMapOutlined, SyncOutlined, UserOutlined } from "@ant-design/icons";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -29,8 +30,8 @@ function Dashboard() {
     const [profile, setProfile] = useState([])
     const { user, setUser } = useContext(UserContext) 
     console.log('profile in dash' , profile)
-    const activitiesCarded = activities.map((activity) => <ActivityMiniCard activity={activity}/>)
-    const exercisesCarded = exercises.map((exercise) => <ExerciseCard  exercise={exercise}/>)
+    const activitiesCarded = activities.map((activity) => <ActivityMiniCard activity={activity} onDragStart={handleDragStart} role="presentation" />)
+    const exercisesCarded = exercises.map((exercise) => <ExerciseCard  exercise={exercise} onDragStart={handleDragStart} role="presentation" />)
     useEffect(() => {
         getAllExercises(user)
             .then((res) => {
@@ -65,13 +66,13 @@ function Dashboard() {
             <div className={`${styles.grid_card} ${styles.grid_card_2}`}>
                 <p>Quick Links</p>
                 <ul>
-                    <li><Link to={'/'}>Profile</Link></li>
-                    <li><Link to={'/'}>Activities</Link></li>
-                    <li><Link to={'/'}>Exercises</Link></li>
-                    <li><Link to={'/'}>Periodization</Link></li>
-                    <li><Link to={'/'}>Cycles</Link></li>
-                    <li><Link to={'/'}>Goals</Link></li>
-                    <li><Link to={'/'}>Defenders</Link></li>
+                    <li><Link to={'/'}><UserOutlined /> Profile</Link></li>
+                    <li><Link to={'/'}><DeploymentUnitOutlined /> Activities</Link></li>
+                    <li><Link to={'/'}><FireFilled /> Exercises</Link></li>
+                    <li><Link to={'/'}><CalendarFilled /> Periodization</Link></li>
+                    <li><Link to={'/'}><SyncOutlined /> Cycles</Link></li>
+                    <li><Link to={'/'}><AimOutlined /> Goals</Link></li>
+                    <li><Link to={'/'}><HeatMapOutlined /> Defenders</Link></li>
                 </ul>
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_3}`}>

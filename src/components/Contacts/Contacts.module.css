@@ -1,30 +1,24 @@
-
 .contacts {
     min-height: 100vh;
+    background-color: var(--sec-2);
+    position: relative;
+    top: -4px;
 }
-
 .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     height: 94vh;
     padding: 1em;
-
     overflow: hidden;
 }
-
 .banner {
     height: 100%;
 }
-
 .banner img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
-
-
-
 .form_box {
     position: relative;
     background-color: var(--prime-2);
@@ -33,19 +27,14 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    /* max-width: 60em; */
-    /* margin: auto auto; */
     gap: 2em;
     border-radius: var(--b-radius);
     border: 1px solid var(--sec-2);
 }
-
 .form {
     position: relative;
-    /* top: -10em; */
     display: grid;
     padding: 2em;
-
     gap: 0.6em;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -53,16 +42,14 @@
                         "one two"
                          "three three"
                          "four four";
-
 }
-
 .field_box {
     padding: 0.4em;
-    border-radius: var(--b-radius);
-    /* border: 1px solid var(--sec-2); */
-
 }
-
+.field_box * {
+    border-radius: var(--b-radius);
+    padding: 0.6em;
+}
 
 .field_1 {
     display: grid;
@@ -89,14 +76,11 @@
 }
 
 .info_box {
-    /* background-color: red; */
     width: 80%;
     height: 30%;
     padding: 2em;
     border-radius: var(--b-radius);
     border: 1px solid var(--sec-2);
-
     letter-spacing: 0.8pt;
     font-size: large;
-
 }

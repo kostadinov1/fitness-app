@@ -1,7 +1,7 @@
 .exercises {
     /* margin-top: 0px; */
     position: relative;
-    min-height: 100vh;
+    min-height: 80vh;
     display: grid;
     gap: 0.6em;
     padding: 0.8em;
@@ -39,7 +39,9 @@
 .exy_box {
     grid-area: three;
     display: grid;
-    
+    align-items: center;
+    align-content: start;
+    justify-content: space-evenly;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
     padding: 0.6em;

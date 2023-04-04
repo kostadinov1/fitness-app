@@ -51,7 +51,7 @@ function ActivityMiniCard({activity, onDelete}) {
             <span className={`${styles.card_cell_10} ${styles.card_cell}`}>
                 Exercises: {activityExercices.length !== 0 ?
                  activityExercices.map((ex) => 
-                                <span className={`${styles.exercise} ${''}`}
+                                <span className={`${styles.exer} ${''}`}
                                     key={ex.id}
                                     >
                                     {ex.name}

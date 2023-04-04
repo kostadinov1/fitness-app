@@ -24,6 +24,7 @@ function AllExercises() {
     const onDelete = (exerciseID) => {
         setShowDeleteModal(true)
         setCurrentExerciseID(exerciseID)
+        setTrigger(true)
     }
     const onDeleteCancel = () => {
         setShowDeleteModal(false)
@@ -56,7 +57,7 @@ function AllExercises() {
             </div>
             <div className={styles.exy_box}>
                 {exercises ? exercises.map((exercise) => 
-                           <ExerciseCard exercise={exercise} onDelete={onDelete} key={exercise.id}/>
+                           <ExerciseCard exercise={exercise} onDelete={onDelete} setTrigger={setTrigger} key={exercise.id}/>
                         ): <h1>No activites Yet!</h1>
                 }
             </div>

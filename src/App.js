@@ -22,6 +22,7 @@ import Exercise from './components/Exercises/Exercise/Exercise';
 import AboutUs from './components/AboutUs/AboutUs';
 import Contacts from './components/Contacts/Contacts';
 import { getUserData } from './utils/userUtils';
+import Profile from './components/Profiles/Profile/Profile';
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
                         <>
                                 {/* <<< ------ Core Auth ------- >>>*/}         
                             <Route path='/dashboard' element={<Dashboard />}/>
+                            <Route path='/profile' element={<Profile />}/>
 
                                 {/* <<< ------ Exercises------- >>> */}
                             <Route path='/all-exercises' element={<AllExercises />} />

@@ -5,10 +5,6 @@ import styles from './ExerciseCard.module.css'
 
 
 function ExerciseCard({exercise, onDelete}) {
-
-    const [currentExercise, setCurrentExercise] = useState({})
-
-
     return (
         <div className={styles.card}>
             <div className={styles.card_info}>

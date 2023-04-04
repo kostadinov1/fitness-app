@@ -50,6 +50,9 @@
     font-size: 1.2rem;
     font-family: 'Montserrat Alternates', sans-serif;
     letter-spacing: 1pt;
+    max-width: 16em;
+    overflow: scroll;
+    /* background-color: red; */
 }
 .auth_icons {
     margin: 0px 2em;

@@ -12,11 +12,12 @@ function Register() {
     const [repass, setRepass] = useState('');
     const navigate = useNavigate()
     const {setUser,  setLoggedIn} = useContext(UserContext)
+    const [formError, setFormError] = useState(false)
 
 
     const onRegister = (e) => {
         e.preventDefault()
-        if (password === repass) {
+        if (password === repass && !(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) {
             registerService(email, password)
             .then(() => {
                     loginService(email, password)
@@ -30,15 +31,25 @@ function Register() {
             .catch((res) => {
                 console.log('__reger_catch__', res);})
           } else {
-            alert('Passwords DO NOT MATCH!')
+            setFormError('Credentials are wrong format.')
           }
+
     }
     const onEmailChange = (e) => {
         e.preventDefault()
+        if (!e.target.value) {
+            setFormError('All Fields Are Required!')
+          } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{0,4}$/i.test(email)) {
+            setFormError('Invalid Email Format.')
+          } else {
+            setFormError('')
+          }
+        
         setEmail(e.target.value)
     }
     const onPasswordChange = (e) => {
         e.preventDefault()
+        
         setPassword(e.target.value)
         
     }
@@ -54,6 +65,11 @@ function Register() {
       <div className={styles.form_box}>
         <h1>REGISTER</h1>
         <form onSubmit={onRegister} className={styles.form}>
+        {formError.length > 0 ?
+                         <span className={`${styles.form_error}`}>
+                            {formError}
+                          </span> 
+                        : null}
             <label>Email</label>
             <input 
                 value={email}

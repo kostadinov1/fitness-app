@@ -17,7 +17,7 @@ function IconMenu() {
             </Link>
         </li>
         <li>
-            <Link className={`${styles.link}`} to={`/profile/${user.id}/`}>
+            <Link className={`${styles.link}`} to={`/profile`}>
                 <UserOutlined /> Profile
             </Link>
         </li>

@@ -1,4 +1,4 @@
-import styles from '.DeleteProfile.module.css'
+import styles from '.DeleteProfileModal.module.css'
 import React from 'react'
 
 function DeleteProfile() {
