@@ -9,7 +9,7 @@ function ListCard(item) {
                 <h4>Quick Links</h4>
                 <ul>
                     <li><Link to={`/dashboard`}><SettingOutlined /> Dashboard</Link></li>
-                    <li><Link to={`/profile/$£{user.id}`}><UserOutlined /> Profile</Link></li>
+                    <li><Link to={`/profile`}><UserOutlined /> Profile</Link></li>
                     <hr></hr>
                     <li><Link to={'/all-exercises'}><FireFilled /> Exercises</Link></li>
                     <li><Link to={'/create-exercise'}><SubnodeOutlined /> Create Exercise</Link></li>

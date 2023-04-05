@@ -8,17 +8,30 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Link, useNavigate } from 'react-router-dom'
 import { logoutService } from '../../../api/auth'
 import { clearUserData } from '../../../utils/userUtils'
+import EditProfileModal from '../EditProfileModal/EditProfileModal'
 
 function Profile() {
     const {user, setUser, loggedIn, setLoggedIn,} = useContext(UserContext)        
 	const [profile, setProfile] = useState({})
 	const navigate = useNavigate()
+	const [toggleEdit, setToggleEdit] = useState(false)
+	const [toggleDelete, setToggleDelete] = useState(false)
+
 
 	useEffect(() => {
 		getProfile(user)
 			.then((res) => {setProfile(res)})
 			.catch((res) => {})
 	}, [user, ])
+
+	const onEdit = () => {
+		if (toggleEdit) {
+			setToggleEdit(false)
+		} else {
+			setToggleEdit(true)
+		}
+		console.log(toggleEdit)
+	}
 
 	const onDelete = () => {
 		deleteProfile(user)
@@ -60,40 +73,43 @@ function Profile() {
 					<img src={`${profile.image_local}`} alt='' />
 				</div>
 				<div className={`${styles.card} ${styles.card_2}`}>
-					
+				PROFILE CARD
 				</div>
 				<div className={`${styles.card} ${styles.card_3}`}>
 					PROFILE CARD
 				</div>
 				<div className={`${styles.card} ${styles.card_4}`}>
-					<div className={`${styles.button_box}`}>
-						<EditOutlined />
-						<Link 
-							to={`/edit-profile/${user.user_id}`} 
+						<button
+							onClick={onEdit} 
 							className={`${styles.button}`}>
-								Edit
-						</Link>
-					</div>
-					<div className={`${styles.button_box}`}>
-						<DeleteOutlined />
+							<EditOutlined /> Edit
+						</button>
 						<button 
 							onClick={onDelete}
 							className={`${styles.button}`}>
-							Delete
+						<DeleteOutlined /> Delete
 						</button>
-					</div>
 				</div>
 				<div className={`${styles.card} ${styles.card_5}`}>
-					<p>{profile.first_name} {profile.last_name}</p>
-					PROFILE CARD
+					Settings
 				</div>
 				<div className={`${styles.card} ${styles.card_6}`}>
 					PROFILE CARD
 				</div>
 				<div className={`${styles.card} ${styles.card_7}`}>
-					PROFILE CARD
+                <h3>{profile.first_name} {profile.last_name}</h3>
+                <ul>
+                    <li>DOB: {profile.dob}</li>
+                    <li>Phone: {profile.phone}</li>
+                    <li>Email: {user.email}</li>
+                    <li>Gender: {profile.gender}</li>
+                    <li>Prime Sport: All In One</li>
+                </ul>
 				</div>
 			</div>
+			{toggleEdit ?
+				<EditProfileModal setToggleEdit={setToggleEdit}/>
+			   : null}
         </section>
 	)
 }

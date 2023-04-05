@@ -66,13 +66,13 @@ function Dashboard() {
             <div className={`${styles.grid_card} ${styles.grid_card_2}`}>
                 <p>Quick Links</p>
                 <ul>
-                    <li><Link to={'/'}><UserOutlined /> Profile</Link></li>
-                    <li><Link to={'/'}><DeploymentUnitOutlined /> Activities</Link></li>
-                    <li><Link to={'/'}><FireFilled /> Exercises</Link></li>
-                    <li><Link to={'/'}><CalendarFilled /> Periodization</Link></li>
-                    <li><Link to={'/'}><SyncOutlined /> Cycles</Link></li>
-                    <li><Link to={'/'}><AimOutlined /> Goals</Link></li>
-                    <li><Link to={'/'}><HeatMapOutlined /> Defenders</Link></li>
+                    <li><Link to={'/profile'}><UserOutlined /> Profile</Link></li>
+                    <li><Link to={'/all-activities'}><DeploymentUnitOutlined /> Activities</Link></li>
+                    <li><Link to={'/all-exercises'}><FireFilled /> Exercises</Link></li>
+                    <li><Link to={'/periodization'}><CalendarFilled /> Periodization</Link></li>
+                    <li><Link to={'/cycles'}><SyncOutlined /> Cycles</Link></li>
+                    <li><Link to={'/goals'}><AimOutlined /> Goals</Link></li>
+                    <li><Link to={'/defenders'}><HeatMapOutlined /> Defenders</Link></li>
                 </ul>
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_3}`}>

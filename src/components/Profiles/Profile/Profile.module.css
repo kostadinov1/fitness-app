@@ -3,8 +3,8 @@
     position: relative;
     min-height: 80vh;
     display: grid;
-    gap: 0.6em;
-    padding: 0.8em;
+    gap: 0.2em;
+    padding: 0.2em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                     "one three three three three three"
@@ -27,7 +27,6 @@
 
 
 }
-
 .exercises h4 {
     text-align: center;
     font-size: 1.1rem;
@@ -35,7 +34,6 @@
     border-bottom: 3px solid var(--acc-1);
     border-top: 1px solid var(--acc-1);
 }
-
 .profile_box {
     grid-area: three;
     display: grid;
@@ -49,22 +47,18 @@
                         "seven seven seven five five six six"
                         "seven seven seven five five six six";
     max-height: 90vh;
-    gap: 1em;
+    gap: 0.4em;
     padding: 0.6em;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     background-color: var(--prime);
-
 }
-
 .card {
     background-color: var(--sec-2);
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     padding: 1em;
 }
-
-
 .card_1 {
     grid-area: one;
 }
@@ -83,13 +77,17 @@
 .card_4 {
     grid-area: four;
     display: flex;
+    gap: 1em;
     padding: 1em;
+    
 }
-    .card_4 p {
-        padding: 0.2em;
-        font-size: 3rem;
-        font-weight: bold;
-    }
+.button {
+    width: 50%;
+    font-weight: bold;
+    font-size: 1.4rem;
+    letter-spacing: 1pt;
+
+}
 .card_5 {
     grid-area: five;
 }
@@ -99,3 +97,9 @@
 .card_7 {
     grid-area: seven;
 }
+.card_7 > * {
+        font-size: 1.2rem;
+        letter-spacing: 1pt;
+        list-style: none;
+
+    }

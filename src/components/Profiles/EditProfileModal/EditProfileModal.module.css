@@ -1,0 +1,53 @@
+
+.edit_profile {
+    
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--dimmer);
+}       
+
+.form  {
+    /* display: grid; */
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 40vw;
+
+}
+
+.field {
+    display: grid;
+    width: 100%;
+    color: var(--text);
+}
+.field input {
+    padding: 0.2em;
+}
+
+.field_1 {
+    grid-area: one;
+}
+.field_2 {
+    grid-area: two;
+}
+.field_3 {
+    grid-area: three;
+}
+.field_4 {
+    grid-area: four;
+}
+.field_5 {
+    grid-area: five;
+}
+.field_6 {
+    grid-area: six;
+}
+.field_7 {
+    grid-area: seven;
+}
+
+
+
+
+
