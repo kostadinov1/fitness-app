@@ -30,14 +30,14 @@ function AllActivities() {
     const onDeleteCancel = () => {
         setShowDeleteModal(false)
     }
-    const onDeleteConfirm = (currentActivityID, setTrigger) => {
-                deleteActivity(user, currentActivityID)
-            .then((res) => {
-                setShowDeleteModal(false)
-                setTrigger(true)
-                    // navigate('/all-exercises')
-                            })
-            .catch()
+    const onDeleteConfirm = (currentActivityID) => {
+            deleteActivity(user, currentActivityID)
+                .then((res) => {
+                    setActivities((state) => state.filter((ex) => ex.id !== currentActivityID) )
+                    setShowDeleteModal(false)
+                        // navigate('/all-exercises')
+                                })
+                .catch()
     }
     return (
         <section className={styles.activities}>

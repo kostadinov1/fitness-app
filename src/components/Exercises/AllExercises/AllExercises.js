@@ -24,16 +24,17 @@ function AllExercises() {
     const onDelete = (exerciseID) => {
         setShowDeleteModal(true)
         setCurrentExerciseID(exerciseID)
-        setTrigger(true)
+        
     }
     const onDeleteCancel = () => {
         setShowDeleteModal(false)
     }
-    const onDeleteConfirm = (currentExerciseID, setTrigger) => {
-                deleteExercise(user, currentExerciseID)
-            .then((res) => {
-                setShowDeleteModal(false)
-                setTrigger(true)
+    const onDeleteConfirm = (currentExerciseID) => {
+        deleteExercise(user, currentExerciseID)
+        .then((res) => {
+            setShowDeleteModal(false)
+            setTrigger(true)
+            setExercises((state) => state.filter((ex) => ex.id !== currentExerciseID) )
                     // navigate('/all-exercises')
                             })
             .catch()
@@ -57,7 +58,7 @@ function AllExercises() {
             </div>
             <div className={styles.exy_box}>
                 {exercises ? exercises.map((exercise) => 
-                           <ExerciseCard exercise={exercise} onDelete={onDelete} setTrigger={setTrigger} key={exercise.id}/>
+                           <ExerciseCard exercise={exercise} onDelete={onDelete} setExercises={setExercises} key={exercise.id}/>
                         ): <h1>No activites Yet!</h1>
                 }
             </div>
