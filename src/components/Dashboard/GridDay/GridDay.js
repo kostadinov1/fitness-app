@@ -5,7 +5,7 @@ import styles from './GridDay.module.css'
 function GridDay({activities}) {
 
   return (
-    <ul className={`${styles.grid_day}`}>
+    <div className={`${styles.grid_day}`}>
       {activities ?
          activities.map((activity) => 
                 <GridActivity 
@@ -13,7 +13,7 @@ function GridDay({activities}) {
                     activity={activity}
                     />)
        :null}
-     </ul>
+     </div>
   )
 }
 

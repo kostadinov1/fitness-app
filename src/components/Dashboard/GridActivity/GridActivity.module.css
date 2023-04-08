@@ -1,0 +1,48 @@
+.li {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+                        "three three three three"
+                        "one one two two"
+                        ;
+    gap: .2em;
+    background-color: var(--acc-1);
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    list-style: none;
+    width: 100%;
+    margin: .1em;
+    padding: .1em;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    padding: 0.2em;
+    background-color: var(--sec-2);
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    font-size: .8rem;
+    text-align: center;
+
+}
+
+.cell_1 {
+    grid-area: one;
+}
+.cell_2 {
+    grid-area: two;
+
+}
+.cell_3 {
+    grid-area: three;
+    font-size: 1rem;
+
+}
+
+.span {
+    font-weight: bold;
+}
+.units {
+    font-size: .5rem;
+}
