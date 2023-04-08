@@ -2,9 +2,12 @@
     position: relative;
     top: 3em;
     bottom: 0px;
+    display: flex;
+    justify-content: space-evenly;
     width: 100vw;
     min-height: 16vh;
-    background-color: var(--sec);
+    padding: 1em;
+    background-color: var(--sec-2);
 }
 
 .ul {

@@ -1,0 +1,28 @@
+.footer_banner {
+    padding: 2em;
+    min-width: 30vw;
+    text-align: center;
+    border-radius: var(--b-radius);
+    letter-spacing: .4pt;
+    overflow: scroll;
+    border-top: .1em solid var(--text);
+    border-bottom: .1em solid var(--text);
+
+}
+
+.title {
+    border-radius: var(--b-radius);
+    border-top: .1em solid var(--acc-1);
+    border-bottom: .1em solid var(--acc-1);
+    background-color: var(--sec-2);
+}
+
+.subtitle {
+
+}
+.pdiv {
+
+    border-radius: var(--b-radius);
+}
+
+

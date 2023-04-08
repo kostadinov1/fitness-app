@@ -1,6 +1,7 @@
 import styles from './Contacts.module.css'
 import React, { useEffect, useState } from 'react'
 import { createContactMessage } from '../../api/contactMessage'
+import SimpleMap from '../Custom/SimpleMap/SimpleMap'
 
 function Contacts() {
 
@@ -88,6 +89,7 @@ function Contacts() {
                 </div>
                 </div>
             </div>
+            <SimpleMap></SimpleMap>
         </section>
     )
 }

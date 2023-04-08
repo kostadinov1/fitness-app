@@ -1,6 +1,6 @@
 import { YoutubeFilled } from '@ant-design/icons'
 import React, { useState } from 'react'
-import EmbededVideo from '../../EmbededVideo/EmbededVideo'
+import EmbededVideo from '../../Custom/EmbededVideo/EmbededVideo'
 import styles from './UsefulLinks.module.css'
 
 const UsefulLinks = () => {
