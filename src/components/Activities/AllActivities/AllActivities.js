@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { deleteActivity, getAllActivities } from '../../../api/activities';
 import { UserContext } from '../../../contexts/UserContext';
 import ListCard from '../../Cards/ListCard/ListCard';
@@ -13,13 +12,11 @@ function AllActivities() {
     const [activites, setActivities] = useState([])
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [currentActivityID, setCurrentActivityID] = useState(null)
-    const [trigger, setTrigger] = useState(false)
-    const navigate = useNavigate()
-    const [modified, setModified] = useState(false)
 
     useEffect(() => {
         getAllActivities(user)
-            .then((res) => { setActivities(res)})
+            .then((res) => { setActivities(res)
+                console.log(res)})
             .catch((res) => {})
     }, [user, setActivities])
 
@@ -34,9 +31,7 @@ function AllActivities() {
             deleteActivity(user, currentActivityID)
                 .then((res) => {
                     setActivities((state) => state.filter((ex) => ex.id !== currentActivityID) )
-                    setShowDeleteModal(false)
-                        // navigate('/all-exercises')
-                                })
+                    setShowDeleteModal(false)})
                 .catch()
     }
     return (
@@ -45,7 +40,6 @@ function AllActivities() {
                                     onDeleteCancel={onDeleteCancel} 
                                     onDeleteConfirm={onDeleteConfirm}
                                     currentActivityID={currentActivityID}
-                                    setTrigger={setTrigger}
                                     /> 
                             : null}
             <div className={styles.sider_1}>
@@ -62,8 +56,6 @@ function AllActivities() {
                                                     <ActivityCard 
                                                         activity={activity}
                                                         onDelete={onDelete}
-                                                        modified={modified} 
-                                                        setModified={setModified} 
                                                         key={activity.id}/>
                         ): <h1>No activites Yet!</h1>
                 }

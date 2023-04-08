@@ -23,6 +23,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Contacts from './components/Contacts/Contacts';
 import { getUserData } from './utils/userUtils';
 import Profile from './components/Profiles/Profile/Profile';
+import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
     }, [loggedIn])
 
     return (
+        <ErrorBoundary>
         <UserContext.Provider value={{user, setUser, loggedIn, setLoggedIn}}>
             <section id='body'>
                 <Header/>
@@ -96,6 +98,7 @@ function App() {
                 <Footer />
             </section>
         </UserContext.Provider>
+        </ErrorBoundary>
     );
     }
 

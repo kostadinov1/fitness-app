@@ -1,0 +1,8 @@
+.banner {
+    text-align: center;
+    min-height: 20vh;
+    font-size: 1.4rem;
+    letter-spacing: 1pt;
+    padding: 2em 2em;
+    background-color: var(--acc-1);
+}

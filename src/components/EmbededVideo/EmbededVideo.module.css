@@ -1,0 +1,12 @@
+.embeded_video {
+    height: 100%;
+    width: 100%;
+    background-image: url('/public/images/defaults/camera-default.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--dimmer);
+    border-radius: var(--b-radius);
+    overflow: hidden;
+}
+
+

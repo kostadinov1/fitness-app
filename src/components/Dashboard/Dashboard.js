@@ -10,28 +10,21 @@ import styles from './Dashboard.module.css'
 import 'react-alice-carousel/lib/alice-carousel.css';
 import AliceCarousel from "react-alice-carousel";
 import ActivityMiniCard from "../Cards/ActivityMiniCard/ActivityMiniCard";
-import ActivityCard from "../Activities/AllActivities/ActivityCard/ActivityCard";
 import ExerciseCard from "../Exercises/AllExercises/ExerciseCard/ExerciseCard";
-import ListCard from "../Cards/ListCard/ListCard";
 import { AimOutlined, CalendarFilled, DeploymentUnitOutlined, FireFilled, HeatMapOutlined, SyncOutlined, UserOutlined } from "@ant-design/icons";
+import GridWeek from "./GridWeek/GridWeek";
 
 const handleDragStart = (e) => e.preventDefault();
-
-const items = [
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-];
-
 
 function Dashboard() {
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
     const [profile, setProfile] = useState([])
-    const { user, setUser } = useContext(UserContext) 
-    console.log('profile in dash' , profile)
+    const { user } = useContext(UserContext) 
+
     const activitiesCarded = activities.map((activity) => <ActivityMiniCard activity={activity} onDragStart={handleDragStart} role="presentation" />)
     const exercisesCarded = exercises.map((exercise) => <ExerciseCard  exercise={exercise} onDragStart={handleDragStart} role="presentation" />)
+
     useEffect(() => {
         getAllExercises(user)
             .then((res) => {
@@ -41,6 +34,7 @@ function Dashboard() {
             })
         getAllActivities(user)
             .then((res) => {
+
                 setActivities(res)
             })
             .catch((res) => {
@@ -51,8 +45,8 @@ function Dashboard() {
             })
             .catch((res) => {
             })
-    }, [])
 
+    }, [user])
 
 
   return (
@@ -103,8 +97,8 @@ function Dashboard() {
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_8}`}>
-                <h3>Exercises STATS</h3>
-                {/* <ListCard /> */}
+                <h3>Week Schedual</h3>
+                <GridWeek activities={activities}></GridWeek>
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_9}`}>

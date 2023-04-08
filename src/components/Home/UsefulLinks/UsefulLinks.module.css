@@ -1,0 +1,27 @@
+
+.useful_links {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 2fr 1fr;
+    
+    margin: 0 0.2em 0.2em 0.2em;
+    background-color: var(--dimmer);
+    border-radius: var(--b-radius);
+    border: 2px solid var(--sec);
+    padding: 1em;
+    /* background-color: green; */
+}
+.list_card {
+    /* background-color: red; */
+    /* width: 48vw; */
+}
+
+.list_card_1 {
+    display: grid;
+    /* grid-area: one; */
+} 
+.list_card_2 {
+    display: grid;
+    /* grid-area: two; */
+}
+

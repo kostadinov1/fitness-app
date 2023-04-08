@@ -65,7 +65,6 @@ function ActivityCard({activity, onDelete}) {
                 to={`/edit-activity/${activity.id}/`}>
                 Edit
             </Link>
-                {/* TODO  add confirmation modal */}
             <Link className={`${styles.card_cell_12} ${styles.card_cell} ${styles.card_cell_link}`}  
                 onClick={() => onDelete(activity.id)}>
                 Delete
