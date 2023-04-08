@@ -7,41 +7,33 @@ const UsefulLinks = () => {
     const [youtubeURL, setYoutubeURL] = useState('')
 
     const onFocusHandler = (e) => {
-        console.log(e.target.href)
         setYoutubeURL(e.target.href)
     }
+
   return (
     <div className={`${styles.useful_links}`}>
-
-         <div className={`${styles.list_card} ${styles.list_card_1}`}>
+         <div className={`${styles.list_card_1}`}>
             <EmbededVideo youtubeURL={youtubeURL}></EmbededVideo>
         </div>
-
          <div className={`${styles.list_card} ${styles.list_card_2}`}>
-            <p><YoutubeFilled /> YOUTUBE Videos</p>
-            <hr></hr>
+            <p><YoutubeFilled 
+                style={{
+                        color: 'red',
+                        fontSize: '1.8rem',
+                        marginRight: '.2em',    
+                    }}
+                />Useful YouTube Videos
+            </p>
             <ul>
                 <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=zEYE-vcVKy8&list=PLPNW_gerXa4N_PVVoq0Za03YKASSGCazr'>Andrew Huberman and Andy Galpin Playlist</a></li>
-                <li><a href='https://www.youtube.com/@athleanx'>AthleanX</a></li>
-                <li><a href='https://www.youtube.com/@drandygalpin'>Andy Galpin</a></li>
-                <li><a href='https://www.youtube.com/@MI40MuscleIntelligence'>Ben Pakulski</a></li>
-                <li><a href='https://www.youtube.com/@calimove'>Calisthenicmovement</a></li>
-                <li><a href='https://www.youtube.com/@FoundMyFitness'>FoundMyFitness - Rhonda Patric </a></li>
-                <li><a href='https://www.youtube.com/@GarageStrength'>Garage Strength</a></li>
-                <li><a href='https://www.youtube.com/@JeffNippard'>Jeff Nippard</a> </li>
-                <li><a href='https://www.youtube.com/@TheAnatomyLab'>Institute of Human Anatomy</a></li>
-                <li><a href='https://www.youtube.com/@rangeofstrength'>Range of Strength</a></li>
-                <li><a href='https://www.youtube.com/@RenaissancePeriodization'>Renaissance Periodization</a> </li>
-                <li><a href='https://www.youtube.com/@redefiningstrengthOC'>Redefining Strength</a></li>
-                <li><a href='https://www.youtube.com/@shreddedsportsscience'>Shreded Sports Science</a></li>
-                <li><a href='https://www.youtube.com/@SquatUniversity'>Squat University</a></li>
-                <li><a href='https://www.youtube.com/@StrengthSensei'>Strength Sensei</a></li>
-                <li><a href='https://www.youtube.com/@strongerbyscience'>Stronger By Science</a></li>
-                <li><a href='https://www.youtube.com/@SaturnoMovement'>SaturnoMovement</a></li>
-                <li><a href='https://www.youtube.com/@TheBioneer'>The Bioneer</a></li>
-                <li><a href='https://www.youtube.com/@TheKneesovertoesguy'>The Kneesovertoesguy</a></li>
-                <li><a href='https://www.youtube.com/@timferriss'>Tim Ferriss</a></li>
-                <li><a href=''> </a></li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=cILplEggl4I'>Hydration</a></li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=OuG-gvFtSgU'>Is Periodization Important?</a></li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=N1BjgH1AsMs'>Periodization Basics</a></li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=7R3-3HR6-u4'>Satchin Panda - Andrew Huberman </a></li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=vHz4BABy0J0&t=1s'>How To Pick The Proper Exercise</a></li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=i70T_oLwPwg'>Endurance Training Programming</a> </li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=2vXOq-aRtYY'>How Your Muscle Change With Exercise</a></li>
+                <li><a onPointerEnter={onFocusHandler} href='https://www.youtube.com/watch?v=1gToyjm4NNA'>How Your Bones Change With Exercise</a></li>
             </ul>
         </div>
     </div>

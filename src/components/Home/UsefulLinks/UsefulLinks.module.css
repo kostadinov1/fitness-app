@@ -12,8 +12,10 @@
     /* background-color: green; */
 }
 .list_card {
+    align-content: start;
     /* background-color: red; */
     /* width: 48vw; */
+    height: 60vh;
 }
 
 .list_card_1 {
@@ -24,4 +26,13 @@
     display: grid;
     /* grid-area: two; */
 }
-
+.list_card_2 p {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    
+    background-color: var(--dimmer);
+    border-radius: var(--b-radius);
+    border: 2px solid var(--sec);
+    padding: 1em;
+}
