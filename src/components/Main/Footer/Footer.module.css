@@ -11,14 +11,24 @@
 }
 
 .ul {
-    
+    list-style: none;
+    font-size: .8rem;
+    font-weight: 500;
+    /* text-align: center; */
+    border-radius: var(--b-radius);
+    letter-spacing: .4pt;
 }
 
 .li {
-    
+    padding: .1em .6em;
+    border-radius: var(--b-radius);
+    background-color: var(--prime-2);
+    border: 1px solid var(--sec-2);
+    transition: all ease-in-out 400ms;
+
 }
 
-.a {
-    
+.li:hover {
+    scale: 1.2;
     /* color: var(--text); */
 }

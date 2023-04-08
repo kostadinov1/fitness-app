@@ -1,6 +1,7 @@
 
 .about_us {
     position: relative;
+    top: -5px;
     min-height: 100vh;
     background-color: var(--prime);
     background-image: url('/public/images/backgrounds/background-06.jpg');
