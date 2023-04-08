@@ -1,0 +1,51 @@
+.delete_modal {
+    position: fixed;
+    top: -80px;
+    left: 0px;
+    z-index: 10;
+    background-color: var(--dimmer);
+    height: 120vh;
+    width: 100vw;
+}
+.modal_box {
+    /* position: relative; */
+    max-width: 40vw;
+    background-color: var(--acc-1);
+    margin: auto auto;
+    margin-top: 15em; 
+
+    padding: 0.6em;
+    border-radius: var(--b-radius);
+    border: 0.5em solid white;
+    text-align: center;
+    letter-spacing: 0.4pt;
+    color: var(--text);
+}
+.modal_box p {
+    padding: 1em 3em;
+    margin: 0.8em 0.4em 0em 0.4em;
+    color: var(--sec-2);
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.buttons_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttons_box * {
+    padding: 1em 3em;
+    margin: 0.2em 1em 1.2em 1em;
+    color: var(--sec-2);
+    font-size: 1.3rem;
+    font-weight: bold;
+    -moz-transition-duration: 600ms;
+}
+.buttons_box *:hover {
+    scale: 1.2;
+    color: var(--text);
+    background-color: var(--sec-2);
+    border: 3px solid var(--text);
+    overflow: hidden;
+
+}

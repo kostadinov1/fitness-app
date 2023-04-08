@@ -5,17 +5,19 @@ import { deleteProfile, getProfile } from '../../../api/profile'
 import ListCard from '../../Cards/ListCard/ListCard'
 import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
-import { Link, useNavigate } from 'react-router-dom'
+import EditProfileModal from '../EditProfileModal/EditProfileModal'
+import DeleteProfileModal from '../DeleteProfile/DeleteProfileModal'
+import { useNavigate } from 'react-router-dom'
 import { logoutService } from '../../../api/auth'
 import { clearUserData } from '../../../utils/userUtils'
-import EditProfileModal from '../EditProfileModal/EditProfileModal'
 
 function Profile() {
+	const navigate = useNavigate()
+
     const {user, setUser, loggedIn, setLoggedIn,} = useContext(UserContext)        
 	const [profile, setProfile] = useState({})
-	const navigate = useNavigate()
 	const [toggleEdit, setToggleEdit] = useState(false)
-	const [toggleDelete, setToggleDelete] = useState(false)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
 
 
 	useEffect(() => {
@@ -32,36 +34,46 @@ function Profile() {
 		}
 		console.log(toggleEdit)
 	}
+    const onDelete = () => {
+        setShowDeleteModal(true)
+        
+    }
+    const onDeleteCancel = () => {
+        setShowDeleteModal(false)
+    }
+    const onDeleteConfirm = () => {
+        deleteProfile(user)
+        .then((res) => {
+            setShowDeleteModal(false)
+			setUser({})
+			logoutService(user)
+            .then((res) => {
+                setUser({user_id: null,
+                        token: null,
+                        email: null,
+                        isAuthenticated: false,
+                        })
+                clearUserData()
+                localStorage.clear()
+                setLoggedIn(false)
 
-	const onDelete = () => {
-		deleteProfile(user)
-			.then((res) => {
-				logoutService(user)
-				.then((res) => {
-					setUser({user_id: null,
-							token: null,
-							email: null,
-							isAuthenticated: false,
-							})
-					clearUserData()
-					localStorage.clear()
-					setLoggedIn(false)
-	
-					console.log('__LOGOUT__', res)})
-					navigate('/')
-				.catch((res) => {console.log('__LOGOUT__error', res)})
-					
-				navigate('/')
-				console.log('profile deleted', res);
-			})
-			.catch((res) => {
-				console.log('res error', res);
-			})
-	}
+                console.log('__LOGOUT__', res)})
+                navigate('/')
+            .catch((res) => {console.log('__LOGOUT__error', res)})
+                            })
+            .catch()
+    }
 
 
 	return (
 		<section className={`${styles.profile}`}>
+			{showDeleteModal ? <DeleteProfileModal 
+                                    onDeleteCancel={onDeleteCancel} 
+                                    onDeleteConfirm={onDeleteConfirm}
+                                    currentExerciseID={user.user_id}
+                                    /> 
+                            : null}
+
             <div className={`${styles.sider_1}`}>
             	<ListCard></ListCard>
             </div>

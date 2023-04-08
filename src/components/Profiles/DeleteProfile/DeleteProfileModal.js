@@ -1,12 +1,25 @@
-import styles from '.DeleteProfileModal.module.css'
+import styles from './DeleteProfileModal.module.css'
 import React from 'react'
 
-function DeleteProfile() {
-  return (
-    <section className={`${styles.delete_profile}`}>
-      
-    </section>
-  )
+function DeleteProfileModal({profileID,onDeleteCancel, onDeleteConfirm}) {
+
+return (
+  <div className={`${styles.delete_modal}`}>
+      <div className={`${styles.modal_box}`}>
+          <p>Are You sure you want to delete YOUR PROFILE?!</p>
+          <div className={styles.buttons_box}>
+              <button
+                  onClick={onDeleteConfirm} 
+                  >Yes!
+              </button>
+              <button
+                  onClick={onDeleteCancel}
+                  >No!
+              </button>
+          </div>
+      </div>
+  </div>
+)
 }
 
-export default DeleteProfile
+export default DeleteProfileModal
