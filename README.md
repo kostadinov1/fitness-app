@@ -1,3 +1,8 @@
+
+
+This project is temporary accessible at http://ec2-13-40-218-199.eu-west-2.compute.amazonaws.com
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
