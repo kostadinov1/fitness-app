@@ -51,7 +51,6 @@ function AllActivities() {
 
             </div>
             <div className={styles.acty_box}>
-            {/* <h1 className='section_title'>Activities</h1> */}
                 {activites ? activites.map((activity) => 
                                                     <ActivityCard 
                                                         activity={activity}

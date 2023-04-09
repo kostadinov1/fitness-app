@@ -17,18 +17,20 @@ function Login() {
 
     const onLogin = (e) => {
         e.preventDefault()
-            loginService(email, password)
-            .then((res) => {
-                console.log(res.status)
-                setUser({...res, isAuthenticated: true})
-                setLoggedIn(true)
-                setUserData(res)
-                navigate('/dashboard');
-            })
-            .catch((res) => {
-                setFormError(true)
-                console.log('__login__', res)})
-      
+                loginService(email, password)
+                    .then((res) => {
+                        setUser({...res, isAuthenticated: true})
+                        setLoggedIn(true)
+                        console.log(res, 'res in onlogin')
+                        setUserData(res)
+                        navigate('/');
+                    })
+                    .catch((res) => {
+                        setUserData(user)
+                        setFormError(true)
+                        navigate('/login')
+                        console.log('in onLogin error catch', res)
+                      })
     }
     const onEmailChange = (e) => {
         e.preventDefault()
@@ -37,8 +39,6 @@ function Login() {
     const onPasswordChange = (e) => {
         e.preventDefault()
             setPassword(e.target.value)
-
-
     }
 
     return (

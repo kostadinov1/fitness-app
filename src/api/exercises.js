@@ -20,6 +20,7 @@ const getAllExercises = async (user) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
+        throw err
     }
 }
 
@@ -44,6 +45,7 @@ const createExercise  = async (user, exerciseProps) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
+        throw err
     }
 }
 
@@ -59,7 +61,7 @@ const getExercise  = async (id) => {
             throw exercise
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        throw err
     }
 }
 
@@ -84,7 +86,7 @@ const editExercise  = async (user, id, exerciseProps) => {
             throw edited
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        throw err
     }
 }
 const deleteExercise  = async (user, exerciseID) => {
@@ -95,7 +97,6 @@ const deleteExercise  = async (user, exerciseID) => {
             headers: {
                 "content-type": "application/json",
                 "Authorization": `Token ${user.token}`,
-
             },
             })
         let deleted = await response.json()        
@@ -106,7 +107,7 @@ const deleteExercise  = async (user, exerciseID) => {
             throw deleted
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        throw err
     }
 }
 const listExerciseTypes = async () => {
@@ -118,12 +119,10 @@ const listExerciseTypes = async () => {
             return exerciseTypes
         }
         else {
-        console.log('this is an error in the api service')
-
             throw exerciseTypes
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        throw err
     }
 }
 

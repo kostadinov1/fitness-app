@@ -1,6 +1,5 @@
 import styles from './Activity.module.css'
 import '../../../App.css'
-
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
@@ -8,37 +7,29 @@ import { deleteActivity, getActivity } from '../../../api/activities'
 import ListCard from '../../Cards/ListCard/ListCard'
 import { PlusCircleOutlined } from '@ant-design/icons'
 
-function Activity() {
 
+function Activity() {
   const {id} = useParams()
   const navigate = useNavigate()
   const { user } = useContext(UserContext)
   const [ activity, setActivity ] = useState({})
   const [activityExercices, setActivityExercises] = useState([])
-
   
   useEffect(() => {
       getActivity(id)
           .then((res) => {
               setActivity(res)
               setActivityExercises(res.exercises)
-              console.log('res in useEffect', res)
           })
           .catch((res) => {
-
           })
-  }, [])
-
-
+  }, [id])
 
   const onDelete = () => {
       deleteActivity(user, activity.id)
-          .then((res) => {console.log(res, 'res in exercise rac')
-              navigate('/all-activities')
-                          })
-          .catch((res) => console.log(res, 'res in exercise rac'))
+          .then((res) => { navigate('/all-activities') })
+          .catch((res) => {})
   }   
-
 
 return (
   <section className={styles.exercise}>
@@ -47,7 +38,6 @@ return (
     </div>
       <div className={styles.sider_2}>
       <ListCard></ListCard>
-
       </div>    
       <div className={styles.view}>
           <div className={styles.card}>
@@ -77,18 +67,13 @@ return (
               <h4  className={`${'title_outlined'}`}>Exercises</h4>
               <Link className={`${styles.add_exercise_icon}`} to={'/create-exercise'}><PlusCircleOutlined></PlusCircleOutlined> Add Exercise</Link>
               <hr></hr>
-
                 {activityExercices.length !== 0 ?
                  activityExercices.map((ex) =>                           
                                     <Link key={ex.id} className={`${styles.exercise_link} ${'title_outlined'}`} to={`/exercise/${ex.id}/`}>
                                     {ex.name}
                                     </Link>)
-                            :<>
-                             <h5>NO EXERCISES</h5>
-                            </>
-
+                            :<><h5>NO EXERCISES</h5></>
                 }
-
           </div>
       </div>    
   </section>

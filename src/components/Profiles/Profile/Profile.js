@@ -13,12 +13,10 @@ import { clearUserData } from '../../../utils/userUtils'
 
 function Profile() {
 	const navigate = useNavigate()
-
     const {user, setUser, loggedIn, setLoggedIn,} = useContext(UserContext)        
 	const [profile, setProfile] = useState({})
 	const [toggleEdit, setToggleEdit] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
-
 
 	useEffect(() => {
 		getProfile(user)
@@ -32,7 +30,6 @@ function Profile() {
 		} else {
 			setToggleEdit(true)
 		}
-		console.log(toggleEdit)
 	}
     const onDelete = () => {
         setShowDeleteModal(true)
@@ -56,12 +53,11 @@ function Profile() {
                 clearUserData()
                 localStorage.clear()
                 setLoggedIn(false)
-
-                console.log('__LOGOUT__', res)})
                 navigate('/')
-            .catch((res) => {console.log('__LOGOUT__error', res)})
-                            })
-            .catch()
+			})
+            .catch((res) => {})
+		})
+        .catch((res) => {})
     }
 
 
@@ -73,7 +69,6 @@ function Profile() {
                                     currentExerciseID={user.user_id}
                                     /> 
                             : null}
-
             <div className={`${styles.sider_1}`}>
             	<ListCard></ListCard>
             </div>

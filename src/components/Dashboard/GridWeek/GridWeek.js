@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useDateTransform } from '../../../hooks/useDateTransform';
 import GridDay from '../GridDay/GridDay'
 import styles from './GridWeek.module.css'
 
@@ -14,7 +13,6 @@ function GridWeek({activities}) {
     const [saturdayData, setSaturdayData] = useState(undefined)
     const [sundayData, setSundayData] = useState(undefined)
 
-
     useEffect(() => {
         setMondayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Monday'))
         setTuesdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Tuesday'))
@@ -26,22 +24,18 @@ function GridWeek({activities}) {
     }, [activities])
 
     const getWeekDay = (date) => {   
-        console.log(date, 'DATE INPUT IN GETWEEKDAY')
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const startYear = date?.slice(0, 4)
         const startDate = date?.slice(5, 7)
         const startMonth = date?.slice(8, 10)
         const newDate = new Date(startYear, startMonth, startDate)
         const day = weekday[newDate.getDay()];
-        console.log(day, 'new Date')
         if (date) {
             return day
         } else {
             return ''
         }
     }
-
-
 
   return (
     <div className={`${styles.dashweek}`}>
@@ -53,33 +47,28 @@ function GridWeek({activities}) {
                 <GridDay activities={mondayData} />
             </div>
         </div>
-
         <div className={`${styles.cell} ${styles.cell_2}`}>
             <div className={`${styles.week_day}`}>
                 Tuesday
             </div>
             <div className={`${styles.grid_day}`}>
-            <GridDay activities={tuesdayData} />
-
+                <GridDay activities={tuesdayData} />
             </div>
         </div>
-
         <div className={`${styles.cell} ${styles.cell_3}`}>
             <div className={`${styles.week_day}`}>
                 Wednesday
             </div>
             <div className={`${styles.grid_day}`}>
                 <GridDay activities={wednesdayData} />
-                
             </div>
         </div>
-
         <div className={`${styles.cell} ${styles.cell_4}`}>
             <div className={`${styles.week_day}`}>
                 Thursday
             </div>
             <div className={`${styles.grid_day}`}>
-            <GridDay activities={thursdayData} />
+                <GridDay activities={thursdayData} />
             </div>
         </div>
 
@@ -88,8 +77,7 @@ function GridWeek({activities}) {
                 Friday
             </div>
             <div className={`${styles.grid_day}`}>
-            <GridDay activities={fridayData} />
-
+                <GridDay activities={fridayData} />
             </div>
         </div>
 
@@ -98,8 +86,7 @@ function GridWeek({activities}) {
                 Saturday
             </div>
             <div className={`${styles.grid_day}`}>
-            <GridDay activities={saturdayData} />
-
+                <GridDay activities={saturdayData} />
             </div>
         </div>
         
@@ -108,8 +95,7 @@ function GridWeek({activities}) {
                 Sunday
             </div>
             <div className={`${styles.grid_day}`}>
-            <GridDay activities={sundayData} />
-
+                <GridDay activities={sundayData} />
             </div>
         </div>
 

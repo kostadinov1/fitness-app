@@ -16,14 +16,13 @@ const registerService = async (email, password) => {
             })
             let register = await response.json()
         if (response.ok) {
-            console.log('REGISTER in service', register)
             return register
         }
         else {
             throw ('throw in service', register)
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        throw err
     }
 }
 
@@ -43,18 +42,17 @@ const loginService = async (email, password) => {
             })
             let login = await response.json()
         if (response.ok) {
-            console.log('LOGIN in service', login)
             return login
         }
         else {
             throw ('throw in service', login)
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log(err, 'error in loginService')
+        throw err
     }
 }
 const logoutService = async (user) => {
-    console.log('user in logout service ', user)
     const url = baseURL + `/accounts/logout/${user.user_id}/`;
 
     try {
@@ -67,16 +65,13 @@ const logoutService = async (user) => {
             })
             let logout = await response.json()
         if (response.ok) {
-            console.log('catch in service')
-
             return logout
-            
         }
         else {
             throw ('throw in service', logout)
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        throw err
     }
 }
 

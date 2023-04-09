@@ -1,35 +1,24 @@
 import styles from './Contacts.module.css'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { createContactMessage } from '../../api/contactMessage'
 import SimpleMap from '../Custom/SimpleMap/SimpleMap'
 
+
 function Contacts() {
 
-    const [formData, setFormData] = useState({
-                                            email: undefined,
-                                            title: undefined,
-                                            message: undefined,                                            
-    })
-
+    const [formData, setFormData] = useState({email: undefined,
+                                              title: undefined,
+                                              message: undefined,})
 
     const onValueChange = (e) => {
-        setFormData((state) => ({...state, [e.target.name]: e.target.value}))
+        setFormData((state) => ({...state, [e.target.name]: e.target.value}))}
 
-    }
-
-    const onSend  = (e) => {
+    const onSend = (e) => {
         e.preventDefault()
-        console.log('formData in onsend', formData)
         createContactMessage(formData)
-            .then((res) => {
-                
-                console.log('res in onsend', res);
-            })
-            .catch((res) => {
-                console.log('res in ERRORonsend', res);
-            })    
+            .then((res) => {})
+            .catch((res) => {})    
     }
-    // TODO ADD FORM VALIDAITONS
 
     return (
         <section className={styles.contacts}>

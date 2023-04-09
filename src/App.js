@@ -23,7 +23,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Contacts from './components/Contacts/Contacts';
 import { getUserData } from './utils/userUtils';
 import Profile from './components/Profiles/Profile/Profile';
-import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundry/ErrorBoundary';
 
 function App() {
 
@@ -44,7 +44,7 @@ function App() {
             setLoggedIn(false)
         }
     }
-       
+
     useEffect(() => {
         userSessionStorage()
         if (loggedIn) {

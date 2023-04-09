@@ -34,7 +34,6 @@ function Dashboard() {
             })
         getAllActivities(user)
             .then((res) => {
-
                 setActivities(res)
             })
             .catch((res) => {
@@ -45,7 +44,6 @@ function Dashboard() {
             })
             .catch((res) => {
             })
-
     }, [user])
 
 
@@ -80,6 +78,7 @@ function Dashboard() {
             <div className={`${styles.grid_card} ${styles.grid_card_5}`}>
                 <h3>{profile.first_name} {profile.last_name}</h3>
                 <ul>
+                    <li>Name: {profile.first_name} {profile.last_name}</li>
                     <li>DOB: {profile.dob}</li>
                     <li>Phone: {profile.phone}</li>
                     <li>Email: {user.email}</li>

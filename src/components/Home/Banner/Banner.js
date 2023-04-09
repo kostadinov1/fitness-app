@@ -3,6 +3,7 @@ import styles from './Banner.module.css'
 
 
 const Banner = () => {
+  
   return (
     <div className={`${styles.banner}`}>
         <div className={`${styles.title}`}>Hello and Welcome to Our Website</div>

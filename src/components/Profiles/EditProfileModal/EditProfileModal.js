@@ -21,13 +21,8 @@ function EditProfileModal({setToggleEdit}) {
 
     useEffect(() => {
         getProfile(user)
-            .then((res) => {
-                setProfile(res)
-                console.log(res, 'profile in edit profile');
-            })
-            .catch((res) => {
-                console.log(res, 'profile in edit profile');
-            })
+            .then((res) => { setProfile(res) })
+            .catch((res) => {})
     }, [user])
 
     const onSubmitHandler = (e) => {
@@ -35,17 +30,14 @@ function EditProfileModal({setToggleEdit}) {
 
         editProfile(user, formData)
             .then((res) => {
-                console.log(res, 'edit profile in modal')
-            })
-            .catch((res) => {
-                console.log(res, 'edit profile ERROR in modal')
-            })
+                setProfile((profile) => ({...profile, formData}))
+             })
+            .catch((res) => { })
         setToggleEdit(false)
     }
     const onValueChange = (e) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))    
     }
-
 
   return (
     <section className={`${styles.edit_profile}`}>

@@ -28,10 +28,10 @@ function Register() {
                             navigate('/dashboard');
                         })
                 })
-            .catch((res) => {
-                console.log('__reger_catch__', res);})
+            .catch((res) => {navigate('/register')})
           } else {
             setFormError('Credentials are wrong format.')
+            navigate('/register')
           }
 
     }

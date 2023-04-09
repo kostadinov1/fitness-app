@@ -1,12 +1,10 @@
 import styles from './IconMenu.module.css'
 import '../../../App.css'
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../../../contexts/UserContext'
 import { DeploymentUnitOutlined, FireFilled,  SettingOutlined, SubnodeOutlined, SyncOutlined, UserOutlined } from '@ant-design/icons'
 
 function IconMenu() {
-    const {user} = useContext(UserContext)
 
   return (
     <div className={`${styles.icon_menu}`}>

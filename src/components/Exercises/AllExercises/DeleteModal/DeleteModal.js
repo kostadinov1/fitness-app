@@ -3,7 +3,6 @@ import styles from './DeleteModal.module.css'
 import React from 'react'
 
 function DeleteModal({currentExerciseID,onDeleteCancel, onDeleteConfirm, setTrigger}) {
-    console.log('Delte Modal', currentExerciseID)
   return (
     <div className={`${styles.delete_modal}`}>
         <div className={`${styles.modal_box}`}>

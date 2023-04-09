@@ -4,6 +4,7 @@ import styles from './FooterBanner.module.css'
 
 
 const FooterBanner = () => {
+  
   return (
     <div className={`${styles.footer_banner}`}>
         <div className={`${styles.title}`}>Periodization Application &reg; created 2023</div>

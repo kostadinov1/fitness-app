@@ -60,6 +60,9 @@
     border-radius: var(--b-radius);
     background-color: var(--prime-2);
 }
+.auth_icons *:hover {
+    color: orangered;
+}
 .auth_icons * {
     color: var(--dark-blue);
     font-weight: bold;

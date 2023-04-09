@@ -23,11 +23,9 @@ function Header() {
                         })
                 clearUserData()
                 localStorage.clear()
-                setLoggedIn(false)
-
-                console.log('__LOGOUT__', res)})
+                setLoggedIn(false)})
                 navigate('/')
-            .catch((res) => {console.log('__LOGOUT__error', res)})
+            .catch((res) => {})
     }
 
     const onMenuClick = (e) => {
@@ -38,9 +36,7 @@ function Header() {
         else {
             setToggleMenu(false)
         }
-
     }
-
 
   return (
         <section className={styles.header}>
@@ -81,19 +77,16 @@ function Header() {
                     <Link to={'/login'}>
                         <UserOutlined className={styles.login_icon}/> login</Link>
                 </>
-                :<Link onClick={onLogout}>
-                    <PoweroffOutlined  className={styles.logout_icon}/> logout</Link>
-            }
+                :<Link onClick={onLogout}><PoweroffOutlined  className={styles.logout_icon}/> logout</Link>}
         </div>
             {toggleMenu === true ? 
             <IconMenu></IconMenu>
-            :null            
-        }
+            :null}
             <Link to={'/'}>
             <MenuOutlined onClick={onMenuClick} className={styles.menu_icon}/>
             </Link>
         </section >
     )
-    }
+}
 
 export default Header

@@ -4,17 +4,14 @@ import { Link } from 'react-router-dom'
 import { getActivity } from '../../../api/activities'
 
 
-
 function ActivityMiniCard({activity, onDelete}) {
     const [activityExercices, setActivityExercises] = useState([])
     const handleDragStart = (e) => e.preventDefault();
     useEffect(() => {
         getActivity(activity.id)
-            .then((res) => {
-                setActivityExercises(res.exercises)
-            })
+            .then((res) => { setActivityExercises(res.exercises) })
             .catch((res) => { })
-    }, [])
+    }, [activity])
 
 
   return (
@@ -50,26 +47,21 @@ function ActivityMiniCard({activity, onDelete}) {
                 {/* TODO Button: "Add Exercise" in activity with any type*/}
             <span className={`${styles.card_cell_10} ${styles.card_cell}`}>
                 Exercises: {activityExercices.length !== 0 ?
-                 activityExercices.map((ex) => 
-                                <span className={`${styles.exer} ${''}`}
-                                    key={ex.id}
-                                    >
-                                    {ex.name}
-
-                                </span>)
-                            : null
-                }
+                            activityExercices.map((ex) => 
+                                            <span className={`${styles.exer} ${''}`}
+                                                key={ex.id}
+                                                > {ex.name}
+                                            </span>)
+                            : null }
             </span>
             <Link className={`${styles.card_cell_11} ${styles.card_cell} ${styles.card_cell_link}`} 
                 to={`/edit-activity/${activity.id}/`}>
                 Edit
             </Link>
-                {/* TODO  add confirmation modal */}
             <Link className={`${styles.card_cell_12} ${styles.card_cell} ${styles.card_cell_link}`}  
                 onClick={() => onDelete(activity.id)}>
                 Delete
             </Link>
-
         </div>
     </div>
   )

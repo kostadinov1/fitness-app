@@ -2,7 +2,6 @@ import styles from './ActivityCard.module.css'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getActivity } from '../../../../api/activities'
-
 import '../../../../App.css'
 
 
@@ -15,8 +14,7 @@ function ActivityCard({activity, onDelete}) {
                 setActivityExercises(res.exercises)
             })
             .catch((res) => { })
-    }, [])
-
+    }, [activity])
 
   return (
     <div className={styles.card}>
