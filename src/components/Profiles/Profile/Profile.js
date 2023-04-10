@@ -60,7 +60,6 @@ function Profile() {
 			.catch((res) => {console.log(res, 'res in error catch onDeleteConfirm2')})
 		}
 
-
 	return (
 		<section className={`${styles.profile}`}>
 			{showDeleteModal ? <DeleteProfileModal 
