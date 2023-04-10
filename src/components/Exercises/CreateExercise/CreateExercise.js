@@ -34,7 +34,6 @@ function CreateExercise() {
             .catch((res) => {})
         getAllActivities(user)
             .then((res) => {
-                res.
                 setActivities(res)})            
             .catch((res) => {console.log('res', res)})
     }, [user, ])
