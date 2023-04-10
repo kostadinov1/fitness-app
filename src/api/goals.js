@@ -67,7 +67,6 @@ const editGoal  = async (user, goal, goalProps) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
     }
 }
 const deleteGoal  = async (user, goal) => {
@@ -89,7 +88,6 @@ const deleteGoal  = async (user, goal) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
     }
 }
 

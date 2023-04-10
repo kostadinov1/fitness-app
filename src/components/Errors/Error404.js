@@ -9,7 +9,7 @@ function Error404() {
             <h1>Page not found!</h1>
             <h6>ERROR</h6>
             <h1 className={styles.err_h1}>404</h1>
-            <h3><Link to={'/'}>Go to Home</Link></h3>
+            <Link to={'/'}>Go to Home</Link>
         </div>
     </section>
   )

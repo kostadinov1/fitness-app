@@ -44,7 +44,6 @@ const editProfile  = async (user, profileProps) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
     }
 }
 const deleteProfile  = async (user) => {
@@ -66,7 +65,6 @@ const deleteProfile  = async (user) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
     }
 }
 const uploadProfileImage = async (user, fileObj) => {

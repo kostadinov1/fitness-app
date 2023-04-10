@@ -14,7 +14,13 @@ import { clearUserData } from '../../../utils/userUtils'
 function Profile() {
 	const navigate = useNavigate()
     const {user, setUser, loggedIn, setLoggedIn,} = useContext(UserContext)        
-	const [profile, setProfile] = useState({})
+	const [profile, setProfile] = useState({
+		first_name: '',
+        last_name: '',
+        address: null,
+        dob: null, 
+        gender: null,
+	})
 	const [toggleEdit, setToggleEdit] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
 
@@ -38,27 +44,21 @@ function Profile() {
     const onDeleteCancel = () => {
         setShowDeleteModal(false)
     }
-    const onDeleteConfirm = () => {
+    const onDeleteConfirm = (user) => {
         deleteProfile(user)
-        .then((res) => {
-            setShowDeleteModal(false)
-			setUser({})
-			logoutService(user)
-            .then((res) => {
-                setUser({user_id: null,
-                        token: null,
-                        email: null,
-                        isAuthenticated: false,
-                        })
-                clearUserData()
-                localStorage.clear()
-                setLoggedIn(false)
-                navigate('/')
+			.then((res) => {
+				clearUserData()
+				setLoggedIn(false)
+				setShowDeleteModal(false)
+					setUser({user_id: null,
+					token: null,
+					email: null,
+					isAuthenticated: false,
+					})
+				navigate('/')
 			})
-            .catch((res) => {})
-		})
-        .catch((res) => {})
-    }
+			.catch((res) => {console.log(res, 'res in error catch onDeleteConfirm2')})
+		}
 
 
 	return (
@@ -66,7 +66,7 @@ function Profile() {
 			{showDeleteModal ? <DeleteProfileModal 
                                     onDeleteCancel={onDeleteCancel} 
                                     onDeleteConfirm={onDeleteConfirm}
-                                    currentExerciseID={user.user_id}
+                                    user={user}
                                     /> 
                             : null}
             <div className={`${styles.sider_1}`}>

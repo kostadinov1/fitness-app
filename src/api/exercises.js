@@ -20,7 +20,6 @@ const getAllExercises = async (user) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
     }
 }
 
@@ -45,7 +44,6 @@ const createExercise  = async (user, exerciseProps) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
     }
 }
 
@@ -61,7 +59,6 @@ const getExercise  = async (id) => {
             throw exercise
         }
     } catch(err){
-        throw err
     }
 }
 
@@ -86,7 +83,6 @@ const editExercise  = async (user, id, exerciseProps) => {
             throw edited
         }
     } catch(err){
-        throw err
     }
 }
 const deleteExercise  = async (user, exerciseID) => {
@@ -107,7 +103,6 @@ const deleteExercise  = async (user, exerciseID) => {
             throw deleted
         }
     } catch(err){
-        throw err
     }
 }
 const listExerciseTypes = async () => {
@@ -122,7 +117,6 @@ const listExerciseTypes = async () => {
             throw exerciseTypes
         }
     } catch(err){
-        throw err
     }
 }
 

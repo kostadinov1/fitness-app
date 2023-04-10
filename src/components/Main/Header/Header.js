@@ -22,9 +22,9 @@ function Header() {
                         isAuthenticated: false,
                         })
                 clearUserData()
-                localStorage.clear()
-                setLoggedIn(false)})
+                setLoggedIn(false)
                 navigate('/')
+            })
             .catch((res) => {})
     }
 

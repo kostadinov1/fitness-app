@@ -19,7 +19,7 @@ const createContactMessage  = async (data) => {
             throw created
         }
     } catch(err){
-        throw err
+        // throw err
     }
 }
 export {

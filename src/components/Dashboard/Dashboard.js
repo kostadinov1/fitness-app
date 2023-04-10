@@ -19,11 +19,18 @@ const handleDragStart = (e) => e.preventDefault();
 function Dashboard() {
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
-    const [profile, setProfile] = useState([])
+    const [profile, setProfile] = useState({
+        first_name: '',
+        last_name: '',
+        address: null,
+        dob: null, 
+        gender: null,
+        
+    })
     const { user } = useContext(UserContext) 
 
-    const activitiesCarded = activities.map((activity) => <ActivityMiniCard activity={activity} onDragStart={handleDragStart} role="presentation" />)
-    const exercisesCarded = exercises.map((exercise) => <ExerciseCard  exercise={exercise} onDragStart={handleDragStart} role="presentation" />)
+    const activitiesCarded = activities?.map((activity) => <ActivityMiniCard activity={activity} onDragStart={handleDragStart} role="presentation" />)
+    const exercisesCarded = exercises?.map((exercise) => <ExerciseCard  exercise={exercise} onDragStart={handleDragStart} role="presentation" />)
 
     useEffect(() => {
         getAllExercises(user)
@@ -51,7 +58,7 @@ function Dashboard() {
     <section className={styles.dashboard}>
         <div className={styles.grid}>
             <div className={`${styles.grid_card} ${styles.grid_card_1}`}>
-                {profile.image_local ?
+                {profile?.image_local ?
                  <img src={`${profile.image_local}`} alt='' /> :
                   <img src='/images/defaults/default-user.png' alt='' />}
             </div>
@@ -76,7 +83,7 @@ function Dashboard() {
                 <img src='/images/backgrounds/background-01.jpg' alt='' />
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_5}`}>
-                <h3>{profile.first_name} {profile.last_name}</h3>
+                <h3>{profile ? profile.first_name : null} {profile.last_name}</h3>
                 <ul>
                     <li>Name: {profile.first_name} {profile.last_name}</li>
                     <li>DOB: {profile.dob}</li>

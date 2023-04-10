@@ -60,7 +60,7 @@ const getActivity  = async (id) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
+        // throw err
     }
 }
 
@@ -85,7 +85,7 @@ const editActivity  = async (user, id, activityProps) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
+        // throw err
     }
 }
 
@@ -107,8 +107,8 @@ const deleteActivity  = async (user, activityID) => {
             throw deleted
         }
     } catch(err){
-        console.log('catch Err', err.message)
-        throw err
+        // alert(err.message)
+
     }
 }
 const listActivityTypes = async () => {
@@ -124,7 +124,7 @@ const listActivityTypes = async () => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
+        // throw err
     }
 }
 
