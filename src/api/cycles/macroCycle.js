@@ -24,7 +24,7 @@ const createMacroCycle  = async (user, macroCycleProps) => {
 }
 
 const getMacroCycle  = async (user, cycleID) => {
-    const url = baseURL + `/periodization/get-micro-cycle/${cycleID}/`
+    const url = baseURL + `/periodization/get-macro-cycle/${cycleID}/`
     try {
         let response = await fetch(url, {
             method: 'GET',
