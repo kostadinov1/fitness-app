@@ -24,7 +24,7 @@ function Register() {
                         .then((res) => {
                             setUser({...res, isAuthenticated: true})
                             setLoggedIn(true)
-                            setUserData(res)
+                            setUserData({...res, isAuthenticated: true})
                             navigate('/dashboard');
                         })
                 })

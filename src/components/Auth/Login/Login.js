@@ -2,7 +2,7 @@ import { useState, React, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginService } from '../../../api/auth';
 import { UserContext } from '../../../contexts/UserContext';
-import { setUserData } from '../../../utils/userUtils';
+import { getUserData, setUserData } from '../../../utils/userUtils';
 import styles from '../AuthForm/AuthForm.module.css'
 
 
@@ -21,8 +21,8 @@ function Login() {
                     .then((res) => {
                         setUser({...res, isAuthenticated: true})
                         setLoggedIn(true)
-                        console.log(res, 'res in onlogin')
-                        setUserData(res)
+                        setUserData({...res, isAuthenticated: true})
+                        console.log(getUserData(), 'user in onlogin')
                         navigate('/');
                     })
                     .catch((res) => {

@@ -37,6 +37,7 @@ function App() {
 
     const userSessionStorage = () => {
         const userSession = getUserData()
+        console.log(userSession, 'userSession in useSessionStorage in APP.JS');
         if (userSession) {
             setLoggedIn(true)
             setUser(getUserData)
@@ -47,11 +48,7 @@ function App() {
 
     useEffect(() => {
         userSessionStorage()
-        if (loggedIn) {
-            setUser(getUserData)
-        }
-
-    }, [loggedIn])
+    }, [])
 
     return (
         <ErrorBoundary>
@@ -66,7 +63,7 @@ function App() {
                             <Route path='/contacts' element={<Contacts />}/>
                             
                             {/* <<< ------ AUTH ------- >>>*/}         
-                        {loggedIn?
+                        {user.isAuthenticated?
                         <>
                                 {/* <<< ------ Core Auth ------- >>>*/}         
                             <Route path='/dashboard' element={<Dashboard />}/>

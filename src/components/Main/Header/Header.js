@@ -45,7 +45,7 @@ function Header() {
             <h1>Fit Hub</h1>
         </Link>
         <ul className={styles.ul}>
-            {loggedIn === false? 
+            {user.isAuthenticated === false? 
                <li className={styles.li}>
                     <Link to={'/'} className={styles.link}>Home</Link>
                 </li>
@@ -70,7 +70,7 @@ function Header() {
         </ul>
         <Link to={`/profile/`} className={styles.user_email}>{user.email}</Link>
         <div className={styles.auth_icons}>
-            {loggedIn === false ?
+            {user.isAuthenticated === false ?
                 <>
                     <Link to={'/register'}>
                         <UserAddOutlined className={styles.register_icon}/> register</Link>
