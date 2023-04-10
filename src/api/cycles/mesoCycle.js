@@ -1,8 +1,3 @@
-// all-meso-cycles/
-// get-meso-cycle/
-// create-meso-cycle/
-// edit-meso-cycle/
-// delete-meso-cycle/<int:pk>/
 import baseURL from './baseURL'
 
 const createMesoCycle  = async (user, mesoCycleProps) => {
