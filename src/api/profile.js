@@ -43,7 +43,7 @@ const editProfile  = async (user, profileProps) => {
             throw edited
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('catch Err', err)
     }
 }
 const deleteProfile  = async (user) => {

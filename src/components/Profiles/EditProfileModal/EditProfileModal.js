@@ -2,6 +2,7 @@ import styles from './EditProfileModal.module.css'
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../../contexts/UserContext'
 import { editProfile, getProfile } from '../../../api/profile'
+import { DatePicker } from 'antd'
 
 
 function EditProfileModal({setToggleEdit}) {
@@ -13,7 +14,6 @@ function EditProfileModal({setToggleEdit}) {
         dob: null,
         gender: null,
         phone: null,
-        image_url: null,
         image_local: undefined,
         user: user.user_id
 
@@ -37,6 +37,12 @@ function EditProfileModal({setToggleEdit}) {
     }
     const onValueChange = (e) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))    
+    }
+
+    const onChange = (date, dateString) => {
+        // console.log(dateString, 'results in onchange profile edit modal');
+        setFormData((state) => ({...state, dob: dateString}))    
+        
     }
 
   return (
@@ -67,25 +73,28 @@ function EditProfileModal({setToggleEdit}) {
             </div>
             <div className={`${styles.field} ${styles.field_3}`}>
             <label htmlFor='dob'>Date of Birth</label>
-            <input
+            <DatePicker onChange={onChange} />
+
+            {/* <input
                 type={'text'}
                 id={'dob'}
                 name={'dob'}
                 value={formData.dob}
                 onChange={onValueChange}
-                placeholder={profile.dob}
-                ></input>
+                placeholder={`YYYY-MM-DD`}
+                ></input> */}
             </div>
             <div className={`${styles.field} ${styles.field_4}`}>
-            <label htmlFor='gender'>Gender</label>
-            <input
-                type={'text'}
-                id={'gender'}
-                name={'gender'}
-                value={formData.gender}
-                onChange={onValueChange}
-                placeholder={profile.gender}
-                ></input>
+                <label htmlFor='gender'>Gender</label>
+                <select 
+                    value={formData.gender}
+                    onChange={onValueChange}
+                    name='gender'
+                    className={styles.form_input}>
+                        <option value={`Female`}>Female</option>
+                        <option value={`Male`}>Male</option>
+                        <option value={`LGBT+`}>LGBT+</option>
+                </select>
             </div>
             <div className={`${styles.field} ${styles.field_5}`}>
             <label htmlFor='phone'>Phone</label>
@@ -98,18 +107,9 @@ function EditProfileModal({setToggleEdit}) {
                 placeholder={profile.phone}
                 ></input>
             </div>
+
+            {/* TODO upload image with separate request */}
             <div className={`${styles.field} ${styles.field_6}`}>
-            <label htmlFor='image_url'>Image URL</label>
-            <input
-                type={'url'}
-                id={'image_url'}
-                name={'image_url'}
-                value={formData.image_url}
-                onChange={onValueChange}
-                placeholder={profile.image_url}
-                ></input>
-            </div>
-            <div className={`${styles.field} ${styles.field_7}`}>
             <label htmlFor='image_local'>Image</label>
             <input
                 type={'file'}
@@ -119,7 +119,12 @@ function EditProfileModal({setToggleEdit}) {
                 onChange={onValueChange}
                 ></input>
             </div>
+            <div className={`${styles.field} ${styles.field_7}`}>
+
             <button>Edit</button>
+            <button>Cancel</button>
+            </div>
+
         </form>
     </section>
   )

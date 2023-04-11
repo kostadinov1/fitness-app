@@ -45,6 +45,13 @@
 }
 .field_7 {
     grid-area: seven;
+    display: flex;
+    gap: 1em;
+    font-weight: bold;
+    
+}
+.field_7 button {
+    flex: 1 0 auto;
 }
 
 
