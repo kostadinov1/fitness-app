@@ -42,7 +42,7 @@ function Header() {
         <section className={styles.header}>
         <img alt='' className={styles.logo} />
         <Link to={'/'}>
-            <h1>Fit Hub</h1>
+            <h1>Periodization</h1>
         </Link>
         <ul className={styles.ul}>
             {user.isAuthenticated === false? 

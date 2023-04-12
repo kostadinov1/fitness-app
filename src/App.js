@@ -37,7 +37,6 @@ function App() {
 
     const userSessionStorage = () => {
         const userSession = getUserData()
-        console.log(userSession, 'userSession in useSessionStorage in APP.JS');
         if (userSession) {
             setLoggedIn(true)
             setUser(getUserData)

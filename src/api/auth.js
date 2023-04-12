@@ -48,7 +48,7 @@ const loginService = async (email, password) => {
             throw ('throw in service', login)
         }
     } catch(err){
-        console.log(err, 'error in loginService')
+        console.log(err, 'error in loginService catch')
         throw err
     }
 }
