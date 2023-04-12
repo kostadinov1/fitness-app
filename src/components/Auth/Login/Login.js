@@ -70,7 +70,7 @@ function Login() {
                           </span> 
                         : null}
             <label>Email</label>
-            {formErrors ?
+            {formErrors.username ?
                          <span className={`${styles.form_error}`}>
                             {formErrors['username']}
                           </span> 
@@ -83,7 +83,7 @@ function Login() {
                 type={'email'} className={styles.email_input} 
                 placeholder='enter your email' />
             <label>Password</label>
-            {formErrors ?
+            {formErrors.password ?
                          <span className={`${styles.form_error}`}>
                             {formErrors['password']}
                           </span> 
