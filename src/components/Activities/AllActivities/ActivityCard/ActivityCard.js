@@ -39,26 +39,33 @@ function ActivityCard({activity, onDelete}) {
                         Pace: {activity.reps}min/km</span>
                     <span className={`${styles.card_cell_7} ${styles.card_cell}`}>
                         Speed: {activity.weights}km/h</span>
-                    <span className={`${styles.card_cell_8} ${styles.card_cell}`}>
-                        HR: {activity.cues}bpm</span>
-                    <span className={`${styles.card_cell_9} ${styles.card_cell}`}>
-                        RPE: {activity.rpe}</span>
                 </>
-                : null    
-                }
-                {/* TODO Button: "Add Exercise" in activity with any type*/}
-            <span className={`${styles.card_cell_10} ${styles.card_cell}`}>
-                Exercises: {activityExercices.length !== 0 ?
-                 activityExercices.map((ex) => 
-                                <span className={`${styles.exer} ${''}`}
-                                    key={ex.id}
-                                    >
-                                    {ex.name}
-
-                                </span>)
+                : <span className={`${styles.card_cell_10} ${styles.card_cell}`}>
+                    Exercises: {activityExercices.length !== 0 ?
+                    activityExercices.map((ex) => 
+                    <span className={`${styles.exer} ${''}`}
+                        key={ex.id}
+                        ><Link
+                        className={`${styles.exer_link}`}
+                        to={`/exercise/${ex.id}`}>
+                            {ex.name}: {ex.sets}x{ex.reps}
+                        </Link>
+                            
+                    </span>)
                             : null
                 }
+            </span>    
+                }
+
+                {/* TODO Button: "Add Exercise" in activity with any type*/}
+            
+            <span className={`${styles.card_cell_8} ${styles.card_cell}`}>
+                HR: {activity.cues}bpm
             </span>
+            <span className={`${styles.card_cell_9} ${styles.card_cell}`}>
+                RPE: {activity.rpe}
+            </span>
+
             <Link className={`${styles.card_cell_11} ${styles.card_cell} ${styles.card_cell_link}`} 
                 to={`/edit-activity/${activity.id}/`}>
                 Edit

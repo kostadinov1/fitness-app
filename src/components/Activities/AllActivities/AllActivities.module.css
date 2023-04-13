@@ -3,8 +3,8 @@
     position: relative;
     min-height: 100vh;
     display: grid;
-    gap: 0.6em;
-    padding: 0.8em;
+    gap: 0.4em;
+    padding: 0.2em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                     "one three three three three three"
@@ -39,9 +39,9 @@
 .acty_box {
     grid-area: three;
     display: grid;
-    
+    /* align-items: start; */
     grid-template-columns: repeat(3, 1fr);
-    gap: 1em;
+    gap: 0.4em;
     padding: 0.6em;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);

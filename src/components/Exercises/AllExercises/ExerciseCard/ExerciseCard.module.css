@@ -7,8 +7,6 @@
                 "two two two two"
                 "two two two two"
                 "three three three three";
-    height: 100%;
-    width: 100%;
     background-color: var(--sec);
     background-repeat: no-repeat;
     background-size: cover;
@@ -44,6 +42,7 @@
     }
     .card_cell_1 {
         font-size: 1.6rem;
+        color: var(--text);
         margin-bottom: 0.4em;
         padding: 0.4em 0em;
         grid-area: one;}
@@ -63,7 +62,7 @@
     .card_cell_link {
         justify-content: center;
         background-color: var(--acc-1);
-        color: var(--sec-2);
+        color: var(--sec);
         font-weight: bold;
     }
 
