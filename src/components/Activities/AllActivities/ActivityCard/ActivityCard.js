@@ -3,17 +3,24 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getActivity } from '../../../../api/activities'
 import '../../../../App.css'
+import { getActivityType } from '../../../../api/activityTypes'
 
 
 function ActivityCard({activity, onDelete}) {
     const [activityExercices, setActivityExercises] = useState([])
-
+    const [activityType, setActivityType] = useState({})
     useEffect(() => {
         getActivity(activity.id)
             .then((res) => {
                 setActivityExercises(res.exercises)
             })
             .catch((res) => { })
+        if (activity.type) {
+            getActivityType(activity.type)
+                .then((res) => {setActivityType(res)})
+                .catch((res) => {console.log('resres', res);})
+        }
+        
     }, [activity])
 
   return (
@@ -29,7 +36,7 @@ function ActivityCard({activity, onDelete}) {
                 Duration: {activity.duration} min</span>
                 {/* TODO FIX TYPE VISUALIZATION */}
             <span className={`${styles.card_cell_4} ${styles.card_cell}`}>
-                Type: {activity.type}</span>
+                Type: {activityType.name}</span>
             {activity.type === 3 ?
                 <>
                     <span className={`${styles.card_cell_5} ${styles.card_cell}`}>
