@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './ExerciseCard.module.css'
 
 
 function ExerciseCard({exercise, onDelete}) {
+
+    const [exerciseType, setExerciseType] = useState({})
+
+    useEffect(() => {
+        
+
+    }, [])
     return (
         <div className={styles.card}>
             <div className={styles.card_info}>

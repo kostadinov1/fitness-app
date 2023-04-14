@@ -1,9 +1,10 @@
 import styles from './EditExercise.module.css'
 import React, { useContext, useEffect, useState } from 'react'
-import { editExercise, getExercise, listExerciseTypes } from '../../../api/exercises'
+import { editExercise, getExercise } from '../../../api/exercises'
 import { useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { getAllActivities } from '../../../api/activities'
+import { listExerciseTypes } from '../../../api/exerciseTypes'
 
 
 function EditExercise() {

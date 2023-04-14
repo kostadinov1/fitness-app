@@ -103,22 +103,10 @@ const deleteExercise  = async (user, exerciseID) => {
             throw deleted
         }
     } catch(err){
+        
     }
 }
-const listExerciseTypes = async () => {
-    const url = baseURL + '/activity/list-exercise-types/'
-    try {
-        let response = await fetch(url)
-        let exerciseTypes = await response.json()        
-        if (response.ok) {
-            return exerciseTypes
-        }
-        else {
-            throw exerciseTypes
-        }
-    } catch(err){
-    }
-}
+
 
 export {
     getAllExercises,
@@ -126,5 +114,6 @@ export {
     getExercise,
     editExercise,
     deleteExercise,
-    listExerciseTypes
+
+
 }

@@ -17,29 +17,24 @@
 }
 .sider_1 {
     grid-area: one;
-    padding: 1.2em;
-    border: 1px solid var(--acc-1);
-    border-radius: var(--b-radius);
-    background-color: var(--sec);
+
 
 }
 .sider_2 {
     grid-area: two;
-    padding: 1.2em;
-    border: 1px solid var(--acc-1);
-    border-radius: var(--b-radius);
-    background-color: var(--sec);
+
 }
 
 .view {
     grid-area: three;
     display: grid;
     
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 2fr;
     gap: 0.6em;
     padding: 0.2em;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
+
 }
 
     .card {

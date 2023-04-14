@@ -67,13 +67,15 @@ return (
               <h4  className={`${'title_outlined'}`}>Exercises</h4>
               <Link className={`${styles.add_exercise_icon}`} to={'/create-exercise'}><PlusCircleOutlined></PlusCircleOutlined> Add Exercise</Link>
               <hr></hr>
+              <div className={`${styles.exercises_list}`}>
                 {activityExercices.length !== 0 ?
                  activityExercices.map((ex) =>                           
                                     <Link key={ex.id} className={`${styles.exercise_link} ${'title_outlined'}`} to={`/exercise/${ex.id}/`}>
-                                    {ex.name}
+                                    {ex.name}: {ex.sets}x{ex.reps}
                                     </Link>)
                             :<><h5>NO EXERCISES</h5></>
                 }
+              </div>
           </div>
       </div>    
   </section>

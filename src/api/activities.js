@@ -111,23 +111,6 @@ const deleteActivity  = async (user, activityID) => {
 
     }
 }
-const listActivityTypes = async () => {
-    const url = baseURL + '/activity/list-activity-types/'
-    try {
-        let response = await fetch(url)
-        let activitiesTypes = await response.json()        
-        if (response.ok) {
-            return activitiesTypes
-        }
-        else {
-            throw activitiesTypes
-        }
-    } catch(err){
-        console.log('catch Err', err.message)
-        // throw err
-    }
-}
-
 
 export {
     getAllActivities,
@@ -135,7 +118,6 @@ export {
     createActivity,
     editActivity,
     deleteActivity,
-    listActivityTypes,
 
 
 }

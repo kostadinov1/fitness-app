@@ -23,7 +23,7 @@
 
 .sider_2 {
     grid-area: two;
-    overflow: scroll;
+    overflow: hidden;
 
 
 

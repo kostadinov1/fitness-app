@@ -1,8 +1,9 @@
 import styles from './CreateActivity.module.css'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { createActivity,  listActivityTypes } from '../../../api/activities'
+import { createActivity } from '../../../api/activities'
 import { UserContext } from '../../../contexts/UserContext'
+import { listActivityTypes } from '../../../api/activityTypes'
 
 function CreateActivity() {
     const navigate = useNavigate()

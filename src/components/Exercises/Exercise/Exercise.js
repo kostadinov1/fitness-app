@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { deleteExercise, getExercise } from '../../../api/exercises'
 import ListCard from '../../Cards/ListCard/ListCard'
+import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 
 function Exercise() {
     const {id} = useParams()
@@ -35,15 +36,12 @@ function Exercise() {
 
   return (
     <section className={styles.exercise}>
-        <ListCard></ListCard>
-        <div className={styles.sider_2}>
-        <h4>Quick</h4>
-                <ul>
-                    <li><Link to={'/create-activity'}>Create Activity</Link></li>
-                    <li><Link to={'/all-exercises'}>Exercises</Link></li>
-                    <li><Link to={'/'}>Profile</Link></li>
-                </ul>
-        </div>    
+        <div className={`${styles.sider_1}`}>
+            <ListCard></ListCard>
+        </div>
+        <div className={`${styles.sider_2}`}>
+            <UsefulLinksCard></UsefulLinksCard>
+        </div>
         <div className={styles.view}>
             <div className={styles.card}>
                 <div className={styles.card_info}>

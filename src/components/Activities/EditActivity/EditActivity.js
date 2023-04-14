@@ -1,8 +1,9 @@
 import styles from './EditActivity.module.css'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { editActivity, getActivity, listActivityTypes } from '../../../api/activities'
+import { editActivity, getActivity } from '../../../api/activities'
 import { UserContext } from '../../../contexts/UserContext'
+import { listActivityTypes } from '../../../api/activityTypes'
 
 
 function EditActivity() {
