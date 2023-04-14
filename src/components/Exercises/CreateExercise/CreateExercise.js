@@ -5,6 +5,8 @@ import { getAllActivities } from '../../../api/activities'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { listExerciseTypes } from '../../../api/exerciseTypes'
+import ListCard from '../../Cards/ListCard/ListCard'
+import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 
 
 function CreateExercise() {
@@ -60,6 +62,15 @@ function CreateExercise() {
     return (
 
         <section className={styles.create_exercise}>
+
+            <div className={`${styles.sider_1}`}>
+                <ListCard></ListCard>
+            </div>
+            <div className={styles.sider_2}>
+                <UsefulLinksCard></UsefulLinksCard>
+            </div>
+            <div className={`${styles.create_box}`}>
+
         <form onSubmit={onCreate} className={styles.form}>
             <div className={`${styles.form_field} ${styles.form_field_11} ${'title_outlined'}`}>
             Create Exercise
@@ -182,6 +193,8 @@ function CreateExercise() {
                 </select>
             </div>
         </form>
+        </div>
+
     </section>
   )
 }

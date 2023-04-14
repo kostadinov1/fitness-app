@@ -1,7 +1,40 @@
 .create_activity {
+    /* margin-top: 0px; */
     position: relative;
-    top: 3em;
-    min-height: 100vh;
+    min-height: 70vh;
+    display: grid;
+    gap: .4em;
+    padding: 0.2em;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+                    "one three three three three three"
+                    "two three three three three three"
+                    "two three three three three three"
+                    "two three three three three three";
+    /* border: 1px solid var(--acc-1); */
+    border-radius: var(--b-radius);
+}
+.sider_1 {
+    grid-area: one;
+    overflow: hidden;
+}
+.sider_2 {
+    grid-area: two;
+    overflow: hidden;
+}
+.create_exercise h4 {
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: var(--b-radius);
+    border-bottom: 3px solid var(--acc-1);
+    border-top: 1px solid var(--acc-1);
+}
+.create_box {
+    grid-area: three;
+    padding: 0.4em;
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    background-color: var(--prime);
 }
 .form_box {
     position: relative;
@@ -40,7 +73,6 @@
     border-radius: var(--b-radius);
     padding: 0.5em;
 }
-
 .form_item_box_1 {
     grid-area: one;
 }
@@ -71,12 +103,12 @@
 .form_item_box_10 {
     grid-area: ten;
 }
-
 .form button {
     margin-top: 1.4em;
 }
-
-
+.form label {
+    font-weight: bold;
+}
 .form_error {
     color: red;
 }
