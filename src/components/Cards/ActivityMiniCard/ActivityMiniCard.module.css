@@ -8,25 +8,23 @@
                 "two two two two"
                 "two two two two"
                 "three three three three";
-    max-height: 38vh;
-                width: 100%;
+    /* max-height: 45vh; */
+    /* width: 100%; */
     background-color: var(--sec);
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
-    overflow: hidden;
-    color: var(--text);
+    overflow: scroll;
 }
-.card:hover {
-    cursor: pointer;
-}
-
 .card_info {
     grid-area: two;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0.3em;
+    align-items: stretch;
+    justify-content: space-evenly;
+    align-content: start;
 
     grid-template-areas: 
                     "one one one one one one"
@@ -52,7 +50,8 @@
 
     }
     .card_cell_1 {
-        font-size: 1.6rem;
+        font-size: 1rem;
+        /* color: var(--text); */
         margin-bottom: 0.4em;
         padding: 0.4em 0em;
         grid-area: one;}
@@ -65,13 +64,15 @@
     .card_cell_8 {grid-area: eight;}
     .card_cell_9 {grid-area: nine;}
     .card_cell_10 {
-        /* max-height: 10em; */
+        grid-area: ten;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .2em;
         overflow: scroll;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-area: ten;}
+    }
     .card_cell_11 {
-        margin-top: 0.4em;    
+        margin-top: 0.4em; 
         grid-area: eleven;}
     .card_cell_12 {
         margin-top: 0.4em;    
@@ -80,18 +81,21 @@
     .card_cell_link {
         justify-content: center;
         background-color: var(--acc-1);
-        color: var(--sec-2);
+        color: var(--sec);
         font-weight: bold;
     }
-
     .exer {
         background-color: var(--prime);
         border: 1px solid var(--text);
         border-radius: var(--b-radius);
-        padding: 0.2em 0.4em;
-        margin: auto;
+        padding: 0.1em 0.3em;
+        /* margin: auto; */
     }
-
-
+    
+    .exer_link {
+        flex: 1 0 auto;
+        font-size: .9rem;
+        color: var(--text);
+    }
 
 

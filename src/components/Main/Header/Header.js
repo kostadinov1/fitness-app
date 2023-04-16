@@ -50,16 +50,6 @@ function Header() {
             setToggleDropdownMenu(false)
         }
     }
-    const onDropdownLinkClick = (e) => {
-        e.preventDefault()
-        if (toggleDropdownMenu === false) {
-            setToggleDropdownMenu(true)
-        } 
-        else {
-            setToggleDropdownMenu(false)
-        }
-    } 
-
 
 
   return (

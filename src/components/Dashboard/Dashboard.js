@@ -67,9 +67,8 @@ function Dashboard() {
                     <ListCard></ListCard>
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_3}`}>
-                <h3>Today</h3>
-                {/* TODO  match the activity with todays date */}
-                {activities.filter((act) => act.start_time?.slice(0,10) === todaysDate)
+                <h3>Everyday</h3>
+                    {activities.filter((act) => act.name === 'Everyday')
                     .map((act) => <ActivityMiniCard key={act.id} activity={act}/>)}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_4}`}>

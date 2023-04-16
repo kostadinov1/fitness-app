@@ -2,7 +2,7 @@
 
 }
 .grid {
-    max-height: 140vh;
+    max-height: 170vh;
     display: grid;
     gap: 0.4em;
     grid-template-columns:  repeat(8, 1fr);
