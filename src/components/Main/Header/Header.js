@@ -7,11 +7,15 @@ import { useContext, useState } from 'react'
 import { clearUserData } from '../../../utils/userUtils'
 import IconMenu from '../IconMenu/IconMenu'
 
+
+
 function Header() {
     const navigate = useNavigate()
     const [toggleMenu, setToggleMenu] = useState(false)
+    const [toggleDropdownMenu, setToggleDropdownMenu] = useState(false)
     const {user, setUser, loggedIn, setLoggedIn,} = useContext(UserContext)        
            
+
     const onLogout = (e) => {
         e.preventDefault()
         logoutService(user)
@@ -37,6 +41,26 @@ function Header() {
             setToggleMenu(false)
         }
     }
+    const onDropdownMenuClick = (e) => {
+        e.preventDefault()
+        if (toggleDropdownMenu === false) {
+            setToggleDropdownMenu(true)
+        } 
+        else {
+            setToggleDropdownMenu(false)
+        }
+    }
+    const onDropdownLinkClick = (e) => {
+        e.preventDefault()
+        if (toggleDropdownMenu === false) {
+            setToggleDropdownMenu(true)
+        } 
+        else {
+            setToggleDropdownMenu(false)
+        }
+    } 
+
+
 
   return (
         <section className={styles.header}>
@@ -52,6 +76,34 @@ function Header() {
               : <>
                 <li className={styles.li}>
                     <Link to={'/dashboard'} className={styles.link}>Dashboard</Link>
+                </li>
+                <li onClick={onDropdownMenuClick} className={`${styles.li} ${styles.dropdown_menu}`}>
+                    <span className={styles.link}>Cycles</span>
+
+
+                        {toggleDropdownMenu === true ? 
+                            <ul className={`${styles.dropdown_ul}`}>
+                                <li className={styles.li}>
+                                    <Link
+                                        to={'/'} 
+                                        className={styles.link}
+                                        onClick={onDropdownLinkClick}>Macro</Link>
+                                </li>
+                                <li className={styles.li}>
+                                    <Link
+                                        to={'/'} 
+                                        className={styles.link}
+                                        onClick={onDropdownLinkClick}>Meso</Link>
+                                </li>
+                                <li className={styles.li}>
+                                    <Link
+                                        to={'/'} 
+                                        className={styles.link}
+                                        onClick={onDropdownLinkClick}>Micro</Link>
+                                </li>
+                            </ul>
+                            :null}
+
                 </li>
                 <li className={styles.li}>
                     <Link to={'/all-exercises'} className={styles.link}>Exercises</Link>

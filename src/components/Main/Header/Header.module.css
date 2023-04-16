@@ -77,3 +77,14 @@
     padding: 0.4em;
     border-radius: var(--b-radius);
 }
+
+.dropdown_menu {
+}
+.dropdown_ul {
+    background-color: var(--sec-2);
+    position: absolute;
+    list-style: none;
+    padding: 1em;
+    margin: .2em;
+    border-radius: var(--b-radius);
+}
