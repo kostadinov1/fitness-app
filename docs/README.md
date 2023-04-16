@@ -3,12 +3,32 @@ This is the frontend of Periodization app which calls a Django REST app in the b
 The application allows you to create Activities and Exercises separately. Exercises can be added to Your Activities. And then Activities can be organized in Cycles. 
 
 There are 3 types of periodization cycles:
-    Macro Cycle: Representing a full Year
-    Meso Cycle: It can vary, usually from 1 to 6 Months
-    Micro Cycle: Representing Each Week
+    - Macro Cycle: Representing a full Year
+    - Meso Cycle: It can vary, usually from 1 to 6 Months
+    - Micro Cycle: Representing Each Week
 
-You can only add activities to a Micro Cycle.
+You can only add:
+    - Exercises to Activity
+    - Activities to Micro Cycle
+    - Micro Cycles to Meso Cycle
+    - Meso Cycles to Macro Cycle 
 
+Hierarchy:              Macro Cycle    -represents a full Year
+                        /       \
+                       /         \
+                Meso Cycle      Meso Cycles      - 1-6 months
+                 /               /     \
+                /               /       \
+                                      Micro Cycles      - single week
+                                        /     \
+                                       /       \   
+                                            Activities  
+                                                /\
+                                               /  \ 
+                                            Exercises
+
+
+![Getting Started](./images/periodization-hierarchy.jpeg)
 
 
 
