@@ -1,10 +1,11 @@
 .create_activity {
     /* margin-top: 0px; */
     position: relative;
-    min-height: 70vh;
+    min-height: 100vh;
     display: grid;
     gap: .4em;
     padding: 0.2em;
+    margin-bottom: 1em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                     "one three three three three three"

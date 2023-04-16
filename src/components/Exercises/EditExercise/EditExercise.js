@@ -12,9 +12,20 @@ import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 function EditExercise() {
     const {id} = useParams()
     const navigate = useNavigate()
-    const [exercise, setExercise] = useState({})
-    const [exerciseTypes, setExerciseTypes] = useState([])
     const { user } = useContext(UserContext)
+    const [exercise, setExercise] = useState({
+        name: '',
+        description: '',
+        reps: 0,
+        sets: 0,
+        cues: '',
+        weights_in_kg: 0,
+        calories_burned: 0,
+        type: undefined,
+        activity: undefined,
+        user: user.user_id
+    })
+    const [exerciseTypes, setExerciseTypes] = useState([])
     const [activities, setActivities] = useState([])
 
     useEffect(() => {
@@ -54,11 +65,16 @@ function EditExercise() {
             <div className={`${styles.edit_box}`}>
             
         <form onSubmit={onEdit} className={styles.form}>
-        <div className={`${styles.form_field} ${styles.form_field_11} ${'title_outlined'}`}>
+            <div className={`${'title_outlined'}  ${styles.form_field_11} `}>
             Edit Exercise
-                </div>
+            </div>
             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                 <label>Name</label>
+                {exercise.name === '' ?
+                                <span className={`${styles.form_error}`}>
+                                    You need to enter name
+                                </span> 
+                                : null}
                 <input
                     name='name' 
                     value={exercise.name}
@@ -75,7 +91,7 @@ function EditExercise() {
                         className={styles.form_input}>
                             { exerciseTypes ? 
                             exerciseTypes.map((exerciseType) =>
-                            <option value={`${exerciseType.id}`}>{exerciseType.name}</option>)
+                            <option value={`${exerciseType.id}`} key={exerciseType.id}>{exerciseType.name}</option>)
                             : <option>No Types yet</option>}
                 </select>
             </div>
@@ -132,7 +148,7 @@ function EditExercise() {
                     min={0}
                     max={1000}
                     type={'number'}
-                    lassName={styles.form_input}  
+                    className={styles.form_input}  
                     placeholder='What weights?'></input>
             </div>
             <div className={`${styles.form_field} ${styles.form_field_8}`}>
@@ -145,7 +161,7 @@ function EditExercise() {
                     max={100000}
                     type={'number'}
                     className={styles.form_input}  
-                    placeholder='Calories burned'></input>
+                    placeholder='0-100000'></input>
             </div>
             <button className={`${styles.form_field} ${styles.form_field_9}`}>
                 Edit
@@ -160,7 +176,7 @@ function EditExercise() {
                     className={styles.form_input}>
                         { activities ? 
                         activities.map((activity) =>
-                        <option value={activity.id}>{activity.name}</option>)
+                        <option value={activity.id} key={activity.id}>{activity.name}</option>)
                         : <option>No Activities yet</option>}
                 </select>
             </div>

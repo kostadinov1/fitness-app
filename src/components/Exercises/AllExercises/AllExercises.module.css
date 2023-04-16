@@ -5,6 +5,7 @@
     display: grid;
     gap: .4em;
     padding: 0.2em;
+    margin-bottom: 1em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                     "one three three three three three"
@@ -39,12 +40,13 @@
 .exy_box {
     grid-area: three;
     display: grid;
-    align-items: center;
-    align-content: start;
+    align-items: stretch;
+    align-content: stretch;
     justify-content: space-evenly;
     grid-template-columns: repeat(3, 1fr);
     gap: .4em;
     padding: 0.6em;
+    margin-bottom: 1em;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     background-color: var(--prime);

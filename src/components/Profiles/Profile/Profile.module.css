@@ -5,6 +5,7 @@
     display: grid;
     gap: 0.2em;
     padding: 0.2em;
+    margin-bottom: 1em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                     "one three three three three three"
@@ -65,7 +66,7 @@
     .card_1 img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         border-radius: var(--b-radius);
     }
 .card_2 {

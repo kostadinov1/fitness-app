@@ -1,10 +1,10 @@
 .create_exercise {
-    /* margin-top: 0px; */
     position: relative;
-    min-height: 80vh;
+    min-height: 100vh;
     display: grid;
     gap: .4em;
     padding: 0.2em;
+    margin-bottom: 1em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                     "one three three three three three"
@@ -52,7 +52,7 @@
 
 .form {
     display: grid;
-
+    max-height: 70vh;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
     "eleven eleven eleven eleven eleven eleven"

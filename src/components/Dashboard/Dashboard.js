@@ -11,14 +11,17 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import AliceCarousel from "react-alice-carousel";
 import ActivityMiniCard from "../Cards/ActivityMiniCard/ActivityMiniCard";
 import ExerciseCard from "../Exercises/AllExercises/ExerciseCard/ExerciseCard";
-import { AimOutlined, CalendarFilled, DeploymentUnitOutlined, FireFilled, HeatMapOutlined, SyncOutlined, UserOutlined } from "@ant-design/icons";
 import GridWeek from "./GridWeek/GridWeek";
+import ListCard from "../Cards/ListCard/ListCard";
+import { useTodaysDate } from "../../hooks/useTodaysDate";
 
 const handleDragStart = (e) => e.preventDefault();
 
 function Dashboard() {
+    const [todaysDate, setTodaysDate] = useTodaysDate()
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
+    const { user } = useContext(UserContext) 
     const [profile, setProfile] = useState({
         first_name: '',
         last_name: '',
@@ -27,8 +30,6 @@ function Dashboard() {
         gender: null,
         
     })
-    const { user } = useContext(UserContext) 
-
     const activitiesCarded = activities?.map((activity) => <ActivityMiniCard activity={activity} onDragStart={handleDragStart} role="presentation" />)
     const exercisesCarded = exercises?.map((exercise) => <ExerciseCard  exercise={exercise} onDragStart={handleDragStart} role="presentation" />)
 
@@ -51,8 +52,8 @@ function Dashboard() {
             })
             .catch((res) => {
             })
-    }, [user])
-
+            
+        }, [user])
 
   return (
     <section className={styles.dashboard}>
@@ -63,20 +64,13 @@ function Dashboard() {
                   <img src='/images/defaults/default-user.png' alt='' />}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_2}`}>
-                <p>Quick Links</p>
-                <ul>
-                    <li><Link to={'/profile'}><UserOutlined /> Profile</Link></li>
-                    <li><Link to={'/all-activities'}><DeploymentUnitOutlined /> Activities</Link></li>
-                    <li><Link to={'/all-exercises'}><FireFilled /> Exercises</Link></li>
-                    <li><Link to={'/periodization'}><CalendarFilled /> Periodization</Link></li>
-                    <li><Link to={'/cycles'}><SyncOutlined /> Cycles</Link></li>
-                    <li><Link to={'/goals'}><AimOutlined /> Goals</Link></li>
-                    <li><Link to={'/defenders'}><HeatMapOutlined /> Defenders</Link></li>
-                </ul>
+                    <ListCard></ListCard>
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_3}`}>
-                <h3>RECORDS</h3>
-                {/* <ListCard /> */}
+                <h3>Today</h3>
+                {/* TODO  match the activity with todays date */}
+                {activities.filter((act) => act.start_time?.slice(0,10) === todaysDate)
+                    .map((act) => <ActivityMiniCard key={act.id} activity={act}/>)}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_4}`}>
                 <h3>CHARTS</h3>
@@ -103,7 +97,7 @@ function Dashboard() {
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_8}`}>
-                <h3>Week Schedual</h3>
+                <h3>Week Schedule</h3>
                 <GridWeek activities={activities}></GridWeek>
 
             </div>

@@ -15,6 +15,14 @@
     list-style: none;
     font-weight: bold;
     letter-spacing: 1pt;
-    font-size: 1.1rem;
+    font-size: .9rem;
     padding: 1em;
+}
+
+.list_card h4 {    
+text-align: center;
+font-size: 1.1rem;
+border-radius: var(--b-radius);
+border-bottom: 3px solid var(--acc-1);
+border-top: 1px solid var(--acc-1);
 }

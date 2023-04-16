@@ -20,7 +20,7 @@ function CreateExercise() {
     const [formData, setFormData] = useState({
             name: '',
             description: '',
-            reps: null,
+            reps: 0,
             sets: 0,
             cues: '',
             weights_in_kg: 0,
@@ -72,7 +72,7 @@ function CreateExercise() {
             <div className={`${styles.create_box}`}>
 
         <form onSubmit={onCreate} className={styles.form}>
-            <div className={`${styles.form_field} ${styles.form_field_11} ${'title_outlined'}`}>
+            <div className={` ${styles.form_field_11} ${'title_outlined'}`}>
             Create Exercise
                 </div>
             <div className={`${styles.form_field} ${styles.form_field_1}`}>

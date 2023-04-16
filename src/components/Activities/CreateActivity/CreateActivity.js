@@ -15,17 +15,17 @@ function CreateActivity() {
   
     const [formData, setFormData] = useState({
             name: '',
-            duration: null,
-            description: null,
-            distance: null,
-            pace: null,
-            speed: null,
-            heart_rate: null,
-            rpe: null,
+            duration: 0,
+            description: '',
+            distance: 0,
+            pace: 0,
+            speed: 0,
+            heart_rate: 0,
+            rpe: 0,
             exercises: null,
-            type: null,
-            goal: null,
-            microcycle: null,
+            type: undefined,
+            goal: undefined,
+            microcycle: undefined,
             user: user.user_id
     })
 
@@ -58,7 +58,7 @@ function CreateActivity() {
         </div>
         <div className={`${styles.create_box}`}>
             <div className={styles.form_box}>
-                <h1>Create Activity</h1>
+                <h1 className={`title_outlined`}>Create Activity</h1>
                 <form onSubmit={onCreate} className={styles.form}>
                         <div className={`${styles.form_input} ${styles.form_item_box_1} ${styles.item}`}>
                             <label>Name</label>

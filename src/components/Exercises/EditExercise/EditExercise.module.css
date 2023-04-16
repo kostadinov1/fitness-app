@@ -1,9 +1,10 @@
 .edit_exercise {
         position: relative;
-        min-height: 80vh;
+        min-height: 100vh;
         display: grid;
         gap: .4em;
         padding: 0.2em;
+        margin-bottom: 1em;
         grid-template-columns: repeat(6, 1fr);
         grid-template-areas: 
                         "one three three three three three"
@@ -22,9 +23,7 @@
     
     .sider_2 {
         grid-area: two;
-        overflow: hidden;
-    
-    
+        overflow: hidden;    
     }
     
     
@@ -38,7 +37,6 @@
     
     .edit_box {
         grid-area: three;
-    
         padding: 0.4em;
         border: 1px solid var(--acc-1);
         border-radius: var(--b-radius);
@@ -49,7 +47,7 @@
 
 .form {
     display: grid;
-
+    max-height: 70vh;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
     "eleven eleven eleven eleven eleven eleven"
@@ -60,8 +58,6 @@
                         "nine nine nine nine nine nine"
                         ;
     background-color: var(--prime-2);
-    max-width: 90vw;
-    gap: 0em;
     margin: auto auto;
     padding: 1em;
     overflow: hidden;

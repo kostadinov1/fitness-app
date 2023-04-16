@@ -47,13 +47,18 @@ function EditActivity() {
             <div className={`${styles.edit_box}`}>
 
                 <div className={styles.form_box}>
-                <h1>Edit Activity</h1>
+                <h1 className={`title_outlined`}>Edit Activity</h1>
                 <form onSubmit={onEdit} className={styles.form}>
         
                         <div className={`${styles.form_input} ${styles.form_item_box_1} ${styles.item}`}>
                             <label>
                                 Name
                                 </label>
+                                {activity.name === '' ?
+                                <span className={`${styles.form_error}`}>
+                                    You need to enter name
+                                </span> 
+                                : null}
                             <input
                                 name='name' 
                                 value={activity.name}

@@ -1,3 +1,20 @@
+# Periodization - Activity Periodization Application
+This is the frontend of Periodization app which calls a Django REST app in the backend. It is made with React JS, HTML, CSS and few Ant Design components.
+The application allows you to create Activities and Exercises separately. Exercises can be added to Your Activities. And then Activities can be organized in Cycles. 
+
+There are 3 types of periodization cycles:
+    Macro Cycle: Representing a full Year
+    Meso Cycle: It can vary, usually from 1 to 6 Months
+    Micro Cycle: Representing Each Week
+
+You can only add activities to a Micro Cycle.
+
+
+
+
+
+
+
 
 
 This project is temporary accessible at http://ec2-13-40-218-199.eu-west-2.compute.amazonaws.com

@@ -1,10 +1,11 @@
 
 .edit_activity {
         position: relative;
-        min-height: 70vh;
         display: grid;
+        min-height: 100vh;
         gap: .4em;
         padding: 0.2em;
+        margin-bottom: 1em;
         grid-template-columns: repeat(6, 1fr);
         grid-template-areas: 
                         "one three three three three three"

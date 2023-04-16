@@ -9,7 +9,7 @@
                 "two two two two"
                 "three three three three";
     /* max-height: 45vh; */
-    width: 100%;
+    /* width: 100%; */
     background-color: var(--sec);
     background-repeat: no-repeat;
     background-size: cover;
