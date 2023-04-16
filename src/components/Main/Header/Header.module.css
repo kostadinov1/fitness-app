@@ -17,10 +17,10 @@
     margin-left: 2em;
 }
 .header h1 {
-    padding: 0em 0.6em;
+    padding: 0em 0.4em;
     color: var(--text);
     background-color: var(--prime-2);
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     border-radius: var(--b-radius);
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 700;
@@ -28,8 +28,8 @@
 .ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
-    margin-left: 8em;
+    gap: 1.6em;
+    margin-left: 4em;
     margin-right: auto;
     list-style: none;
 
@@ -39,15 +39,15 @@
     color: var(--text);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.2rem;
-    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    letter-spacing: 1.2pt;
     font-family: 'Montserrat Alternates', sans-serif;
 
 }
 .user_email {
     color: var(--text);
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: .9rem;
     font-family: 'Montserrat Alternates', sans-serif;
     letter-spacing: 1pt;
     max-width: 16em;
@@ -66,14 +66,14 @@
 .auth_icons * {
     color: var(--dark-blue);
     font-weight: bold;
-    font-size: 1rem;
+    font-size: .9rem;
     margin: 0px 0.1em;
 }
 .menu_icon {
     background-color: var(--prime-2);
     margin-right: 2em;
     color: var(--text);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: 0.4em;
     border-radius: var(--b-radius);
 }
@@ -84,7 +84,7 @@
     background-color: var(--sec-2);
     position: absolute;
     list-style: none;
-    padding: 1em;
+    padding: .4em 1em;
     margin: .2em;
     border-radius: var(--b-radius);
 }

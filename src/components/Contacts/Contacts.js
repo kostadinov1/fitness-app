@@ -2,6 +2,7 @@ import styles from './Contacts.module.css'
 import React, { useState } from 'react'
 import { createContactMessage } from '../../api/contactMessage'
 import SimpleMap from '../Custom/SimpleMap/SimpleMap'
+import AboutUs from '../AboutUs/AboutUs'
 
 
 function Contacts() {
@@ -22,6 +23,7 @@ function Contacts() {
 
     return (
         <section className={styles.contacts}>
+                        <AboutUs />
             <div className={`${styles.hero}`}>
 
             <div className={`${styles.banner}`}>
@@ -79,6 +81,7 @@ function Contacts() {
                 </div>
             </div>
             <SimpleMap></SimpleMap>
+
         </section>
     )
 }

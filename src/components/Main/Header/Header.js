@@ -1,6 +1,6 @@
 import styles from './Header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { MenuOutlined, PoweroffOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
+import { BlockOutlined, ContactsOutlined, DeploymentUnitOutlined, DownOutlined, FireFilled, MenuOutlined, PieChartOutlined, PoweroffOutlined, RightOutlined, SyncOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
 import { logoutService } from '../../../api/auth'
 import { UserContext } from '../../../contexts/UserContext'
 import { useContext, useState } from 'react'
@@ -75,10 +75,10 @@ function Header() {
                 </li>
               : <>
                 <li className={styles.li}>
-                    <Link to={'/dashboard'} className={styles.link}>Dashboard</Link>
+                    <Link to={'/dashboard'} className={styles.link}><BlockOutlined/> Dashboard</Link>
                 </li>
                 <li onClick={onDropdownMenuClick} className={`${styles.li} ${styles.dropdown_menu}`}>
-                    <span className={styles.link}>Cycles</span>
+                    <span className={styles.link}><PieChartOutlined /> Cycles {toggleDropdownMenu ? <RightOutlined /> : <DownOutlined />}</span>
 
 
                         {toggleDropdownMenu === true ? 
@@ -87,40 +87,40 @@ function Header() {
                                     <Link
                                         to={'/'} 
                                         className={styles.link}
-                                        onClick={onDropdownLinkClick}>Macro</Link>
+                                        ><SyncOutlined /> Macro</Link>
                                 </li>
                                 <li className={styles.li}>
                                     <Link
                                         to={'/'} 
                                         className={styles.link}
-                                        onClick={onDropdownLinkClick}>Meso</Link>
+                                        ><SyncOutlined /> Meso</Link>
                                 </li>
                                 <li className={styles.li}>
                                     <Link
                                         to={'/'} 
                                         className={styles.link}
-                                        onClick={onDropdownLinkClick}>Micro</Link>
+                                        ><SyncOutlined /> Micro</Link>
                                 </li>
                             </ul>
                             :null}
 
                 </li>
                 <li className={styles.li}>
-                    <Link to={'/all-exercises'} className={styles.link}>Exercises</Link>
+                    <Link to={'/all-activities'} className={styles.link}><DeploymentUnitOutlined /> Activities</Link>
                 </li>
                 <li className={styles.li}>
-                    <Link to={'/all-activities'} className={styles.link}>Activities</Link>
+                    <Link to={'/all-exercises'} className={styles.link}><FireFilled /> Exercises</Link>
                 </li>
               </>
         }
-            <li className={styles.li}>
+            {/* <li className={styles.li}>
             <Link to={'/about-us'} className={styles.link}>About Us</Link>
-            </li>
+            </li> */}
             <li className={styles.li}>
-            <Link to={'/contacts'} className={styles.link}>Contacts</Link>
+            <Link to={'/contacts'} className={styles.link}><ContactsOutlined /> Contacts</Link>
             </li>
         </ul>
-        <Link to={`/profile/`} className={styles.user_email}>{user.email}</Link>
+        <Link to={`/profile/`} className={styles.user_email}><UserOutlined/> {user.email}</Link>
         <div className={styles.auth_icons}>
             {user.isAuthenticated === false ?
                 <>
