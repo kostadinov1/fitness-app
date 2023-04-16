@@ -1,6 +1,10 @@
 # Periodization - Activity Periodization Application
+This project is temporary accessible at http://ec2-13-40-218-199.eu-west-2.compute.amazonaws.com
 This is the frontend of Periodization app which calls a Django REST app in the backend. It is made with React JS, HTML, CSS and few Ant Design components.
-The application allows you to create Activities and Exercises separately. Exercises can be added to Your Activities. And then Activities can be organized in Cycles. 
+It is hosted at AWS, using EC2 instance. The application is running in Docker containers, and it is served by Nginx.
+
+The application allows you to create Activities and Exercises separately. Exercises can be added to Your Activities. And then Activities can be organized in Cycles.
+
 
 There are 3 types of periodization cycles:
     - Macro Cycle: Representing a full Year
@@ -13,31 +17,11 @@ You can only add:
     - Micro Cycles to Meso Cycle
     - Meso Cycles to Macro Cycle 
 
-Hierarchy:              Macro Cycle    -represents a full Year
-                        /       \
-                       /         \
-                Meso Cycle      Meso Cycles      - 1-6 months
-                 /               /     \
-                /               /       \
-                                      Micro Cycles      - single week
-                                        /     \
-                                       /       \   
-                                            Activities  
-                                                /\
-                                               /  \ 
-                                            Exercises
-
-
+#Hierarchy:
 ![Getting Started](./images/periodization-hierarchy.jpeg)
 
 
-
-
-
-
-
-
-This project is temporary accessible at http://ec2-13-40-218-199.eu-west-2.compute.amazonaws.com
+#This application is yet far from complete!
 
 
 # Getting Started with Create React App
