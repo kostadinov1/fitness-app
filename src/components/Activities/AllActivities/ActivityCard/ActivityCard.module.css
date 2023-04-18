@@ -62,12 +62,18 @@
     .card_cell_6 {grid-area: six;}
     .card_cell_7 {grid-area: seven;}
     .card_cell_8 {grid-area: eight;}
-    .card_cell_9 {grid-area: nine;}
+    .card_cell_9 {
+        display: flex;
+        align-items: center;
+        gap: .4em;
+        grid-area: nine;}
     .card_cell_10 {
         /* max-height: 10em; */
-        overflow: scroll;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        /* overflow: scroll; */
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .1em;
         grid-area: ten;}
     .card_cell_11 {
         margin-top: 0.4em; 
@@ -83,16 +89,61 @@
         font-weight: bold;
     }
     .exer {
+        width: 100%;
+        letter-spacing: 1pt;
+        font-weight: 500;
         background-color: var(--prime);
         border: 1px solid var(--text);
         border-radius: var(--b-radius);
         padding: 0.2em 0.4em;
         margin: auto;
     }
-
+    
     .exer_link {
         font-size: .9rem;
         color: aliceblue;
     }
 
 
+    .checkbox {
+        display: none;
+      }
+      
+      .checkbox_slider {
+        width: 2.7em;
+        height: 1.2em;
+        background-color: var(--acc-2);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        border: 4px solid transparent;
+        transition: .3s;
+        box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.25) inset;
+        cursor: pointer;
+      }
+      
+      .checkbox_slider::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: var(--text);
+        transform: translateX(-30px);
+        border-radius: 20px;
+        transition: .3s;
+        box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+      }
+      
+      .checkbox:checked ~ .checkbox_slider::before {
+        transform: translateX(30px);
+        box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+      }
+      
+      .checkbox:checked ~ .checkbox_slider {
+        background-color: #21f321;
+      }
+      
+      .checkbox:active ~ .checkbox_slider::before {
+        transform: translate(0);
+      }

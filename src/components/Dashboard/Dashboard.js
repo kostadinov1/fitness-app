@@ -14,13 +14,14 @@ import ExerciseCard from "../Exercises/AllExercises/ExerciseCard/ExerciseCard";
 import GridWeek from "./GridWeek/GridWeek";
 import ListCard from "../Cards/ListCard/ListCard";
 import { useTodaysDate } from "../../hooks/useTodaysDate";
-
+import { getAllGoals } from "../../api/goals";
 const handleDragStart = (e) => e.preventDefault();
 
 function Dashboard() {
     const [todaysDate, setTodaysDate] = useTodaysDate()
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
+    const [goals, setGoals] = useState([])
     const { user } = useContext(UserContext) 
     const [profile, setProfile] = useState({
         first_name: '',
@@ -52,7 +53,11 @@ function Dashboard() {
             })
             .catch((res) => {
             })
-            
+        getAllGoals(user)
+            .then((res) => {
+                setGoals(res)
+                console.log(res, 'goals')})
+            .catch((res) => console.log(res, 'goals'))
         }, [user])
 
   return (
@@ -72,8 +77,9 @@ function Dashboard() {
                     .map((act) => <ActivityMiniCard key={act.id} activity={act}/>)}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_4}`}>
-                <h3>CHARTS</h3>
-                <img src='/images/backgrounds/background-01.jpg' alt='' />
+                <h3>Goals</h3>
+
+                {/* <img src='/images/backgrounds/background-01.jpg' alt='' /> */}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_5}`}>
                 <h3>{profile ? profile.first_name : null} {profile.last_name}</h3>

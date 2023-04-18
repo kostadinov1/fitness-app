@@ -53,6 +53,7 @@ function AllActivities() {
             <div className={styles.acty_box}>
                 {activites ? activites.map((activity) => 
                                                     <ActivityCard 
+                                                        setActivities={setActivities}
                                                         activity={activity}
                                                         onDelete={onDelete}
                                                         key={activity.id}/>
