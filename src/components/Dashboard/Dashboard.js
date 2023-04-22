@@ -15,6 +15,7 @@ import GridWeek from "./GridWeek/GridWeek";
 import ListCard from "../Cards/ListCard/ListCard";
 import { useTodaysDate } from "../../hooks/useTodaysDate";
 import { getAllGoals } from "../../api/goals";
+import GoalsCard from "../Cards/GoalsCard/GoalsCard";
 const handleDragStart = (e) => e.preventDefault();
 
 function Dashboard() {
@@ -78,7 +79,7 @@ function Dashboard() {
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_4}`}>
                 <h3>Goals</h3>
-
+                    <GoalsCard goals={goals} />
                 {/* <img src='/images/backgrounds/background-01.jpg' alt='' /> */}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_5}`}>

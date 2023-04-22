@@ -22,7 +22,7 @@ function CreateActivity() {
             speed: 0,
             heart_rate: 0,
             rpe: 0,
-            exercises: null,
+            exercises: undefined,
             type: undefined,
             goal: undefined,
             microcycle: undefined,
@@ -77,9 +77,9 @@ function CreateActivity() {
                         <div className={`${styles.form_input} ${styles.form_item_box_2} ${styles.item}`}>
                             <label>Type</label>
                             <select 
+                                name='type'
                                 value={formData.type}
                                 onChange={onValueChange}
-                                name='type'
                                 className={styles.form_input}>
                                     { activityTypes ? 
                                     activityTypes.map((activityType) =>
@@ -101,67 +101,73 @@ function CreateActivity() {
                         <div className={`${styles.form_num_input} ${styles.form_item_box_4} ${styles.item}`}>
                             <label>Duration</label>
                             <input 
+                                name='duration'
+                                type={'number'}
                                 value={formData.duration}
                                 onChange={onValueChange}
-                                type={'number'}
                                 min={0}
                                 max={1000}
-                                placeholder='0'
+                                placeholder='0-1000'
                                 />
                         </div>
                         <div className={`${styles.form_num_input} ${styles.form_item_box_5} ${styles.item}`}>
                             <label>Distance</label>
                             <input 
+                                name='distance'
+                                type={'number'}
                                 value={formData.distance}
                                 onChange={onValueChange}
-                                type={'number'}
                                 min={0}
                                 max={10000000}
-                                placeholder='0'
+                                placeholder='0-10000000'
                                 />
                         </div>
                         <div className={`${styles.form_num_input} ${styles.form_item_box_6} ${styles.item}`}>
                             <label>Pace</label>
                             <input 
+                                name='pace'
+                                type={'number'}
                                 value={formData.pace}
                                 onChange={onValueChange}
-                                type={'number'}
                                 min={0}
                                 max={20}
-                                placeholder='0'
+                                placeholder='0-20'
                                 />
                         </div>
                         <div className={`${styles.form_num_input} ${styles.form_item_box_7} ${styles.item}`}>
                             <label>Speed</label>
                             <input 
+                                name='speed'
+                                type={'number'}
                                 value={formData.speed}
                                 onChange={onValueChange}
-                                type={'number'}
                                 min={0}
                                 max={1000}
-                                placeholder='0'
+                                placeholder='0-1000'
                                 />
                         </div>
                         <div className={`${styles.form_num_input} ${styles.form_item_box_8} ${styles.item}`}>
                             <label>Heart Rate</label>
                             <input 
+                                name='hear_rate'
+                                type={'number'}
                                 value={formData.heart_rate}
                                 onChange={onValueChange}
-                                type={'number'}
                                 min={0}
                                 max={220}
-                                placeholder='0'
+                                placeholder='0-220'
                                 />
                         </div>
                         <div className={`${styles.form_num_input} ${styles.form_item_box_9} ${styles.item}`}>
                             <label>RPE</label>
                             <input 
+                                name='rpe'
+                                type={'number'}
                                 value={formData.rpe}
                                 onChange={onValueChange}
-                                type={'number'}
                                 min={0}
                                 max={10}
-                                placeholder='0'
+                                placeholder='0-10'
                                 />
                         </div>
                     <button  className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>

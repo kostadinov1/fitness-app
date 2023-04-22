@@ -28,6 +28,7 @@ function ActivityCard({activity, onDelete}) {
         }
     }, [activity])
     
+    // TODO Activity: public - initial value!
     const onPublicSwitch = (e) => {
         if (e.target.checked === false) {
                 editActivity(user, activity.id, {...activity, public: false})

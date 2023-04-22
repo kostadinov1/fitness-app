@@ -45,6 +45,9 @@
 
 }
 .user_email {
+    display: flex;
+    align-items: center;
+    gap: .2em;
     color: var(--text);
     font-weight: 400;
     font-size: .9rem;
