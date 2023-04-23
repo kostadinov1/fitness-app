@@ -1,4 +1,4 @@
-import baseURL from './baseURL'
+import baseURL from '../baseURL'
 
 const createMesoCycle  = async (user, mesoCycleProps) => {
     const url = baseURL + '/periodization/create-meso-cycle/'

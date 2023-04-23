@@ -6,5 +6,8 @@
 .li { 
     font-weight: 500;
     letter-spacing: 1pt;
-    
+
+}
+.deadline {
+    color: var(--acc-2);
 }

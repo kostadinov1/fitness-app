@@ -68,6 +68,13 @@ function Header() {
                     <Link to={'/dashboard'} className={styles.link}><BlockOutlined/> Dashboard</Link>
                 </li>
 
+               
+                <li className={styles.li}>
+                    <Link to={'/all-activities'} className={styles.link}><DeploymentUnitOutlined /> Activities</Link>
+                </li>
+                <li className={styles.li}>
+                    <Link to={'/all-exercises'} className={styles.link}><FireFilled /> Exercises</Link>
+                </li>
                 <li onClick={onDropdownMenuClick} className={`${styles.li} ${styles.dropdown_menu}`}>
                     <span className={styles.link}><PieChartOutlined /> Cycles {toggleDropdownMenu ? <RightOutlined /> : <DownOutlined />}</span>
 
@@ -97,16 +104,11 @@ function Header() {
 
                 </li>
                 <li className={styles.li}>
-                    <Link to={'/all-activities'} className={styles.link}><DeploymentUnitOutlined /> Activities</Link>
-                </li>
-                <li className={styles.li}>
-                    <Link to={'/all-exercises'} className={styles.link}><FireFilled /> Exercises</Link>
+                    <Link to={'/'} className={styles.link}><AimOutlined /> Goals</Link>
                 </li>
               </>
         }
-                <li className={styles.li}>
-                    <Link to={'/'} className={styles.link}><AimOutlined /> Goals</Link>
-                </li>
+
             <li className={styles.li}>
                 <Link to={'/contacts'} className={styles.link}><ContactsOutlined /> Contacts</Link>
             </li>

@@ -136,5 +136,9 @@
     color: var(--text);
 }
 
-
+.macro_pie_chart_box {
+    height: 40vh;
+    width: 50vw;
+    background-color: var(--dimmer);
+}
 

@@ -1,4 +1,4 @@
-import baseURL from './baseURL'
+import baseURL from '../baseURL'
 
 const createMacroCycle  = async (user, macroCycleProps) => {
     const url = baseURL + '/periodization/create-macro-cycle/'

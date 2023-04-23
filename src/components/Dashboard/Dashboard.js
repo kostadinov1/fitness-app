@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllActivities } from '../../api/activities'
 import { getAllExercises } from '../../api/exercises'
+import { getAllMacroCycles } from '../../api/cycles/macroCycle'
 import { getProfile } from '../../api/profile'
 import { UserContext } from '../../contexts/UserContext'
 import CardReel from '../Cards/CardReel/CardReel'
@@ -16,10 +17,18 @@ import ListCard from "../Cards/ListCard/ListCard";
 import { useTodaysDate } from "../../hooks/useTodaysDate";
 import { getAllGoals } from "../../api/goals";
 import GoalsCard from "../Cards/GoalsCard/GoalsCard";
+import { ResponsivePie } from "@nivo/pie";
+import PieMacroChart from "../NivoCharts/ResponsivePie/ResponsivePieChart";
 const handleDragStart = (e) => e.preventDefault();
+
+
+
+
+
 
 function Dashboard() {
     const [todaysDate, setTodaysDate] = useTodaysDate()
+    const [macroCycles, setMacroCycles] = useState([])
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
     const [goals, setGoals] = useState([])
@@ -59,6 +68,12 @@ function Dashboard() {
                 setGoals(res)
                 console.log(res, 'goals')})
             .catch((res) => console.log(res, 'goals'))
+        getAllMacroCycles(user)
+            .then((res) => {console.log('res macro cycles', res )
+                setMacroCycles(res)    
+            })
+            .catch((res) => {console.log('res macro cycles', res )})
+        
         }, [user])
 
   return (
@@ -116,6 +131,11 @@ function Dashboard() {
                 <h3>BLOCKS</h3>
                     <CardReel />
             </div>
+        </div>
+        <div className={`${styles.macro_pie_chart_box}`}>
+            {macroCycles.length > 0 ? 
+                macroCycles.map((cycle) => <PieMacroChart key={cycle.id} macroCycle={cycle} />)
+                : null}
         </div>
     </section>
   )

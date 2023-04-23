@@ -1,6 +1,6 @@
 
 
-import baseURL from './baseURL'
+import baseURL from '../baseURL'
 
 const createMicroCycle  = async (user, microCycleProps) => {
     const url = baseURL + '/periodization/create-micro-cycle/'
