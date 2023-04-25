@@ -24,6 +24,7 @@ import Contacts from './components/Contacts/Contacts';
 import { getUserData } from './utils/userUtils';
 import Profile from './components/Profiles/Profile/Profile';
 import ErrorBoundary from './components/ErrorBoundry/ErrorBoundary';
+import MesoCycles from './components/Cycles/MesoCycle/MecoCycles/MesoCycles';
 
 function App() {
 
@@ -67,6 +68,11 @@ function App() {
                                 {/* <<< ------ Core Auth ------- >>>*/}         
                             <Route path='/dashboard' element={<Dashboard />}/>
                             <Route path='/profile' element={<Profile />}/>
+
+                                {/* <<< ------ CYCLES ------- >>> */}
+                                {/* <<< -------------------- >>> */}
+                                {/* <<< ------ Meso Cycles------- >>> */}
+                            <Route path='/mesocycles' element={<MesoCycles />} />
 
                                 {/* <<< ------ Exercises------- >>> */}
                             <Route path='/all-exercises' element={<AllExercises />} />

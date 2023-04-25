@@ -89,7 +89,7 @@ function Header() {
                                 </li>
                                 <li className={styles.li}>
                                     <Link
-                                        to={'/'} 
+                                        to={'/mesocycles'} 
                                         className={styles.link}
                                         ><SyncOutlined /> Meso</Link>
                                 </li>

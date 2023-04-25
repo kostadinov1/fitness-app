@@ -17,13 +17,8 @@ import ListCard from "../Cards/ListCard/ListCard";
 import { useTodaysDate } from "../../hooks/useTodaysDate";
 import { getAllGoals } from "../../api/goals";
 import GoalsCard from "../Cards/GoalsCard/GoalsCard";
-import { ResponsivePie } from "@nivo/pie";
-import PieMacroChart from "../NivoCharts/ResponsivePie/ResponsivePieChart";
+import PieMacroChart from "../NivoCharts/PieMacroChart/PieMacroChart";
 const handleDragStart = (e) => e.preventDefault();
-
-
-
-
 
 
 function Dashboard() {
@@ -64,18 +59,14 @@ function Dashboard() {
             .catch((res) => {
             })
         getAllGoals(user)
-            .then((res) => {
-                setGoals(res)
-                console.log(res, 'goals')})
-            .catch((res) => console.log(res, 'goals'))
+            .then((res) => {setGoals(res)})
+            .catch((res) => {})
         getAllMacroCycles(user)
-            .then((res) => {console.log('res macro cycles', res )
-                setMacroCycles(res)    
-            })
-            .catch((res) => {console.log('res macro cycles', res )})
+            .then((res) => {setMacroCycles(res)})
+            .catch((res) => {})
         
         }, [user])
-
+        console.log(macroCycles);
   return (
     <section className={styles.dashboard}>
         <div className={styles.grid}>
