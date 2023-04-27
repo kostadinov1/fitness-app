@@ -60,7 +60,8 @@
                 "one one one one four five"
                 "two two two two six seven"
                 "three three three three eight nine"
-                "ten ten ten ten ten ten";
+                "ten ten ten ten ten ten"
+                "eleven eleven eleven eleven eleven eleven";
     background-color: var(--prime-2);
 }
 .item {
@@ -103,6 +104,9 @@
 }
 .form_item_box_10 {
     grid-area: ten;
+}
+.form_item_box_11 {
+    grid-area: eleven;
 }
 .form button {
     margin-top: 1.4em;

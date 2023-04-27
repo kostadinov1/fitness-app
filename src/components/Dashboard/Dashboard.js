@@ -81,8 +81,9 @@ function Dashboard() {
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_3}`}>
                 <h3>Everyday</h3>
-                    {activities.filter((act) => act.name === 'Everyday')
-                    .map((act) => <ActivityMiniCard key={act.id} activity={act}/>)}
+                    {activities ? (activities.filter((act) => act.name === 'Everyday')
+                    .map((act) => <ActivityMiniCard key={act.id} activity={act}/>)) :
+                    <p>Name an Activity "Everyday" and it will show up here.</p>}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_4}`}>
                 <h3>Goals</h3>

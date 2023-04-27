@@ -6,6 +6,7 @@ import { UserContext } from '../../../contexts/UserContext'
 import { listActivityTypes } from '../../../api/activityTypes'
 import ListCard from '../../Cards/ListCard/ListCard'
 import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
+import { DatePicker } from 'antd'
 
 function CreateActivity() {
     const navigate = useNavigate()
@@ -45,6 +46,11 @@ function CreateActivity() {
     const onValueChange = (e) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
+	const onDateChangeHandler = (date, dateString) => {
+        setFormData((state) => ({...state, start_time: dateString[0]}))
+        setFormData((state) => ({...state, end_time: dateString[1]}))
+
+	}
 
     // TODO ADD FORM VALIDAITONS
     return (
@@ -170,7 +176,16 @@ function CreateActivity() {
                                 placeholder='0-10'
                                 />
                         </div>
-                    <button  className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>
+                        <div className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>
+                        <DatePicker.RangePicker
+							onChange={onDateChangeHandler}
+							status="warning"
+							style={{
+								width: '100%',
+							}}
+                        />
+                        </div>
+                    <button  className={`${styles.form_num_input} ${styles.form_item_box_11} ${styles.item}`}>
                         Create
                     </button>
                 </form>

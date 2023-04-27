@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useTodaysDate } from '../../../hooks/useTodaysDate'
 import GridDay from '../GridDay/GridDay'
 import styles from './GridWeek.module.css'
 
@@ -12,6 +13,7 @@ function GridWeek({activities}) {
     const [fridayData, setFridayData] = useState(undefined)
     const [saturdayData, setSaturdayData] = useState(undefined)
     const [sundayData, setSundayData] = useState(undefined)
+    const todaysDate = useTodaysDate()
 
     useEffect(() => {
         setMondayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Monday'))
