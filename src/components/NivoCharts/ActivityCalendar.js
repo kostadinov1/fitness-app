@@ -11,12 +11,12 @@ const ActivityCalendar = ({activities}) => {
             data={activitiesMapped}
             from="2023-01-01"
             to="2023-12-31"
-            emptyColor="#77767b"
-            colors={[ '#61cdbb', '#97e3d5', '#e8c1a0', '#f47560' ]}
-            margin={{ top: 2, right: 0, bottom: 2, left: 0 }}
+            emptyColor="#e6f4f1"
+            colors={[ 'lightblue', 'yellowgreen', '#fc8f3a', 'orangered' ]}
+            margin={{ top: 0, right: 0, bottom: 0, left: 10 }}
             yearSpacing={40}
             yearLegendOffset={6}
-            monthSpacing={10}
+            monthSpacing={8}
             monthBorderWidth={1}
             monthBorderColor="#058fae"
             monthLegendOffset={6}

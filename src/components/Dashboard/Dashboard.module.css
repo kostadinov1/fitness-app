@@ -16,6 +16,7 @@
                     "eight eight eight eight eight eight eight eight"
                     "nine nine ten ten ten ten ten ten"
                     "nine nine ten ten ten ten ten ten"
+                    "eleven eleven eleven eleven eleven eleven eleven eleven"
                     ;
 
     padding: .1em .1em 1.2em .1em;
@@ -82,6 +83,9 @@
 .grid_card_10 {
     grid-area: ten;
 }
+.grid_card_11 {
+    grid-area: eleven;
+}
 
 .grid_card {
     background-color: var(--sec);
@@ -136,12 +140,8 @@
     color: var(--text);
 }
 
-.macro_pie_chart_box {
-    height: 100vh;
-    width: 100vw;
-    background-color: var(--dimmer);
-}
 
 .activity_calendar_box {
-    height: 50vh;
+    height: 36vh;
+    background-color: var(--dimmer);
 }

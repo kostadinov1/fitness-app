@@ -19,11 +19,13 @@ import { getAllGoals } from "../../api/goals";
 import GoalsCard from "../Cards/GoalsCard/GoalsCard";
 import PieMacroChart from "../NivoCharts/PieMacroChart/PieMacroChart";
 import ActivityCalendar from "../NivoCharts/ActivityCalendar";
+import { useCurrentWeekNum } from "../../hooks/useCurrentWeekNum";
 const handleDragStart = (e) => e.preventDefault();
 
 
 function Dashboard() {
     const [todaysDate, setTodaysDate] = useTodaysDate()
+    const weekNumber = useCurrentWeekNum()
     const [macroCycles, setMacroCycles] = useState([])
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
@@ -111,26 +113,24 @@ function Dashboard() {
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_8}`}>
-                <h3>Week Schedule</h3>
+                <h3>Week #{weekNumber} Schedule</h3>
                 <GridWeek activities={activities}></GridWeek>
 
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_9}`}>
                 <h3>Blocks STATS</h3>
-                {/* <ListCard /> */}
-
+                {macroCycles.length > 0 ? 
+                macroCycles.map((cycle) => <PieMacroChart key={cycle.id} macroCycle={cycle} />)
+                : null}
             </div>
             <div className={`${styles.grid_card} ${styles.grid_card_10}`}>
                 <h3>BLOCKS</h3>
                     <CardReel />
             </div>
         </div>
-        <div className={`${styles.macro_pie_chart_box}`}>
-            {macroCycles.length > 0 ? 
-                macroCycles.map((cycle) => <PieMacroChart key={cycle.id} macroCycle={cycle} />)
-                : null}
-        </div>
-        <div className={`${styles.activity_calendar_box}`}>
+        <div className={`${styles.activity_calendar_box} ${styles.grid_card} ${styles.grid_card_11}`}>
+            <h3>Year Calendar</h3>
+
             <ActivityCalendar activities={activities} />
         </div>
     </section>
