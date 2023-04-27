@@ -6,6 +6,7 @@ import { UserContext } from '../../../contexts/UserContext'
 import { listActivityTypes } from '../../../api/activityTypes'
 import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 import ListCard from '../../Cards/ListCard/ListCard'
+import { DatePicker } from 'antd'
 
 
 function EditActivity() {
@@ -32,6 +33,11 @@ function EditActivity() {
     const onValueChange = (e) => {
         setActivity((state) => ({...state, [e.target.name]: e.target.value}))
     } 
+    const onDateChangeHandler = (date, dateString) => {
+        setActivity((state) => ({...state, start_time: dateString[0]}))
+        setActivity((state) => ({...state, end_time: dateString[1]}))
+
+	}
 
     // TODO ADD FORM VALIDAITONS
 
@@ -189,8 +195,16 @@ function EditActivity() {
                                 placeholder='0'
                                 />
                         </div>
-        
-                    <button  className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>
+                        <div className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>
+                        <DatePicker.RangePicker
+							onChange={onDateChangeHandler}
+							status="warning"
+							style={{
+								width: '100%',
+							}}
+                        />
+                        </div>
+                    <button  className={`${styles.form_num_input} ${styles.form_item_box_11} ${styles.item}`}>
                         Edit
                     </button>
         
