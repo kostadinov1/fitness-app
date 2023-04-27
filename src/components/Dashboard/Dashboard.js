@@ -18,6 +18,7 @@ import { useTodaysDate } from "../../hooks/useTodaysDate";
 import { getAllGoals } from "../../api/goals";
 import GoalsCard from "../Cards/GoalsCard/GoalsCard";
 import PieMacroChart from "../NivoCharts/PieMacroChart/PieMacroChart";
+import ActivityCalendar from "../NivoCharts/ActivityCalendar";
 const handleDragStart = (e) => e.preventDefault();
 
 
@@ -66,7 +67,7 @@ function Dashboard() {
             .catch((res) => {})
         
         }, [user])
-        console.log(macroCycles);
+
   return (
     <section className={styles.dashboard}>
         <div className={styles.grid}>
@@ -127,6 +128,9 @@ function Dashboard() {
             {macroCycles.length > 0 ? 
                 macroCycles.map((cycle) => <PieMacroChart key={cycle.id} macroCycle={cycle} />)
                 : null}
+        </div>
+        <div className={`${styles.activity_calendar_box}`}>
+            <ActivityCalendar activities={activities} />
         </div>
     </section>
   )

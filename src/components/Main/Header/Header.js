@@ -83,7 +83,7 @@ function Header() {
                             <ul className={`${styles.dropdown_ul}`}>
                                 <li className={styles.li}>
                                     <Link
-                                        to={'/'} 
+                                        to={'/macrocycles'} 
                                         className={styles.link}
                                         ><SyncOutlined /> Macro</Link>
                                 </li>
@@ -95,7 +95,7 @@ function Header() {
                                 </li>
                                 <li className={styles.li}>
                                     <Link
-                                        to={'/'} 
+                                        to={'/microcycles'} 
                                         className={styles.link}
                                         ><SyncOutlined /> Micro</Link>
                                 </li>

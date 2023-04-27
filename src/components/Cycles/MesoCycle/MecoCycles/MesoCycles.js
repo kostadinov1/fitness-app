@@ -1,5 +1,4 @@
 
-import { ResponsivePie } from '@nivo/pie'
 import React , { useContext, useEffect, useState}from 'react'
 import {getAllMesoCycles} from '../../../../api/cycles/mesoCycle'
 import { UserContext } from '../../../../contexts/UserContext'
@@ -34,7 +33,6 @@ function MesoCycles() {
   return (
     <div className={`${styles.mesocycle}`}>
         {mesoCycles ? mesoCycles.map((cycle) => cycleDuration(cycle.start_date, cycle.end_date) ) : <span>no nothing</span>}
-		<PieMacroChart  />
     </div>
   )
 }
