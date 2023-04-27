@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useTodaysDate } from '../../../hooks/useTodaysDate'
+import { useCurrentWeekNum } from '../../../hooks/useCurrentWeekNum'
 import GridDay from '../GridDay/GridDay'
 import styles from './GridWeek.module.css'
 
@@ -13,31 +13,35 @@ function GridWeek({activities}) {
     const [fridayData, setFridayData] = useState(undefined)
     const [saturdayData, setSaturdayData] = useState(undefined)
     const [sundayData, setSundayData] = useState(undefined)
-    const todaysDate = useTodaysDate()
+    const weekNumber = useCurrentWeekNum()
 
     useEffect(() => {
-        setMondayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Monday'))
-        setTuesdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Tuesday'))
-        setWednesdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Wednesday'))
-        setThursdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Thursday'))
-        setFridayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Friday'))
-        setSaturdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Saturday'))
-        setSundayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 'Sunday'))
+        setMondayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 1))
+        setTuesdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 2))
+        setWednesdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 3))
+        setThursdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 4))
+        setFridayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 5))
+        setSaturdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 6))
+        setSundayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 0))
     }, [activities])
 
-    const getWeekDay = (date) => {   
-        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        const startYear = date?.slice(0, 4)
-        const startDate = date?.slice(5, 7)
-        const startMonth = date?.slice(8, 10)
-        const newDate = new Date(startYear, startMonth, startDate)
-        const day = weekday[newDate.getDay()];
-        if (date) {
-            return day
+    const getWeekDay = (activityDate) => {  
+        const activityDayNum = new Date(activityDate)
+            // get current week number
+        const currentDate = new Date();
+        const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+        const activityDay = new Date(activityDate)
+        const days = Math.floor((activityDay - startOfYear) /
+            (24 * 60 * 60 * 1000));
+        const currentWeekNumber = Math.ceil(days / 7);
+
+        if (activityDate &&  (weekNumber === currentWeekNumber) ) {
+            return activityDayNum.getDay()
         } else {
-            return ''
+            return undefined
         }
     }
+
 
   return (
     <div className={`${styles.dashweek}`}>

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 const PieMacroChart = ({macroCycle}) => {
     const navigate = useNavigate()
     const mesoCycles = macroCycle.meso_cycles
-    console.log(mesoCycles.map((cycle) => (cycle.start_date, cycle.end_date)));
     // TODO Create duration property/field in Django Model
     // duration from start date to end date in days 
 
@@ -15,7 +14,6 @@ const PieMacroChart = ({macroCycle}) => {
 		const endDate = new Date(end_date)
 		const res = Math.round(endDate.getTime() - startDate.getTime()) / singleDay;
 		const result = res.toFixed(0);
-		console.log(result)
 		return result
 	}
 
