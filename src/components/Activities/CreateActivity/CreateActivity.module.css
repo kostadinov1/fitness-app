@@ -58,10 +58,9 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
                 "one one one one four five"
-                "two two two two six seven"
+                "two two ten ten six seven"
                 "three three three three eight nine"
-                "ten ten ten ten ten ten"
-                "eleven eleven eleven eleven eleven eleven";
+                "eleven twelve fourteen fourteen fourteen thirteen";
     background-color: var(--prime-2);
 }
 .item {
@@ -108,6 +107,16 @@
 .form_item_box_11 {
     grid-area: eleven;
 }
+.form_item_box_12 {
+    grid-area: twelve;
+}
+.form_item_box_13 {
+    grid-area: thirteen;
+}
+.form_item_box_14 {
+    grid-area: fourteen;
+}
+
 .form button {
     margin-top: 1.4em;
 }

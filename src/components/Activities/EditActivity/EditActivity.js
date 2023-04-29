@@ -6,7 +6,7 @@ import { UserContext } from '../../../contexts/UserContext'
 import { listActivityTypes } from '../../../api/activityTypes'
 import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 import ListCard from '../../Cards/ListCard/ListCard'
-import { DatePicker } from 'antd'
+import { DatePicker, Radio } from 'antd'
 
 
 function EditActivity() {
@@ -196,20 +196,62 @@ function EditActivity() {
                                 />
                         </div>
                         <div className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>
-                        <DatePicker.RangePicker
+                        <label>Start Date</label>
+                        <DatePicker
+                            name='start_time'
+                            // value={formData.start_time}
 							onChange={onDateChangeHandler}
 							status="warning"
 							style={{
 								width: '100%',
 							}}
-                        />
+                            />
                         </div>
-                    <button  className={`${styles.form_num_input} ${styles.form_item_box_11} ${styles.item}`}>
+                        <div className={`${styles.form_num_input} ${styles.form_item_box_11} ${styles.item}`}>
+                        <label>Public</label>
+                             <Radio.Group
+                                name='public'
+                                onChange={onValueChange}
+                                defaultValue="false"
+                                buttonStyle="solid"
+                                size='small'
+                                >
+                                <Radio.Button value="true">Public</Radio.Button>
+                                <Radio.Button value="false">Private</Radio.Button>
+                                </Radio.Group>
+                        </div>
+                        <div className={`${styles.form_num_input} ${styles.form_item_box_12} ${styles.item}`}>
+                        <label>Complete</label>
+                        <Radio.Group
+                                name='complete'
+                                onChange={onValueChange}
+                                defaultValue={activity.complete}
+                                buttonStyle="solid"
+                                size='small'
+                                >
+                                    <Radio.Button value="true">True</Radio.Button>
+                                    <Radio.Button value="false">False</Radio.Button>
+                                </Radio.Group>
+
+                        </div>
+                        <div className={`${styles.form_num_input} ${styles.form_item_box_13} ${styles.item}`}>
+                        <label>Intensity</label>
+                        <input 
+                            name='intensity'
+                            type={'number'}
+                            value={activity.intensity}
+                            onChange={onValueChange}
+                            min={0}
+                            max={100}
+                            placeholder='0-100%'
+                            />
+
+                        </div>
+                    <button  className={`${styles.form_num_input} ${styles.form_item_box_14} ${styles.item}`}>
                         Edit
                     </button>
-        
+
                 </form>
-            
                 </div>
         </div>
     </section>

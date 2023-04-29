@@ -9,9 +9,9 @@ import Banner from './Banner/Banner'
 function Home() {
   return (
     <section className={styles.home}>
-        <Banner></Banner>
-        <Hero></Hero>
-        <UsefulLinks></UsefulLinks>
+        {/* <Banner></Banner> */}
+        {/* <Hero></Hero> */}
+        {/* <UsefulLinks></UsefulLinks> */}
         {/* <YoutubeChannels></YoutubeChannels> */}
     </section>
   )
