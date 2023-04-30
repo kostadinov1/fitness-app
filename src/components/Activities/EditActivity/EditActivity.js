@@ -53,7 +53,7 @@ function EditActivity() {
             <div className={`${styles.edit_box}`}>
 
                 <div className={styles.form_box}>
-                <h1 className={`title_outlined`}>Edit Activity</h1>
+                <h1 className={`title_outlined`}>Edit Activity: {activity.name}</h1>
                 <form onSubmit={onEdit} className={styles.form}>
         
                         <div className={`${styles.form_input} ${styles.form_item_box_1} ${styles.item}`}>
@@ -199,7 +199,7 @@ function EditActivity() {
                         <label>Start Date</label>
                         <DatePicker
                             name='start_time'
-                            // value={formData.start_time}
+                            // value={formData.start_time} - throws error
 							onChange={onDateChangeHandler}
 							status="warning"
 							style={{
@@ -212,7 +212,7 @@ function EditActivity() {
                              <Radio.Group
                                 name='public'
                                 onChange={onValueChange}
-                                defaultValue="false"
+                                defaultValue={activity.public}
                                 buttonStyle="solid"
                                 size='small'
                                 >

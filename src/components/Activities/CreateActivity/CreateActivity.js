@@ -6,7 +6,7 @@ import { UserContext } from '../../../contexts/UserContext'
 import { listActivityTypes } from '../../../api/activityTypes'
 import ListCard from '../../Cards/ListCard/ListCard'
 import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
-import { DatePicker, Radio, Switch } from 'antd'
+import { DatePicker, Radio } from 'antd'
 
 function CreateActivity() {
     const navigate = useNavigate()

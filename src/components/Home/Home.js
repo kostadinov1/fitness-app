@@ -5,10 +5,12 @@ import Hero from './Hero/Hero'
 import UsefulLinks from './UsefulLinks/UsefulLinks'
 import YoutubeChannels from './YoutubeChannels/YoutubeChannels'
 import Banner from './Banner/Banner'
+import PeriodizationSteps from './PeriodizationSteps/PeriodizaitonSteps'
 
 function Home() {
   return (
     <section className={styles.home}>
+        <PeriodizationSteps />
         {/* <Banner></Banner> */}
         {/* <Hero></Hero> */}
         {/* <UsefulLinks></UsefulLinks> */}
