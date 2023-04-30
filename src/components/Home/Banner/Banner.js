@@ -19,7 +19,7 @@ const Banner = () => {
                 protocols with ease.
             </p>
             <hr/>
-            <p>
+            {/* <p>
                 This web application give You the ability to create 
                 Exercises which You can group in Activities, which can be added to Your 
                 Calendar. Adding Goals and Defenders to your periodizaition cycles is foundational for your progress.
@@ -27,7 +27,7 @@ const Banner = () => {
                 You can build almost any program your mind can think of!
                 Once You built and organize your workouts(activites), You can enjoy just
                 tweaking and fine tuning Your programs to fit Your needs for the future needs.
-            </p>
+            </p> */}
         {/* <p>"The manipulation of training variable to enhance progress, reduce injury risk , and time peak performances."</p> */}
         </div>
     </div>

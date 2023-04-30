@@ -3,3 +3,7 @@
     padding: 2em;
     background-color: var(--dimmer);
 }
+
+.step_box {
+    height: 50vh;
+}

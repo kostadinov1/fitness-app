@@ -5,7 +5,11 @@ import styles  from './PeriodizationSteps.module.css'
 const steps = [
   {
     title: 'Create Macro Cycle',
-    content: 'Create Macro cycle representing a Year (2023)',
+    content:
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-01.jpg'} alt='hero_image'></img>
+    </div>   
+    ,
   },
   {
     title: 'Create Meso Cycle',
