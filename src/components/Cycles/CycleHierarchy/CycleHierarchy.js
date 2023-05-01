@@ -64,15 +64,15 @@ const cycleData = {
 }
 
 function CycleHierarchy() {
-    const weekNumber = useCurrentWeekNum()
-
+    const { user } = useContext(UserContext) 
+    
     const [macroCycles, setMacroCycles] = useState([])
+    const [macroCycleLinks, setMacroCycleLinks] = useState([])
     const [mesoCycles, setMesoCycles] = useState([])
     const [microCycles, setMicroCycles] = useState([])
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
     const [goals, setGoals] = useState([])
-    const { user } = useContext(UserContext) 
     const [profile, setProfile] = useState({
         first_name: '',
         last_name: '',
@@ -80,61 +80,58 @@ function CycleHierarchy() {
         dob: null, 
         gender: null,
     })
+    const weekNumber = useCurrentWeekNum()
 
-    
     const getMacroCycleLinks = (macrocycles) => {
         const result = []
+        if (macrocycles) {
             for (const macrocycle of macrocycles) {
                 for (const meso of macrocycle.meso_cycles) {
-                    for (const micro of meso.micro_cycles) {
-                                       result.push({
-                        "source": `${meso.name} ${meso.id}`,
-                        "target":  `${micro.name} ${micro.id}`,
-                        "distance": 90
-                      })
-                    }
                     result.push({
                         "source": `${macrocycle.name} ${macrocycle.id}`,
                         "target": `${meso.name} ${meso.id}`,
                         "distance": 260
                       })
+                    for (const micro of meso.micro_cycles) {
+                                       result.push({
+                        "source": `${meso.name} ${meso.id}`,
+                        "target":  `${micro.name} ${micro.id}`,
+                        "distance": 110
+                      })
+                    }
                 }
-
             }
             return result
+        } else {
+            return []
+        }
     }
-
-    const macroCycleLinks =  getMacroCycleLinks(macroCycles)
-
     const newCycleData = {
         "nodes": [
             ...(macroCycles.map((cycle) => ({
                     "id": `${cycle.name} ${cycle.id}`,
                     "height": 10,
-                    "size": 120,
+                    "size": 200,
                     "color": "var(--acc-2)"
                   })
             )),
             ...(mesoCycles.map((cycle) => ({
                 "id": `${cycle.name} ${cycle.id}`,
                 "height": 8,
-                "size": 80,
+                "size": 100,
                 "color": "var(--acc-1)"
             })
             )),
             ...(microCycles.map((cycle) => ({
                 "id": `${cycle.name} ${cycle.id}`,
                 "height": 6,
-                "size": 40,
+                "size": 50,
                 "color": "yellowgreen"
             })
             )),
         ],
         "links": macroCycleLinks
     }
-    console.log(macroCycleLinks, 'macrolinks');
-    // const activitiesCarded = activities?.map((activity) => <ActivityMiniCard activity={activity} onDragStart={handleDragStart} role="presentation" />)
-    // const exercisesCarded = exercises?.map((exercise) => <ExerciseCard  exercise={exercise} onDragStart={handleDragStart} role="presentation" />)
 
     useEffect(() => {
         getAllExercises(user)
@@ -150,7 +147,9 @@ function CycleHierarchy() {
             .then((res) => {setGoals(res)})
             .catch((res) => {})
         getAllMacroCycles(user)
-            .then((res) => {setMacroCycles(res)})
+            .then((res) => {setMacroCycles(res)
+        setMacroCycleLinks(getMacroCycleLinks(res))
+    })
             .catch((res) => {})
         getAllMesoCycles(user)
             .then((res) => {setMesoCycles(res)})
@@ -158,7 +157,6 @@ function CycleHierarchy() {
         getAllMicroCycles(user)
             .then((res) => {setMicroCycles(res)})
             .catch((res) => {})
-
         }, [user])
 
 
