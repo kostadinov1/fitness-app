@@ -13,35 +13,67 @@ const steps = [
   },
   {
     title: 'Create Meso Cycle',
-    content: 'Create Meso cycle and chose start and end dates',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-02.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   {
     title: 'Add Meso to Macro Cycle',
-    content: 'Add the Meso cycle to the Macro cycle and it will display in Your Dashboard',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-03.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   {
     title: 'Create Micro Cycles',
-    content: 'Create Micro Cycles',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-05.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   {
     title: 'Add Micro to Meso Cycle',
-    content: 'Add Micro to Meso Cycle',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-01.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   {
     title: 'Create Activities',
-    content: 'Create Activities',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-01.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   {
     title: 'Add Activities to Micro',
-    content: 'Add Activities to Micro',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-01.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   {
     title: 'Create Exercises',
-    content: 'Create Exercises',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-01.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   {
     title: 'Add Exercises to Activities',
-    content: 'Add Exercises to Activities',
+    content: 
+    <div className={`${styles.step_box}`}>
+        <img src={'/images/backgrounds/background-01.jpg'} alt='hero_image'></img>
+    </div>  
+    ,
   },
   
 ];

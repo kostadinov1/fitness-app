@@ -13,6 +13,7 @@
 }
 .banner {
     height: 100%;
+    padding: .1em;
 }
 .banner img {
     height: 100%;
@@ -45,6 +46,7 @@
 }
 .field_box {
     padding: 0.4em;
+    border-radius: var(--b-radius);
 }
 .field_box * {
     border-radius: var(--b-radius);
@@ -83,4 +85,6 @@
     border: 1px solid var(--sec-2);
     letter-spacing: 0.8pt;
     font-size: large;
+    text-align: center;
+    background-color: var(--sec-2);
 }

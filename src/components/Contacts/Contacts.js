@@ -27,7 +27,8 @@ function Contacts() {
             <div className={`${styles.hero}`}>
 
             <div className={`${styles.banner}`}>
-                <img src={'/images/backgrounds/background-02.jpg'} alt=''></img>
+
+            <SimpleMap></SimpleMap>
             </div>
 
             <div className={styles.form_box}>
@@ -80,7 +81,6 @@ function Contacts() {
                 </div>
                 </div>
             </div>
-            <SimpleMap></SimpleMap>
 
         </section>
     )
