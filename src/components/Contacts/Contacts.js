@@ -23,7 +23,7 @@ function Contacts() {
 
     return (
         <section className={styles.contacts}>
-                        <AboutUs />
+                        {/* <AboutUs /> */}
             <div className={`${styles.hero}`}>
 
             <div className={`${styles.banner}`}>
@@ -74,7 +74,7 @@ function Contacts() {
                     </form>
                 <div className={`${styles.info_box}`}>
                     <h3>You can also find Us:</h3>
-                    <div>Adress: Varna, 101 Vladislav Varnenchik</div>
+                    <div>Address: Varna, 10101 Vladislav Varnenchik</div>
                     <div>Phone: +334-536345643</div>
                     <div>Email: support@fithub.bg</div>
 

@@ -103,33 +103,34 @@ const PeriodizationSteps = () => {
 
     return (
         <div className={`${styles.periodization_steps}`}>
-        <Steps current={current} items={items} />
-        <div style={contentStyle}>{steps[current].content}</div>
-        <div
-            style={{
-            marginTop: 24,
-            }}
-        >
-            {current < steps.length - 1 && (
-            <Button type="primary" onClick={() => next()}>
-                Next
-            </Button>
-            )}
-            {current === steps.length - 1 && (
-            <Button type="primary" onClick={() => message.success('Processing complete!')}>
-                Done
-            </Button>
-            )}
-            {current > 0 && (
-            <Button
+            <h3>How to Create Full Periodization</h3>
+            <Steps current={current} items={items} />
+            <div style={contentStyle}>{steps[current].content}</div>
+            <div
                 style={{
-                margin: '0 8px',
+                marginTop: 24,
                 }}
-                onClick={() => prev()}
             >
-                Previous
-            </Button>
-            )}
+                {current < steps.length - 1 && (
+                <Button type="primary" onClick={() => next()}>
+                    Next
+                </Button>
+                )}
+                {current === steps.length - 1 && (
+                <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                    Done
+                </Button>
+                )}
+                {current > 0 && (
+                <Button
+                    style={{
+                    margin: '0 8px',
+                    }}
+                    onClick={() => prev()}
+                >
+                    Previous
+                </Button>
+                )}
         </div>
         </div>
     );

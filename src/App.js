@@ -25,6 +25,7 @@ import { getUserData } from './utils/userUtils';
 import Profile from './components/Profiles/Profile/Profile';
 import ErrorBoundary from './components/ErrorBoundry/ErrorBoundary';
 import MesoCycles from './components/Cycles/MesoCycle/MecoCycles/MesoCycles';
+import CycleHierarchy from './components/Cycles/CycleHierarchy/CycleHierarchy';
 
 function App() {
 
@@ -71,6 +72,9 @@ function App() {
 
                                 {/* <<< ------ CYCLES ------- >>> */}
                                 {/* <<< -------------------- >>> */}
+                            <Route path='/periodization' element={<CycleHierarchy />} />
+
+                            
                                 {/* <<< ------ Meso Cycles------- >>> */}
                             <Route path='/mesocycles' element={<MesoCycles />} />
 

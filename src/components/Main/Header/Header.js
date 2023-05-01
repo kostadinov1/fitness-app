@@ -83,6 +83,12 @@ function Header() {
                             <ul className={`${styles.dropdown_ul}`}>
                                 <li className={styles.li}>
                                     <Link
+                                        to={'/periodization'} 
+                                        className={styles.link}
+                                        ><DeploymentUnitOutlined /> Periodization</Link>
+                                </li>
+                                <li className={styles.li}>
+                                    <Link
                                         to={'/macrocycles'} 
                                         className={styles.link}
                                         ><SyncOutlined /> Macro</Link>

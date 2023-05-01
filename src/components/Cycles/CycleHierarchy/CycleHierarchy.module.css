@@ -1,0 +1,43 @@
+.cycle_hierarchy {
+    height: 100vh;
+}
+
+/* 
+const cycleData = {
+
+
+    "nodes": [
+      {
+        "id": "Node 0",
+        "height": 10,
+        "size": 120,
+        "color": "rgb(97, 255, 1)"
+      },
+  
+  
+  
+  
+    ],
+  
+  
+  
+  
+  
+    "links": [
+      {
+        "source": "Node 0",
+        "target": "Node 1",
+        "distance": 180
+      },
+      {
+          "source": "Node 1",
+          "target": "Node 1.1",
+          "distance": 60
+        },
+        {
+          "source": "Node 1",
+          "target": "Node 1.2",
+          "distance": 60
+        },
+    ]
+  } */

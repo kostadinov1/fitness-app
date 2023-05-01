@@ -8,6 +8,7 @@ import Banner from './Banner/Banner'
 import PeriodizationSteps from './PeriodizationSteps/PeriodizaitonSteps'
 import GoalsSteps from './GoalsSteps/GoalsSteps'
 import HeroCarousel from './Carousel/HeroCarousel'
+import Contacts from '../Contacts/Contacts'
 
 function Home() {
   return (
@@ -16,10 +17,11 @@ function Home() {
         <HeroCarousel />
         <PeriodizationSteps />
         <GoalsSteps />
-        {/* <Banner></Banner> */}
         {/* <Hero></Hero> */}
+        {/* <Banner></Banner> */}
+        {/* <YoutubeChannels></YoutubeChannels> */}
+        <Contacts></Contacts>
         <UsefulLinks></UsefulLinks>
-        <YoutubeChannels></YoutubeChannels>
     </section>
   )
 }

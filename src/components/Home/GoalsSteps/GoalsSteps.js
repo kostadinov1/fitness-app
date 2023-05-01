@@ -43,6 +43,8 @@ const GoalsSteps = () => {
 
     return (
         <div className={`${styles.goals_steps}`}>
+            <h3>How to Create Goals for Your Macro and Meso Cycles</h3>
+
         <Steps current={current} items={items} />
         <div style={contentStyle}>{steps[current].content}</div>
         <div
