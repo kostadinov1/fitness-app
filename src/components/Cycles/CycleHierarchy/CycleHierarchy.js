@@ -68,6 +68,7 @@ function CycleHierarchy() {
     
     const [macroCycles, setMacroCycles] = useState([])
     const [macroCycleLinks, setMacroCycleLinks] = useState([])
+    const [macroCycleNodes, setMacroCycleNodes] = useState([])
     const [mesoCycles, setMesoCycles] = useState([])
     const [microCycles, setMicroCycles] = useState([])
     const [activities, setActivities] = useState([])
@@ -106,32 +107,47 @@ function CycleHierarchy() {
             return []
         }
     }
+    const getMacroCycleNodes = (macrocycles) => {
+        const result = []
+        for (const macro of macrocycles) {
+            result.push(
+                {
+                "id": `${macro.name} ${macro.id}`,
+                "height": 10,
+                "size": 200,
+                "color": "orangered"
+              }
+            )
+            for (const meso of macro.meso_cycles) {
+                result.push(
+                    {
+                    "id": `${meso.name} ${meso.id}`,
+                    "height": 6,
+                    "size": 150,
+                    "color": "var(--acc-3)"
+                  }
+                )
+                for (const micro of meso.micro_cycles) {
+                    result.push( 
+                        {
+                        "id": `${micro.name} ${micro.id}`,
+                        "height": 2,
+                        "size": 50,
+                        "color": "yellowgreen"
+                      }
+                    )
+                }
+            }
+        return result
+        }
+    }
+
+
     const newCycleData = {
-        "nodes": [
-            ...(macroCycles.map((cycle) => ({
-                    "id": `${cycle.name} ${cycle.id}`,
-                    "height": 10,
-                    "size": 200,
-                    "color": "var(--acc-2)"
-                  })
-            )),
-            ...(mesoCycles.map((cycle) => ({
-                "id": `${cycle.name} ${cycle.id}`,
-                "height": 8,
-                "size": 100,
-                "color": "var(--acc-1)"
-            })
-            )),
-            ...(microCycles.map((cycle) => ({
-                "id": `${cycle.name} ${cycle.id}`,
-                "height": 6,
-                "size": 50,
-                "color": "yellowgreen"
-            })
-            )),
-        ],
+        "nodes": macroCycleNodes,
         "links": macroCycleLinks
     }
+    console.log(newCycleData, 'newcycledata eddd');
 
     useEffect(() => {
         getAllExercises(user)
@@ -148,14 +164,16 @@ function CycleHierarchy() {
             .catch((res) => {})
         getAllMacroCycles(user)
             .then((res) => {setMacroCycles(res)
-        setMacroCycleLinks(getMacroCycleLinks(res))
-    })
+                setMacroCycleNodes(getMacroCycleNodes(res))
+                setMacroCycleLinks(getMacroCycleLinks(res))
+            })
             .catch((res) => {})
         getAllMesoCycles(user)
             .then((res) => {setMesoCycles(res)})
             .catch((res) => {})
         getAllMicroCycles(user)
             .then((res) => {setMicroCycles(res)})
+
             .catch((res) => {})
         }, [user])
 
