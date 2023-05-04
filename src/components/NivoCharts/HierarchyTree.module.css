@@ -1,0 +1,23 @@
+
+.cycle_data {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    background-color: var(--dimmer);
+    display: flex;
+    flex-direction: column;
+
+    padding: 2em;
+    border-radius: var(--b-radius);
+}
+
+.cycle_data h1 {
+    text-align: center;
+    padding: .2em;
+    color: var(--acc-1);
+}
+
+.cycle_data span {
+    padding: .1em;
+    font-size: 1.3rem;
+}

@@ -12,59 +12,17 @@ import HierarchyTree from '../../NivoCharts/HierarchyTree'
 import styles from './CycleHierarchy.module.css'
 
 
-
-
-const cycleData = {
-
-
-  "nodes": [
-    {
-      "id": "Node 0",
-      "height": 10,
-      "size": 120,
-      "color": "rgb(97, 255, 1)"
-    },
-        {
-            "id": "Node 1",
-            "height": 8,
-            "size": 80,
-            "color": "rgb(97, 255, 1)"
-        },
-            {
-                "id": "Node 1.1",
-                "height": 8,
-                "size": 80,
-                "color": "rgb(97, 255, 1)"
-            },
-            {
-                "id": "Node 1.2",
-                "height": 8,
-                "size": 80,
-                "color": "rgb(97, 255, 1)"
-            },
-  ],
-
-  "links": [
-    {
-      "source": "Node 0",
-      "target": "Node 1",
-      "distance": 180
-    },
-    {
-        "source": "Node 1",
-        "target": "Node 1.1",
-        "distance": 60
-      },
-      {
-        "source": "Node 1",
-        "target": "Node 1.2",
-        "distance": 60
-      },
-  ]
-}
-
 function CycleHierarchy() {
+
     const { user } = useContext(UserContext) 
+    const [profile, setProfile] = useState({
+        first_name: '',
+        last_name: '',
+        address: null,
+        dob: null, 
+        gender: null,
+    })
+    const weekNumber = useCurrentWeekNum()
     
     const [macroCycles, setMacroCycles] = useState([])
     const [macroCycleLinks, setMacroCycleLinks] = useState([])
@@ -74,15 +32,8 @@ function CycleHierarchy() {
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
     const [goals, setGoals] = useState([])
-    const [profile, setProfile] = useState({
-        first_name: '',
-        last_name: '',
-        address: null,
-        dob: null, 
-        gender: null,
-    })
-    const weekNumber = useCurrentWeekNum()
-
+    
+    // Create Custom Links for Nivo Network
     const getMacroCycleLinks = (macrocycles) => {
         const result = []
         if (macrocycles) {
@@ -91,13 +42,13 @@ function CycleHierarchy() {
                     result.push({
                         "source": `${macrocycle.name} ${macrocycle.id}`,
                         "target": `${meso.name} ${meso.id}`,
-                        "distance": 260
+                        "distance": 300
                       })
                     for (const micro of meso.micro_cycles) {
                                        result.push({
                         "source": `${meso.name} ${meso.id}`,
                         "target":  `${micro.name} ${micro.id}`,
-                        "distance": 110
+                        "distance": 100
                       })
                     }
                 }
@@ -107,14 +58,19 @@ function CycleHierarchy() {
             return []
         }
     }
+    // Create Custom Nodes for Nivo Network
     const getMacroCycleNodes = (macrocycles) => {
         const result = []
         for (const macro of macrocycles) {
             result.push(
                 {
                 "id": `${macro.name} ${macro.id}`,
-                "height": 10,
-                "size": 200,
+                "name": `${macro.name}`,
+                "cycleType": 'Macro Cycle',
+                "start_date":  `${macro.start_date}`,
+                "end_date":  `${macro.end_date}`,
+                "height": 2,
+                "size": 300,
                 "color": "orangered"
               }
             )
@@ -122,8 +78,12 @@ function CycleHierarchy() {
                 result.push(
                     {
                     "id": `${meso.name} ${meso.id}`,
-                    "height": 6,
-                    "size": 150,
+                    "name": `${meso.name}`,
+                    "cycleType": 'Meso Cycle',
+                    "start_date": `${meso.start_date}`,
+                    "end_date": `${meso.end_date}`,
+                    "height": 1,
+                    "size": 110,
                     "color": "var(--acc-3)"
                   }
                 )
@@ -131,7 +91,11 @@ function CycleHierarchy() {
                     result.push( 
                         {
                         "id": `${micro.name} ${micro.id}`,
-                        "height": 2,
+                        "name": `${micro.name}`,
+                        "cycleType": 'Micro Cycle',
+                        "start_date":  `${micro.start_date}`,
+                        "end_date":  `${micro.end_date}`,
+                        "height": 1,
                         "size": 50,
                         "color": "yellowgreen"
                       }
@@ -141,13 +105,11 @@ function CycleHierarchy() {
         return result
         }
     }
-
-
+    // Modified Data for Nivo Responsive Network / HierarchyTree
     const newCycleData = {
         "nodes": macroCycleNodes,
         "links": macroCycleLinks
     }
-    console.log(newCycleData, 'newcycledata eddd');
 
     useEffect(() => {
         getAllExercises(user)
@@ -180,8 +142,11 @@ function CycleHierarchy() {
 
   return (
     <div className={`${styles.cycle_hierarchy}`}>
-      <HierarchyTree 
-        data={newCycleData} />
+        <HierarchyTree 
+            data={newCycleData} />
+        <div className={`${styles.cycle_data}`}>
+            
+        </div>    
     </div>
   )
 }

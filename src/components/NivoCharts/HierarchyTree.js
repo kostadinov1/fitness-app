@@ -1,28 +1,35 @@
 import { ResponsiveNetwork } from '@nivo/network'
 import { useState } from 'react'
 import CycleTooltip from './ToolTips/CycleTooltip/CycleTooltip'
+import styles from './HierarchyTree.module.css'
 
 const HierarchyTree = ({ data /* see data tab */ }) => {
     const [currentNode, setCurrentNode] = useState({})
         
     const onNetworkChange = (node, event) => {
-        setCurrentNode(node)
-        console.log(node.id, 'node event onNetworkChange');
+        setCurrentNode(node.data)
+        console.log(node.id, currentNode, 'node event onNetworkChange');
     }
     return (
         <>
-        <div style={{fontSize: '3rem'}} >{currentNode?.id}</div>
+            <div className={`${styles.cycle_data}`}>
+                <h1>{currentNode.cycleType}</h1>
+                <span>Cycle: {currentNode.name}</span>
+                <span>Start Date: {currentNode.start_date}</span>
+                <span>End Date: {currentNode.end_date}</span>
+
+            </div>
             <ResponsiveNetwork
                 onClick={onNetworkChange}
+                onMouseEnter={onNetworkChange}
                 data={data}
-                margin={{ top: 0, right: 0, bottom: 20, left: 0 }}
+                margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                 linkDistance={e=>e.distance}
-                centeringStrength={1}
-                repulsivity={100}
+                centeringStrength={0.3}
+                repulsivity={50}
                 nodeSize={n=>n.size}
-                activeNodeSize={n=>1.5*n.size}
+                activeNodeSize={n=>1.1*n.size}
                 nodeColor={e=>e.color}
-                nodeTooltip={() => <CycleTooltip />}
                 nodeBorderWidth={1}
                 nodeBorderColor={{
                     from: 'color',
@@ -35,8 +42,8 @@ const HierarchyTree = ({ data /* see data tab */ }) => {
                 }}
                 linkThickness={n=>2+2*n.target.data.height}
                 linkBlendMode="multiply"
-                motionConfig="gentle"
             />
+
         </>
             )
     }

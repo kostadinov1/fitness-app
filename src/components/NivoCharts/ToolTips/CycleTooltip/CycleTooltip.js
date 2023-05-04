@@ -5,7 +5,7 @@ function CycleTooltip({data}) {
     console.log(data,'data tooltip');
   return (
     <div className={`${styles.tooltip}`}>
-      this is the tooltip
+      <h1>THIS IS THE TOOLTIP</h1>
     </div>
   )
 }
