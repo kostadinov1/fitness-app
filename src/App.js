@@ -26,6 +26,7 @@ import Profile from './components/Profiles/Profile/Profile';
 import ErrorBoundary from './components/ErrorBoundry/ErrorBoundary';
 import MesoCycles from './components/Cycles/MesoCycle/MecoCycles/MesoCycles';
 import CycleHierarchy from './components/Cycles/CycleHierarchy/CycleHierarchy';
+import CreateMacroCycle from './components/Cycles/MacroCycle/CreateMacroCycle/CreateMacroCycle';
 
 function App() {
 
@@ -75,13 +76,14 @@ function App() {
                             <Route path='/periodization' element={<CycleHierarchy />} />
 
                                 {/* <<< ------ Macro Cycles------- >>> */}
-                            <Route path='/macrocycles' element={<MesoCycles />} />
+                            <Route path='/macro-cycles' element={<MesoCycles />} />
+                            <Route path='/create-macro-cycle' element={<CreateMacroCycle />} />
 
                                 {/* <<< ------ Meso Cycles------- >>> */}
-                            <Route path='/mesocycles' element={<MesoCycles />} />
+                            <Route path='/meso-cycles' element={<MesoCycles />} />
 
                                 {/* <<< ------ Micro Cycles------- >>> */}
-                            <Route path='/microcycles' element={<MesoCycles />} />
+                            <Route path='/micro-cycles' element={<MesoCycles />} />
 
                                 {/* <<< ------ Exercises------- >>> */}
                             <Route path='/all-exercises' element={<AllExercises />} />

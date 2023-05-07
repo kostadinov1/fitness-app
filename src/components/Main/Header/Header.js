@@ -1,13 +1,80 @@
 import styles from './Header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { AimOutlined, BlockOutlined, ContactsOutlined, DeploymentUnitOutlined, DownOutlined, FireFilled, MenuOutlined, PieChartOutlined, PoweroffOutlined, RightOutlined, SyncOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
+import { AimOutlined, BlockOutlined, ContactsOutlined, DeploymentUnitOutlined, DownOutlined, FireFilled, MenuOutlined, PieChartOutlined, PoweroffOutlined, RightOutlined, SubnodeOutlined, SyncOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
 import { logoutService } from '../../../api/auth'
 import { UserContext } from '../../../contexts/UserContext'
 import { useContext, useState } from 'react'
 import { clearUserData } from '../../../utils/userUtils'
 import IconMenu from '../IconMenu/IconMenu'
+import { Dropdown, Space } from 'antd'
 
+const items = [
+    {
+        key: '1',
+        label: (
+            <Link to={'/periodization'}>
+            Periodization
+          </Link>
+        ),
+        icon: <PieChartOutlined/>
+      },
+  {
+    key: '2',
+    label: (
+        <Link to={'/macro-cycles'}>
+        Macro Cycles
+      </Link>
+    ),
+    icon: <SyncOutlined />,
+  },
+  {
+    key: '2 1',
+    label: (
+        <Link to={'/create-macro-cycle'}>
+        Create Macro 
+      </Link>
+    ),
+    icon: <SubnodeOutlined/>
+  },
+  
+  {
+    key: '3',
+    label: (
+      <Link to={'/meso-cycles'}>
+        Meso Cycles
+      </Link>
+    ),
+    icon: <SyncOutlined />,
+  },
+  {
+    key: '3 1',
+    label: (
+        <Link to={'/create-meso-cycle'}>
+        Create Meso 
+      </Link>
+    ),
+    icon: <SubnodeOutlined/>
+  },
+  {
+    key: '4',
+    label: (
+        <Link to={'/micro-cycles'}>
+        Micro Cycles
+      </Link>
+    ),
+    icon: <SyncOutlined />,
+  },
+  {
+    key: '4 1',
+    label: (
+        <Link to={'/create-micro-cycle'}>
+        Create Micro 
+      </Link>
+    ),
+    icon: <SubnodeOutlined/>
+  },
 
+];
 
 function Header() {
     const navigate = useNavigate()
@@ -75,7 +142,7 @@ function Header() {
                 <li className={styles.li}>
                     <Link to={'/all-exercises'} className={styles.link}><FireFilled /> Exercises</Link>
                 </li>
-                <li onClick={onDropdownMenuClick} className={`${styles.li} ${styles.dropdown_menu}`}>
+                {/* <li onClick={onDropdownMenuClick} className={`${styles.li} ${styles.dropdown_menu}`}>
                     <span className={styles.link}><PieChartOutlined /> Cycles {toggleDropdownMenu ? <RightOutlined /> : <DownOutlined />}</span>
 
 
@@ -108,6 +175,21 @@ function Header() {
                             </ul>
                             :null}
 
+                </li> */}
+                <li>
+                <Dropdown
+                        menu={{
+                            items,
+                        }}
+                        >
+                        <a onClick={(e) => e.preventDefault()}>
+                            <Space>
+                        <PieChartOutlined />
+                            Cycles
+                            <DownOutlined />
+                            </Space>
+                        </a>
+                        </Dropdown>
                 </li>
                 <li className={styles.li}>
                     <Link to={'/'} className={styles.link}><AimOutlined /> Goals</Link>

@@ -21,6 +21,7 @@ const items = [
         Macro Cycles
       </Link>
     ),
+    icon: <SyncOutlined />,
   },
   {
     key: '2 1',
@@ -39,6 +40,7 @@ const items = [
         Meso Cycles
       </Link>
     ),
+    icon: <SyncOutlined />,
   },
   {
     key: '3 1',
@@ -56,6 +58,7 @@ const items = [
         Micro Cycles
       </Link>
     ),
+    icon: <SyncOutlined />,
   },
   {
     key: '4 1',
