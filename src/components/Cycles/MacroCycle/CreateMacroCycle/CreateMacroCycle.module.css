@@ -2,3 +2,17 @@
 .create_macro {
     min-height: 100vh;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 60vw;
+}
+
+.form_field {
+    display: flex;
+    flex-direction: column;
+    padding: .2em;
+    /* flex: 1 1 auto; */
+    background-color: var(--dimmer);
+}
