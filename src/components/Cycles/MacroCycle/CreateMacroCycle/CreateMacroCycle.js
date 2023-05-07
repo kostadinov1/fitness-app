@@ -44,7 +44,7 @@ function CreateMacroCycle() {
 
         createMacroCycle(user, formData)
             .then((res) => {
-                navigate('/')
+                navigate('/periodization')
             })
             .catch((res) => {})
     }

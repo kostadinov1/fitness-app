@@ -17,7 +17,7 @@ const items = [
   {
     key: '2',
     label: (
-        <Link to={'/macrocycles'}>
+        <Link to={'/macro-cycles'}>
         Macro Cycles
       </Link>
     ),
@@ -26,7 +26,7 @@ const items = [
   {
     key: '2 1',
     label: (
-        <Link to={'/create-macrocycle'}>
+        <Link to={'/create-macro-cycle'}>
         Create Macro 
       </Link>
     ),
@@ -36,7 +36,7 @@ const items = [
   {
     key: '3',
     label: (
-      <Link to={'/mesocycles'}>
+      <Link to={'/meso-cycles'}>
         Meso Cycles
       </Link>
     ),
@@ -45,7 +45,7 @@ const items = [
   {
     key: '3 1',
     label: (
-        <Link to={'/create-mesocycle'}>
+        <Link to={'/create-meso-cycle'}>
         Create Meso 
       </Link>
     ),
@@ -54,7 +54,7 @@ const items = [
   {
     key: '4',
     label: (
-        <Link to={'/microcycles'}>
+        <Link to={'/micro-cycles'}>
         Micro Cycles
       </Link>
     ),
@@ -63,7 +63,7 @@ const items = [
   {
     key: '4 1',
     label: (
-        <Link to={'/create-microcycle'}>
+        <Link to={'/create-micro-cycle'}>
         Create Micro 
       </Link>
     ),
