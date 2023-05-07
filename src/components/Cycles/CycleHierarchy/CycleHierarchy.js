@@ -10,6 +10,9 @@ import { UserContext } from '../../../contexts/UserContext'
 import { useCurrentWeekNum } from '../../../hooks/useCurrentWeekNum'
 import HierarchyTree from '../../NivoCharts/HierarchyTree'
 import styles from './CycleHierarchy.module.css'
+import CycleCard from '../CycleCards/CycleCard/CycleCard'
+import SideBar from '../../Main/SideBar/SideBar'
+import ListCard from '../../Cards/ListCard/ListCard'
 
 
 function CycleHierarchy() {
@@ -141,12 +144,28 @@ function CycleHierarchy() {
 
 
   return (
-    <div className={`${styles.cycle_hierarchy}`}>
-        <HierarchyTree 
-            data={newCycleData} />
-        <div className={`${styles.cycle_data}`}>
-            
+    <div className={`${styles.cycle_hierarchy} sidebar_layout`}>
+        <div className={`sidebar_box`}> 
+            <ListCard />
+        </div>
+        <div className={`content_box`}> 
+
+        <div className={`${styles.nivo_network}`}> 
+            <HierarchyTree data={newCycleData} />
+        </div>
+        <div className={`${styles.cycle_tree}`}>
+            <div className={`${styles.macro_cycle}`}>
+                {macroCycles ? macroCycles.map((macro) => <CycleCard key={macro.id} cycle={macro} />) : <p>no cycle</p>}
+            </div>  
+            <div className={`${styles.meso_cycle}`}>
+                {mesoCycles ? mesoCycles.map((meso) => <CycleCard key={meso.id} cycle={meso} />) : <p>no cycle</p>}
+            </div>  
+            <div className={`${styles.micro_cycle}`}>
+                {microCycles ? microCycles.map((micro) => <CycleCard key={micro.id} cycle={micro} />) : <p>no cycle</p>}   
+            </div>  
         </div>    
+        </div>
+
     </div>
   )
 }

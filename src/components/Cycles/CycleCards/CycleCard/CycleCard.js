@@ -1,0 +1,27 @@
+import styles from './CycleCard.module.css'
+import React from 'react'
+
+
+function CycleCard({cycle}) {
+  return (
+    <div className={`${styles.cycle_card}`}>
+        <div className={`${styles.cycle} ${styles.cycle_1}`}> 
+            {cycle.name}
+        </div>
+        <div className={`${styles.cycle} ${styles.cycle_2}`}> 
+            {cycle.start_date}
+        </div>
+        <div className={`${styles.cycle} ${styles.cycle_3}`}> 
+            {cycle.end_date}
+        </div>
+        <div className={`${styles.cycle} ${styles.cycle_4}`}> 
+            {cycle.description}
+        </div>
+        <div className={`${styles.cycle} ${styles.cycle_5}`}> 
+            {cycle.goals}
+        </div>
+    </div>
+  )
+}
+
+export default CycleCard

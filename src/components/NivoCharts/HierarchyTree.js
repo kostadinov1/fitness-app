@@ -21,7 +21,7 @@ const HierarchyTree = ({ data /* see data tab */ }) => {
             </div>
             <ResponsiveNetwork
                 onClick={onNetworkChange}
-                onMouseEnter={onNetworkChange}
+                // onMouseEnter={onNetworkChange}
                 data={data}
                 margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                 linkDistance={e=>e.distance}
@@ -29,6 +29,7 @@ const HierarchyTree = ({ data /* see data tab */ }) => {
                 repulsivity={50}
                 nodeSize={n=>n.size}
                 activeNodeSize={n=>1.1*n.size}
+                nodeTooltip={()=> <CycleTooltip />}
                 nodeColor={e=>e.color}
                 nodeBorderWidth={1}
                 nodeBorderColor={{

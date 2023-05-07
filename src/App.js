@@ -74,9 +74,14 @@ function App() {
                                 {/* <<< -------------------- >>> */}
                             <Route path='/periodization' element={<CycleHierarchy />} />
 
-                            
+                                {/* <<< ------ Macro Cycles------- >>> */}
+                            <Route path='/macrocycles' element={<MesoCycles />} />
+
                                 {/* <<< ------ Meso Cycles------- >>> */}
                             <Route path='/mesocycles' element={<MesoCycles />} />
+
+                                {/* <<< ------ Micro Cycles------- >>> */}
+                            <Route path='/microcycles' element={<MesoCycles />} />
 
                                 {/* <<< ------ Exercises------- >>> */}
                             <Route path='/all-exercises' element={<AllExercises />} />

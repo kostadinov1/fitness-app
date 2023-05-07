@@ -1,8 +1,37 @@
 .cycle_hierarchy {
     position: relative;
     top: -10px;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
     background-color: var(--dimmer);
+}
+.nivo_network {
+    height: 100vh;
+}
+
+.cycle_tree {
+    padding: .2em;
+    height: 100vh;
+}
+
+.macro_cycle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meso_cycle {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.micro_cycle {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: space-evenly;
 }
 

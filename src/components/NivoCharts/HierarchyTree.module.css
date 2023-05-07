@@ -1,9 +1,11 @@
 
 .cycle_data {
-    position: absolute;
+    position: relative;
     top: 1em;
     left: 1em;
+    max-width: 50vw;
     background-color: var(--dimmer);
+
     display: flex;
     flex-direction: column;
 

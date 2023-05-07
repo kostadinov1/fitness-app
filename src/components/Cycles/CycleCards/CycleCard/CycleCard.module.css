@@ -1,0 +1,45 @@
+
+.cycle_card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+    "one one "
+    "two three"
+    "four four"
+    "five five";
+    gap: .2em;
+    background-color: var(--acc-1);
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    list-style: none;
+    /* width: 100%; */
+    margin: .1em;
+    padding: .1em;
+}
+
+.cycle {
+    display: flex;
+    flex-direction: column;
+    padding: 0.2em;
+    background-color: var(--sec-2);
+    border: 1px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    font-size: .8rem;
+    text-align: center;
+}
+
+.cycle_1 {
+    padding: .2em;
+    grid-area: one;}
+.cycle_2 {
+    padding: .2em;
+    grid-area: two;}
+.cycle_3 {
+    padding: .2em;
+    grid-area: three;}
+.cycle_4 {
+    padding: .2em;
+    grid-area: four;}
+.cycle_5 {
+    padding: .2em;
+    grid-area: five;}
