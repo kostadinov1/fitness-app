@@ -1,14 +1,14 @@
 
-import styles from './CreateMacroCycle.module.css'
+import styles from './CreateMesoCycle.module.css'
 import React, { useContext, useState, useEffect } from 'react'
 import ListCard from '../../../Cards/ListCard/ListCard'
 import { UserContext } from '../../../../contexts/UserContext'
 import { DatePicker, Select } from 'antd'
 import { getAllGoals } from '../../../../api/goals'
-import { createMacroCycle } from '../../../../api/cycles/macroCycle'
 import { useNavigate } from 'react-router-dom'
+import { createMesoCycle } from '../../../../api/cycles/mesoCycle'
 
-function CreateMacroCycle() {
+function CreateMesoCycle() {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [goals, setGoals] = useState([])
@@ -31,12 +31,8 @@ function CreateMacroCycle() {
     const onValueChange = (e, data) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
-     
-    // TODO are you setting new value or spreading the goal values?
     const onSelectChange = (value, label) => {
-        console.log(value, label, 'e data');
         setFormData((state) => ({...state, goals: value}))
-
     }
 	const onStartDateChangeHandler = (date, dateString) => {
         setFormData((state) => ({...state, start_date: dateString}))
@@ -47,7 +43,7 @@ function CreateMacroCycle() {
     const onFormSubmitHandler = (e) => {
         e.preventDefault()
 
-        createMacroCycle(user, formData)
+        createMesoCycle(user, formData)
             .then((res) => {
                 navigate('/periodization')
             })
@@ -55,7 +51,7 @@ function CreateMacroCycle() {
     }
 
     return (
-        <div className={`${styles.create_macro} sidebar_layout` }>
+        <div className={`${styles.create_meso} sidebar_layout` }>
             <div className={`sidebar_box`}>
                 <ListCard></ListCard>
             </div>
@@ -125,4 +121,4 @@ function CreateMacroCycle() {
     )
     }
 
-export default CreateMacroCycle
+export default CreateMesoCycle

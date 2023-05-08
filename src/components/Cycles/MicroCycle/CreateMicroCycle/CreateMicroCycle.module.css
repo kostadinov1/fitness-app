@@ -1,5 +1,5 @@
 
-.create_macro {
+.create_micro {
     min-height: 100vh;
 }
 
@@ -7,13 +7,11 @@
     display: flex;
     flex-direction: column;
     gap: .2em;
-    /* max-width: 60vw; */
     padding: 2em;
     max-width: 60vw;
     margin: 2em auto 0 auto;
     background-color: var(--dimmer);    
     border-radius: var(--b-radius);
-
 }
 
 .form_field {

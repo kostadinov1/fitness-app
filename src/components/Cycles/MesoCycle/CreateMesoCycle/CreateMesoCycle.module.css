@@ -1,5 +1,5 @@
 
-.create_macro {
+.create_meso {
     min-height: 100vh;
 }
 
@@ -13,7 +13,6 @@
     margin: 2em auto 0 auto;
     background-color: var(--dimmer);    
     border-radius: var(--b-radius);
-
 }
 
 .form_field {

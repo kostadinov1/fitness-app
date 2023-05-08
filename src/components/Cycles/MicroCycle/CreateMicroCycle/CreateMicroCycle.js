@@ -1,14 +1,14 @@
 
-import styles from './CreateMacroCycle.module.css'
+import styles from './CreateMicroCycle.module.css'
 import React, { useContext, useState, useEffect } from 'react'
 import ListCard from '../../../Cards/ListCard/ListCard'
 import { UserContext } from '../../../../contexts/UserContext'
 import { DatePicker, Select } from 'antd'
 import { getAllGoals } from '../../../../api/goals'
-import { createMacroCycle } from '../../../../api/cycles/macroCycle'
+import { createMicroCycle } from '../../../../api/cycles/microCycle'
 import { useNavigate } from 'react-router-dom'
 
-function CreateMacroCycle() {
+function CreateMicroCycle() {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [goals, setGoals] = useState([])
@@ -32,11 +32,8 @@ function CreateMacroCycle() {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
      
-    // TODO are you setting new value or spreading the goal values?
     const onSelectChange = (value, label) => {
-        console.log(value, label, 'e data');
         setFormData((state) => ({...state, goals: value}))
-
     }
 	const onStartDateChangeHandler = (date, dateString) => {
         setFormData((state) => ({...state, start_date: dateString}))
@@ -47,7 +44,7 @@ function CreateMacroCycle() {
     const onFormSubmitHandler = (e) => {
         e.preventDefault()
 
-        createMacroCycle(user, formData)
+        createMicroCycle(user, formData)
             .then((res) => {
                 navigate('/periodization')
             })
@@ -55,7 +52,7 @@ function CreateMacroCycle() {
     }
 
     return (
-        <div className={`${styles.create_macro} sidebar_layout` }>
+        <div className={`${styles.create_micro} sidebar_layout` }>
             <div className={`sidebar_box`}>
                 <ListCard></ListCard>
             </div>
@@ -69,7 +66,7 @@ function CreateMacroCycle() {
                             name='name'
                             value={formData.name}
                             onChange={onValueChange}
-                            placeholder={'Enter Macro Cycle Name'}
+                            placeholder={'Enter Micro Cycle Name'}
                         />
                     </div>
                     <div className={`${styles.form_field} ${styles.form_field_2}`}>
@@ -125,4 +122,4 @@ function CreateMacroCycle() {
     )
     }
 
-export default CreateMacroCycle
+export default CreateMicroCycle
