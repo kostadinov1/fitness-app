@@ -7,17 +7,20 @@ import { DatePicker, Select } from 'antd'
 import { getAllGoals } from '../../../../api/goals'
 import { createMicroCycle } from '../../../../api/cycles/microCycle'
 import { useNavigate } from 'react-router-dom'
+import { getAllMesoCycles } from '../../../../api/cycles/mesoCycle'
 
 function CreateMicroCycle() {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [goals, setGoals] = useState([])
+    const [mesoCycles, setMesoCycles] = useState([])
     const [formData, setFormData] = useState({
         name: undefined,
         start_date: undefined,
         end_date: undefined,
         description: undefined, 
-        goals: [],
+        goals: undefined,
+        meso_cycle : undefined,
         user: user.user_id
     })
 
@@ -25,7 +28,9 @@ function CreateMicroCycle() {
         getAllGoals(user)
             .then((res) => {setGoals(res)})
             .catch((res) => {})
-        
+        getAllMesoCycles(user)
+            .then((res) => {setMesoCycles(res)})
+            .catch((res) => {})
     }, [user])
 
     const onValueChange = (e, data) => {
@@ -34,6 +39,9 @@ function CreateMicroCycle() {
      
     const onSelectChange = (value, label) => {
         setFormData((state) => ({...state, goals: value}))
+    }
+    const onMesoSelectChange = (value, label) => {
+        setFormData((state) => ({...state, meso_cycle: value}))
     }
 	const onStartDateChangeHandler = (date, dateString) => {
         setFormData((state) => ({...state, start_date: dateString}))
@@ -113,7 +121,17 @@ function CreateMicroCycle() {
                                 options={goals.map((goal) => ({value: goal.id, label: goal.name})) 
                             } />                        
                     </div>
-                    <button  className={`${styles.form_field} ${styles.form_field_6}`}>
+                    <div className={`${styles.form_field} ${styles.form_field_6}`}>
+                        <label>Meso Cycle</label>
+                            <Select
+                                defaultValue=""
+                                style={{}}
+                                value={formData.meso_cycle}
+                                onChange={onMesoSelectChange}
+                                options={mesoCycles.map((meso) => ({value: meso.id, label: meso.name})) 
+                            } />                        
+                    </div>
+                    <button  className={`${styles.form_field} ${styles.form_field_7}`}>
                         Create
                     </button>
                 </form>

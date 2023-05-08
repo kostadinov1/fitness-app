@@ -7,17 +7,20 @@ import { DatePicker, Select } from 'antd'
 import { getAllGoals } from '../../../../api/goals'
 import { useNavigate } from 'react-router-dom'
 import { createMesoCycle } from '../../../../api/cycles/mesoCycle'
+import { getAllMacroCycles } from '../../../../api/cycles/macroCycle'
 
 function CreateMesoCycle() {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [goals, setGoals] = useState([])
+    const [macroCycles, setMacroCycles] = useState([])
     const [formData, setFormData] = useState({
         name: undefined,
         start_date: undefined,
         end_date: undefined,
         description: undefined, 
-        goals: [],
+        goals: undefined,
+        macro_cycle : undefined,
         user: user.user_id
     })
 
@@ -25,14 +28,19 @@ function CreateMesoCycle() {
         getAllGoals(user)
             .then((res) => {setGoals(res)})
             .catch((res) => {})
-        
+        getAllMacroCycles(user)
+            .then((res) => {setMacroCycles(res)})
+            .catch((res) => {})
     }, [user])
 
     const onValueChange = (e, data) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
-    const onSelectChange = (value, label) => {
+    const onGoalSelectChange = (value, label) => {
         setFormData((state) => ({...state, goals: value}))
+    }
+    const onMacroSelectChange = (value, label) => {
+        setFormData((state) => ({...state, macro_cycle: value}))
     }
 	const onStartDateChangeHandler = (date, dateString) => {
         setFormData((state) => ({...state, start_date: dateString}))
@@ -49,6 +57,7 @@ function CreateMesoCycle() {
             })
             .catch((res) => {})
     }
+
 
     return (
         <div className={`${styles.create_meso} sidebar_layout` }>
@@ -108,11 +117,21 @@ function CreateMesoCycle() {
                                 defaultValue=""
                                 style={{}}
                                 value={formData.goals}
-                                onChange={onSelectChange}
+                                onChange={onGoalSelectChange}
                                 options={goals.map((goal) => ({value: goal.id, label: goal.name})) 
                             } />                        
                     </div>
-                    <button  className={`${styles.form_field} ${styles.form_field_6}`}>
+                    <div className={`${styles.form_field} ${styles.form_field_6}`}>
+                        <label>Macro Cycle</label>
+                            <Select
+                                defaultValue=""
+                                style={{}}
+                                value={formData.macro_cycle}
+                                onChange={onMacroSelectChange}
+                                options={macroCycles.map((macro) => ({value: macro.id, label: macro.name})) 
+                            } />                        
+                    </div>
+                    <button  className={`${styles.form_field} ${styles.form_field_7}`}>
                         Create
                     </button>
                 </form>

@@ -31,7 +31,8 @@
 .form_field_3 {}
 .form_field_4 {}
 .form_field_5 {}
-.form_field_6 {
+.form_field_6 {}
+.form_field_7 {
     margin-top: .6em;
     padding: .2em;
     border-radius: var(--b-radius);
