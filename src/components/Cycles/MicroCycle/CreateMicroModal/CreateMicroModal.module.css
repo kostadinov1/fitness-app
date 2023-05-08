@@ -1,0 +1,41 @@
+
+.micro_modal {
+    width: 100%;
+    height: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    /* max-width: 60vw; */
+    padding: 2em;
+    max-width: 60vw;
+    margin: 2em auto 0 auto;
+    background-color: var(--dimmer);    
+    border-radius: var(--b-radius);
+}
+
+.form_field {
+    display: flex;
+    flex-direction: column;
+    padding: .2em;
+    border-radius: var(--b-radius);
+}
+.form_field * {
+    border-radius: var(--b-radius);
+    padding: .2em;
+}
+
+.form_field_1 {}
+.form_field_2 {}
+.form_field_3 {}
+.form_field_4 {}
+.form_field_5 {}
+.form_field_6 {}
+.form_field_7 {
+    margin-top: .6em;
+    padding: .2em;
+    border-radius: var(--b-radius);
+    background-color: var(--acc-1);
+}

@@ -1,16 +1,13 @@
-
-import styles from './CreateMicroCycle.module.css'
+import styles from './CreateMicroModal.module.css'
 import React, { useContext, useState, useEffect } from 'react'
-import ListCard from '../../../Cards/ListCard/ListCard'
 import { UserContext } from '../../../../contexts/UserContext'
 import { DatePicker, Select } from 'antd'
 import { getAllGoals } from '../../../../api/goals'
 import { createMicroCycle } from '../../../../api/cycles/microCycle'
 import { useNavigate } from 'react-router-dom'
 import { getAllMesoCycles } from '../../../../api/cycles/mesoCycle'
-import CreateMicroModal from '../CreateMicroModal/CreateMicroModal'
 
-function CreateMicroCycle() {
+function CreateMicroModal() {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [goals, setGoals] = useState([])
@@ -61,14 +58,11 @@ function CreateMicroCycle() {
     }
 
     return (
-        <div className={`${styles.create_micro} sidebar_layout` }>
-            <div className={`sidebar_box`}>
-                <ListCard></ListCard>
-            </div>
-            <div className={`content_box`}>
+            <div className={`micro_modal`}>
                 <form 
                     onSubmit={onFormSubmitHandler}
                     className={`${styles.form}`}>
+                        <div>Create Micro</div>
                     <div className={`${styles.form_field} ${styles.form_field_1}`}>
                         <label>Name</label>
                         <input 
@@ -137,10 +131,7 @@ function CreateMicroCycle() {
                     </button>
                 </form>
             </div>
-
-            <CreateMicroModal></CreateMicroModal>
-        </div>
     )
     }
 
-export default CreateMicroCycle
+export default CreateMicroModal
