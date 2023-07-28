@@ -1,6 +1,5 @@
 .contacts {
     min-height: 100vh;
-    background-color: var(--sec-2);
     position: relative;
     top: -4px;
 }
@@ -22,7 +21,6 @@
 }
 .form_box {
     position: relative;
-    background-color: var(--prime-2);
     display: flex;
     flex-direction: column;
     align-items: center;

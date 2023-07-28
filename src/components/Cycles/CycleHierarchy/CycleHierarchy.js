@@ -10,8 +10,7 @@ import { UserContext } from '../../../contexts/UserContext'
 import { useCurrentWeekNum } from '../../../hooks/useCurrentWeekNum'
 import HierarchyTree from '../../NivoCharts/HierarchyTree'
 import styles from './CycleHierarchy.module.css'
-import CycleCard from '../CycleCards/CycleCard/CycleCard'
-import SideBar from '../../Main/SideBar/SideBar'
+import CycleCard from '../../Custom/Cards/CycleCards/CycleCard/CycleCard'
 import ListCard from '../../Cards/ListCard/ListCard'
 
 

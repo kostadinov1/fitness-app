@@ -1,25 +1,25 @@
 import "react-alice-carousel/lib/alice-carousel.css";
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getAllActivities } from '../../api/activities'
-import { getAllExercises } from '../../api/exercises'
-import { getAllMacroCycles } from '../../api/cycles/macroCycle'
-import { getProfile } from '../../api/profile'
-import { UserContext } from '../../contexts/UserContext'
+import { getAllActivities } from '../../../api/activities'
+import { getAllExercises } from '../../../api/exercises'
+import { getAllMacroCycles } from '../../../api/cycles/macroCycle'
+import { getProfile } from '../../../api/profile'
+import { UserContext } from '../../../contexts/UserContext'
 import CardReel from '../Cards/CardReel/CardReel'
 import styles from './Dashboard.module.css'
 import 'react-alice-carousel/lib/alice-carousel.css';
 import AliceCarousel from "react-alice-carousel";
 import ActivityMiniCard from "../Cards/ActivityMiniCard/ActivityMiniCard";
-import ExerciseCard from "../Exercises/AllExercises/ExerciseCard/ExerciseCard";
-import GridWeek from "./GridWeek/GridWeek";
+import ExerciseCard from "../../Exercises/AllExercises/ExerciseCard/ExerciseCard";
+import GridWeek from "../GridWeek/GridWeek";
 import ListCard from "../Cards/ListCard/ListCard";
-import { useTodaysDate } from "../../hooks/useTodaysDate";
-import { getAllGoals } from "../../api/goals";
+import { useTodaysDate } from "../../../hooks/useTodaysDate";
+import { getAllGoals } from "../../../api/goals";
 import GoalsCard from "../Cards/GoalsCard/GoalsCard";
-import PieMacroChart from "../NivoCharts/PieMacroChart/PieMacroChart";
-import ActivityCalendar from "../NivoCharts/ActivityCalendar";
-import { useCurrentWeekNum } from "../../hooks/useCurrentWeekNum";
+import PieMacroChart from "../../NivoCharts/PieMacroChart/PieMacroChart";
+import ActivityCalendar from "../../NivoCharts/ActivityCalendar";
+import { useCurrentWeekNum } from "../../../hooks/useCurrentWeekNum";
 const handleDragStart = (e) => e.preventDefault();
 
 

@@ -4,13 +4,12 @@ import { Route, Routes } from 'react-router-dom';
 
 import Header from './components/Main/Header/Header.js'
 import Footer from './components/Main/Footer/Footer'
-import Home from './components/Home/Home';
+import Home from './components/Home/Home/Home';
 import Register from './components/Auth/Register/Register';
 import Login from './components/Auth/Login/Login';
 import Error404 from './components/Errors/Error404';
-import AllExercises from './components/Exercises/AllExercises/AllExercises';
+import AllExercises from './components/Exercises/AllExercises/AllExercises/AllExercises';
 import AllActivities from './components/Activities/AllActivities/AllActivities';
-import Dashboard from './components/Dashboard/Dashboard';
 import CreateExercise from './components/Exercises/CreateExercise/CreateExercise';
 import EditExercise from './components/Exercises/EditExercise/EditExercise';
 import CreateActivity from './components/Activities/CreateActivity/CreateActivity';
@@ -23,12 +22,13 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Contacts from './components/Contacts/Contacts';
 import { getUserData } from './utils/userUtils';
 import Profile from './components/Profiles/Profile/Profile';
-import ErrorBoundary from './components/ErrorBoundry/ErrorBoundary';
 import MesoCycles from './components/Cycles/MesoCycle/MesoCycles/MesoCycles';
 import CycleHierarchy from './components/Cycles/CycleHierarchy/CycleHierarchy';
 import CreateMacroCycle from './components/Cycles/MacroCycle/CreateMacroCycle/CreateMacroCycle';
 import CreateMesoCycle from './components/Cycles/MesoCycle/CreateMesoCycle/CreateMesoCycle';
 import CreateMicroCycle from './components/Cycles/MicroCycle/CreateMicroCycle/CreateMicroCycle';
+import Dashboard from './components/Dashboard/Dashboard/Dashboard';
+import ErrorBoundary from './components/Errors/ErrorBoundry/ErrorBoundary';
 
 function App() {
 
@@ -73,7 +73,9 @@ function App() {
                             <Route path='/dashboard' element={<Dashboard />}/>
                             <Route path='/profile' element={<Profile />}/>
 
+
                                 {/* <<< ------ CYCLES ------- >>> */}
+
                                 {/* <<< -------------------- >>> */}
                             <Route path='/periodization' element={<CycleHierarchy />} />
 

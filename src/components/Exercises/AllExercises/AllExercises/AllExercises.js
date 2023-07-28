@@ -1,11 +1,11 @@
 import styles from './AllExercises.module.css'
 import React, { useContext, useEffect, useState } from 'react'
-import { deleteExercise, getAllExercises } from '../../../api/exercises'
-import ExerciseCard from './ExerciseCard/ExerciseCard'
-import { UserContext } from '../../../contexts/UserContext'
-import ListCard from '../../Cards/ListCard/ListCard'
-import DeleteModal from './DeleteModal/DeleteModal'
-import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
+import { deleteExercise, getAllExercises } from '../../../../api/exercises'
+import ExerciseCard from '../../../Custom/Cards/ExerciseCard/ExerciseCard'
+import { UserContext } from '../../../../contexts/UserContext'
+import ListCard from '../../../Cards/ListCard/ListCard'
+import DeleteModal from '../DeleteModal/DeleteModal'
+import UsefulLinksCard from '../../../Cards/UsefulLinksCard/UsefulLinksCard'
 
 function AllExercises() {
     const {user} = useContext(UserContext)

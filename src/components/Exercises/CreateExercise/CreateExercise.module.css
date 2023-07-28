@@ -44,7 +44,7 @@
     padding: 0.4em;
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
-    background-color: var(--prime);
+    /* background-color: var(--prime); */
 
 }
 

@@ -28,7 +28,7 @@ function Contacts() {
 
             <div className={`${styles.banner}`}>
 
-            <SimpleMap></SimpleMap>
+            {/* <SimpleMap></SimpleMap> */}
             </div>
 
             <div className={styles.form_box}>

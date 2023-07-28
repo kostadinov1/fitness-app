@@ -2,7 +2,6 @@ import { DeploymentUnitOutlined, FireFilled, SettingOutlined, SubnodeOutlined, S
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
-import FooterBanner from './FooterBanner/FooterBanner'
 
 
 function Footer() {
@@ -41,7 +40,6 @@ function Footer() {
             <li><a href='https://www.youtube.com/@TheKneesovertoesguy'>The Kneesovertoesguy</a></li>
             <li><a href='https://www.youtube.com/@timferriss'>Tim Ferriss</a></li>
         </ul>
-        <FooterBanner></FooterBanner>
     </section>
   )
 }

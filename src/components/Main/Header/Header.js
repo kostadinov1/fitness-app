@@ -5,7 +5,7 @@ import { logoutService } from '../../../api/auth'
 import { UserContext } from '../../../contexts/UserContext'
 import { useContext, useState } from 'react'
 import { clearUserData } from '../../../utils/userUtils'
-import IconMenu from '../IconMenu/IconMenu'
+import IconMenu from '../../Custom/IconMenu/IconMenu'
 import { Dropdown, Space } from 'antd'
 
 const items = [

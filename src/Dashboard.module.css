@@ -26,7 +26,7 @@
 
 .grid_card_1  {
     grid-area: one;
-    background-image: url('/public/images/defaults/default-user.png');
+    /* background-image: url('/public/images/defaults/default-user.png'); */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
