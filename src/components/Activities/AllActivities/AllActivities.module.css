@@ -1,52 +1,6 @@
 .activities {
-    /* margin-top: 0px; */
-    position: relative;
-    min-height: 100vh;
+
     display: grid;
-    gap: 0.4em;
-    padding: 0.2em;
-    margin-bottom: 1em;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas: 
-                    "one three three three three three"
-                    "two three three three three three"
-                    "two three three three three three"
-                    "two three three three three three";
-
-    border: 1px solid var(--prime);
-    border-radius: var(--b-radius);
+    gap: 1em;
+    
 }
-
-.sider_1 {
-    grid-area: one;
-    overflow: hidden;
-}
-
-.sider_2 {
-    grid-area: two;
-    overflow: hidden;
-
-
-
-}
-.activities h4 {
-    text-align: center;
-    font-size: 1.1rem;
-    border-radius: var(--b-radius);
-    border-bottom: 3px solid var(--acc-1);
-    border-top: 1px solid var(--acc-1);
-}
-
-.acty_box {
-    grid-area: three;
-    display: grid;
-    align-items: stretch;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4em;
-    padding: 0.6em;
-    border: 1px solid var(--acc-1);
-    border-radius: var(--b-radius);
-    /* background-color: var(--prime); */
-
-}
-

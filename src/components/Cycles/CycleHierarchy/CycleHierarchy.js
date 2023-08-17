@@ -10,7 +10,7 @@ import { UserContext } from '../../../contexts/UserContext'
 import { useCurrentWeekNum } from '../../../hooks/useCurrentWeekNum'
 import HierarchyTree from '../../NivoCharts/HierarchyTree'
 import styles from './CycleHierarchy.module.css'
-import CycleCard from '../../Custom/Cards/CycleCards/CycleCard/CycleCard'
+// import CycleCard from '../../Custom/Cards/CycleCards/CycleCard/CycleCard'
 import ListCard from '../../Cards/ListCard/ListCard'
 
 
@@ -152,7 +152,7 @@ function CycleHierarchy() {
         <div className={`${styles.nivo_network}`}> 
             <HierarchyTree data={newCycleData} />
         </div>
-        <div className={`${styles.cycle_tree}`}>
+        {/* <div className={`${styles.cycle_tree}`}>
             <div className={`${styles.macro_cycle}`}>
                 {macroCycles ? macroCycles.map((macro) => <CycleCard key={macro.id} cycle={macro} />) : <p>no cycle</p>}
             </div>  
@@ -162,7 +162,7 @@ function CycleHierarchy() {
             <div className={`${styles.micro_cycle}`}>
                 {microCycles ? microCycles.map((micro) => <CycleCard key={micro.id} cycle={micro} />) : <p>no cycle</p>}   
             </div>  
-        </div>    
+        </div>     */}
         </div>
 
     </div>

@@ -34,9 +34,9 @@ function EditActivity() {
         setActivity((state) => ({...state, [e.target.name]: e.target.value}))
     } 
     const onDateChangeHandler = (date, dateString) => {
-        setActivity((state) => ({...state, start_time: dateString[0]}))
-        setActivity((state) => ({...state, end_time: dateString[1]}))
-
+        setActivity((state) => ({...state, start_time: dateString}))
+        setActivity((state) => ({...state, end_time: dateString}))
+        console.log(dateString, 'datestring')
 	}
 
     // TODO ADD FORM VALIDAITONS

@@ -1,15 +1,17 @@
 :root {
     /* --- Colors --- */
-    --prime: #ebebeb;
-    --prime-2: #ffffff;
+    --prime: #efedeb;
+    --prime-2: #fff6f0;
     
-    --sec: #fa7618;
-    --sec-2: #d7471b;
-    --sec-3: #ee9340;
-    --acc-1: #53208a;
-    --acc-2: #9a33e8;
-    --acc-3: rgb(230, 144, 31);
-    --text: #0e022f;
+    --sec: #218fb7de;
+    --sec-2: #1a7292de;
+    --sec-3: #0f4458de;
+    --acc-1: #db7420;
+    --acc-2: #f2c331;
+    --acc-3: rgb(250, 151, 22);
+
+    --text: #f7f8da;
+    --text-2: #032600;
 
     --bg: #126b7d;
     --dimmer: rgba(0, 5, 6, 0.607);
@@ -25,7 +27,7 @@
 #body {
     position: relative;
     background-color: var(--prime);
-    background-image: url('/public/images/backgrounds/cornered-stairs.svg');
+    background-image: url('/public/images/backgrounds/rect-light.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -35,6 +37,7 @@
 #main {
     position: relative;
     padding: 1em;
+    min-height: 80vh;
 
 
 }

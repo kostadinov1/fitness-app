@@ -16,6 +16,7 @@
     border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
     overflow: scroll;
+    max-width: 30vw;
 }
 .card_info {
     grid-area: two;
@@ -51,7 +52,7 @@
     }
     .card_cell_1 {
         font-size: 1.6rem;
-        /* color: var(--text); */
+        color: var(--text);
         margin-bottom: 0.4em;
         padding: 0.4em 0em;
         grid-area: one;}
@@ -70,6 +71,7 @@
     .card_cell_10 {
         /* max-height: 10em; */
         /* overflow: scroll; */
+        color: var(--dimmer);
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -80,12 +82,14 @@
         grid-area: eleven;}
     .card_cell_12 {
         margin-top: 0.4em;    
-        grid-area: twelve;}
+        grid-area: twelve;
+    
+    }
 
     .card_cell_link {
         justify-content: center;
         background-color: var(--acc-1);
-        color: var(--sec);
+        color: var(--text);
         font-weight: bold;
     }
     .exer {
@@ -101,7 +105,7 @@
     
     .exer_link {
         font-size: .9rem;
-        color: aliceblue;
+        color: var(--dimmer);
     }
 
 
