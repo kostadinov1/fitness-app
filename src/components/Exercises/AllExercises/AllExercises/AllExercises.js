@@ -6,6 +6,7 @@ import { UserContext } from '../../../../contexts/UserContext'
 import ListCard from '../../../Cards/ListCard/ListCard'
 import DeleteModal from '../DeleteModal/DeleteModal'
 import UsefulLinksCard from '../../../Cards/UsefulLinksCard/UsefulLinksCard'
+import { Link } from 'react-router-dom'
 
 function AllExercises() {
     const {user} = useContext(UserContext)
@@ -37,11 +38,29 @@ function AllExercises() {
     console.log(exercises, 'exercises');
     return (
         <div className={styles.exercises}>
-            {exercises ? exercises.map((exercise) => <ExerciseCard 
-                                                        key={exercise.id}
-                                                        exercise={exercise}
-                                                        onDelete={onDelete}
-                                                        />) : null}
+            <div className={`${styles.sidebar}`}>
+                <h3 className={`${styles.sidebar_title}`}>Quick Links</h3>
+                <ul className={`${styles.sidebar_ul}`}>
+                    <li className={`${styles.sidebar_li}`}>
+                        <Link to={`/create-exercise`} className={`${styles.sidebar_link}`}>Create Exercise</Link>
+                    </li>
+                    <li className={`${styles.sidebar_li}`}>
+                        <Link to={``} className={`${styles.sidebar_link}`}></Link>
+                    </li>
+                    <li className={`${styles.sidebar_li}`}>
+                        <Link to={``} className={`${styles.sidebar_link}`}></Link>
+                    </li>
+                </ul>
+            </div>
+            <div className={`${styles.content}`}>
+                {exercises ? exercises.map((exercise) => <ExerciseCard 
+                                                            key={exercise.id}
+                                                            exercise={exercise}
+                                                            onDelete={onDelete}
+                                                            />) : null}
+
+            </div>
+
         </div>
     )
 }

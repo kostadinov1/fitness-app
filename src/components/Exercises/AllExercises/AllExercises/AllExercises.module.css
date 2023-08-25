@@ -1,4 +1,30 @@
 .exercises {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    gap: 1em;
+}
 
+.sidebar {
+    background-color: var(--sec);
+}
+.sidebar_title {
+    text-align: center;
+    font-size: 1.3rem;
+    padding: .4em;
+    background-color: var(--sec);
+}
+.sidebar_ul {
+    padding: 1em 2em;
+    font-size: 1.2rem;
+    font-weight: bold;
+    list-style: none;
+
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    width: 100%;
 }
 
