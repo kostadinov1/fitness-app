@@ -12,6 +12,8 @@ function ActivityCard({activity, onDelete}) {
     const [currentActivity, setCurrentActivity] = useState({})
     const [activityExercises, setActivityExercises] = useState([])
     const [activityType, setActivityType] = useState({})
+
+    
     useEffect(() => {
         getActivity(activity.id)
             .then((res) => {
