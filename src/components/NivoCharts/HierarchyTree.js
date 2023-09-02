@@ -13,10 +13,10 @@ const HierarchyTree = ({ data /* see data tab */ }) => {
     return (
         <>
             <div className={`${styles.cycle_data}`}>
-                <h1>{currentNode.cycleType}</h1>
+                {/* <h1>{currentNode.cycleType}</h1>
                 <span>Cycle: {currentNode.name}</span>
                 <span>Start Date: {currentNode.start_date}</span>
-                <span>End Date: {currentNode.end_date}</span>
+                <span>End Date: {currentNode.end_date}</span> */}
 
             </div>
             <ResponsiveNetwork

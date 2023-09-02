@@ -23,7 +23,7 @@ import Contacts from './components/Contacts/Contacts';
 import { getUserData } from './utils/userUtils';
 import Profile from './components/Profiles/Profile/Profile';
 import MesoCycles from './components/Cycles/MesoCycle/MesoCycles/MesoCycles';
-import CycleHierarchy from './components/Cycles/CycleHierarchy/CycleHierarchy';
+import CycleHierarchy from './components/Cycles/Periodization/Periodization';
 import CreateMacroCycle from './components/Cycles/MacroCycle/CreateMacroCycle/CreateMacroCycle';
 import CreateMesoCycle from './components/Cycles/MesoCycle/CreateMesoCycle/CreateMesoCycle';
 import CreateMicroCycle from './components/Cycles/MicroCycle/CreateMicroCycle/CreateMicroCycle';
