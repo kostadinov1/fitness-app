@@ -12,6 +12,7 @@ import ListCard from '../../Cards/ListCard/ListCard'
 import CycleCard from './../../Cards/CycleCards/CycleCard/CycleCard'
 import { useNavigate } from 'react-router-dom'
 import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
+import MesoCard from '../../Cards/CycleCards/MesoCard/MesoCard'
 
 
 function CycleHierarchy() {
@@ -32,18 +33,10 @@ function CycleHierarchy() {
     const [exercises, setExercises] = useState([])
     const [goals, setGoals] = useState([])
     
-    const [filteredMesos, setFilteredMesos] = useState([])
-
-
     const [selectedMacro, setSelectedMacro] = useState()
     const [selectedMeso, setSelectedMeso] = useState()
     const [selectedMicro, setSelectedMicro] = useState({})
-
-    useEffect(() => {
-        setSelectedMacro(macroCycles[0])
-    }, [macroCycles])
-
-
+    
     useEffect(() => {
         getAllExercises(user)
             .then((res) => {setExercises(res)})
@@ -68,7 +61,12 @@ function CycleHierarchy() {
             .catch((res) => {})
         }, [user])
 
-        console.log(macroCycles,  'MACROCYCLES', selectedMacro, 'selected macro')
+    useEffect(() => {
+        setSelectedMacro(macroCycles[0])
+    }, [macroCycles])
+
+
+    console.log(selectedMeso, 'selected')
 
   return (
     <div className={`${styles.periodization} layout`}>
@@ -83,12 +81,12 @@ function CycleHierarchy() {
         </div>
 
         <div className={`${styles.meso_box}`}> 
-        <div className={`${styles.peri_activity}`}>
-            {filteredMesos ?
-                filteredMesos.map((exercise) => 
-                        <p key={exercise.id}> {exercise.name} </p>)
+            {selectedMacro ?
+                selectedMacro.meso_cycles.map((meso) => 
+                        <MesoCard
+                        setSelectedMeso={setSelectedMeso}
+                            meso={meso} />)
             :null}
-            </div>
         </div>
         <div className={`${styles.micro_box}`}> 
             <PeriWeek activities={activities}></PeriWeek>

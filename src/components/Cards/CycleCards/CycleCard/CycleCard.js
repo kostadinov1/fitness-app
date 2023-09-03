@@ -3,7 +3,7 @@ import React from 'react'
 
 
 function CycleCard({cycle}) {
-    console.log(cycle, 'cycle in card');
+    // console.log(cycle, 'cycle in card');
   return (
     <div className={`${styles.cycle_card}`}>
         <div className={`${styles.cycle} ${styles.cycle_1}`}> 
@@ -14,12 +14,6 @@ function CycleCard({cycle}) {
         </div>
         <div className={`${styles.cycle} ${styles.cycle_3}`}> 
             {cycle.end_date}
-        </div>
-        <div className={`${styles.cycle} ${styles.cycle_4}`}> 
-            {cycle.description}
-        </div>
-        <div className={`${styles.cycle} ${styles.cycle_5}`}> 
-            {cycle.goals}
         </div>
     </div>
   )

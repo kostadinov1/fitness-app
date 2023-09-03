@@ -6,15 +6,20 @@
     display: grid;
     gap: .2em;
     /* grid-template-columns: repeat(2, 1fr); */
-    background-color: red;
+    background-color: var(--dimmer-3);
     padding: .2em;
+    min-height: 80vh;
 }
 
 .macro_box {
     background-color: var(--dimmer);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 .meso_box {
     background-color: var(--dimmer);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 .micro_box {
     background-color: var(--dimmer);
