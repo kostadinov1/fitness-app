@@ -2,16 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { getAllActivities } from '../../../api/activities'
 import { getAllMacroCycles } from '../../../api/cycles/macroCycle'
 import { getAllMicroCycles } from '../../../api/cycles/microCycle'
-import { editMesoCycle, getAllMesoCycles } from '../../../api/cycles/mesoCycle'
+import { getAllMesoCycles } from '../../../api/cycles/mesoCycle'
 import { getAllExercises } from '../../../api/exercises'
 import { getAllGoals } from '../../../api/goals'
 import { getProfile } from '../../../api/profile'
 import { UserContext } from '../../../contexts/UserContext'
-import { useCurrentWeekNum } from '../../../hooks/useCurrentWeekNum'
 import styles from './Periodization.module.css'
 import ListCard from '../../Cards/ListCard/ListCard'
+import CycleCard from './../../Cards/CycleCards/CycleCard/CycleCard'
 import { useNavigate } from 'react-router-dom'
-import { Slider } from 'antd'
 import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
 
 
@@ -26,50 +25,24 @@ function CycleHierarchy() {
         dob: null, 
         gender: null,
     })
-    const weekNumber = useCurrentWeekNum()
     const [macroCycles, setMacroCycles] = useState([])
-    const [macroCycleLinks, setMacroCycleLinks] = useState([])
-    const [macroCycleNodes, setMacroCycleNodes] = useState([])
     const [mesoCycles, setMesoCycles] = useState([])
     const [microCycles, setMicroCycles] = useState([])
     const [activities, setActivities] = useState([])
     const [exercises, setExercises] = useState([])
     const [goals, setGoals] = useState([])
     
-    const [weeks, setWeks] = useState(1)
-    
-    const filteredMeso = useState([])
+    const [filteredMesos, setFilteredMesos] = useState([])
 
-    const [formData, setFormData] = useState({
-        name: undefined,
-        start_date: undefined,
-        end_date: undefined,
-        description: undefined, 
-        goals: undefined,
-        macro_cycle : undefined,
-        user: user.user_id
-    })
+
+    const [selectedMacro, setSelectedMacro] = useState()
+    const [selectedMeso, setSelectedMeso] = useState()
+    const [selectedMicro, setSelectedMicro] = useState({})
 
     useEffect(() => {
+        setSelectedMacro(macroCycles[0])
+    }, [macroCycles])
 
-    }, [])
-
-    const onValueChange = (e, data) => {
-        setFormData((state) => ({...state, [e.target.name]: e.target.value}))
-    }
-    const onSliderChange = (value) => {
-        setWeks(value)
-    }
-
-    const onFormSubmitHandler = (e) => {
-        e.preventDefault()
-
-        editMesoCycle(user, formData)
-            .then((res) => {
-                navigate('/periodization')
-            })
-            .catch((res) => {})
-    }
 
     useEffect(() => {
         getAllExercises(user)
@@ -95,7 +68,7 @@ function CycleHierarchy() {
             .catch((res) => {})
         }, [user])
 
-        console.log(exercises, mesoCycles, 'exes mesocycles')
+        console.log(macroCycles,  'MACROCYCLES', selectedMacro, 'selected macro')
 
   return (
     <div className={`${styles.periodization} layout`}>
@@ -106,13 +79,13 @@ function CycleHierarchy() {
         <div className={`content_box ${styles.content_box}`}>
 
         <div className={`${styles.macro_box}`}> 
-          
+          {macroCycles ? macroCycles.map((macro) => <CycleCard  cycle={macro}></CycleCard>): null}
         </div>
 
         <div className={`${styles.meso_box}`}> 
         <div className={`${styles.peri_activity}`}>
-            {filteredMeso ?
-                filteredMeso.exercises.map((exercise) => 
+            {filteredMesos ?
+                filteredMesos.map((exercise) => 
                         <p key={exercise.id}> {exercise.name} </p>)
             :null}
             </div>

@@ -13,7 +13,7 @@ function PeriWeek({activities}) {
     const [saturdayData, setSaturdayData] = useState(undefined)
     const [sundayData, setSundayData] = useState(undefined)
 
-    console.log(activities, 'activities in periweek')
+    // console.log(activities, 'activities in periweek')
 
 
   return (
