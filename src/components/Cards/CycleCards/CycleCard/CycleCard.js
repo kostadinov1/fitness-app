@@ -3,6 +3,7 @@ import React from 'react'
 
 
 function CycleCard({cycle}) {
+    console.log(cycle, 'cycle in card');
   return (
     <div className={`${styles.cycle_card}`}>
         <div className={`${styles.cycle} ${styles.cycle_1}`}> 
