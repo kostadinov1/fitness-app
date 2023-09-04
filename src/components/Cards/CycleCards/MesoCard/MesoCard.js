@@ -1,10 +1,10 @@
 
 import styles from './MesoCard.module.css'
 
-const MesoCard = ({meso, setSelectedMeso}) => {
+const MesoCard = ({meso}) => {
     
   return (
-    <div  onClick={() => setSelectedMeso(meso.id)}  className={`${styles.cycle_card}`}>
+    <div  className={`${styles.cycle_card}`}>
         <div className={`${styles.cycle} ${styles.cycle_1}`}> 
             {meso.name}
         </div>

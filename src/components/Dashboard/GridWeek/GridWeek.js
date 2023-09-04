@@ -16,13 +16,13 @@ function GridWeek({activities}) {
     const weekNumber = useCurrentWeekNum()
 
     useEffect(() => {
-        setMondayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 1))
-        setTuesdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 2))
-        setWednesdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 3))
-        setThursdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 4))
-        setFridayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 5))
-        setSaturdayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 6))
-        setSundayData(activities.filter((acty) => getWeekDay(acty['start_time']) === 0))
+        setMondayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 1))
+        setTuesdayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 2))
+        setWednesdayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 3))
+        setThursdayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 4))
+        setFridayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 5))
+        setSaturdayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 6))
+        setSundayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 0))
     }, [activities])
 
     const getWeekDay = (activityDate) => {  

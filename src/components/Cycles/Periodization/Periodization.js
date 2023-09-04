@@ -15,7 +15,7 @@ import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
 import MesoCard from '../../Cards/CycleCards/MesoCard/MesoCard'
 
 
-function CycleHierarchy() {
+function Periodization() {
     
     const navigate = useNavigate()
     const { user } = useContext(UserContext) 
@@ -35,7 +35,9 @@ function CycleHierarchy() {
     
     const [selectedMacro, setSelectedMacro] = useState()
     const [selectedMeso, setSelectedMeso] = useState()
-    const [selectedMicro, setSelectedMicro] = useState({})
+    const [selectedMicro, setSelectedMicro] = useState()
+
+    const [periWeekActivities, setPeriWeekActivities] = useState([])
     
     useEffect(() => {
         getAllExercises(user)
@@ -57,16 +59,21 @@ function CycleHierarchy() {
             .then((res) => {setMesoCycles(res)})
             .catch((res) => {})
         getAllMicroCycles(user)
-            .then((res) => {setMicroCycles(res)})
+            .then((res) => {setMicroCycles(res)
+            setPeriWeekActivities(res.activities)
+            })
             .catch((res) => {})
         }, [user])
 
     useEffect(() => {
         setSelectedMacro(macroCycles[0])
-    }, [macroCycles])
+        setSelectedMeso(mesoCycles[0])
+        setSelectedMicro( selectedMeso ? selectedMeso.micro_cycles[0] : microCycles[0])
+        setPeriWeekActivities(selectedMicro ? selectedMicro.activities : [])
+    }, [macroCycles, microCycles, mesoCycles, selectedMicro])
 
 
-    console.log(selectedMeso, 'selected')
+    // console.log(selectedMicro, 'activities in periodization')
 
   return (
     <div className={`${styles.periodization} layout`}>
@@ -83,13 +90,13 @@ function CycleHierarchy() {
         <div className={`${styles.meso_box}`}> 
             {selectedMacro ?
                 selectedMacro.meso_cycles.map((meso) => 
-                        <MesoCard
-                        setSelectedMeso={setSelectedMeso}
-                            meso={meso} />)
+                    <div onClick={() => setSelectedMeso(meso)}>
+                        <MesoCard meso={meso} />
+                    </div>)   
             :null}
         </div>
         <div className={`${styles.micro_box}`}> 
-            <PeriWeek activities={activities}></PeriWeek>
+            <PeriWeek activities={periWeekActivities}></PeriWeek>
 
         </div>
        
@@ -99,4 +106,4 @@ function CycleHierarchy() {
   )
 }
 
-export default CycleHierarchy
+export default Periodization
