@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import styles from './PeriWeek.module.css'
 import  PeriDay  from './../PeriDay/PeriDay'
 import {useCurrentWeekNum} from './../../../../hooks/useCurrentWeekNum'
+import AddIconListPlaceholder from "../../../Cards/AddIconListPlaceholder/AddIconListPlaceholder"
 // activities should be sorted by mesocycle
 function PeriWeek({activities}) {
     const weekNumber = useCurrentWeekNum()
@@ -51,7 +52,14 @@ function PeriWeek({activities}) {
                 Monday
             </div>
             <div className={`${styles.grid_day}`}>
-                <PeriDay activities={mondayData} />
+                {mondayData ? 
+                    <div>
+
+                        <PeriDay activities={mondayData} />
+                        <AddIconListPlaceholder type={'activity'}/>
+                    </div>
+                
+                : <AddIconListPlaceholder type={'activity'}/>}
             </div>
         </div>
         <div className={`${styles.cell} ${styles.cell_2}`}>
@@ -59,7 +67,14 @@ function PeriWeek({activities}) {
                 Tuesday
             </div>
             <div className={`${styles.grid_day}`}>
-                <PeriDay activities={tuesdayData} />
+            {tuesdayData ? 
+                    <div>
+
+                        <PeriDay activities={tuesdayData} />
+                        <AddIconListPlaceholder type={'activity'}/>
+                    </div>
+                
+                : <AddIconListPlaceholder type={'activity'}/>}
             </div>
         </div>
         <div className={`${styles.cell} ${styles.cell_3}`}>
@@ -67,7 +82,14 @@ function PeriWeek({activities}) {
                 Wednesday
             </div>
             <div className={`${styles.grid_day}`}>
-                <PeriDay activities={wednesdayData} />
+            {wednesdayData ? 
+                    <div>
+
+                        <PeriDay activities={wednesdayData} />
+                        <AddIconListPlaceholder type={'activity'}/>
+                    </div>
+                
+                : <AddIconListPlaceholder type={'activity'}/>}
             </div>
         </div>
         <div className={`${styles.cell} ${styles.cell_4}`}>
@@ -75,7 +97,14 @@ function PeriWeek({activities}) {
                 Thursday
             </div>
             <div className={`${styles.grid_day}`}>
-                <PeriDay activities={thursdayData} />
+            {thursdayData ? 
+                    <div>
+
+                        <PeriDay activities={thursdayData} />
+                        <AddIconListPlaceholder type={'activity'}/>
+                    </div>
+                
+                : <AddIconListPlaceholder type={'activity'}/>}
             </div>
         </div>
 
@@ -84,7 +113,14 @@ function PeriWeek({activities}) {
                 Friday
             </div>
             <div className={`${styles.grid_day}`}>
-                <PeriDay activities={fridayData} />
+            {fridayData ? 
+                    <div>
+
+                        <PeriDay activities={fridayData} />
+                        <AddIconListPlaceholder type={'activity'}/>
+                    </div>
+                
+                : <AddIconListPlaceholder type={'activity'}/>}
             </div>
         </div>
 
@@ -93,7 +129,14 @@ function PeriWeek({activities}) {
                 Saturday
             </div>
             <div className={`${styles.grid_day}`}>
-                <PeriDay activities={saturdayData} />
+            {saturdayData ? 
+                    <div>
+
+                        <PeriDay activities={saturdayData} />
+                        <AddIconListPlaceholder type={'activity'}/>
+                    </div>
+                
+                : <AddIconListPlaceholder type={'activity'}/>}
             </div>
         </div>
         
@@ -102,7 +145,14 @@ function PeriWeek({activities}) {
                 Sunday
             </div>
             <div className={`${styles.grid_day}`}>
-                <PeriDay activities={sundayData} />
+            {sundayData ? 
+                    <div>
+
+                        <PeriDay activities={sundayData} />
+                        <AddIconListPlaceholder type={'activity'}/>
+                    </div>
+                
+                : <AddIconListPlaceholder type={'activity'}/>}
             </div>
         </div>
 
