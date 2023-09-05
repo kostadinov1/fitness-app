@@ -54,10 +54,6 @@ function Periodization() {
     }, [macroCycles, microCycles, mesoCycles, selectedMicro, selectedMeso])
 
 
-    let sortedArray = selectedMacro?.meso_cycles.sort((a, b) => {
-        return  new Date(a.start_date) > new Date(b.start_date);
-    });
-    // console.log(sortedArray, 'sorted array');
 
   return (
     <div className={`${styles.periodization} layout`}>
@@ -66,22 +62,35 @@ function Periodization() {
         </div>
 
         <div className={`content_box ${styles.content_box}`}>
-
+            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+                <div>MACRO CYCLES</div>
+            </div>
             <div className={`${styles.macro_box} ${styles.cycle_box}`}> 
-                {macroCycles ? macroCycles.map((macro) =>
-                    <div  key={macro.id} onClick={() => setSelectedMacro(macro)}>
-                        <MesoCard  meso={macro}></MesoCard>
-                    </div>
-                    )
+                {macroCycles ? macroCycles
+                    .sort((a, b) => a.start_date > b.start_date)
+                    .map((macro) =>
+                        <div  key={macro.id} onClick={() => setSelectedMacro(macro)}>
+                            <MesoCard  meso={macro}></MesoCard>
+                        </div>
+                        )
                 : null}
+            </div>
+            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+                <div>MESO CYCLES</div>
             </div>
             <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
                 {selectedMacro ?
-                    selectedMacro.meso_cycles.map((meso) => 
+                    selectedMacro.meso_cycles
+                    .sort((a, b) => a.start_date > b.start_date)
+                    .map((meso) => 
                             <div key={meso.id} onClick={() => setSelectedMeso(meso)}>
                                 <MesoCard meso={meso} />
                             </div>)   
                 :null}
+            </div>
+            
+            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+                <div>MACRO CYCLES</div>
             </div>
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 <PeriWeek activities={periWeekActivities}></PeriWeek>

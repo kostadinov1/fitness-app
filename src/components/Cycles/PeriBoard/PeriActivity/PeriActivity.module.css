@@ -9,11 +9,14 @@
 .activity_title {
     align-items: center;
     text-align: center;
-    background-color: red;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1.2;
+    background-color: var(--acc-3);
 }
 
 .exercise_title {
     font-size: .8rem;
-    font-weight: 400;
+    font-weight: 600;
     padding: .4em;
 }

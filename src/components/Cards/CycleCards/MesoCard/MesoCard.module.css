@@ -15,8 +15,11 @@
     list-style: none;
     margin: .1em;
     padding: .1em;
-    min-height: 15vh;
-    min-width: 15vw;
+    min-height: 10vh;
+    min-width: 12vw;
+}
+.cycle_card:hover {
+    scale: 1.02;
 }
 
 .cycle {
