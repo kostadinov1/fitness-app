@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-import styles from './AddIconListPlaceholder.module.css'
+import styles from './AddToListPlaceholder.module.css'
 import React from 'react'
 import { PlusCircleFilled } from '@ant-design/icons'
 

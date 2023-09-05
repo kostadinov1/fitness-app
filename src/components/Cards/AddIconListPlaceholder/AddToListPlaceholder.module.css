@@ -1,0 +1,13 @@
+
+.placeholder {
+    display: flex;
+    gap: .4em;
+    justify-content: center;
+    align-items: center;
+    padding: .2em;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 500;
+    background-color: var(--dimmer-2);
+}
