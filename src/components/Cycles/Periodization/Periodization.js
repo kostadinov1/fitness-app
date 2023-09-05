@@ -9,6 +9,7 @@ import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
 import MesoCard from '../../Cards/CycleCards/MesoCard/MesoCard'
 import PlaceholderCard from '../../Cards/PlaceholderCard/PlaceholderCard'
 import MacroCard from '../../Cards/CycleCards/MacroCard/MacroCard'
+import { Slider } from 'antd'
 
 
 function Periodization() {
@@ -57,9 +58,6 @@ function Periodization() {
 
   return (
     <div className={`${styles.periodization}`}>
-        {/* <div className={`sidebar_box`}> 
-            <ListCard />
-        </div> */}
 
         <div className={`content_box ${styles.content_box}`}>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
@@ -92,10 +90,33 @@ function Periodization() {
             </div>
             
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                <div>MICRO CYCLES</div>
+                <div>MICRO CYCLE</div>
             </div>
+            
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 <PeriWeek activities={periWeekActivities}></PeriWeek>
+            </div>
+            <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
+                <form className={`${styles.form}`}>
+                    <div className={`${styles.form_field}`}>
+                    <div className={`${styles.form_field}`}>
+                        <label>Micro Cycles Default Name</label>
+                        <input></input>
+                    </div>
+                        <label>Number of Weeks</label>
+                        <Slider></Slider>
+                    </div>
+                    <div className={`${styles.form_field}`}>
+                        <label>Exercises SETS WEEKLY Incrementation</label>
+                        <Slider></Slider>                        
+                    </div>
+                    <div className={`${styles.form_field}`}>
+                        <label>Exercises REPS WEEKLY Incrementation</label>
+                        <Slider></Slider>                        
+                    </div>
+                    <button>Create Meso Periodization</button>
+                </form> 
+
             </div>
         </div>
 

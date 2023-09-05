@@ -61,6 +61,11 @@ function Header() {
                     to={'/dashboard'} className={styles.link}><BlockOutlined/> Dashboard</NavLink>
                 </li>
 
+                <li className={styles.li}>
+                    <NavLink 
+                    activeClassName='active'
+                    to={'/periodization'} className={styles.link}><AimOutlined /> Periodization</NavLink>
+                </li>
                
                 <li className={styles.li}>
                     <NavLink 
@@ -72,11 +77,6 @@ function Header() {
                     activeClassName='active'
                     to={'/all-exercises'} className={styles.link}><FireFilled /> Exercises</NavLink>
                 </li>
-                <li className={styles.li}>
-                    <NavLink 
-                    activeClassName='active'
-                    to={'/periodization'} className={styles.link}><AimOutlined /> Periodization</NavLink>
-                </li>
               </>
         }
 
@@ -86,7 +86,7 @@ function Header() {
                 to={'/contacts'} className={styles.link}><ContactsOutlined /> Contacts</NavLink>
             </li>
         </ul>
-        <Link to={`/profile/`} className={styles.user_email}><UserOutlined/> {user.email}</Link>
+        <Link to={`/profile/`} className={styles.user_email}><UserOutlined className={`${styles.user_icon}`}/> Profile</Link>
         <div className={styles.auth_icons}>
             {user.isAuthenticated === false ?
                 <>

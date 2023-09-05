@@ -43,13 +43,16 @@
     font-family: 'Montserrat Alternates', sans-serif;
 
 }
+.user_icon {
+    scale: 1.2;
+}
 .user_email {
     display: flex;
     align-items: center;
     gap: .2em;
     color: var(--text);
-    font-weight: 400;
-    font-size: .9rem;
+    font-weight: 600;
+    font-size: 1.1rem;
     font-family: 'Montserrat Alternates', sans-serif;
     letter-spacing: 1pt;
     max-width: 16em;
@@ -62,19 +65,19 @@
     border-radius: var(--b-radius);
     background-color: var(--acc-1);
 }
-.auth_icons *:hover {
-    color: orangered;
-}
 .auth_icons * {
-    color: var(--dark-blue);
+    color: var(--sec-3);
     font-weight: bold;
     font-size: .9rem;
     margin: 0px 0.1em;
 }
+    .auth_icons *:hover {
+        color: black;
+    }
 .menu_icon {
     background-color: var(--acc-1);
     margin-right: 2em;
-    color: var(--text);
+    color: var(--sec-3);
     font-size: 1.2rem;
     padding: 0.4em;
     border-radius: var(--b-radius);

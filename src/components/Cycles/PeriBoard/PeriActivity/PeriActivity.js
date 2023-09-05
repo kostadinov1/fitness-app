@@ -6,6 +6,8 @@ import React from 'react'
 
 const PeriActivity = ({activity}) => {
     // console.log(activity, 'activity exercises');
+    //TODO attach
+    //TODO add weekly incrementation functionality for REPS AND SETS when creating meso periodization
   return (
     <div className={`${styles.peri_activity}`}>
       <div className={`${styles.activity_title}`} >{activity.name}</div>
