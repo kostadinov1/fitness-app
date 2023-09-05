@@ -176,6 +176,11 @@ function Header() {
                             :null}
 
                 </li> */}
+
+                {/* 
+                
+                CYCLES DROPDOWN 
+
                 <li>
                 <Dropdown
                         menu={{
@@ -190,9 +195,14 @@ function Header() {
                             </Space>
                         </a>
                         </Dropdown>
-                </li>
+                </li> */}
+
+                {/* 
                 <li className={styles.li}>
                     <Link to={'/'} className={styles.link}><AimOutlined /> Goals</Link>
+                </li> */}
+                <li className={styles.li}>
+                    <Link to={'/periodization'} className={styles.link}><AimOutlined /> Periodization</Link>
                 </li>
               </>
         }
