@@ -5,14 +5,20 @@ import React from 'react'
 
 
 const PeriActivity = ({activity}) => {
-    console.log(activity, 'activity exercises');
+    // console.log(activity, 'activity exercises');
   return (
     <div className={`${styles.peri_activity}`}>
-      <h3>{activity.name}</h3>
-      {activity ?
-         activity?.exercises?.map((exercise) => 
-                <p key={exercise.id}> {exercise.name} </p>)
-       :null}
+      <div className={`${styles.activity_title}`} >{activity.name}</div>
+      <div className={`${styles.exercise_box}`}>
+        {activity ?
+            activity?.exercises?.map((exercise) => 
+                    <div
+                        className={`${styles.exercise_title}`}
+                        key={exercise.id}>
+                             {exercise.name}: {exercise.reps} reps x {exercise.sets} sets
+                    </div>)
+        :null}
+      </div>
     </div>
   )
 }

@@ -11,10 +11,10 @@ const MesoCard = ({meso}) => {
             {meso.name}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_2}`}> 
-            {meso.start_date}
+            {meso.start_date.slice(5)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_3}`}> 
-            {meso.end_date}
+            {meso.end_date.slice(5)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_4}`}> 
           <button>

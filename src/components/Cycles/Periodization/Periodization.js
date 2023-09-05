@@ -28,24 +28,36 @@ function Periodization() {
     
     useEffect(() => {
         getAllMacroCycles(user)
-            .then((res) => {setMacroCycles(res)})
+            .then((res) => {
+                setMacroCycles(res)})
             .catch((res) => {})
         getAllMesoCycles(user)
-            .then((res) => {setMesoCycles(res)})
+            .then((res) => {
+                setMesoCycles(res)})
             .catch((res) => {})
         getAllMicroCycles(user)
-            .then((res) => {setMicroCycles(res)
-            setPeriWeekActivities(res.activities)
+            .then((res) => {
+                setMicroCycles(res)
+                setPeriWeekActivities(res.activities)
             })
             .catch((res) => {})
         }, [user])
 
+
     useEffect(() => {
+        // Macro and Meso Cycles get updates SELECTED from MesoCard component
+
+        // to update Selected Micro Cycle
         setSelectedMicro(selectedMeso?.micro_cycles[0])
+        // to update activities when select new Micro Cycle
         setPeriWeekActivities(selectedMicro?.activities)
     }, [macroCycles, microCycles, mesoCycles, selectedMicro, selectedMeso])
 
 
+    let sortedArray = selectedMacro?.meso_cycles.sort((a, b) => {
+        return  new Date(a.start_date) > new Date(b.start_date);
+    });
+    // console.log(sortedArray, 'sorted array');
 
   return (
     <div className={`${styles.periodization} layout`}>
@@ -57,7 +69,7 @@ function Periodization() {
 
             <div className={`${styles.macro_box} ${styles.cycle_box}`}> 
                 {macroCycles ? macroCycles.map((macro) =>
-                    <div onClick={() => setSelectedMacro(macro)}>
+                    <div  key={macro.id} onClick={() => setSelectedMacro(macro)}>
                         <MesoCard  meso={macro}></MesoCard>
                     </div>
                     )
@@ -66,9 +78,9 @@ function Periodization() {
             <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
                 {selectedMacro ?
                     selectedMacro.meso_cycles.map((meso) => 
-                        <div onClick={() => setSelectedMeso(meso)}>
-                            <MesoCard meso={meso} />
-                        </div>)   
+                            <div key={meso.id} onClick={() => setSelectedMeso(meso)}>
+                                <MesoCard meso={meso} />
+                            </div>)   
                 :null}
             </div>
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 

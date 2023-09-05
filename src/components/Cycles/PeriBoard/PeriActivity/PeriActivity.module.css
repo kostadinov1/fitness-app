@@ -1,0 +1,19 @@
+
+.peri_activity {
+    display: grid;
+    /* align-items: start; */
+    gap: .4em;
+    background-color: var(--dimmer-3);
+
+}
+.activity_title {
+    align-items: center;
+    text-align: center;
+    background-color: red;
+}
+
+.exercise_title {
+    font-size: .8rem;
+    font-weight: 400;
+    padding: .4em;
+}

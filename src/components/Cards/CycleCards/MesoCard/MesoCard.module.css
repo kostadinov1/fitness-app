@@ -9,8 +9,9 @@
 ;
     gap: .2em;
     background-color: var(--acc-1);
-    border: 1px solid var(--acc-1);
+    border: 4px solid var(--sec-2);
     border-radius: var(--b-radius);
+    overflow: hidden;
     list-style: none;
     margin: .1em;
     padding: .1em;
@@ -34,6 +35,7 @@
 .cycle_1 {
     font-size: 1.2rem;
     background-color: var(--acc-1);
+    border: 4px solid var(--sec-2);
     color: var(--sec-3);
     grid-area: one;}
 .cycle_2 {
