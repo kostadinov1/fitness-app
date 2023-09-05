@@ -5,7 +5,7 @@
     grid-template-areas: 
     "one one "
     "two three"
-    "four four"
+    "four five"
 ;
     gap: .2em;
     background-color: var(--acc-1);
@@ -16,7 +16,7 @@
     margin: .1em;
     padding: .1em;
     min-height: 12vh;
-    min-width: 12vw;
+    min-width: 14vw;
 }
 .cycle_card:hover {
     scale: 1.02;
@@ -49,6 +49,14 @@
     color: var(--text-2);
     grid-area: four;}
 
+.cycle_5 {
+        color: var(--text-2);
+        grid-area: five;}
+    
 .button {
     color: var(--sec-2);
+}
+.mmdd_box {
+    text-transform: lowercase;
+    background-color: var(--acc-4);
 }

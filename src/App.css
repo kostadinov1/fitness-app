@@ -1,36 +1,40 @@
 :root {
-    /* --- Colors --- */
+    /* Prime Colors */
     --prime: #efedeb;
+    --prime-1: #24517b;
     --prime-2: #12273b;
-    
+
+    /* Secondary Colors */
     --sec: #244957de;
+    --sec-1: #2e6b82de;
     --sec-2: #0c3a4bde;
     --sec-3: #0f4458de;
-    --acc-1: #db7420;
-    --acc-2: #f2c331;
-    --acc-3: rgb(250, 151, 22);
 
+    /* Accent Colors */
+    --acc: rgb(128, 78, 13);
+    --acc-1: #db7420;
+    --acc-3: rgb(250, 151, 22);
+    --acc-2: #f2c331;
+
+    /* Text Colors */
     --text: #cfd0b4;
+    --text-1: #65663e;
     --text-2: #032600;
 
+    /* Background Colors */
     --bg: #126b7d;
+    --bg-1: #082d35;
+
+    /* Dimmer Colors */
     --dimmer: rgba(0, 5, 6, 0.754);
+    --dimmer-1: rgba(0, 5, 6, 0.649);
     --dimmer-2: rgba(0, 5, 6, 0.525);
     --dimmer-3: rgba(0, 5, 6, 0.244);
 
     /* --- Values --- */
     --b-radius: 4px;
-    --bg-color: rgba(209, 205, 21, 0.967);
-
-
 }
 
-.active {
-  background-color: var(--dimmer-2);
-  padding: 1em;
-  color: var(--acc-1);
-
-}
 
 
 #body {
@@ -43,6 +47,7 @@
     color: var(--text);
     font-family: 'Montserrat', sans-serif;
 }
+
 #main {
     position: relative;
     padding: 1em;
@@ -50,13 +55,12 @@
 
 
 }
-/* a {
-    text-decoration: none;
-    color: var(--text);
-  }
-  a:hover {
-    color: var(--prime);
-} */
+
+.active {
+  background-color: var(--dimmer-2);
+  padding: 1em;
+  color: var(--acc-1);
+}
 
 button {
     position: relative;
@@ -131,18 +135,6 @@ button {
     }
   }
   
-/* button {
-    padding: 0.4em 1.8em;
-    border: 1px solid var(--sec);
-    border-radius: var(--b-radius);
-    background-color: var(--acc-1);
-    color: var(--sec-2);
-}
-button:hover {
-    transform: scale(1.01);
-    -webkit-transform: scale(1.01);
-} */
-
 .title_outlined {
 
     text-align: center;

@@ -4,12 +4,11 @@ import { getAllMicroCycles } from '../../../api/cycles/microCycle'
 import { getAllMesoCycles } from '../../../api/cycles/mesoCycle'
 import { UserContext } from '../../../contexts/UserContext'
 import styles from './Periodization.module.css'
-import ListCard from '../../Cards/ListCard/ListCard'
-import CycleCard from './../../Cards/CycleCards/CycleCard/CycleCard'
 import { useNavigate } from 'react-router-dom'
 import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
 import MesoCard from '../../Cards/CycleCards/MesoCard/MesoCard'
 import PlaceholderCard from '../../Cards/PlaceholderCard/PlaceholderCard'
+import MacroCard from '../../Cards/CycleCards/MacroCard/MacroCard'
 
 
 function Periodization() {
@@ -71,7 +70,7 @@ function Periodization() {
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((macro) =>
                         <div  key={macro.id} onClick={() => setSelectedMacro(macro)}>
-                            <MesoCard  meso={macro} />
+                            <MacroCard  macro={macro} />
                         </div>)
                 : null}
                 <PlaceholderCard  cycle_type={'macro'}/>

@@ -19,6 +19,7 @@ You can only add:
 
 #Hierarchy:
 ![Getting Started](./images/periodization-hierarchy.jpeg)
+![Getting Started](./images/screenshot_0509.png)
 
 
 #This application is yet far from complete!
