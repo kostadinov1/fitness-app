@@ -5,7 +5,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { deleteExercise, getExercise } from '../../../api/exercises'
 import ListCard from '../../Cards/ListCard/ListCard'
-import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 
 function Exercise() {
     const {id} = useParams()
@@ -40,7 +39,6 @@ function Exercise() {
             <ListCard></ListCard>
         </div>
         <div className={`${styles.sider_2}`}>
-            <UsefulLinksCard></UsefulLinksCard>
         </div>
         <div className={styles.view}>
             <div className={styles.card}>

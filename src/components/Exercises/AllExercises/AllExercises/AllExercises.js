@@ -5,7 +5,6 @@ import ExerciseCard from './../../../Cards/ExerciseCard/ExerciseCard'
 import { UserContext } from '../../../../contexts/UserContext'
 import ListCard from '../../../Cards/ListCard/ListCard'
 import DeleteModal from '../DeleteModal/DeleteModal'
-import UsefulLinksCard from '../../../Cards/UsefulLinksCard/UsefulLinksCard'
 import { Link } from 'react-router-dom'
 
 function AllExercises() {

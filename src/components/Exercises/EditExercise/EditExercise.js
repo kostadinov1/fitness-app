@@ -6,7 +6,6 @@ import { UserContext } from '../../../contexts/UserContext'
 import { getAllActivities } from '../../../api/activities'
 import { listExerciseTypes } from '../../../api/exerciseTypes'
 import ListCard from '../../Cards/ListCard/ListCard'
-import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 
 
 function EditExercise() {
@@ -60,7 +59,6 @@ function EditExercise() {
                 <ListCard></ListCard>
             </div>
             <div className={styles.sider_2}>
-                <UsefulLinksCard></UsefulLinksCard>
             </div>
             <div className={`${styles.edit_box}`}>
             

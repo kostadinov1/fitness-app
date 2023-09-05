@@ -1,5 +1,4 @@
-import ActivityMiniCard from '../../../Cards/ActivityMiniCard/ActivityMiniCard'
-import AddIconListPlaceholder from '../../../Cards/AddIconListPlaceholder/AddToListPlaceholder'
+import AddIconListPlaceholder from '../../../Cards/AddToListPlaceholder/AddToListPlaceholder'
 import PeriActivity from './../PeriActivity/PeriActivity'
 import styles from './PeriDay.module.css'
 import React from 'react'

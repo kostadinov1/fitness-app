@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import styles from './PeriWeek.module.css'
 import  PeriDay  from './../PeriDay/PeriDay'
 import {useCurrentWeekNum} from './../../../../hooks/useCurrentWeekNum'
-import AddIconListPlaceholder from "../../../Cards/AddIconListPlaceholder/AddToListPlaceholder"
+import AddIconListPlaceholder from "../../../Cards/AddToListPlaceholder/AddToListPlaceholder"
 // activities should be sorted by mesocycle
 function PeriWeek({activities}) {
     const weekNumber = useCurrentWeekNum()

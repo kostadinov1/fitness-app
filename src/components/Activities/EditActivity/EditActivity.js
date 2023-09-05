@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { editActivity, getActivity } from '../../../api/activities'
 import { UserContext } from '../../../contexts/UserContext'
 import { listActivityTypes } from '../../../api/activityTypes'
-import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 import ListCard from '../../Cards/ListCard/ListCard'
 import { DatePicker, Radio } from 'antd'
 
@@ -48,7 +47,6 @@ function EditActivity() {
                 <ListCard></ListCard>
             </div>
             <div className={styles.sider_2}>
-                <UsefulLinksCard></UsefulLinksCard>
             </div>
             <div className={`${styles.edit_box}`}>
 

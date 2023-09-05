@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../contexts/UserContext'
 import { listExerciseTypes } from '../../../api/exerciseTypes'
 import ListCard from '../../Cards/ListCard/ListCard'
-import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 
 
 function CreateExercise() {
@@ -67,7 +66,6 @@ function CreateExercise() {
                 <ListCard></ListCard>
             </div>
             <div className={styles.sider_2}>
-                <UsefulLinksCard></UsefulLinksCard>
             </div>
             <div className={`${styles.create_box}`}>
 

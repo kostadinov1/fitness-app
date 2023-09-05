@@ -5,7 +5,6 @@ import { createActivity } from '../../../api/activities'
 import { UserContext } from '../../../contexts/UserContext'
 import { listActivityTypes } from '../../../api/activityTypes'
 import ListCard from '../../Cards/ListCard/ListCard'
-import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 import { DatePicker, Radio } from 'antd'
 
 function CreateActivity() {
@@ -64,7 +63,6 @@ function CreateActivity() {
             <ListCard></ListCard>
         </div>
         <div className={styles.sider_2}>
-            <UsefulLinksCard></UsefulLinksCard>
         </div>
         <div className={`${styles.create_box}`}>
             <div className={styles.form_box}>

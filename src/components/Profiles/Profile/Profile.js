@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../../contexts/UserContext'
 import { deleteProfile, getProfile } from '../../../api/profile'
 import ListCard from '../../Cards/ListCard/ListCard'
-import UsefulLinksCard from '../../Cards/UsefulLinksCard/UsefulLinksCard'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import EditProfileModal from '../EditProfileModal/EditProfileModal'
 import DeleteProfileModal from '../DeleteProfile/DeleteProfileModal'
@@ -72,7 +71,6 @@ function Profile() {
             	<ListCard></ListCard>
             </div>
             <div className={styles.sider_2}>
-                <UsefulLinksCard></UsefulLinksCard>
             </div>
             <div className={styles.profile_box}>
 				<div className={`${styles.card} ${styles.card_1}`}>
