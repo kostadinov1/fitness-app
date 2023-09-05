@@ -9,6 +9,7 @@ import CycleCard from './../../Cards/CycleCards/CycleCard/CycleCard'
 import { useNavigate } from 'react-router-dom'
 import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
 import MesoCard from '../../Cards/CycleCards/MesoCard/MesoCard'
+import PlaceholderCard from '../../Cards/PlaceholderCard/PlaceholderCard'
 
 
 function Periodization() {
@@ -70,11 +71,12 @@ function Periodization() {
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((macro) =>
                         <div  key={macro.id} onClick={() => setSelectedMacro(macro)}>
-                            <MesoCard  meso={macro}></MesoCard>
-                        </div>
-                        )
+                            <MesoCard  meso={macro} />
+                        </div>)
                 : null}
+                <PlaceholderCard  cycle_type={'macro'}/>
             </div>
+
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 <div>MESO CYCLES</div>
             </div>
@@ -83,14 +85,15 @@ function Periodization() {
                     selectedMacro.meso_cycles
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((meso) => 
-                            <div key={meso.id} onClick={() => setSelectedMeso(meso)}>
-                                <MesoCard meso={meso} />
-                            </div>)   
-                :null}
+                        <div key={meso.id} onClick={() => setSelectedMeso(meso)}>
+                            <MesoCard meso={meso} />
+                        </div>)   
+                : null}
+                <PlaceholderCard  cycle_type={'meso'}/>
             </div>
             
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                <div>MACRO CYCLES</div>
+                <div>MICRO CYCLES</div>
             </div>
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 <PeriWeek activities={periWeekActivities}></PeriWeek>

@@ -15,7 +15,7 @@
     list-style: none;
     margin: .1em;
     padding: .1em;
-    min-height: 10vh;
+    min-height: 12vh;
     min-width: 12vw;
 }
 .cycle_card:hover {

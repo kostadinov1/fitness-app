@@ -1,0 +1,23 @@
+
+.placeholdercard {
+    display: grid;
+    min-height: 13em;
+    min-width: 13em;
+    border: 2px solid var(--acc-1);
+    border-radius: var(--b-radius);
+}
+.placeholdercard:hover {
+    scale: 1.02;
+}
+
+.link {
+    display: grid;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    padding: 1em;
+    background-color: var(--dimmer-2);
+}
+
+.icon {
+    scale: 1.5;
+}
