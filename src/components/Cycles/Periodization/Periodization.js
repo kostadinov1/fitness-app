@@ -55,15 +55,15 @@ function Periodization() {
 
         <div className={`content_box ${styles.content_box}`}>
 
-            <div className={`${styles.macro_box}`}> 
+            <div className={`${styles.macro_box} ${styles.cycle_box}`}> 
                 {macroCycles ? macroCycles.map((macro) =>
                     <div onClick={() => setSelectedMacro(macro)}>
-                        <CycleCard  cycle={macro}></CycleCard>
+                        <MesoCard  meso={macro}></MesoCard>
                     </div>
                     )
                 : null}
             </div>
-            <div className={`${styles.meso_box}`}> 
+            <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
                 {selectedMacro ?
                     selectedMacro.meso_cycles.map((meso) => 
                         <div onClick={() => setSelectedMeso(meso)}>
@@ -71,7 +71,7 @@ function Periodization() {
                         </div>)   
                 :null}
             </div>
-            <div className={`${styles.micro_box}`}> 
+            <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 <PeriWeek activities={periWeekActivities}></PeriWeek>
             </div>
         </div>

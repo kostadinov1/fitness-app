@@ -1,26 +1,36 @@
 .periodization {
     position: relative;
-    background-color: var(--dimmer);
 }
 .content_box {
-    display: grid;
-    gap: .2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
     /* grid-template-columns: repeat(2, 1fr); */
     background-color: var(--dimmer-3);
-    padding: .2em;
+    padding: 1em;
     min-height: 80vh;
 }
 
+.cycle_box {
+    min-height: 15vh;
+
+}
+
 .macro_box {
-    background-color: var(--dimmer);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* background-color: var(--dimmer); */
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
 }
 .meso_box {
-    background-color: var(--dimmer);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
 }
 .micro_box {
     background-color: var(--dimmer);
+    min-height: 30vh;
+
 }

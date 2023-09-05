@@ -6,7 +6,7 @@
     "one one "
     "two three"
     "four four"
-    "five five";
+;
     gap: .2em;
     background-color: var(--acc-1);
     border: 1px solid var(--acc-1);
@@ -14,31 +14,36 @@
     list-style: none;
     margin: .1em;
     padding: .1em;
+    min-height: 15vh;
+    min-width: 15vw;
 }
 
 .cycle {
     display: flex;
     flex-direction: column;
-    padding: 0.2em;
+    padding: 0.8em;
     background-color: var(--sec-2);
-    border: 1px solid var(--acc-1);
     border-radius: var(--b-radius);
-    font-size: .8rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
     text-align: center;
+    color: var(--text);
 }
 
 .cycle_1 {
-    padding: .2em;
+    font-size: 1.2rem;
+    background-color: var(--acc-1);
+    color: var(--sec-3);
     grid-area: one;}
 .cycle_2 {
-    padding: .2em;
     grid-area: two;}
 .cycle_3 {
-    padding: .2em;
     grid-area: three;}
 .cycle_4 {
-    padding: .2em;
+    color: var(--text-2);
     grid-area: four;}
-.cycle_5 {
-    padding: .2em;
-    grid-area: five;}
+
+.button {
+    color: var(--sec-2);
+}
