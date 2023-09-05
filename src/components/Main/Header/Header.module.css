@@ -10,7 +10,7 @@
     border: 1px solid var(--);
 }
 .header *:hover {
-    color: var(--text-2);
+    color: var(--acc-1);
 }
 .logo {
     margin-left: 2em;

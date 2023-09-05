@@ -1,0 +1,22 @@
+
+
+.icon_menu {
+    position: absolute;
+    top: 4em;
+    left: 80em;
+    background-color: var(--sec-2);
+    width: 20em;
+    height: 20em;
+    border-radius: var(--b-radius);
+    border: var(--border);
+}
+
+.ul {
+    list-style: none;
+}
+
+.link {
+    font-weight: bold;
+    padding: 0.1em;
+    font-size: 1.2rem;
+}

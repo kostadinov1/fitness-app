@@ -57,10 +57,10 @@ function Periodization() {
 
 
   return (
-    <div className={`${styles.periodization} layout`}>
-        <div className={`sidebar_box`}> 
+    <div className={`${styles.periodization}`}>
+        {/* <div className={`sidebar_box`}> 
             <ListCard />
-        </div>
+        </div> */}
 
         <div className={`content_box ${styles.content_box}`}>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 

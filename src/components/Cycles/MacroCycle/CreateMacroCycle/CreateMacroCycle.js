@@ -17,7 +17,7 @@ function CreateMacroCycle() {
         start_date: undefined,
         end_date: undefined,
         description: undefined, 
-        goals: [],
+        // goals: [],
         user: user.user_id
     })
 
@@ -105,7 +105,7 @@ function CreateMacroCycle() {
                         placeholder={'Describe Cycle'}                        
                         />
                     </div>
-                    <div className={`${styles.form_field} ${styles.form_field_5}`}>
+                    {/* <div className={`${styles.form_field} ${styles.form_field_5}`}>
                         <label>Goal</label>
                             <Select
                                 multiple={true}
@@ -115,7 +115,7 @@ function CreateMacroCycle() {
                                 onChange={onSelectChange}
                                 options={goals.map((goal) => ({value: goal.id, label: goal.name})) 
                             } />                        
-                    </div>
+                    </div> */}
                     <button  className={`${styles.form_field} ${styles.form_field_6}`}>
                         Create
                     </button>

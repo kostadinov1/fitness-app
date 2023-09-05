@@ -25,6 +25,13 @@
 
 }
 
+.active {
+  background-color: var(--dimmer-2);
+  padding: 1em;
+  color: var(--acc-1);
+
+}
+
 
 #body {
     position: relative;
