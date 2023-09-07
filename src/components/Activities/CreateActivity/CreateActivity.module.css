@@ -33,9 +33,6 @@
 .create_box {
     grid-area: three;
     padding: 0.4em;
-    border: 1px solid var(--acc-1);
-    border-radius: var(--b-radius);
-    background-color: var(--prime);
 }
 .form_box {
     position: relative;
@@ -44,8 +41,7 @@
     max-width: 90vw;
     margin: 0 auto;
     padding: 2em;
-    background-color: var(--prime-2);
-    border: 1px solid var(--sec-2);
+    background-color: var(--sec-2);
     border-radius: var(--b-radius);
 }
 .form_box h1 {
@@ -61,7 +57,7 @@
                 "two two ten ten six seven"
                 "three three three three eight nine"
                 "eleven twelve fourteen fourteen fourteen thirteen";
-    background-color: var(--prime-2);
+    background-color: var(--dimmer-3);
 }
 .item {
     display: grid;
@@ -118,7 +114,11 @@
 }
 
 .form button {
-    margin-top: 1.4em;
+    margin: auto auto;
+    color: var(--prime-2);
+    background-color: var(--acc-1);
+    font-size: 1.4rem;
+
 }
 .form label {
     font-weight: bold;

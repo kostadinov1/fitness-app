@@ -60,11 +60,12 @@ function CreateMesoCycle() {
 
 
     return (
-        <div className={`${styles.create_meso} sidebar_layout` }>
+        <div className={`${styles.create_meso} layout` }>
             <div className={`sidebar_box`}>
                 <ListCard></ListCard>
             </div>
             <div className={`content_box`}>
+            <h1>Create MESO Cycle</h1>
                 <form 
                     onSubmit={onFormSubmitHandler}
                     className={`${styles.form}`}>

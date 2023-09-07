@@ -55,11 +55,12 @@ function CreateMacroCycle() {
     }
 
     return (
-        <div className={`${styles.create_macro} sidebar_layout` }>
+        <div className={`${styles.create_macro} layout` }>
             <div className={`sidebar_box`}>
                 <ListCard></ListCard>
             </div>
             <div className={`content_box`}>
+                <h1>Create MACRO Cycle</h1>
                 <form 
                     onSubmit={onFormSubmitHandler}
                     className={`${styles.form}`}>

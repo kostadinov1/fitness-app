@@ -13,7 +13,10 @@ import DeleteCycleModal from '../../Modals/DeleteCycleModal/DeleteCycleModal'
 
 
 function Periodization() {
-  const [showDeleteModal, setShowDeleteModal] = useState(false)
+    // to update activities when select new Micro Cycle
+    // to update Selected Micro Cycle
+    // Macro and Meso Cycles get updates SELECTED from MesoCard component
+     const [showDeleteModal, setShowDeleteModal] = useState(false)
     
     const { user } = useContext(UserContext) 
 
@@ -26,6 +29,7 @@ function Periodization() {
     const [selectedMicro, setSelectedMicro] = useState()
 
     const [periWeekActivities, setPeriWeekActivities] = useState([])
+    
 
     useEffect(() => {
         getAllMacroCycles(user)
@@ -43,13 +47,9 @@ function Periodization() {
             })
             .catch((res) => {})
 
-        // Macro and Meso Cycles get updates SELECTED from MesoCard component
-
-        // to update Selected Micro Cycle
         setSelectedMicro(selectedMeso?.micro_cycles[0])
-        // to update activities when select new Micro Cycle
         setPeriWeekActivities(selectedMicro?.activities)
-    }, [user, macroCycles, microCycles, mesoCycles, selectedMicro, selectedMeso])
+    }, [user, selectedMacro, selectedMeso, selectedMicro])
 
     const onDelete = () => {
         setShowDeleteModal(true)
@@ -57,7 +57,7 @@ function Periodization() {
 
     const onDeleteConfirm = (currentCycle) => {
         if (currentCycle.macro_cycle) {
-                console.log(currentCycle, 'meso cycle here')
+                // console.log(currentCycle, 'meso cycle here')
                 deleteMesoCycle(user, currentCycle)
                     .then((res) => setMesoCycles((state) => state.filter((cycle) => cycle.id !== currentCycle.id)))
                     // .then((res) => {console.log(res, 'res meso success')})
@@ -66,7 +66,6 @@ function Periodization() {
                 deleteMacroCycle(user ,currentCycle)
                     .then((res) => {console.log(res, 'res macro success')})
                     .catch((res) => { console.log(res, 'res macro error')});
-                console.log(currentCycle, 'macro cycle here')
             }
             setShowDeleteModal(false)
         }

@@ -40,41 +40,34 @@
 
 .create_box {
     grid-area: three;
-
     padding: 0.4em;
-    border: 1px solid var(--acc-1);
-    border-radius: var(--b-radius);
-    /* background-color: var(--prime); */
-
 }
-
-
 
 .form {
     display: grid;
     max-height: 70vh;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
-    "eleven eleven eleven eleven eleven eleven"
-                        "one one one one ten ten"
-                        "two two two two five six"
-                        "three three three three seven eight"
-                        "four four four four four four"
-                        "nine nine nine nine nine nine"
-                        ;
-    background-color: var(--prime-2);
+        "eleven eleven eleven eleven eleven eleven"
+        "one one one one ten ten"
+        "two two two two five six"
+        "three three three three seven eight"
+        "four four four four four four"
+        "nine nine nine nine nine nine"
+        ;
+    background-color: var(--sec-2);
     max-width: 90vw;
     gap: 0em;
     margin: auto auto;
     padding: 1em;
     overflow: hidden;
-    border: 1px solid var(--sec-2);
     border-radius: var(--b-radius);
 }
 .form_field {
     display: grid;
     padding: 0.6em;
     margin: 0.6em;
+    background-color: var(--dimmer-3);
     border: 1px solid var(--sec-2);
     border-radius: var(--b-radius);
 }
@@ -103,6 +96,7 @@
     width: 33%;
     margin: auto auto;
     color: var(--prime-2);
+    background-color: var(--acc-1);
     font-size: 1.4rem;
     grid-area: nine;}
 .form_field_10 { grid-area: ten;}
