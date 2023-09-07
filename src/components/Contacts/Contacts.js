@@ -1,8 +1,6 @@
 import styles from './Contacts.module.css'
 import React, { useState } from 'react'
 import { createContactMessage } from '../../api/contactMessage'
-import SimpleMap from '../Custom/SimpleMap/SimpleMap'
-import AboutUs from '../AboutUs/AboutUs'
 
 
 function Contacts() {

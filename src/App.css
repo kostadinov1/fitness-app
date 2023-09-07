@@ -62,7 +62,7 @@
   color: var(--acc-1);
 }
 
-button {
+/* button {
     position: relative;
     display: inline-block;
     padding: 16px 28px;
@@ -73,7 +73,6 @@ button {
     text-align: center;
     text-decoration: none;
     background-color: var(--acc-1);
-    /* border-radius: 40px; */
     overflow: hidden;
     border: none;
     z-index: 1;
@@ -134,7 +133,7 @@ button {
       opacity: 0;
     }
   }
-  
+   */
 .title_outlined {
 
     text-align: center;

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import styles from './MesoCard.module.css'
 import { DeleteFilled, EditOutlined } from '@ant-design/icons'
 
-const MesoCard = ({meso}) => {
-    
+const MesoCard = ({meso, onDelete}) => {
+
   //TODO fix path to Edit Cycle
+
   return (
     <div  className={`${styles.cycle_card}`}>
+
         <div className={`${styles.cycle} ${styles.cycle_1}`}> 
             {meso.name}
         </div>
@@ -31,8 +33,8 @@ const MesoCard = ({meso}) => {
           </button>
         </div>
         <div className={`${styles.cycle} ${styles.cycle_5}`}> 
-          <button>
-            <Link className={`${styles.button}`} to={'/'} ><DeleteFilled /></Link >
+          <button onClick={onDelete}>
+            <Link className={`${styles.button}`}><DeleteFilled /></Link >
           </button>
         </div>
     </div>

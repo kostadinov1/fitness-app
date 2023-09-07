@@ -4,7 +4,7 @@ import styles from './MacroCard.module.css'
 import React from 'react'
 import { DeleteFilled, EditOutlined } from '@ant-design/icons'
 
-const MacroCard = ({macro}) => {
+const MacroCard = ({macro, onDelete}) => {
     //TODO fix path to Edit Cycle
   return (
     <div  className={`${styles.cycle_card}`}>
@@ -31,8 +31,12 @@ const MacroCard = ({macro}) => {
           </button>
         </div>
         <div className={`${styles.cycle} ${styles.cycle_5}`}> 
-          <button>
-            <Link className={`${styles.button}`} to={`/delete-macro-cycle/${macro.id}`} ><DeleteFilled /></Link >
+          <button
+          
+            onClick={onDelete}
+          >
+            <Link
+              className={`${styles.button}`} ><DeleteFilled /></Link >
           </button>
         </div>
     </div>

@@ -74,7 +74,7 @@ function CreateMesoCycle() {
                             name='name'
                             value={formData.name}
                             onChange={onValueChange}
-                            placeholder={'Enter Macro Cycle Name'}
+                            placeholder={'Enter Meso Cycle Name'}
                         />
                     </div>
                     <div className={`${styles.form_field} ${styles.form_field_2}`}>

@@ -19,7 +19,7 @@ const createMesoCycle  = async (user, mesoCycleProps) => {
             throw created
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MESO CYCLE. MESSAGE: ', err.message, 'END.')
     }
 }
 
@@ -42,7 +42,7 @@ const getMesoCycle  = async (user, cycleID) => {
             throw mesoCycle
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MESO CYCLE. MESSAGE: ', err.message, 'END.')
     }
 }
 
@@ -66,7 +66,7 @@ const editMesoCycle  = async (user, mesoCycle, mesoCycleProps) => {
             throw edited
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MESO CYCLE. MESSAGE: ', err.message, 'END.')
         throw err
     }
 }
@@ -88,7 +88,7 @@ const deleteMesoCycle  = async (user, mesoCycle) => {
             throw deleted
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MESO CYCLE. MESSAGE: ', err.message, 'END.')
         throw err
     }
 }
@@ -111,7 +111,7 @@ const getAllMesoCycles = async (user) => {
             throw mesoCycles
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MESO CYCLE. MESSAGE: ', err.message, 'END.')
     }
 }
 

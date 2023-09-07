@@ -19,7 +19,7 @@ const createMacroCycle  = async (user, macroCycleProps) => {
             throw created
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MACRO CYCLE. MESSAGE:', err.message, 'END.')
     }
 }
 
@@ -42,7 +42,7 @@ const getMacroCycle  = async (user, cycleID) => {
             throw macroCycle
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MACRO CYCLE. MESSAGE:', err.message, 'END.')
     }
 }
 
@@ -66,12 +66,14 @@ const editMacroCycle  = async (user, macroCycle, macroCycleProps) => {
             throw edited
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MACRO CYCLE. MESSAGE:', err.message, 'END.')
         throw err
     }
 }
 const deleteMacroCycle  = async (user, macroCycle) => {
     const url = baseURL + `/periodization/delete-macro-cycle/${macroCycle.id}/`
+
+    console.log(macroCycle, 'macro in api')
     try {
         let response = await fetch(url, {
             method: 'DELETE',
@@ -88,7 +90,7 @@ const deleteMacroCycle  = async (user, macroCycle) => {
             throw deleted
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MACRO CYCLE. MESSAGE:', err.message, 'END.')
         throw err
     }
 }
@@ -111,7 +113,7 @@ const getAllMacroCycles = async (user) => {
             throw macroCycles
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('CATCH ERROR IN API CALL - MACRO CYCLE. MESSAGE:', err.message, 'END.')
     }
 }
 
