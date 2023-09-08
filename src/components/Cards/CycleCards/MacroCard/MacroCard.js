@@ -20,14 +20,14 @@ const MacroCard = ({macro, onDelete}) => {
         </div>
         <div className={`${styles.cycle} ${styles.cycle_3}`}>
             <div className={`${styles.mmdd_box}`}>
-                <span>yy</span>
-                <span>mm/</span>
+                <span>yy/</span>
+                <span>mm</span>
             </div> 
             {macro?.end_date?.slice(0, 7)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_4}`}> 
-          <button>
-            <Link className={`${styles.button}`} to={`/edit-macro-cycle/${macro.id}`} ><EditOutlined/></Link >
+          <button className={`${styles.button}`}>
+            <Link to={`/edit-macro-cycle/${macro.id}`} ><EditOutlined/></Link >
           </button>
         </div>
         <div className={`${styles.cycle} ${styles.cycle_5}`}> 

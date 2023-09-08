@@ -22,6 +22,7 @@ function Periodization() {
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
     
+    const [currentMesoCycles, setCurrentMesoCycles] = useState([])
     useEffect(() => {
         getAllMacroCycles(user)
             .then((res) => {setMacroCycles(res)})
@@ -30,6 +31,8 @@ function Periodization() {
 
     useEffect(() => {
         setSelectedMicro(selectedMeso?.micro_cycles[0])
+    // selectedMacro.meso_cycles
+        setCurrentMesoCycles(selectedMacro?.meso_cycles)
         setPeriWeekActivities(selectedMicro?.activities)
     }, [selectedMacro, selectedMeso, selectedMicro])
 
@@ -42,20 +45,22 @@ function Periodization() {
     const onDeleteConfirm = (cycle) => {
         deleteMesoCycle(user, cycle)
             .then((res) => {
-                console.log(res, 'res');
+                setCurrentMesoCycles((state) => state.filter((meso) => meso.id !== cycle.id))
+                console.log(res, 'res success currrrrrrrr');
             })
             .catch((res) => {
-                console.log(res, 'res');
+                console.log(res, 'res error meso');
             })
         setShowDeleteModal(false)
         }
+
     const onDeleteMacroConfirm = (cycle) => {
         deleteMacroCycle(user, cycle)
             .then((res) => {
-                console.log(res, 'res');
+                console.log(res, 'res success macro');
             })
             .catch((res) => {
-                console.log(res, 'res');
+                console.log(res, 'res error macro');
             })
         setShowDeleteMacroModal(false)
         }
@@ -100,8 +105,10 @@ function Periodization() {
             </div>
             <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
 
-                {selectedMacro ?
-                    selectedMacro.meso_cycles
+                {/* {selectedMacro ?
+                    selectedMacro.meso_cycles */}
+                {(selectedMacro && currentMesoCycles) ?
+                    currentMesoCycles
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((meso) => 
                         <div key={meso.id} onClick={() => setSelectedMeso(meso)}>

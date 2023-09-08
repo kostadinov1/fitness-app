@@ -79,6 +79,17 @@ function CreateMesoCycle() {
                         />
                     </div>
                     <div className={`${styles.form_field} ${styles.form_field_2}`}>
+                        <label>Macro Cycle</label>
+                            <Select
+                                defaultValue=""
+                                style={{}}
+                                value={formData.macro_cycle}
+                                onChange={onMacroSelectChange}
+                                options={macroCycles.map((macro) => ({value: macro.id, label: macro.name})) 
+                            } />                        
+                    </div>
+
+                    <div className={`${styles.form_field} ${styles.form_field_3}`}>
                         <label>Start Date</label>
                         <DatePicker
                             name='start_date'
@@ -90,7 +101,7 @@ function CreateMesoCycle() {
 							}}
                             />
                     </div>
-                    <div className={`${styles.form_field} ${styles.form_field_3}`}>
+                    <div className={`${styles.form_field} ${styles.form_field_4}`}>
                         <label>End Date</label>
                         <DatePicker
                             name='end_date'
@@ -102,7 +113,10 @@ function CreateMesoCycle() {
 							}}
                             />
                     </div>
-                    <div className={`${styles.form_field} ${styles.form_field_4}`}>
+                    <button  className={`${styles.form_field} ${styles.form_field_5}`}>
+                        Create
+                    </button>
+                    {/* <div className={`${styles.form_field} ${styles.form_field_4}`}>
                         <label>Description</label>
                         <textarea
                         name='description'
@@ -110,8 +124,8 @@ function CreateMesoCycle() {
                         onChange={onValueChange}
                         placeholder={'Describe Cycle'}                        
                         />
-                    </div>
-                    <div className={`${styles.form_field} ${styles.form_field_5}`}>
+                    </div> */}
+                    {/* <div className={`${styles.form_field} ${styles.form_field_5}`}>
                         <label>Goal</label>
                             <Select
                                 multiple={true}
@@ -121,20 +135,9 @@ function CreateMesoCycle() {
                                 onChange={onGoalSelectChange}
                                 options={goals.map((goal) => ({value: goal.id, label: goal.name})) 
                             } />                        
-                    </div>
-                    <div className={`${styles.form_field} ${styles.form_field_6}`}>
-                        <label>Macro Cycle</label>
-                            <Select
-                                defaultValue=""
-                                style={{}}
-                                value={formData.macro_cycle}
-                                onChange={onMacroSelectChange}
-                                options={macroCycles.map((macro) => ({value: macro.id, label: macro.name})) 
-                            } />                        
-                    </div>
-                    <button  className={`${styles.form_field} ${styles.form_field_7}`}>
-                        Create
-                    </button>
+                    </div> */}
+
+
                 </form>
             </div>
         </div>

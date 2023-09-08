@@ -42,8 +42,10 @@
     color: var(--sec-3);
     grid-area: one;}
 .cycle_2 {
+    font-size: 1.2rem;
     grid-area: two;}
 .cycle_3 {
+    font-size: 1.2rem;
     grid-area: three;}
 .cycle_4 {
     color: var(--text-2);
@@ -58,5 +60,7 @@
 }
 .mmdd_box {
     text-transform: lowercase;
-    background-color: var(--acc-4);
+    font-size: .8rem;
+    background-color: var(--sec-1);
+
 }

@@ -4,8 +4,11 @@
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+
+    grid-template-areas: 
+    "one one two"
+    "three four five";
     gap: .2em;
     /* max-width: 60vw; */
     padding: 2em;
@@ -26,15 +29,25 @@
     padding: .2em;
 }
 
-.form_field_1 {}
-.form_field_2 {}
-.form_field_3 {}
-.form_field_4 {}
-.form_field_5 {}
-.form_field_6 {}
-.form_field_7 {
-    margin-top: .6em;
-    padding: .2em;
-    border-radius: var(--b-radius);
-    background-color: var(--acc-1);
+.form_field_1 {
+    grid-area: one;
 }
+.form_field_2 {
+    grid-area: two;
+}
+.form_field_3 {
+    grid-area: three;
+}
+.form_field_4 {
+    grid-area: four;
+}
+.form_field_5 {
+    grid-area: five;
+    padding: 1em;
+    background-color: var(--acc-1);
+    font-size: 1.2rem;
+    margin: .5em;
+}
+
+/* .form_field_6 {} */
+/* .form_field_7 {} */
