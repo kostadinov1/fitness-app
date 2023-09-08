@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { deleteMacroCycle, getAllMacroCycles } from '../../../api/cycles/macroCycle'
-import { deleteMicroCycle, getAllMicroCycles } from '../../../api/cycles/microCycle'
-import { deleteMesoCycle, getAllMesoCycles } from '../../../api/cycles/mesoCycle'
 import { UserContext } from '../../../contexts/UserContext'
 import styles from './Periodization.module.css'
 import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
@@ -9,71 +7,75 @@ import MesoCard from '../../Cards/CycleCards/MesoCard/MesoCard'
 import PlaceholderCard from '../../Cards/PlaceholderCard/PlaceholderCard'
 import MacroCard from '../../Cards/CycleCards/MacroCard/MacroCard'
 import { Slider } from 'antd'
-import DeleteCycleModal from '../../Modals/DeleteCycleModal/DeleteCycleModal'
+import DeleteMesoCycleModal from '../../Modals/DeleteMesoCycleModal/DeleteMesoCycleModal'
+import DeleteMacroCycleModal from '../../Modals/DeleteMacroCycleModal/DeleteMacroCycleModal'
+import { deleteMesoCycle } from '../../../api/cycles/mesoCycle'
 
 
 function Periodization() {
-    // to update activities when select new Micro Cycle
-    // to update Selected Micro Cycle
-    // Macro and Meso Cycles get updates SELECTED from MesoCard component
-     const [showDeleteModal, setShowDeleteModal] = useState(false)
-    
     const { user } = useContext(UserContext) 
-
     const [macroCycles, setMacroCycles] = useState([])
-    const [mesoCycles, setMesoCycles] = useState([])
-    const [microCycles, setMicroCycles] = useState([])
-
     const [selectedMacro, setSelectedMacro] = useState()
     const [selectedMeso, setSelectedMeso] = useState()
     const [selectedMicro, setSelectedMicro] = useState()
-
     const [periWeekActivities, setPeriWeekActivities] = useState([])
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
     
-
     useEffect(() => {
         getAllMacroCycles(user)
-            .then((res) => {
-                setMacroCycles(res)})
+            .then((res) => {setMacroCycles(res)})
             .catch((res) => {})
-        getAllMesoCycles(user)
-            .then((res) => {
-                setMesoCycles(res)})
-            .catch((res) => {})
-        getAllMicroCycles(user)
-            .then((res) => {
-                setMicroCycles(res)
-                setPeriWeekActivities(res.activities)
-            })
-            .catch((res) => {})
+    }, [user, selectedMicro, selectedMeso])
 
+    useEffect(() => {
         setSelectedMicro(selectedMeso?.micro_cycles[0])
         setPeriWeekActivities(selectedMicro?.activities)
-    }, [user, selectedMacro, selectedMeso, selectedMicro])
+    }, [selectedMacro, selectedMeso, selectedMicro])
 
-    const onDelete = () => {
-        setShowDeleteModal(true)
-    }
+    const onDelete = () => {setShowDeleteModal(true)}
+    const onNoClick = () => {setShowDeleteModal(false)}
 
-    const onDeleteConfirm = (currentCycle) => {
-        if (currentCycle.macro_cycle) {
-                // console.log(currentCycle, 'meso cycle here')
-                deleteMesoCycle(user, currentCycle)
-                    .then((res) => setMesoCycles((state) => state.filter((cycle) => cycle.id !== currentCycle.id)))
-                    // .then((res) => {console.log(res, 'res meso success')})
-                    .catch((res) => { console.log(res, 'res meso error')});
-            } else {
-                deleteMacroCycle(user ,currentCycle)
-                    .then((res) => {console.log(res, 'res macro success')})
-                    .catch((res) => { console.log(res, 'res macro error')});
-            }
-            setShowDeleteModal(false)
+    const onDeleteMacro = () => {setShowDeleteMacroModal(true)}
+    const onNoClickMacro = () => {setShowDeleteMacroModal(false)}
+
+    const onDeleteConfirm = (cycle) => {
+        deleteMesoCycle(user, cycle)
+            .then((res) => {
+                console.log(res, 'res');
+            })
+            .catch((res) => {
+                console.log(res, 'res');
+            })
+        setShowDeleteModal(false)
+        }
+    const onDeleteMacroConfirm = (cycle) => {
+        deleteMacroCycle(user, cycle)
+            .then((res) => {
+                console.log(res, 'res');
+            })
+            .catch((res) => {
+                console.log(res, 'res');
+            })
+        setShowDeleteMacroModal(false)
         }
         
-
   return (
     <div className={`${styles.periodization}`}>
-
+        {showDeleteMacroModal ? 
+            <DeleteMacroCycleModal
+                cycle={selectedMacro}
+                onDeleteMacroConfirm={onDeleteMacroConfirm}
+                onNoClick={onNoClickMacro}
+                />
+        : null}
+        {showDeleteModal ? 
+            <DeleteMesoCycleModal
+                cycle={selectedMeso}
+                onDeleteConfirm={onDeleteConfirm}
+                onNoClick={onNoClick}
+                />
+        : null}
         <div className={`content_box ${styles.content_box}`}>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 <div>MACRO CYCLES</div>
@@ -82,28 +84,22 @@ function Periodization() {
                 {macroCycles ? macroCycles
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((macro) =>
-                        <div  key={macro.id} onClick={() => setSelectedMacro(macro)}>
+                        <div  key={macro.id} onClick={() => {setSelectedMacro(macro)}}>
                             <MacroCard 
                                 key={macro.id}
                                 macro={macro} 
-                                onDelete={onDelete}
+                                onDelete={onDeleteMacro}
                                 />
-                            {showDeleteModal ? 
-                                    <DeleteCycleModal
-                                        cycle={macro} 
-                                        onDeleteConfirm={onDeleteConfirm}
-                                        setShowDeleteModal={setShowDeleteModal} 
-                                                      />
-                                : null}
                         </div>)
                 : null}
-                <PlaceholderCard  cycle_type={'macro'}/>
+                <PlaceholderCard  cycleType={'macro'}/>
             </div>
 
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 <div>MESO CYCLES</div>
             </div>
             <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
+
                 {selectedMacro ?
                     selectedMacro.meso_cycles
                     .sort((a, b) => a.start_date > b.start_date)
@@ -111,19 +107,13 @@ function Periodization() {
                         <div key={meso.id} onClick={() => setSelectedMeso(meso)}>
                             <MesoCard 
                                 key={meso.id}
-                                meso={meso} 
+                                meso={meso}
                                 onDelete={onDelete}
                                 />
-                                {showDeleteModal ? 
-                                    <DeleteCycleModal
-                                        cycle={meso} 
-                                        onDeleteConfirm={onDeleteConfirm}
-                                        setShowDeleteModal={setShowDeleteModal} 
-                                                      />
-                                : null}
+                                
                         </div>)   
                 : null}
-                <PlaceholderCard  cycle_type={'meso'}/>
+                <PlaceholderCard  cycleType={'meso'}/>
             </div>
             
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 

@@ -5,15 +5,15 @@ import styles from './PlaceholderCard.module.css'
 import React from 'react'
 import { PlusCircleFilled } from '@ant-design/icons'
 
-const PlaceholderCard = ({cycle_type, parent}) => {
+const PlaceholderCard = ({cycleType, parent}) => {
 
   return (
     <div className={`${styles.placeholdercard}`}>
         <Link
-            to={`/create-${cycle_type}-cycle`}
+            to={`/create-${cycleType}-cycle`}
             className={`${styles.link}`}
             >
-            create {cycle_type} Cycle
+            create {cycleType} Cycle
             <PlusCircleFilled
                 className={`${styles.icon}`}
             ></PlusCircleFilled>

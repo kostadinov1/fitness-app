@@ -69,7 +69,7 @@ const editMicroCycle  = async (user, microCycle, microCycleProps) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
+        // throw err
     }
 }
 const deleteMicroCycle  = async (user, microCycle) => {
@@ -91,7 +91,7 @@ const deleteMicroCycle  = async (user, microCycle) => {
         }
     } catch(err){
         console.log('catch Err', err.message)
-        throw err
+        // throw err
     }
 }
 

@@ -22,7 +22,7 @@ const registerService = async (email, password) => {
             throw ('throw in service', register)
         }
     } catch(err){
-        throw err
+        // throw err
     }
 }
 
@@ -49,7 +49,7 @@ const loginService = async (email, password) => {
         }
     } catch(err){
         console.log(err, 'error in loginService catch')
-        throw err
+        // throw err
     }
 }
 const logoutService = async (user) => {
@@ -71,7 +71,7 @@ const logoutService = async (user) => {
             throw ('throw in service', logout)
         }
     } catch(err){
-        throw err
+        // throw err
     }
 }
 

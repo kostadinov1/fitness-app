@@ -67,7 +67,7 @@ const editMacroCycle  = async (user, macroCycle, macroCycleProps) => {
         }
     } catch(err){
         console.log('CATCH ERROR IN API CALL - MACRO CYCLE. MESSAGE:', err.message, 'END.')
-        throw err
+        // throw err
     }
 }
 const deleteMacroCycle  = async (user, macroCycle) => {
@@ -91,7 +91,7 @@ const deleteMacroCycle  = async (user, macroCycle) => {
         }
     } catch(err){
         console.log('CATCH ERROR IN API CALL - MACRO CYCLE. MESSAGE:', err.message, 'END.')
-        throw err
+        // throw err
     }
 }
 

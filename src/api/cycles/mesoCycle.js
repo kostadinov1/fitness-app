@@ -67,7 +67,7 @@ const editMesoCycle  = async (user, mesoCycle, mesoCycleProps) => {
         }
     } catch(err){
         console.log('CATCH ERROR IN API CALL - MESO CYCLE. MESSAGE: ', err.message, 'END.')
-        throw err
+        // throw err
     }
 }
 const deleteMesoCycle  = async (user, mesoCycle) => {
@@ -89,7 +89,6 @@ const deleteMesoCycle  = async (user, mesoCycle) => {
         }
     } catch(err){
         console.log('CATCH ERROR IN API CALL - MESO CYCLE. MESSAGE: ', err.message, 'END.')
-        throw err
     }
 }
 

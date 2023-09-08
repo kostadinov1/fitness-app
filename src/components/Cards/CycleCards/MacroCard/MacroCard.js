@@ -31,12 +31,8 @@ const MacroCard = ({macro, onDelete}) => {
           </button>
         </div>
         <div className={`${styles.cycle} ${styles.cycle_5}`}> 
-          <button
-          
-            onClick={onDelete}
-          >
-            <Link
-              className={`${styles.button}`} ><DeleteFilled /></Link >
+          <button onClick={onDelete}>
+            <DeleteFilled />
           </button>
         </div>
     </div>

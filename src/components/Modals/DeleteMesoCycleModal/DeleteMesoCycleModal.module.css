@@ -1,0 +1,45 @@
+
+.delete_modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* z-index: 10; */
+    background-color: var(--dimmer);
+    width: 90vw;
+    height: 90vh;
+    z-index: 20;
+
+}
+
+.modal_box {
+    margin: auto;
+    display: grid;
+    gap: 1em;
+    padding: 1em;
+    grid-template-areas: 
+    "one one"
+    "two three";
+    align-items: center;
+    justify-content: center;
+    /* margin: auto auto; */
+    /* margin-left: 50%;
+    margin-right: 50%; */
+    min-width: 20em;
+    min-height: 20em;
+    background-color: var(--dimmer-3);
+}
+
+.cell {
+
+}
+.cell_1 {
+    grid-area: one;
+    text-transform: uppercase;
+    color: orangered;
+}
+.cell_2 {
+    grid-area: two;
+}
+.cell_3 {
+    grid-area: three;
+}

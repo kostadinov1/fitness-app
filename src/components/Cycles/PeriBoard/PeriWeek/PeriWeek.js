@@ -43,7 +43,6 @@ function PeriWeek({activities}) {
         }
     }
 
-    // console.log(activities, 'activities in periweek');
 
   return (
     <div className={`${styles.periweek}`}>
@@ -55,7 +54,7 @@ function PeriWeek({activities}) {
                 {mondayData ? 
                     <div>
 
-                        <PeriDay activities={mondayData} />
+                        <PeriDay key={'1'} activities={mondayData} />
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
@@ -70,7 +69,7 @@ function PeriWeek({activities}) {
             {tuesdayData ? 
                     <div>
 
-                        <PeriDay activities={tuesdayData} />
+                        <PeriDay key={'2'} activities={tuesdayData} />
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
@@ -85,7 +84,7 @@ function PeriWeek({activities}) {
             {wednesdayData ? 
                     <div>
 
-                        <PeriDay activities={wednesdayData} />
+                        <PeriDay key={'3'} activities={wednesdayData} />
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
@@ -100,7 +99,7 @@ function PeriWeek({activities}) {
             {thursdayData ? 
                     <div>
 
-                        <PeriDay activities={thursdayData} />
+                        <PeriDay key={'4'} activities={thursdayData} />
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
@@ -116,7 +115,7 @@ function PeriWeek({activities}) {
             {fridayData ? 
                     <div>
 
-                        <PeriDay activities={fridayData} />
+                        <PeriDay key={'5'} activities={fridayData} />
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
@@ -132,7 +131,7 @@ function PeriWeek({activities}) {
             {saturdayData ? 
                     <div>
 
-                        <PeriDay activities={saturdayData} />
+                        <PeriDay key={'6'} activities={saturdayData} />
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
@@ -148,7 +147,7 @@ function PeriWeek({activities}) {
             {sundayData ? 
                     <div>
 
-                        <PeriDay activities={sundayData} />
+                        <PeriDay key={'7'} activities={sundayData} />
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 

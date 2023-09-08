@@ -7,18 +7,17 @@ function PeriDay({activities}) {
 
   return (
     <div className={`${styles.peri_day}`}>
-      {activities ?
-         activities.map((activity) => 
-         
-       <div>
-            <PeriActivity
-                key={activity.id}
-                activity={activity}
-                />
-            <AddIconListPlaceholder type={'exercise'} />
-        </div>)
-       :<AddIconListPlaceholder type={'exercise'} />}
-     </div>
+        {activities ?
+            activities.map((activity) =>          
+                    <div key={activity.id}>
+                        <PeriActivity
+                            key={activity.id}
+                            activity={activity}
+                            />
+                        <AddIconListPlaceholder type={'exercise'} />
+                    </div>)
+        :<AddIconListPlaceholder type={'exercise'} />}
+    </div>
   )
 }
 
