@@ -16,7 +16,7 @@ function CreateMacroCycle() {
         name: undefined,
         start_date: undefined,
         end_date: undefined,
-        description: undefined, 
+        // description: undefined, 
         // goals: [],
         user: user.user_id
     })
@@ -60,13 +60,16 @@ function CreateMacroCycle() {
                 <ListCard></ListCard>
             </div>
             <div className={`content_box`}>
-                <h1>Create MACRO Cycle</h1>
+                <div className={`title_outlined ${styles.title}`}>
+                    CREATE MACRO CYCLE
+                </div>
                 <form 
                     onSubmit={onFormSubmitHandler}
                     className={`${styles.form}`}>
                     <div className={`${styles.form_field} ${styles.form_field_1}`}>
                         <label>Name</label>
                         <input 
+                            className={`${styles.name}`}
                             name='name'
                             value={formData.name}
                             onChange={onValueChange}
@@ -98,7 +101,10 @@ function CreateMacroCycle() {
                             />
                     </div>
                     <button  className={`${styles.form_field} ${styles.form_field_4}`}>
-                        Create
+                        CANCEL
+                    </button>
+                    <button  className={`${styles.form_field} ${styles.form_field_5}`}>
+                        CREATE
                     </button>
                     {/* <div className={`${styles.form_field} ${styles.form_field_4}`}>
                         <label>Description</label>

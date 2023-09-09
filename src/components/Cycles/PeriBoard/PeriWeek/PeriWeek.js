@@ -58,7 +58,7 @@ function PeriWeek({activities}) {
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
-                : <AddIconListPlaceholder type={'activity'}/>}
+                : null}
             </div>
         </div>
         <div className={`${styles.cell} ${styles.cell_2}`}>
@@ -73,7 +73,7 @@ function PeriWeek({activities}) {
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
-                : <AddIconListPlaceholder type={'activity'}/>}
+                : null}
             </div>
         </div>
         <div className={`${styles.cell} ${styles.cell_3}`}>
@@ -88,7 +88,7 @@ function PeriWeek({activities}) {
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
-                : <AddIconListPlaceholder type={'activity'}/>}
+                : null}
             </div>
         </div>
         <div className={`${styles.cell} ${styles.cell_4}`}>
@@ -103,7 +103,7 @@ function PeriWeek({activities}) {
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
-                : <AddIconListPlaceholder type={'activity'}/>}
+                : null}
             </div>
         </div>
 
@@ -119,7 +119,7 @@ function PeriWeek({activities}) {
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
-                : <AddIconListPlaceholder type={'activity'}/>}
+                : null}
             </div>
         </div>
 
@@ -135,7 +135,7 @@ function PeriWeek({activities}) {
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
-                : <AddIconListPlaceholder type={'activity'}/>}
+                : null}
             </div>
         </div>
         
@@ -151,7 +151,7 @@ function PeriWeek({activities}) {
                         <AddIconListPlaceholder type={'activity'}/>
                     </div>
                 
-                : <AddIconListPlaceholder type={'activity'}/>}
+                : null}
             </div>
         </div>
 

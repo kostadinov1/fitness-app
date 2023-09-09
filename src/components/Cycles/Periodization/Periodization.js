@@ -57,7 +57,8 @@ function Periodization() {
     const onDeleteMacroConfirm = (cycle) => {
         deleteMacroCycle(user, cycle)
             .then((res) => {
-                console.log(res, 'res success macro');
+              setMacroCycles((state) => state.filter((macro) => macro.id !== cycle.id))
+                // console.log(res, 'res success macro');
             })
             .catch((res) => {
                 console.log(res, 'res error macro');
@@ -107,7 +108,7 @@ function Periodization() {
 
                 {/* {selectedMacro ?
                     selectedMacro.meso_cycles */}
-                {(selectedMacro && currentMesoCyclesList) ?
+                {( currentMesoCyclesList) ?
                     currentMesoCyclesList
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((meso) => 
@@ -130,25 +131,42 @@ function Periodization() {
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 <PeriWeek activities={periWeekActivities}></PeriWeek>
             </div>
+            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+                <div>CONFIGURE PERIODIZATION INCREMENTATION</div>
+            </div>
             <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
+
                 <form className={`${styles.form}`}>
-                    <div className={`${styles.form_field}`}>
+    
                     <div className={`${styles.form_field}`}>
                         <label>Micro Cycles Default Name</label>
                         <input></input>
                     </div>
+
+                    <div className={`${styles.form_field}`}>
                         <label>Number of Weeks</label>
+                        <input type='number'></input>
                         <Slider></Slider>
                     </div>
+
                     <div className={`${styles.form_field}`}>
                         <label>Exercises SETS WEEKLY Incrementation</label>
                         <Slider></Slider>                        
                     </div>
+
                     <div className={`${styles.form_field}`}>
                         <label>Exercises REPS WEEKLY Incrementation</label>
                         <Slider></Slider>                        
                     </div>
-                    <button>Create Meso Periodization</button>
+
+                    <div className={`${styles.form_field}`}>
+                    <button>CREATE Periodization</button>
+                    </div>
+
+                    <div className={`${styles.form_field}`}>
+                    <button>CANCEL</button>
+                    </div>
+
                 </form> 
 
             </div>
