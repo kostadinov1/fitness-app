@@ -56,7 +56,8 @@
         grid-area: five;}
     
 .button {
-    color: var(--sec-2);
+    color: var(--acc-1);
+    background-color: var(--sec-2);
 }
 .mmdd_box {
     text-transform: lowercase;

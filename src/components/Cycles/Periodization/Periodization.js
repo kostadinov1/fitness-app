@@ -84,13 +84,18 @@ function Periodization() {
         : null}
         <div className={`content_box ${styles.content_box}`}>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                <div>MACRO CYCLES</div>
+                {selectedMacro?
+                    <div>MACRO CYCLE: {selectedMacro?.name} </div>
+                    :<div>MACRO CYCLES </div>}
             </div>
             <div className={`${styles.macro_box} ${styles.cycle_box}`}> 
                 {macroCycles ? macroCycles
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((macro) =>
-                        <div  key={macro.id} onClick={() => {setSelectedMacro(macro)}}>
+                        <div  key={macro.id} onClick={() => {
+                                setSelectedMacro(macro)
+                                setSelectedMeso()
+                            }}>
                             <MacroCard 
                                 key={macro.id}
                                 macro={macro} 
@@ -102,38 +107,48 @@ function Periodization() {
             </div>
 
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                <div>MESO CYCLES</div>
+            {selectedMeso?
+                    <div>MESO CYCLE: {selectedMeso?.name} </div>
+                    :<div>MESO CYCLES </div>}
+                
             </div>
             <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
 
-                {/* {selectedMacro ?
-                    selectedMacro.meso_cycles */}
-                {( currentMesoCyclesList) ?
+                {(currentMesoCyclesList) ?
                     currentMesoCyclesList
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((meso) => 
-                        <div key={meso.id} onClick={() => setSelectedMeso(meso)}>
+                        <div
+                        key={meso.id} onClick={() => setSelectedMeso(meso)}>
                             <MesoCard 
                                 key={meso.id}
                                 meso={meso}
                                 onDelete={onDelete}
                                 />
                                 
-                        </div>)   
+                        </div>)    
                 : null}
                 <PlaceholderCard  cycleType={'meso'}/>
             </div>
             
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                <div>MICRO CYCLE</div>
+                    {selectedMicro?
+                    <div>MICRO CYCLE: {selectedMicro?.name} </div>
+                    :<div>MICRO CYCLES </div>}
             </div>
             
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
-                <PeriWeek activities={periWeekActivities}></PeriWeek>
+
+            {selectedMicro ?
+                    <PeriWeek activities={periWeekActivities}></PeriWeek>          
+                : <PlaceholderCard  cycleType={'micro'}/>}
+
             </div>
+
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 <div>CONFIGURE WEEKLY INCREMENTATION</div>
             </div>
+
             <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
 
                 <form className={`${styles.form}`}>
