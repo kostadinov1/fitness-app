@@ -6,11 +6,11 @@ import { UserContext } from '../../../contexts/UserContext'
 import { listActivityTypes } from '../../../api/activityTypes'
 import ListCard from '../../Cards/ListCard/ListCard'
 import { DatePicker, Radio } from 'antd'
-
+import { getAllMicroCycles} from './../../../api/cycles/microCycle'
 function CreateActivity() {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
-
+    const [microCycles, setMicroCycles] = useState([])
     const [activityTypes, setActivityTypes] = useState([])
   
     const [formData, setFormData] = useState({
@@ -38,6 +38,7 @@ function CreateActivity() {
             setActivityTypes(res)})
           .catch((res) => {})
   }, [])
+    getAllMicroCycles()
     const onCreate = (e) => {
         e.preventDefault()
         createActivity(user, formData)

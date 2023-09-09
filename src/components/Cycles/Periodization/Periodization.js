@@ -21,7 +21,6 @@ function Periodization() {
     const [periWeekActivities, setPeriWeekActivities] = useState([])
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
-    
     const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
     
     useEffect(() => {

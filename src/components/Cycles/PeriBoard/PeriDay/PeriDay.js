@@ -14,9 +14,9 @@ function PeriDay({activities}) {
                             key={activity.id}
                             activity={activity}
                             />
-                        <AddIconListPlaceholder type={'exercise'} />
+                        <AddIconListPlaceholder activity={activity} type={'activity'} />
                     </div>)
-        :<AddIconListPlaceholder type={'exercise'} />}
+        :<AddIconListPlaceholder  type={'activity'} />}
     </div>
   )
 }
