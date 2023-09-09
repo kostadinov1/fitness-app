@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom'
 import styles from './MacroCard.module.css'
 import React from 'react'
 import { DeleteFilled, EditOutlined } from '@ant-design/icons'
+import { useTransformDate } from '../../../../hooks/useTransformDate'
 
 const MacroCard = ({macro, onDelete}) => {
     //TODO fix path to Edit Cycle
+
+    const startDate = useTransformDate(macro.start_date)
+    const endDate = useTransformDate(macro.end_date)
   return (
     <div  className={`${styles.cycle_card}`}>
         <div className={`${styles.cycle} ${styles.cycle_1}`}> 
@@ -13,17 +17,17 @@ const MacroCard = ({macro, onDelete}) => {
         </div>
         <div className={`${styles.cycle} ${styles.cycle_2}`}> 
             <div className={`${styles.mmdd_box}`}>
-                <span>yy/</span>
-                <span>mm</span>
+                <span>mm -</span>
+                <span> yy</span>
             </div> 
-            {macro?.start_date?.slice(0, 7)}
+            {startDate?.slice(3)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_3}`}>
             <div className={`${styles.mmdd_box}`}>
-                <span>yy/</span>
-                <span>mm</span>
+            <span>mm -</span>
+                <span> yy</span>
             </div> 
-            {macro?.end_date?.slice(0, 7)}
+            {endDate?.slice(3)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_4}`}> 
           <button className={`${styles.button}`}>

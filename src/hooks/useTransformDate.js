@@ -1,8 +1,8 @@
 
-export const useTransformDate = (dateTime) => {
+export const useTransformDate = (djangoDate) => {
 
-    const date = ''
-    console.log(dateTime.slit(0,10), 'dateTime in dateTransform')
+    const listDate = djangoDate.split('-').reverse()
+    const date = listDate.join('-')
 
     return date
 }

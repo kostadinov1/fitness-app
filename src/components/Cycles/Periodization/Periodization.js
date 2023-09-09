@@ -132,7 +132,7 @@ function Periodization() {
                 <PeriWeek activities={periWeekActivities}></PeriWeek>
             </div>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                <div>CONFIGURE PERIODIZATION INCREMENTATION</div>
+                <div>CONFIGURE WEEKLY INCREMENTATION</div>
             </div>
             <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
 

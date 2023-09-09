@@ -1,11 +1,13 @@
 
+import { useTransformDate } from '../../../../hooks/useTransformDate'
 import styles from './MesoCard.module.css'
 import { DeleteFilled, EditOutlined } from '@ant-design/icons'
 
 const MesoCard = ({meso, onDelete}) => {
 
   //TODO fix path to Edit Cycle
-
+  const startDate = useTransformDate(meso.start_date)
+  const endDate = useTransformDate(meso.end_date)
   return (
     <div  className={`${styles.cycle_card}`}>
         <div className={`${styles.cycle} ${styles.cycle_1}`}> 
@@ -13,17 +15,17 @@ const MesoCard = ({meso, onDelete}) => {
         </div>
         <div className={`${styles.cycle} ${styles.cycle_2}`}> 
         <div className={`${styles.mmdd_box}`}>
-                <span>mm/</span>
-                <span>dd</span>
+                <span>dd -</span>
+                <span> mm</span>
             </div> 
-            {meso.start_date.slice(5)}
+            {startDate.slice(0, 5)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_3}`}> 
         <div className={`${styles.mmdd_box}`}>
-                <span>mm/</span>
-                <span>dd</span>
+                <span>dd -</span>
+                <span> mm</span>
             </div> 
-            {meso.end_date.slice(5)}
+            {endDate.slice(0, 5)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_4}`}> 
           <button className={`${styles.button}`}>
