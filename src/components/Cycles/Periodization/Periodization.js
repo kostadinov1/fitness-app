@@ -22,7 +22,8 @@ function Periodization() {
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
     
-    const [currentMesoCycles, setCurrentMesoCycles] = useState([])
+    const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
+    
     useEffect(() => {
         getAllMacroCycles(user)
             .then((res) => {setMacroCycles(res)})
@@ -31,8 +32,7 @@ function Periodization() {
 
     useEffect(() => {
         setSelectedMicro(selectedMeso?.micro_cycles[0])
-    // selectedMacro.meso_cycles
-        setCurrentMesoCycles(selectedMacro?.meso_cycles)
+        setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
         setPeriWeekActivities(selectedMicro?.activities)
     }, [selectedMacro, selectedMeso, selectedMicro])
 
@@ -45,7 +45,7 @@ function Periodization() {
     const onDeleteConfirm = (cycle) => {
         deleteMesoCycle(user, cycle)
             .then((res) => {
-                setCurrentMesoCycles((state) => state.filter((meso) => meso.id !== cycle.id))
+                setCurrentMesoCyclesList((state) => state.filter((meso) => meso.id !== cycle.id))
                 console.log(res, 'res success currrrrrrrr');
             })
             .catch((res) => {
@@ -107,8 +107,8 @@ function Periodization() {
 
                 {/* {selectedMacro ?
                     selectedMacro.meso_cycles */}
-                {(selectedMacro && currentMesoCycles) ?
-                    currentMesoCycles
+                {(selectedMacro && currentMesoCyclesList) ?
+                    currentMesoCyclesList
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((meso) => 
                         <div key={meso.id} onClick={() => setSelectedMeso(meso)}>

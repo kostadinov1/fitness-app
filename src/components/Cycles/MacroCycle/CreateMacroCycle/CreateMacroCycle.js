@@ -97,7 +97,10 @@ function CreateMacroCycle() {
 							}}
                             />
                     </div>
-                    <div className={`${styles.form_field} ${styles.form_field_4}`}>
+                    <button  className={`${styles.form_field} ${styles.form_field_4}`}>
+                        Create
+                    </button>
+                    {/* <div className={`${styles.form_field} ${styles.form_field_4}`}>
                         <label>Description</label>
                         <textarea
                         name='description'
@@ -105,7 +108,7 @@ function CreateMacroCycle() {
                         onChange={onValueChange}
                         placeholder={'Describe Cycle'}                        
                         />
-                    </div>
+                    </div> */}
                     {/* <div className={`${styles.form_field} ${styles.form_field_5}`}>
                         <label>Goal</label>
                             <Select
@@ -117,9 +120,7 @@ function CreateMacroCycle() {
                                 options={goals.map((goal) => ({value: goal.id, label: goal.name})) 
                             } />                        
                     </div> */}
-                    <button  className={`${styles.form_field} ${styles.form_field_6}`}>
-                        Create
-                    </button>
+
                 </form>
             </div>
         </div>

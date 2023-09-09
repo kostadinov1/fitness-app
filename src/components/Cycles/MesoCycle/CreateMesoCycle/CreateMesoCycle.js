@@ -10,6 +10,7 @@ import { createMesoCycle } from '../../../../api/cycles/mesoCycle'
 import { getAllMacroCycles } from '../../../../api/cycles/macroCycle'
 
 function CreateMesoCycle() {
+    
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [goals, setGoals] = useState([])
