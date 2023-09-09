@@ -3,8 +3,13 @@ import styles from './PeriWeek.module.css'
 import  PeriDay  from './../PeriDay/PeriDay'
 import {useCurrentWeekNum} from './../../../../hooks/useCurrentWeekNum'
 import AddIconListPlaceholder from "../../../Cards/AddToListPlaceholder/AddToListPlaceholder"
+
+
+
 // activities should be sorted by mesocycle
+
 function PeriWeek({activities}) {
+    // console.log('START', activities, 'activities in PERIWEEK')
     const weekNumber = useCurrentWeekNum()
 
     const [mondayData, setMondayData] = useState(undefined)
@@ -15,7 +20,6 @@ function PeriWeek({activities}) {
     const [saturdayData, setSaturdayData] = useState(undefined)
     const [sundayData, setSundayData] = useState(undefined)
 
-    // console.log(activities, 'activities in periweek')
     useEffect(() => {
         setMondayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 1))
         setTuesdayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 2))
@@ -42,6 +46,7 @@ function PeriWeek({activities}) {
             return undefined
         }
     }
+    // console.log('START', mondayData, 'activities in PERIWEEK')
 
 
   return (

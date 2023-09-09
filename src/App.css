@@ -13,8 +13,9 @@
     /* Accent Colors */
     --acc: rgb(128, 78, 13);
     --acc-1: #db7420;
-    --acc-3: rgb(250, 151, 22);
-    --acc-2: #f2c331;
+    --acc-2: #d6ad31;
+    --acc-3: rgb(240, 142, 12);
+    --acc-4: rgb(150, 87, 4);
 
     /* Text Colors */
     --text: #cfd0b4;

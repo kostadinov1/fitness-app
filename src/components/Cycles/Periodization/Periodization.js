@@ -10,7 +10,7 @@ import { Slider } from 'antd'
 import DeleteMesoCycleModal from '../../Modals/DeleteMesoCycleModal/DeleteMesoCycleModal'
 import DeleteMacroCycleModal from '../../Modals/DeleteMacroCycleModal/DeleteMacroCycleModal'
 import { deleteMesoCycle } from '../../../api/cycles/mesoCycle'
-
+import MicroCard from '../../Cards/CycleCards/MicroCard/MicroCard'
 
 function Periodization() {
     const { user } = useContext(UserContext) 
@@ -22,18 +22,23 @@ function Periodization() {
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
     const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
+    const [currentMicroCyclesList, setCurrentMicroCyclesList] = useState([])
     
     useEffect(() => {
         getAllMacroCycles(user)
             .then((res) => {setMacroCycles(res)})
             .catch((res) => {})
-    }, [user, selectedMicro, selectedMeso])
 
-    useEffect(() => {
+    // }, [user, selectedMicro, selectedMeso])
+
+
+    // useEffect(() => {
         setSelectedMicro(selectedMeso?.micro_cycles[0])
         setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
+        setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
         setPeriWeekActivities(selectedMicro?.activities)
-    }, [selectedMacro, selectedMeso, selectedMicro])
+    }, [user, selectedMacro, selectedMeso, selectedMicro, periWeekActivities])
+
 
     const onDelete = () => {setShowDeleteModal(true)}
     const onNoClick = () => {setShowDeleteModal(false)}
@@ -65,6 +70,7 @@ function Periodization() {
         setShowDeleteMacroModal(false)
         }
         
+
   return (
     <div className={`${styles.periodization}`}>
         {showDeleteMacroModal ? 
@@ -129,6 +135,38 @@ function Periodization() {
                 : null}
                 <PlaceholderCard  cycleType={'meso'}/>
             </div>
+
+
+
+            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+            {selectedMicro?
+                    <div>MICRO CYCLE: {selectedMicro?.name} </div>
+                    :<div>MICRO CYCLES </div>}
+                
+            </div>
+            <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
+
+                {(currentMicroCyclesList) ?
+                    currentMicroCyclesList
+                    .sort((a, b) => a.start_date > b.start_date)
+                    .map((micro) => 
+                        <div
+                        key={micro.id} onClick={() => setSelectedMicro(micro)}>
+                            <MicroCard
+                                key={micro.id}
+                                cycle={micro}
+                                // onDelete={onDelete}
+                                />
+                                
+                        </div>)    
+                : null}
+                <PlaceholderCard  cycleType={'micro'}/>
+            </div>
+            
+
+
+
+
             
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                     {selectedMicro?
@@ -137,8 +175,9 @@ function Periodization() {
             </div>
             
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
+            {/* <PeriWeek activities={periWeekActivities}></PeriWeek>           */}
 
-            {selectedMicro ?
+            {periWeekActivities ?
                     <PeriWeek activities={periWeekActivities}></PeriWeek>          
                 : <PlaceholderCard  cycleType={'micro'}/>}
 

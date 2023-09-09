@@ -18,7 +18,6 @@ import Activity from './components/Activities/Activity/Activity';
 import { UserContext } from './contexts/UserContext';
 import { useEffect, useState } from 'react';
 import Exercise from './components/Exercises/Exercise/Exercise';
-import AboutUs from './components/AboutUs/AboutUs';
 import Contacts from './components/Contacts/Contacts';
 import { getUserData } from './utils/userUtils';
 import Profile from './components/Profiles/Profile/Profile';
@@ -63,7 +62,6 @@ function App() {
                         <Routes >
                                 {/* <<< ------ Core ------- >>>*/}         
                             <Route path='/' element={<Home />}/>
-                            <Route path='/about-us' element={<AboutUs />}/>
                             <Route path='/contacts' element={<Contacts />}/>
                             
                             {/* <<< ------ AUTH ------- >>>*/}         

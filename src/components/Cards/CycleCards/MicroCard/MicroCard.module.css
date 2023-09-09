@@ -37,7 +37,7 @@
 
 .cycle_1 {
     font-size: 1.2rem;
-    background-color: var(--acc-3);
+    background-color: var(--acc-2);
     border: 4px solid var(--sec-2);
     color: var(--sec-3);
     grid-area: one;}

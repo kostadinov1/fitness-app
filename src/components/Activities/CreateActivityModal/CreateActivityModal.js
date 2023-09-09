@@ -8,7 +8,7 @@ import { createActivity } from '../../../api/activities'
 import { UserContext } from '../../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 
-const CreateActivityModal = ({activity, setShowCreateActivityModal}) => {
+const CreateActivityModal = ({setShowCreateActivityModal}) => {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [microCycles, setMicroCycles] = useState([])
@@ -34,17 +34,20 @@ const CreateActivityModal = ({activity, setShowCreateActivityModal}) => {
     })
 
   useEffect(() => {
-      listActivityTypes()
-          .then((res) => {
-            setActivityTypes(res)})
-          .catch((res) => {})
-  }, [])
-    getAllMicroCycles(user)
-        .then((res) => {
-            setMicroCycles(res)
-        })
-        .catch((res) => {
-        })
+        listActivityTypes()
+            .then((res) => {
+                setActivityTypes(res)})
+            .catch((res) => {})
+
+            getAllMicroCycles(user)
+                .then((res) => {
+                    setMicroCycles(res)
+                })
+                .catch((res) => {
+                })
+
+        }, [user])
+
     const onCreate = (e) => {
         e.preventDefault()
         createActivity(user, formData)
@@ -56,9 +59,7 @@ const CreateActivityModal = ({activity, setShowCreateActivityModal}) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
 	const onDateChangeHandler = (date, dateString) => {
-        console.log(date, dateString, 'ondatechangehandler')
         setFormData((state) => ({...state, start_time: dateString}))
-        // setFormData((state) => ({...state, end_time: dateString[1]}))
 	}
     const onNoClick = () => {
         setShowCreateActivityModal(false)
