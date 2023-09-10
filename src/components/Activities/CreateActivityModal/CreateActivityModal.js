@@ -93,12 +93,11 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
                                 value={formData.microcycle}
                                 onChange={onValueChange}
                                 className={styles.form_input}>
-                                        <option defaultValue={microCycle.name} >{microCycle.name}</option>
 
-                                    {/* { microCycles ? 
+                                    { microCycles ? 
                                     microCycles.map((microCycle) =>
                                         <option key={microCycle.id} value={`${microCycle.id}`}>{microCycle.name}</option>)
-                                        : <option>No Micro Cycles Yet!</option>} */}
+                                        : <option>No Micro Cycles Yet!</option>}
                             </select>
                         </div>
 
