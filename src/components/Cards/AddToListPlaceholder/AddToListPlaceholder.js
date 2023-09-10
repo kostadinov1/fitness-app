@@ -4,13 +4,22 @@ import styles from './AddToListPlaceholder.module.css'
 import React, { useState } from 'react'
 import { PlusCircleFilled } from '@ant-design/icons'
 import CreateActivityModal from './../../Activities/CreateActivityModal/CreateActivityModal'
-
+import CreateExercise from './../../Exercises/CreateExercise/CreateExercise'
 const AddIconListPlaceholder = ({item, type}) => {
 
     console.log('STSRT', item , 'item in ADDiconLISTplaceholder')
     
     const [ showActivityCreateModal,setShowCreateActivityModal] = useState(false)
-    const onClickHandler = () => { setShowCreateActivityModal(true) }
+    const [ showExerciceCreateModal,setShowCreateExerciseModal] = useState(false)
+
+    const onClickHandler = () => {
+        if (type === 'activity'){
+            setShowCreateActivityModal(true) 
+        } else if (type === 'exercise') {
+            setShowCreateExerciseModal(true)
+        }
+    
+    }
 
     return (
         <div>
@@ -19,10 +28,16 @@ const AddIconListPlaceholder = ({item, type}) => {
                 className={`${styles.placeholder}`}>
                     Create {type} <PlusCircleFilled />
             </Link>
+            
             {showActivityCreateModal ? 
                 <CreateActivityModal 
-                    setShowCreateActivityModal={setShowCreateActivityModal} >
-                    </CreateActivityModal>
+                    setShowCreateActivityModal={setShowCreateActivityModal} />
+
+            : null}
+
+            {showExerciceCreateModal ?
+                <CreateExercise 
+                    setShowCreateExerciseModal={setShowCreateExerciseModal}/>
             : null}
         </div>
   )
