@@ -9,9 +9,14 @@ import { UserContext } from '../../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 
 const CreateActivityModal = ({setShowCreateActivityModal}) => {
+
+    // TODO When creating an activity to attach Micro Cycle Relation by default !!!
+    // and set the date to be the selected day of the periweek
+
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [microCycles, setMicroCycles] = useState([])
+    const [microCycle, setMicroCycle] = useState(' micro to  be')
     const [activityTypes, setActivityTypes] = useState([])
   
     const [formData, setFormData] = useState({
@@ -35,17 +40,11 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
 
   useEffect(() => {
         listActivityTypes()
-            .then((res) => {
-                setActivityTypes(res)})
+            .then((res) => {setActivityTypes(res)})
             .catch((res) => {})
-
             getAllMicroCycles(user)
-                .then((res) => {
-                    setMicroCycles(res)
-                })
-                .catch((res) => {
-                })
-
+                .then((res) => {setMicroCycles(res)})
+                .catch((res) => {})
         }, [user])
 
     const onCreate = (e) => {
@@ -94,10 +93,12 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
                                 value={formData.microcycle}
                                 onChange={onValueChange}
                                 className={styles.form_input}>
-                                    { microCycles ? 
+                                        <option defaultValue={microCycle.name} >{microCycle.name}</option>
+
+                                    {/* { microCycles ? 
                                     microCycles.map((microCycle) =>
                                         <option key={microCycle.id} value={`${microCycle.id}`}>{microCycle.name}</option>)
-                                        : <option>No Micro Cycles Yet!</option>}
+                                        : <option>No Micro Cycles Yet!</option>} */}
                             </select>
                         </div>
 

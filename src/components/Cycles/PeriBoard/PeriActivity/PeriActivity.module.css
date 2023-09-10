@@ -4,6 +4,7 @@
     /* align-items: start; */
     gap: .4em;
     background-color: var(--dimmer-3);
+    border: 1px solid var(--acc-4);
 
 }
 .activity_title {
@@ -13,10 +14,13 @@
     font-size: 1.2rem;
     letter-spacing: 1.2;
     background-color: var(--dimmer-2);
+
 }
 
 .exercise_title {
     font-size: .8rem;
     font-weight: 600;
     padding: .4em;
+    border: 1px solid var(--prime-1);
+
 }

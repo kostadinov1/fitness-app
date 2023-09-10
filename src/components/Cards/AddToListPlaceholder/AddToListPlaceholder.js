@@ -5,7 +5,10 @@ import React, { useState } from 'react'
 import { PlusCircleFilled } from '@ant-design/icons'
 import CreateActivityModal from './../../Activities/CreateActivityModal/CreateActivityModal'
 
-const AddIconListPlaceholder = ({type}) => {
+const AddIconListPlaceholder = ({item, type}) => {
+
+    console.log('STSRT', item , 'item in ADDiconLISTplaceholder')
+    
     const [ showActivityCreateModal,setShowCreateActivityModal] = useState(false)
     const onClickHandler = () => { setShowCreateActivityModal(true) }
 

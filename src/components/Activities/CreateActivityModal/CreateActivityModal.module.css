@@ -1,6 +1,6 @@
 
 .form_box {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     padding: 1em;
@@ -17,8 +17,9 @@
     gap: 1em;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: 
-        "one one two two three three"
-        "four four five five six seven"
+        "one one one one two two"
+        "three three four four five five"
+        "six six six seven seven seven "
     ;
     background-color: var(--dimmer-2);
     padding: 2em;
@@ -60,7 +61,7 @@
     margin: auto auto;
     color: var(--prime-2);
     background-color: var(--acc-1);
-    font-size: 1.4rem;
+    font-size: .9rem;
 
 }
 .form label {

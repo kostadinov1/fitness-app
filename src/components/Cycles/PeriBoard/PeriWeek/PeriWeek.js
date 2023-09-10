@@ -48,7 +48,6 @@ function PeriWeek({activities}) {
     }
     // console.log('START', mondayData, 'activities in PERIWEEK')
 
-
   return (
     <div className={`${styles.periweek}`}>
         <div className={`${styles.cell} ${styles.cell_1}`}>

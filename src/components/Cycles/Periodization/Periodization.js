@@ -14,13 +14,15 @@ import MicroCard from '../../Cards/CycleCards/MicroCard/MicroCard'
 
 function Periodization() {
     const { user } = useContext(UserContext) 
+
     const [macroCycles, setMacroCycles] = useState([])
     const [selectedMacro, setSelectedMacro] = useState()
     const [selectedMeso, setSelectedMeso] = useState()
     const [selectedMicro, setSelectedMicro] = useState()
-    const [periWeekActivities, setPeriWeekActivities] = useState([])
+
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
+
     const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
     const [currentMicroCyclesList, setCurrentMicroCyclesList] = useState([])
     
@@ -29,15 +31,9 @@ function Periodization() {
             .then((res) => {setMacroCycles(res)})
             .catch((res) => {})
 
-    // }, [user, selectedMicro, selectedMeso])
-
-
-    // useEffect(() => {
-        setSelectedMicro(selectedMeso?.micro_cycles[0])
         setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
         setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
-        setPeriWeekActivities(selectedMicro?.activities)
-    }, [user, selectedMacro, selectedMeso, selectedMicro, periWeekActivities])
+    }, [user, selectedMacro, selectedMeso, selectedMicro])
 
 
     const onDelete = () => {setShowDeleteModal(true)}
@@ -49,24 +45,20 @@ function Periodization() {
     const onDeleteConfirm = (cycle) => {
         deleteMesoCycle(user, cycle)
             .then((res) => {
-                setCurrentMesoCyclesList((state) => state.filter((meso) => meso.id !== cycle.id))
-                console.log(res, 'res success currrrrrrrr');
+                setCurrentMesoCyclesList((state) => 
+                    state.filter((meso) => meso.id !== cycle.id))
             })
-            .catch((res) => {
-                console.log(res, 'res error meso');
-            })
+            .catch((res) => {})
         setShowDeleteModal(false)
         }
 
     const onDeleteMacroConfirm = (cycle) => {
         deleteMacroCycle(user, cycle)
             .then((res) => {
-              setMacroCycles((state) => state.filter((macro) => macro.id !== cycle.id))
-                // console.log(res, 'res success macro');
+              setMacroCycles((state) => 
+                state.filter((macro) => macro.id !== cycle.id))
             })
-            .catch((res) => {
-                console.log(res, 'res error macro');
-            })
+            .catch((res) => {})
         setShowDeleteMacroModal(false)
         }
         
@@ -163,11 +155,6 @@ function Periodization() {
                 <PlaceholderCard  cycleType={'micro'}/>
             </div>
             
-
-
-
-
-            
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                     {selectedMicro?
                     <div>MICRO CYCLE: {selectedMicro?.name} </div>
@@ -175,11 +162,10 @@ function Periodization() {
             </div>
             
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
-            {/* <PeriWeek activities={periWeekActivities}></PeriWeek>           */}
 
-            {periWeekActivities ?
-                    <PeriWeek activities={periWeekActivities}></PeriWeek>          
-                : <PlaceholderCard  cycleType={'micro'}/>}
+                {selectedMicro?.activities ?
+                        <PeriWeek activities={selectedMicro?.activities}></PeriWeek>          
+                    : <PlaceholderCard  cycleType={'micro'}/>}
 
             </div>
 

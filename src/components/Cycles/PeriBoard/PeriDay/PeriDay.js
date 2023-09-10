@@ -7,6 +7,7 @@ function PeriDay({activities}) {
 
   return (
     <div className={`${styles.peri_day}`}>
+        <div></div>
         {activities ?
             activities.map((activity) =>          
                     <div key={activity.id}>

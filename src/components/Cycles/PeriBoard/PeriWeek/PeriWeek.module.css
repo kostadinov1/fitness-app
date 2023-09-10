@@ -4,6 +4,7 @@
     grid-template-areas: 
         "one two three four five six seven";
     height: 100%;
+    min-height: 36vh;
 }
 
 .cell {
