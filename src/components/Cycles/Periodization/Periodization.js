@@ -11,6 +11,10 @@ import DeleteMesoCycleModal from '../../Modals/DeleteMesoCycleModal/DeleteMesoCy
 import DeleteMacroCycleModal from '../../Modals/DeleteMacroCycleModal/DeleteMacroCycleModal'
 import { deleteMesoCycle } from '../../../api/cycles/mesoCycle'
 import MicroCard from '../../Cards/CycleCards/MicroCard/MicroCard'
+import { DownOutlined } from '@ant-design/icons'
+
+// TODO Create Meso Periodization and by that visualize Nivo Chard
+    // and by that visualize Nivo Chart for Progression and Tree for the Cycles
 
 
 function Periodization() {
@@ -24,9 +28,9 @@ function Periodization() {
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
     const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
     const [currentMicroCyclesList, setCurrentMicroCyclesList] = useState([])
-    const [showMacros, setShowMacros] = useState(true)
-    const [showMesos, setShowMesos] = useState(false)
-    const [showMicros, setShowMicros] = useState(false)
+    const [showMacros, setShowMacros] = useState(false)
+    const [showMesos, setShowMesos] = useState(true)
+    const [showMicros, setShowMicros] = useState(true)
 
     const reducer = (state, action) => {
         switch (action.type){
@@ -41,27 +45,33 @@ function Periodization() {
             case 'showMicroDelete':
                 return setShowDeleteMicroModal(true)
             case 'hideMicroDelete':
-                return setShowDeleteMicroModal(false)
-
-            case 'showMacrosDelete':
-                return setShowMacros(true)
-            case 'hideMacrosDelete':
-                return setShowMacros(false)
-            case 'showMesosDelete':
-                return setShowMesos(true)
-            case 'hideMesosDelete':
-                return setShowMesos(false)   
-            case 'showMicrosDelete':
-                return setShowMicros(true)
-            case 'hideMicrosDelete':
-                return setShowMicros(false)               
+                return setShowDeleteMicroModal(false)             
             default:
-            
-
                 return state
         }
     }
     const [state, dispatch] = useReducer(reducer, false)
+    const toggleMacros = () => {
+        if (showMacros === true) {
+            setShowMacros(false) 
+        } else if (showMacros === false) {
+            setShowMacros(true)
+        } 
+    }
+    const toggleMesos = () => {
+        if (showMesos === true) {
+            setShowMesos(false) 
+        } else if (showMesos === false) {
+            setShowMesos(true)
+        } 
+    }
+    const toggleMicros = () => {
+        if (showMicros === true) {
+            setShowMicros(false) 
+        } else if (showMicros === false) {
+            setShowMicros(true)
+        }
+    }
 
     useEffect(() => {
         getAllMacroCycles(user)
@@ -106,19 +116,23 @@ function Periodization() {
                 dispatch={dispatch}
                 />
         : null}
+
+
         <div className={`content_box ${styles.content_box}`}>
-            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+            <div onClick={() => toggleMacros()} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 {selectedMacro?
-                    <div>MACRO CYCLE: {selectedMacro?.name} </div>
+                    <div><DownOutlined /> MACRO CYCLE: {selectedMacro?.name} </div>
                     :<div>MACRO CYCLES </div>}
             </div>
-            <div className={`${styles.macro_box} ${styles.cycle_box}`}> 
+            <div 
+                style={showMacros ? {display: 'none'} : {display: 'flex'}}
+                 className={`${styles.macro_box} ${styles.cycle_box}`}> 
                 {macroCycles ? macroCycles
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((macro) =>
                         <div  key={macro.id} onClick={() => {
                                 setSelectedMacro(macro)
-                                setSelectedMeso()
+                                setShowMesos(false)
                             }}>
                             <MacroCard 
                                 key={macro.id}
@@ -129,18 +143,23 @@ function Periodization() {
                 : null}
                 <PlaceholderCard  cycleType={'macro'}/>
             </div>
-            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+            <div onClick={toggleMesos} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
             {selectedMeso?
                     <div>MESO CYCLE: {selectedMeso?.name} </div>
                     :<div>MESO CYCLES </div>}
             </div>
-            <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
+            <div 
+                style={showMesos ? {display: 'none'} : {display: 'flex'}}
+                className={`${styles.meso_box} ${styles.cycle_box}`}> 
                 {(currentMesoCyclesList) ?
                     currentMesoCyclesList
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((meso) => 
                         <div
-                        key={meso.id} onClick={() => setSelectedMeso(meso)}>
+                        key={meso.id} onClick={() => {
+                                setSelectedMeso(meso)
+                                setShowMicros(false)
+                                }}>
                             <MesoCard 
                                 key={meso.id}
                                 meso={meso}
@@ -152,12 +171,12 @@ function Periodization() {
                 <PlaceholderCard  cycleType={'meso'}/>
             </div>
 
-            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-            {selectedMicro?
-                    <div>MICRO CYCLE: {selectedMicro?.name} </div>
-                    :<div>MICRO CYCLES </div>}
+            <div onClick={toggleMicros} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+                    <div>MICRO CYCLES </div>
             </div>
-            <div className={`${styles.meso_box} ${styles.cycle_box}`}> 
+            <div 
+                style={showMicros ? {display: 'none'} : {display: 'flex'}}
+                className={`${styles.meso_box} ${styles.cycle_box}`}> 
                 {(currentMicroCyclesList) ?
                     currentMicroCyclesList
                     .sort((a, b) => a.start_date > b.start_date)
@@ -175,8 +194,8 @@ function Periodization() {
             </div>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                     {selectedMicro?
-                    <div>MICRO CYCLE: {selectedMicro?.name} </div>
-                    :<div>MICRO CYCLES </div>}
+                    <div>MICRO (WEEK): {selectedMicro?.name} </div>
+                    :<div>MICRO WEEK </div>}
             </div>
             <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 {selectedMicro?.activities ?
