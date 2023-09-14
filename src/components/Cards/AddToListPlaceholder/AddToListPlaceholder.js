@@ -7,7 +7,7 @@ import CreateActivityModal from './../../Activities/CreateActivityModal/CreateAc
 import CreateExercise from './../../Exercises/CreateExercise/CreateExercise'
 const AddIconListPlaceholder = ({item, type}) => {
 
-    console.log('STSRT', item , 'item in ADDiconLISTplaceholder')
+    // console.log('STSRT', item , 'item in ADDiconLISTplaceholder')
     
     const [ showActivityCreateModal,setShowCreateActivityModal] = useState(false)
     const [ showExerciceCreateModal,setShowCreateExerciseModal] = useState(false)
@@ -37,7 +37,8 @@ const AddIconListPlaceholder = ({item, type}) => {
 
             {showExerciceCreateModal ?
                 <CreateExercise 
-                    setShowCreateExerciseModal={setShowCreateExerciseModal}/>
+                    // setShowCreateExerciseModal={setShowCreateExerciseModal}
+                    />
             : null}
         </div>
   )

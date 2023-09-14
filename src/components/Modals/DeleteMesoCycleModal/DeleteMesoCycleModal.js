@@ -2,7 +2,7 @@
 import styles from './DeleteMesoCycleModal.module.css'
 import React from 'react'
 
-const DeleteMesoCycleModal = ({cycle, onDeleteConfirm,  onNoClick}) => {
+const DeleteMesoCycleModal = ({cycle, dispatch, onDeleteConfirm,  onNoClick}) => {
         
   return (
     <div className={`${styles.delete_modal}`}>
@@ -16,7 +16,7 @@ const DeleteMesoCycleModal = ({cycle, onDeleteConfirm,  onNoClick}) => {
                 YES
             </button>
             <button 
-                onClick={onNoClick}
+                onClick={() => dispatch({type: 'hideMesoDelete'})}
                 className={`${styles.cell} ${styles.cell_3}`}>
                 NO
             </button>

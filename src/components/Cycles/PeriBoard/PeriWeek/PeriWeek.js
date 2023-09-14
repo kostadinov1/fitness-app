@@ -5,12 +5,10 @@ import AddIconListPlaceholder from "../../../Cards/AddToListPlaceholder/AddToLis
 import PeriActivity from "../PeriActivity/PeriActivity"
 
 
-
 // activities should be sorted by mesocycle
 
 function PeriWeek({activities}) {
-    // console.log('START', activities, 'activities in PERIWEEK')
-    const weekNumber = useCurrentWeekNum()
+    // const weekNumber = useCurrentWeekNum()
 
     const [mondayData, setMondayData] = useState(undefined)
     const [tuesdayData, setTuesdayData] = useState(undefined)
@@ -30,7 +28,6 @@ function PeriWeek({activities}) {
         setSundayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 0))
     }, [activities])
 
-    console.log(wednesdayData, 'tuesdaydata');
 
     const getWeekDay = (activityDate) => {  
         const activityDayNum = new Date(activityDate)
@@ -38,17 +35,17 @@ function PeriWeek({activities}) {
         const currentDate = new Date();
         const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
         const activityDay = new Date(activityDate)
-        const days = Math.floor((activityDay - startOfYear) /
-            (24 * 60 * 60 * 1000));
-        const currentWeekNumber = Math.ceil(days / 7);
+        const days = Math.floor((activityDay - startOfYear) / (24 * 60 * 60 * 1000));
+        // const currentWeekNumber = Math.ceil(days / 7);
+        // if (activityDate &&  (weekNumber === currentWeekNumber) ) {
 
-        if (activityDate &&  (weekNumber === currentWeekNumber) ) {
+        if (activityDate ) {
             return activityDayNum.getDay()
         } else {
             return undefined
         }
     }
-    // console.log('START', mondayData, 'activities in PERIWEEK')
+    console.log('START', activities, 'activities in PERIWEEK')
 
   return (
     <div className={`${styles.periweek}`}>
@@ -57,7 +54,7 @@ function PeriWeek({activities}) {
                 Monday
             </div>
             <div className={`${styles.grid_day}`}>
-                {mondayData.length > 0 ? 
+                {mondayData?.length > 0 ? 
                     mondayData.map((activity) =>          
                         <div key={activity.id}>
                             <PeriActivity
@@ -73,7 +70,7 @@ function PeriWeek({activities}) {
                 Tuesday
             </div>
             <div className={`${styles.grid_day}`}>
-            {tuesdayData.length > 0 ? 
+            {tuesdayData?.length > 0 ? 
                 tuesdayData.map((activity) =>          
                     <div key={activity.id}>
                         <PeriActivity
@@ -89,7 +86,7 @@ function PeriWeek({activities}) {
                 Wednesday
             </div>
             <div className={`${styles.grid_day}`}>
-            {wednesdayData.length > 0 ? 
+            {wednesdayData?.length > 0 ? 
                 wednesdayData.map((activity) =>          
                 <div key={activity.id}>
                     <PeriActivity
@@ -105,7 +102,7 @@ function PeriWeek({activities}) {
                 Thursday
             </div>
             <div className={`${styles.grid_day}`}>
-            {thursdayData.length > 0 ? 
+            {thursdayData?.length > 0 ? 
                 thursdayData.map((activity) =>          
                 <div key={activity.id}>
                     <PeriActivity
@@ -116,13 +113,13 @@ function PeriWeek({activities}) {
                 : <AddIconListPlaceholder type={'activity'} />}
             </div>
         </div>
-
+        weekNumber
         <div className={`${styles.cell} ${styles.cell_5}`}>
             <div className={`${styles.week_day}`}>
                 Friday
             </div>
             <div className={`${styles.grid_day}`}>
-            {fridayData.length > 0 ? 
+            {fridayData?.length > 0 ? 
                 fridayData.map((activity) =>          
                 <div key={activity.id}>
                     <PeriActivity
@@ -139,7 +136,7 @@ function PeriWeek({activities}) {
                 Saturday
             </div>
             <div className={`${styles.grid_day}`}>
-            {saturdayData.length > 0 ? 
+            {saturdayData?.length > 0 ? 
                 saturdayData.map((activity) =>          
                 <div key={activity.id}>
                     <PeriActivity
@@ -156,7 +153,7 @@ function PeriWeek({activities}) {
                 Sunday
             </div>
             <div className={`${styles.grid_day}`}>
-            {sundayData.length > 0 ? 
+            {sundayData?.length > 0 ? 
                 sundayData.map((activity) =>          
                 <div key={activity.id}>
                     <PeriActivity

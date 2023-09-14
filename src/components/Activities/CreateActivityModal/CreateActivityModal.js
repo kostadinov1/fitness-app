@@ -16,7 +16,7 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [microCycles, setMicroCycles] = useState([])
-    const [microCycle, setMicroCycle] = useState(' micro to  be')
+    // const [microCycle, setMicroCycle] = useState(' micro to  be')
     const [activityTypes, setActivityTypes] = useState([])
   
     const [formData, setFormData] = useState({
@@ -34,7 +34,7 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
             exercises: undefined,
             type: undefined,
             goal: undefined,
-            microcycle: undefined,
+            micro_cycle: undefined,
             user: user.user_id
     })
 
@@ -50,8 +50,8 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
     const onCreate = (e) => {
         e.preventDefault()
         createActivity(user, formData)
-            .then((res) => {})
-            .catch((res) => {})
+            .then((res) => {console.log(res, 'res in')})
+            .catch((res) => {console.log(res, 'res in')})
         navigate('/all-activities')
     }
     const onValueChange = (e) => {
@@ -89,8 +89,8 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
                         <div className={`${styles.form_input} ${styles.form_item_box_2} ${styles.item}`}>
                             <label>Micro Cycle</label>
                             <select 
-                                name='microcycle'
-                                value={formData.microcycle}
+                                name='micro_cycle'
+                                value={formData.micro_cycle}
                                 onChange={onValueChange}
                                 className={styles.form_input}>
 

@@ -3,7 +3,7 @@
 import styles from './DeleteMacroCycleModal.module.css'
 import React from 'react'
 
-const DeleteMacroCycleModal = ({cycle, onDeleteMacroConfirm,  onNoClick}) => {
+const DeleteMacroCycleModal = ({cycle, dispatch, onDeleteMacroConfirm,  onNoClick}) => {
         
   return (
     <div className={`${styles.delete_modal}`}>
@@ -17,7 +17,7 @@ const DeleteMacroCycleModal = ({cycle, onDeleteMacroConfirm,  onNoClick}) => {
                 YES
             </button>
             <button 
-                onClick={onNoClick}
+                onClick={() => dispatch({type: 'hideMacroDelete'})}
                 className={`${styles.cell} ${styles.cell_3}`}>
                 NO
             </button>
