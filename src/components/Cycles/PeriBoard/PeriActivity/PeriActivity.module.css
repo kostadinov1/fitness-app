@@ -17,10 +17,16 @@
 
 }
 
-.exercise_title {
+.exercise {
+    display: grid;
+    
     font-size: .8rem;
     font-weight: 600;
     padding: .4em;
     border: 1px solid var(--prime-1);
+
+}
+
+.exercise_title {
 
 }

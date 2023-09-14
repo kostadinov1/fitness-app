@@ -32,6 +32,21 @@ function Periodization() {
     const [showMesos, setShowMesos] = useState(true)
     const [showMicros, setShowMicros] = useState(true)
 
+    const [mircoClone, setMicroClone] = useState({
+        name: '',
+        activities: [
+            {
+                name: '',
+                exercises: [
+                    {
+                        name: ''
+                    }
+                ]
+            }
+        ],
+
+    })
+
     const reducer = (state, action) => {
         switch (action.type){
             case 'showMacroDelete':
@@ -81,6 +96,8 @@ function Periodization() {
         setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
         setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
     }, [user, selectedMacro, selectedMeso, selectedMicro])
+
+
     const onDeleteConfirm = (cycle) => {
         deleteMesoCycle(user, cycle)
             .then((res) => {
@@ -119,10 +136,15 @@ function Periodization() {
 
 
         <div className={`content_box ${styles.content_box}`}>
-            <div onClick={() => toggleMacros()} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+            <div onClick={toggleMacros} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 {selectedMacro?
-                    <div><DownOutlined /> MACRO CYCLE: {selectedMacro?.name} </div>
-                    :<div>MACRO CYCLES </div>}
+                    <div>
+                        <DownOutlined 
+                            style={showMacros ? null: {rotate: '180deg'}}
+                    /> MACRO CYCLE: {selectedMacro?.name} </div>
+                    :<div><DownOutlined 
+                            style={showMacros ? null : {rotate: '180deg'}}
+                    /> MACRO CYCLES </div>}
             </div>
             <div 
                 style={showMacros ? {display: 'none'} : {display: 'flex'}}
@@ -131,8 +153,9 @@ function Periodization() {
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((macro) =>
                         <div  key={macro.id} onClick={() => {
+                            setShowMesos(false)
                                 setSelectedMacro(macro)
-                                setShowMesos(false)
+                                setShowMacros(true)
                             }}>
                             <MacroCard 
                                 key={macro.id}
@@ -145,8 +168,16 @@ function Periodization() {
             </div>
             <div onClick={toggleMesos} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
             {selectedMeso?
-                    <div>MESO CYCLE: {selectedMeso?.name} </div>
-                    :<div>MESO CYCLES </div>}
+                    <div>
+                        <DownOutlined 
+                            style={showMacros ? null: {rotate: '180deg'}}
+                            /> MESO CYCLE: {selectedMeso?.name} 
+                    </div>
+                    :<div>
+                        <DownOutlined 
+                            style={showMacros ? null: {rotate: '180deg'}}
+                            /> MESO CYCLES 
+                    </div>}
             </div>
             <div 
                 style={showMesos ? {display: 'none'} : {display: 'flex'}}
@@ -172,11 +203,15 @@ function Periodization() {
             </div>
 
             <div onClick={toggleMicros} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                    <div>MICRO CYCLES </div>
+                    <div>
+                    <DownOutlined 
+                            style={showMacros ? null: {rotate: '180deg'}}
+                            /> MICRO CYCLES
+                     </div>
             </div>
             <div 
                 style={showMicros ? {display: 'none'} : {display: 'flex'}}
-                className={`${styles.meso_box} ${styles.cycle_box}`}> 
+                className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 {(currentMicroCyclesList) ?
                     currentMicroCyclesList
                     .sort((a, b) => a.start_date > b.start_date)
@@ -197,41 +232,45 @@ function Periodization() {
                     <div>MICRO (WEEK): {selectedMicro?.name} </div>
                     :<div>MICRO WEEK </div>}
             </div>
-            <div className={`${styles.micro_box} ${styles.cycle_box}`}> 
+            <div className={`${styles.micro_edit} ${styles.cycle_box}`}> 
                 {selectedMicro?.activities ?
                         <PeriWeek activities={selectedMicro?.activities}></PeriWeek>          
-                    : <PlaceholderCard  cycleType={'micro'}/>}
+                    : null}
+
+                <div className={`${styles.micro_edit_toolbar}`}> 
+
+                    <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
+
+                        <form className={`${styles.cycle_form}`}>
+
+                            <div className={`${styles.form_field} ${styles.form_field_1}`}>
+                                <label>{selectedMicro?.name}</label>
+                            </div>
+
+                            <div className={`${styles.form_field} ${styles.form_field_2}`}>
+
+                                <label className={`${styles.week_adjust_1}`}>Number of Weeks</label>
+                                <input className={`${styles.week_adjust_2}`} type='number'></input>
+                                <Slider className={`${styles.week_adjust_3}`}></Slider>
+                            </div>
+
+
+                            <div className={`${styles.form_field} ${styles.form_field_3}`}>
+                                <button className={`${styles.button}`}>EDIT</button>
+                            </div>
+                            <div className={`${styles.form_field} ${styles.form_field_4}`}>
+                                <button className={`${styles.button}`}> SAVE PERIODIZATION</button>
+                            </div>
+
+
+                            <div className={`${styles.form_field} ${styles.form_field_5} ${styles.cancel_button}`}>
+                                <button className={`${styles.button}`}>CANCEL</button>
+                            </div>
+                        </form> 
+                    </div> 
+                </div>
             </div>
-            <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
-                <div>CONFIGURE WEEKLY INCREMENTATION</div>
-            </div>
-            <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
-                <form className={`${styles.form}`}>
-                    <div className={`${styles.form_field}`}>
-                        <label>Micro Cycles Default Name</label>
-                        <input></input>
-                    </div>
-                    <div className={`${styles.form_field}`}>
-                        <label>Number of Weeks</label>
-                        <input type='number'></input>
-                        <Slider></Slider>
-                    </div>
-                    <div className={`${styles.form_field}`}>
-                        <label>Exercises SETS WEEKLY Incrementation</label>
-                        <Slider></Slider>                        
-                    </div>
-                    <div className={`${styles.form_field}`}>
-                        <label>Exercises REPS WEEKLY Incrementation</label>
-                        <Slider></Slider>                        
-                    </div>
-                    <div className={`${styles.form_field}`}>
-                    <button>CREATE Periodization</button>
-                    </div>
-                    <div className={`${styles.form_field}`}>
-                    <button>CANCEL</button>
-                    </div>
-                </form> 
-            </div>
+    
         </div>
     </div>
   )

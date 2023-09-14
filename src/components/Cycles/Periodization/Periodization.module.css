@@ -29,12 +29,77 @@
     gap: 1em;
     align-items: center;
     justify-content: center;
+    background-color: var(--dimmer);
 }
 .micro_box {
-    background-color: var(--dimmer);
-    min-height: 30vh;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
 
 }
+.micro_edit {
+
+}
+.cycle_form_box {
+}
+.cycle_form {
+    padding: .6em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    background-color: var(--dimmer-2);
+}
+.form_field {
+    /* padding: 1em; */
+    background-color: var(--dimmer-3);
+}
+
+.form_field_1 {
+    
+}
+.form_field_2 {
+    padding: .6em;
+    display: grid;
+    grid-template-areas: 
+        "one one one two"
+        "three three three three";
+}
+.week_adjust_1  {
+    grid-area: one;
+}
+.week_adjust_2  {
+    grid-area: two;
+    max-width: 4em;
+
+}
+.week_adjust_3  {
+    grid-area: three;
+    background-color: red;
+
+}
+
+.form_field_3 {
+    
+}
+.form_field_4 {
+    
+}
+.form_field_5 {
+    
+}
+
+.button {
+    background-color: var(--acc-1);
+}
+.cancel_button {
+    margin-left: auto;
+}
+
+
+
 .cycle_title {
     text-align: center;
     font-size: 1.4rem;
@@ -46,3 +111,4 @@
     background-color: var(--dimmer-2);
     /* height: 1em; */
 }
+
