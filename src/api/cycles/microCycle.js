@@ -3,6 +3,9 @@
 import baseURL from '../baseURL'
 
 const createMicroCycle  = async (user, microCycleProps) => {
+
+    console.log(microCycleProps, 'MICROCYCLE PROPS IN API CALL')
+
     const url = baseURL + '/periodization/create-micro-cycle/'
     try {
         let response = await fetch(url, {
@@ -15,13 +18,15 @@ const createMicroCycle  = async (user, microCycleProps) => {
             })
         let created = await response.json()        
         if (response.ok) {
+            console.log('Sucess in API CALL' , created)
             return created
         }
         else {
+            console.log('ERROR in API CALL' , created)
             throw created
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('Catch ERROR API Call', err)
     }
 }
 
@@ -44,7 +49,7 @@ const getMicroCycle  = async (user, cycleID) => {
             throw microCycle
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('Catch ERROR API Call', err.message)
     }
 }
 
@@ -68,7 +73,7 @@ const editMicroCycle  = async (user, microCycle, microCycleProps) => {
             throw edited
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('Catch ERROR API Call', err.message)
         // throw err
     }
 }
@@ -90,7 +95,7 @@ const deleteMicroCycle  = async (user, microCycle) => {
             throw deleted
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('Catch ERROR API Call', err.message)
         // throw err
     }
 }
@@ -113,7 +118,7 @@ const getAllMicroCycles = async (user) => {
             throw microCycles
         }
     } catch(err){
-        console.log('catch Err', err.message)
+        console.log('Catch ERROR API Call', err.message)
     }
 }
 

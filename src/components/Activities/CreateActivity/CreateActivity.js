@@ -28,7 +28,7 @@ function CreateActivity() {
             exercises: undefined,
             type: undefined,
             goal: undefined,
-            microcycle: undefined,
+            micro_cycle: undefined,
             user: user.user_id
     })
 
@@ -182,7 +182,7 @@ function CreateActivity() {
                         <div className={`${styles.form_num_input} ${styles.form_item_box_10} ${styles.item}`}>
                         <label>Start Date</label>
                         <DatePicker
-                            picker='year'
+                            // picker='year'
                             name='start_time'
 							onChange={onDateChangeHandler}
 							status="warning"

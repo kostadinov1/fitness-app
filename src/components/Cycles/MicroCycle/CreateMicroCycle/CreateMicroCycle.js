@@ -45,6 +45,7 @@ function CreateMicroCycle() {
         setFormData((state) => ({...state, meso_cycle: value}))
     }
 	const onStartDateChangeHandler = (date, dateString) => {
+        console.log(dateString, 'date change in create micro')
         setFormData((state) => ({...state, start_date: dateString}))
 	}
     const onEndDateChangeHandler = (date, dateString) => {
@@ -55,6 +56,7 @@ function CreateMicroCycle() {
 
         createMicroCycle(user, formData)
             .then((res) => {
+                console.log(formData, 'formData create micro')
                 navigate('/periodization')
             })
             .catch((res) => {})
