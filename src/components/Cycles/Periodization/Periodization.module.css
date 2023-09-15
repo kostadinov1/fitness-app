@@ -63,6 +63,7 @@
 .form_field_2 {
     padding: .6em;
     display: grid;
+    gap: .6em;
     grid-template-areas: 
         "one one one two"
         "three three three three";
@@ -73,13 +74,35 @@
 .week_adjust_2  {
     grid-area: two;
     max-width: 4em;
-
 }
 .week_adjust_3  {
     grid-area: three;
-    background-color: red;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--acc-1);
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    background: var(--acc-1);
+    cursor: pointer;
+  }
 
-}
 
 .form_field_3 {
     

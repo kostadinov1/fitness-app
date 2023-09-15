@@ -6,7 +6,6 @@ import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
 import MesoCard from '../../Cards/CycleCards/MesoCard/MesoCard'
 import PlaceholderCard from '../../Cards/PlaceholderCard/PlaceholderCard'
 import MacroCard from '../../Cards/CycleCards/MacroCard/MacroCard'
-import { Slider } from 'antd'
 import DeleteMesoCycleModal from '../../Modals/DeleteMesoCycleModal/DeleteMesoCycleModal'
 import DeleteMacroCycleModal from '../../Modals/DeleteMacroCycleModal/DeleteMacroCycleModal'
 import { deleteMesoCycle } from '../../../api/cycles/mesoCycle'
@@ -32,6 +31,7 @@ function Periodization() {
     const [showMesos, setShowMesos] = useState(true)
     const [showMicros, setShowMicros] = useState(true)
 
+    const [microCount, setMicroCount] = useState(12)
     const [mircoClone, setMicroClone] = useState({
         name: '',
         activities: [
@@ -133,8 +133,6 @@ function Periodization() {
                 dispatch={dispatch}
                 />
         : null}
-
-
         <div className={`content_box ${styles.content_box}`}>
             <div onClick={toggleMacros} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 {selectedMacro?
@@ -196,7 +194,6 @@ function Periodization() {
                                 meso={meso}
                                 onDelete={() => dispatch({type: 'showMesoDelete'})}
                                 />
-                                
                         </div>)    
                 : null}
                 <PlaceholderCard  cycleType={'meso'}/>
@@ -237,40 +234,44 @@ function Periodization() {
                         <PeriWeek activities={selectedMicro?.activities}></PeriWeek>          
                     : null}
 
+            {selectedMicro?.activities ?
                 <div className={`${styles.micro_edit_toolbar}`}> 
-
                     <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
-
                         <form className={`${styles.cycle_form}`}>
-
                             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                                 <label>{selectedMicro?.name}</label>
                             </div>
-
                             <div className={`${styles.form_field} ${styles.form_field_2}`}>
-
                                 <label className={`${styles.week_adjust_1}`}>Number of Weeks</label>
-                                <input className={`${styles.week_adjust_2}`} type='number'></input>
-                                <Slider className={`${styles.week_adjust_3}`}></Slider>
+                                <input 
+                                    value={microCount}
+                                    onChange={(e) => setMicroCount(e.target.value)}
+                                    className={`${styles.week_adjust_2}`}
+                                    type='number'/>
+                                <div className={`${styles.week_adjust_3}`}>
+                                    <input 
+                                        value={microCount} 
+                                        onChange={(e) => setMicroCount(e.target.value)}
+                                        type="range" 
+                                        min="1" 
+                                        max="52" 
+                                        className={`${styles.slider}`}/>
+                                </div>
                             </div>
-
-
                             <div className={`${styles.form_field} ${styles.form_field_3}`}>
                                 <button className={`${styles.button}`}>EDIT</button>
                             </div>
                             <div className={`${styles.form_field} ${styles.form_field_4}`}>
                                 <button className={`${styles.button}`}> SAVE PERIODIZATION</button>
                             </div>
-
-
                             <div className={`${styles.form_field} ${styles.form_field_5} ${styles.cancel_button}`}>
                                 <button className={`${styles.button}`}>CANCEL</button>
                             </div>
                         </form> 
                     </div> 
                 </div>
+            : null}
             </div>
-    
         </div>
     </div>
   )
