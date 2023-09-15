@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
-import { deleteMacroCycle, getAllMacroCycles } from '../../../api/cycles/macroCycle'
+import { createMacroCycle, deleteMacroCycle, getAllMacroCycles } from '../../../api/cycles/macroCycle'
 import { UserContext } from '../../../contexts/UserContext'
 import styles from './Periodization.module.css'
 import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
@@ -11,8 +11,11 @@ import DeleteMacroCycleModal from '../../Modals/DeleteMacroCycleModal/DeleteMacr
 import { deleteMesoCycle } from '../../../api/cycles/mesoCycle'
 import MicroCard from '../../Cards/CycleCards/MicroCard/MicroCard'
 import { DownOutlined } from '@ant-design/icons'
+import { createExercise } from '../../../api/exercises'
+import { createActivity } from '../../../api/activities'
 
-// TODO Create Meso Periodization and by that visualize Nivo Chard
+
+// TODO Create Meso Periodization 
     // and by that visualize Nivo Chart for Progression and Tree for the Cycles
 
 
@@ -30,22 +33,8 @@ function Periodization() {
     const [showMacros, setShowMacros] = useState(false)
     const [showMesos, setShowMesos] = useState(true)
     const [showMicros, setShowMicros] = useState(true)
-
     const [microCount, setMicroCount] = useState(12)
-    const [mircoClone, setMicroClone] = useState({
-        name: '',
-        activities: [
-            {
-                name: '',
-                exercises: [
-                    {
-                        name: ''
-                    }
-                ]
-            }
-        ],
 
-    })
 
     const reducer = (state, action) => {
         switch (action.type){
@@ -116,6 +105,63 @@ function Periodization() {
             .catch((res) => {})
         setShowDeleteMacroModal(false)
         }
+
+    const cloneMicro = (micro, weekCount,) => {
+        if (micro) {
+            for (let weekNum = 0; weekNum < weekCount; weekNum++) {
+                const microData = {
+                    name: `${micro.name} ${weekNum}`,
+                    // TODO get dates
+                    start_date: undefined,
+                    end_date: undefined,
+                    user: user.user_id
+                }
+                // createMacroCycle(user, microData)
+                //     .then((res) => {console.log('SUCCESS IN CLONE MICRO', res)})
+                //     .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})
+
+                const currentActivities = micro?.activities
+                for (let activity = 0; activity < currentActivities.length; activity++) {
+                    const currActivity = currentActivities[activity];
+                    cloneActivity(currActivity)
+
+                    currActivity?.exercises?.forEach((exercise) => {
+                            cloneExercise(user, exercise, currActivity.id, 1, 2, 1)
+                        });
+                }
+            }
+        } else {
+            return console.log('error in clone micro- NO MICRO YET')
+        }
+    }
+    const cloneActivity = (activity) => {
+        console.log(activity, 'activity in cloneActivity')
+        const activityData = {
+            name: activity.name,
+            microcycle: activity.micro_cycle,
+            user: user.user_id
+        }
+        console.log(activityData, 'activityData')
+        // createActivity(user, activityData)
+        //     .then((res) => {console.log('SUCCESS IN CLONE ACTIVITY', res)})
+        //     .catch((res) => {console.log('ERROR IN CLONE ACTIVITY', res)})
+    }
+
+    const cloneExercise = (exercise, activityID, setsIncrease, repsIncrease, weightIncrease) => {
+        const exerciseData = {
+            name: exercise.name,
+            reps: exercise.reps,
+            sets: exercise.sets,
+            weights_in_kg: exercise.weights_in_kg,
+            activity: activityID,
+            user: user.user_id
+        }
+        // createExercise(user, exerciseData)
+        //     .then((res) => {console.log('SUCCESS IN CLONE EXERCISE', res)})
+        //     .catch((res) => {console.log('ERROR IN CLONE EXERCISE', res)})
+        console.log(exerciseData, 'exercise data')
+    }
+
 
   return (
     <div className={`${styles.periodization}`}>
@@ -237,7 +283,9 @@ function Periodization() {
             {selectedMicro?.activities ?
                 <div className={`${styles.micro_edit_toolbar}`}> 
                     <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
-                        <form className={`${styles.cycle_form}`}>
+                        <form 
+                            onSubmit={() => cloneMicro(selectedMicro, microCount)}
+                            className={`${styles.cycle_form}`}>
                             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                                 <label>{selectedMicro?.name}</label>
                             </div>
@@ -259,13 +307,18 @@ function Periodization() {
                                 </div>
                             </div>
                             <div className={`${styles.form_field} ${styles.form_field_3}`}>
-                                <button className={`${styles.button}`}>EDIT</button>
+                                <button 
+                                onClick={(e) => e.preventDefault()}
+                                className={`${styles.button}`}>EDIT</button>
                             </div>
                             <div className={`${styles.form_field} ${styles.form_field_4}`}>
-                                <button className={`${styles.button}`}> SAVE PERIODIZATION</button>
+                                <button 
+                                className={`${styles.button}`}> SAVE PERIODIZATION</button>
                             </div>
                             <div className={`${styles.form_field} ${styles.form_field_5} ${styles.cancel_button}`}>
-                                <button className={`${styles.button}`}>CANCEL</button>
+                                <button 
+                                onClick={(e) => e.preventDefault()}
+                                className={`${styles.button}`}>CANCEL</button>
                             </div>
                         </form> 
                     </div> 

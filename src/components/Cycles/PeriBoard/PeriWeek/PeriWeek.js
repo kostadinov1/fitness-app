@@ -45,7 +45,7 @@ function PeriWeek({activities}) {
             return undefined
         }
     }
-    console.log('START', activities, 'activities in PERIWEEK')
+    // console.log('START', activities, 'activities in PERIWEEK')
 
   return (
     <div className={`${styles.periweek}`}>
