@@ -4,7 +4,6 @@ import baseURL from '../baseURL'
 
 const createMicroCycle  = async (user, microCycleProps) => {
 
-    console.log(microCycleProps, 'MICROCYCLE PROPS IN API CALL')
 
     const url = baseURL + '/periodization/create-micro-cycle/'
     try {
@@ -18,11 +17,9 @@ const createMicroCycle  = async (user, microCycleProps) => {
             })
         let created = await response.json()        
         if (response.ok) {
-            console.log('Sucess in API CALL' , created)
             return created
         }
         else {
-            console.log('ERROR in API CALL' , created)
             throw created
         }
     } catch(err){

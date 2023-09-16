@@ -104,6 +104,7 @@ function Periodization() {
         setShowDeleteMacroModal(false)
         }
 
+        // Increment Any Django Object with the given Days(increment)
     const incrementDate = (djangoDate, increment) => {
         // To increment correctly and more reliably
         // Transform django format date to js Date object
@@ -121,16 +122,25 @@ function Periodization() {
         return resultDate
     } 
 
+    // Handle Submit Meso Periodization
+    const onFormSubmitHandler = (e) => {
+        e.preventDefault()
+        cloneMicro(selectedMicro, microCount)
+    }
+
+    // Clone given Micro by given  weekCount times
     const cloneMicro = (micro, weekCount) => {
-        if (micro) {
-            // Create Meso Cycle Periodization with selected Micro for the given Week Count
-            for (let weekNum = 0; weekNum < weekCount; weekNum++) {
+        let currMicro = {...micro}
+
+        for (let weekNum = 1; weekNum <= weekCount; weekNum++) {
+                console.log(weekCount, weekNum, 'WEEK COUNT, WEEKNUM')
                 const WEEK = 7
-                const currentActivities = micro?.activities
-                const startDate = incrementDate(micro.start_date, WEEK)
-                const endDate = incrementDate(micro.end_date, WEEK)
+                const currentActivities = currMicro?.activities
+                const startDate = incrementDate(currMicro.start_date, WEEK)
+                const endDate = incrementDate(currMicro.end_date, WEEK)
+
                 const microData = {
-                    name: `${micro.name} ${weekNum + 1}`,
+                    name:`WEEK ${weekNum + 1}`,
                     start_date: startDate,
                     end_date: endDate,
                     description: undefined, 
@@ -138,10 +148,13 @@ function Periodization() {
                     meso_cycle : selectedMeso.id,
                     user: user.user_id
                 }
+                currMicro = {...microData}
                 createMicroCycle(user, microData)
-                    .then((res) => {console.log('SUCCESS IN CLONE MICRO', res)})
+                    .then((res) => {
+                        setSelectedMicro((state) => ({...state}))
+                        console.log('SUCCESS IN CLONE MICRO', res)})
                     .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})
-                for (let activity = 0; activity < currentActivities.length; activity++) {
+                for (let activity = 0; activity < currentActivities?.length; activity++) {
                     // Create the Activties for each Microcycle
                     const currActivity = currentActivities[activity];
                     cloneActivity(currActivity)
@@ -152,8 +165,7 @@ function Periodization() {
                         });
                 }
             }
-        } else { return console.log('ERROR IN CLONE MICRO')}
-    }
+        }
     const cloneActivity = (activity) => {
         const activityData = {
             name: activity.name,
@@ -290,8 +302,8 @@ function Periodization() {
             </div>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                     {selectedMicro?
-                    <div>MICRO (WEEK): {selectedMicro?.name} </div>
-                    :<div>MICRO WEEK </div>}
+                    <div>Current Week: {selectedMicro?.name} </div>
+                    :<div>Current Week </div>}
             </div>
             <div className={`${styles.micro_edit} ${styles.cycle_box}`}> 
                 {selectedMicro?.activities ?
@@ -302,7 +314,7 @@ function Periodization() {
                 <div className={`${styles.micro_edit_toolbar}`}> 
                     <div className={`${styles.cycle_form_box} ${styles.cycle_box}`}> 
                         <form 
-                            onSubmit={() => cloneMicro(selectedMicro, microCount)}
+                            onSubmit={onFormSubmitHandler}
                             className={`${styles.cycle_form}`}>
                             <div className={`${styles.form_field} ${styles.form_field_1}`}>
                                 <label>{selectedMicro?.name}</label>

@@ -8,6 +8,7 @@ import { getAllGoals } from '../../../../api/goals'
 import { useNavigate } from 'react-router-dom'
 import { createMesoCycle } from '../../../../api/cycles/mesoCycle'
 import { getAllMacroCycles } from '../../../../api/cycles/macroCycle'
+import { createMicroCycle } from '../../../../api/cycles/microCycle'
 
 function CreateMesoCycle() {
     
@@ -24,6 +25,8 @@ function CreateMesoCycle() {
         macro_cycle : undefined,
         user: user.user_id
     })
+
+    const [microcycleData, setMicrocycleData] = useState({})
 
     useEffect(() => {
         getAllGoals(user)
@@ -49,13 +52,45 @@ function CreateMesoCycle() {
     const onEndDateChangeHandler = (date, dateString) => {
         setFormData((state) => ({...state, end_date: dateString}))
 	}
+    const incrementDate = (djangoDate, increment) => {
+        // To increment correctly and more reliably
+        // Transform django format date to js Date object
+        const djToJsDate = new Date(djangoDate)
+        // Create new Date and Increment it in Miliseconds
+        const jsDate = new Date()
+        // Increment date with 7 days
+        jsDate.setTime(djToJsDate.getTime() + increment * 86400000);
+        // Transform JS Date back to Django format
+        let day = jsDate.getDate()
+        let month = jsDate.getMonth() + 1;
+        let year = jsDate.getFullYear();
+        const resultDate = `${year}-${month}-${day}`
+        console.log(resultDate, 'RESULT DATE IN INCREMENT DATE in meso')
+        return resultDate
+    } 
+
+    // Handle Create Mesocycle Form Submit
+    // Always Create a Microcyle on Mesocycle Initialization
     const onFormSubmitHandler = (e) => {
         e.preventDefault()
 
         createMesoCycle(user, formData)
             .then((res) => {
-                navigate('/periodization')
-            })
+                const endDate = incrementDate(res.start_date, 7)
+                let micro = {
+                    name: 'Week 1',
+                    start_date: res.start_date,
+                    end_date: endDate,
+                    meso_cycle : res.id,
+                    user: user.user_id }
+
+                createMicroCycle(user, micro)
+                    .then((res) => {
+                        navigate('/periodization')
+                    })
+                    .catch((res) => {})
+                        navigate('/periodization')
+                    })
             .catch((res) => {})
     }
 
