@@ -15,7 +15,7 @@ import { createExercise } from '../../../api/exercises'
 import { createActivity } from '../../../api/activities'
 import { useTransformDate } from '../../../hooks/useTransformDate'
 import { createMicroCycle } from '../../../api/cycles/microCycle'
-import { createMesoPeriodization } from '../../../utils/createMesoPeriodization.js'
+// import { createMesoPeriodization } from '../../../utils/createMesoPeriodization.js'
 
 // TODO Create Meso Periodization 
     // and by that visualize Nivo Chart for Progression and Tree for the Cycles
@@ -23,11 +23,9 @@ function Periodization() {
     const { user } = useContext(UserContext) 
     // Objects
     const [macroCycles, setMacroCycles] = useState([])
-
     const [selectedMacro, setSelectedMacro] = useState()
     const [selectedMeso, setSelectedMeso] = useState()
     const [selectedMicro, setSelectedMicro] = useState()
-
     const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
     const [currentMicroCyclesList, setCurrentMicroCyclesList] = useState([])
     // Show / Hide
@@ -37,7 +35,6 @@ function Periodization() {
     const [showMacros, setShowMacros] = useState(false)
     const [showMesos, setShowMesos] = useState(true)
     const [showMicros, setShowMicros] = useState(true)
-
     // Number of weeks to be created in Mesocycle 
     const [state, dispatch] = useReducer(reducer, false)
     const [toggleState, toggleDispatch] = useReducer(toggleReducer, false)
@@ -116,6 +113,82 @@ function Periodization() {
         createMesoPeriodization(user, selectedMicro, selectedMeso, microCount)
     }
 
+  // CLONE MICROS FACTORY - Clone Microcycle by given Increase argument
+    function createMesoPeriodization(micro, weekCount) {
+        let currMicro = {...micro}
+        for (let weekNum = 1; weekNum <= weekCount - 1; weekNum++) {
+                const currentActivities = currMicro?.activities
+                // Generate new Microcycle Object
+                const microData = {
+                    name:`WEEK ${weekNum + 1}`,
+                    start_date: incrementDate(currMicro.start_date, 7), // Increment by a Week
+                    end_date: incrementDate(currMicro.end_date, 7),// Increment by a Week
+                    meso_cycle : selectedMeso.id,
+                    user: user.user_id
+                }
+                // Assign custom Values to Current Microcycle(Week) for next Iteration
+                currMicro = {...microData}
+                // Make a Create Request for the current cycle
+                createMicroCycle(user, microData)
+                    .then((res) => {
+                        // Set State
+                        setSelectedMeso((state) =>
+                         ({...state, 
+                            micro_cycles: [...state.micro_cycles, microData ]                         
+                        }))})
+                    .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})
+                // Create the Activties for each Microcycle
+                for (let activity = 0; activity < currentActivities?.length; activity++) {
+                    const currActivity = currentActivities[activity];
+                    cloneActivity(currActivity)
+                    // Create the Exercises for each Activity
+                    currActivity?.exercises?.forEach((exercise) => {
+                            cloneExercise( exercise, currActivity.id, 1, 2, 1)
+                        });
+                }
+            }
+        function cloneActivity(activity) {
+            const activityData = {
+                name: activity.name,
+                micro_cycle: activity.micro_cycle,
+                user: user.user_id
+            }
+            // console.log(activityData, 'ACTIVITY DATA')
+            // createActivity(user, activityData)
+            //     .then((res) => {console.log('SUCCESS IN CLONE ACTIVITY', res)})
+            //     .catch((res) => {console.log('ERROR IN CLONE ACTIVITY', res)})
+        }
+        function cloneExercise(exercise, activityID, setsIncrease, repsIncrease, weightIncrease) {
+            const exerciseData = {
+                name: exercise.name,
+                reps: exercise.reps,
+                sets: exercise.sets,
+                weights_in_kg: exercise.weights_in_kg,
+                activity: activityID,
+                user: user.user_id
+            }
+            // console.log(exerciseData, 'EXERCISE DATA')
+            // createExercise(user, exerciseData)
+            //     .then((res) => {console.log('SUCCESS IN CLONE EXERCISE', res)})
+            //     .catch((res) => {console.log('ERROR IN CLONE EXERCISE', res)})
+        }
+        function incrementDate(djangoDate, increment) {
+            // To increment correctly and more reliably
+            // Transform django format date to js Date object
+            const djToJsDate = new Date(djangoDate)
+            // Create new Date and Increment it in Miliseconds
+            const jsDate = new Date()
+            // Increment date with 7 days
+            jsDate.setTime(djToJsDate.getTime() + increment * 86400000);
+            // Transform JS Date back to Django format
+            let day = jsDate.getDate()
+            let month = jsDate.getMonth() + 1;
+            let year = jsDate.getFullYear();
+            const resultDate = `${year}-${month}-${day}`
+            // console.log(resultDate, 'RESULT DATE IN INCREMENT DATE')
+            return resultDate
+        } 
+            }
 // <<<<<===========================================================================>>>>> //
 
   return (
