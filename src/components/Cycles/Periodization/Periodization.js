@@ -15,27 +15,45 @@ import { createExercise } from '../../../api/exercises'
 import { createActivity } from '../../../api/activities'
 import { useTransformDate } from '../../../hooks/useTransformDate'
 import { createMicroCycle } from '../../../api/cycles/microCycle'
+import { createMesoPeriodization } from '../../../utils/createMesoPeriodization.js'
 
 // TODO Create Meso Periodization 
     // and by that visualize Nivo Chart for Progression and Tree for the Cycles
 function Periodization() {
     const { user } = useContext(UserContext) 
+    // Objects
     const [macroCycles, setMacroCycles] = useState([])
+
     const [selectedMacro, setSelectedMacro] = useState()
     const [selectedMeso, setSelectedMeso] = useState()
     const [selectedMicro, setSelectedMicro] = useState()
+
+    const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
+    const [currentMicroCyclesList, setCurrentMicroCyclesList] = useState([])
+    // Show / Hide
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showDeleteMicroModal, setShowDeleteMicroModal] = useState(false)
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
-    const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
-    const [currentMicroCyclesList, setCurrentMicroCyclesList] = useState([])
     const [showMacros, setShowMacros] = useState(false)
     const [showMesos, setShowMesos] = useState(true)
     const [showMicros, setShowMicros] = useState(true)
+
+    // Number of weeks to be created in Mesocycle 
+    const [state, dispatch] = useReducer(reducer, false)
+    const [toggleState, toggleDispatch] = useReducer(toggleReducer, false)
     const [microCount, setMicroCount] = useState(4)
 
+    // GET AND SET MAIN STATE
+    useEffect(() => {
+        getAllMacroCycles(user)
+            .then((res) => {setMacroCycles(res)})
+            .catch((res) => {})
+        setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
+        setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
+    }, [user, selectedMacro, selectedMeso, selectedMicro])
 
-    const reducer = (state, action) => {
+    // Reducer to Show / Hide Modals
+    function reducer(state, action) {
         switch (action.type){
             case 'showMacroDelete':
                 return setShowDeleteMacroModal(true)
@@ -53,48 +71,36 @@ function Periodization() {
                 return state
         }
     }
-    const [state, dispatch] = useReducer(reducer, false)
-    const toggleMacros = () => {
-        if (showMacros === true) {
-            setShowMacros(false) 
-        } else if (showMacros === false) {
-            setShowMacros(true)
-        } 
-    }
-    const toggleMesos = () => {
-        if (showMesos === true) {
-            setShowMesos(false) 
-        } else if (showMesos === false) {
-            setShowMesos(true)
-        } 
-    }
-    const toggleMicros = () => {
-        if (showMicros === true) {
-            setShowMicros(false) 
-        } else if (showMicros === false) {
-            setShowMicros(true)
+    // Reducer to Show / Hide Cycle Sections    
+    function toggleReducer(state, action) {
+        switch(action.type) {
+            case 'toggle-macro':
+                return showMacros ? setShowMacros(false) : setShowMacros(true);
+            case 'toggle-meso':
+                return showMesos ? setShowMesos(false) : setShowMesos(true);
+            case 'toggle-micro':
+                return showMicros ? setShowMicros(false) : setShowMicros(true);                
+            default:
+                return state
         }
     }
-
-    useEffect(() => {
-        getAllMacroCycles(user)
-            .then((res) => {setMacroCycles(res)})
-            .catch((res) => {})
-
-        setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
-        setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
-    }, [user, selectedMacro, selectedMeso, selectedMicro])
-
-    const onDeleteConfirm = (cycle) => {
+    // On Delete Mesocycle
+    function onDeleteConfirm(cycle) {
         deleteMesoCycle(user, cycle)
             .then((res) => {
-                setCurrentMesoCyclesList((state) => 
-                    state.filter((meso) => meso.id !== cycle.id))
+                setSelectedMacro((state) => 
+                    ({...state,
+                        meso_cycles: state.meso_cycles.filter((meso) =>  meso.id !== cycle.id)
+                    }))              
+                setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
+                setSelectedMeso()
+                setShowMicros(true)
             })
             .catch((res) => {})
         setShowDeleteModal(false)
         }
-    const onDeleteMacroConfirm = (cycle) => {
+    // On Delete Macrocycle
+    function onDeleteMacroConfirm(cycle) {
         deleteMacroCycle(user, cycle)
             .then((res) => {
               setMacroCycles((state) => 
@@ -103,95 +109,14 @@ function Periodization() {
             .catch((res) => {})
         setShowDeleteMacroModal(false)
         }
-
-        // Increment Any Django Object with the given Days(increment)
-    const incrementDate = (djangoDate, increment) => {
-        // To increment correctly and more reliably
-        // Transform django format date to js Date object
-        const djToJsDate = new Date(djangoDate)
-        // Create new Date and Increment it in Miliseconds
-        const jsDate = new Date()
-        // Increment date with 7 days
-        jsDate.setTime(djToJsDate.getTime() + increment * 86400000);
-        // Transform JS Date back to Django format
-        let day = jsDate.getDate()
-        let month = jsDate.getMonth() + 1;
-        let year = jsDate.getFullYear();
-        const resultDate = `${year}-${month}-${day}`
-        // console.log(resultDate, 'RESULT DATE IN INCREMENT DATE')
-        return resultDate
-    } 
-
     // Handle Submit Meso Periodization
-    const onFormSubmitHandler = (e) => {
+    function onFormSubmitHandler(e) {
         e.preventDefault()
-        cloneMicro(selectedMicro, microCount)
+        // Imported Function
+        createMesoPeriodization(user, selectedMicro, selectedMeso, microCount)
     }
 
-    // Clone given Micro by given  weekCount times
-    const cloneMicro = (micro, weekCount) => {
-        let currMicro = {...micro}
-
-        for (let weekNum = 1; weekNum <= weekCount; weekNum++) {
-                console.log(weekCount, weekNum, 'WEEK COUNT, WEEKNUM')
-                const WEEK = 7
-                const currentActivities = currMicro?.activities
-                const startDate = incrementDate(currMicro.start_date, WEEK)
-                const endDate = incrementDate(currMicro.end_date, WEEK)
-
-                const microData = {
-                    name:`WEEK ${weekNum + 1}`,
-                    start_date: startDate,
-                    end_date: endDate,
-                    description: undefined, 
-                    goals: undefined,
-                    meso_cycle : selectedMeso.id,
-                    user: user.user_id
-                }
-                currMicro = {...microData}
-                createMicroCycle(user, microData)
-                    .then((res) => {
-                        setSelectedMicro((state) => ({...state}))
-                        console.log('SUCCESS IN CLONE MICRO', res)})
-                    .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})
-                for (let activity = 0; activity < currentActivities?.length; activity++) {
-                    // Create the Activties for each Microcycle
-                    const currActivity = currentActivities[activity];
-                    cloneActivity(currActivity)
-
-                    // Create the Exercises for each Activity
-                    currActivity?.exercises?.forEach((exercise) => {
-                            cloneExercise( exercise, currActivity.id, 1, 2, 1)
-                        });
-                }
-            }
-        }
-    const cloneActivity = (activity) => {
-        const activityData = {
-            name: activity.name,
-            micro_cycle: activity.micro_cycle,
-            user: user.user_id
-        }
-        // console.log(activityData, 'ACTIVITY DATA')
-        // createActivity(user, activityData)
-        //     .then((res) => {console.log('SUCCESS IN CLONE ACTIVITY', res)})
-        //     .catch((res) => {console.log('ERROR IN CLONE ACTIVITY', res)})
-    }
-    const cloneExercise = (exercise, activityID, setsIncrease, repsIncrease, weightIncrease) => {
-        const exerciseData = {
-            name: exercise.name,
-            reps: exercise.reps,
-            sets: exercise.sets,
-            weights_in_kg: exercise.weights_in_kg,
-            activity: activityID,
-            user: user.user_id
-        }
-        // console.log(exerciseData, 'EXERCISE DATA')
-        // createExercise(user, exerciseData)
-        //     .then((res) => {console.log('SUCCESS IN CLONE EXERCISE', res)})
-        //     .catch((res) => {console.log('ERROR IN CLONE EXERCISE', res)})
-    }
-
+// <<<<<===========================================================================>>>>> //
 
   return (
     <div className={`${styles.periodization}`}>
@@ -210,7 +135,7 @@ function Periodization() {
                 />
         : null}
         <div className={`content_box ${styles.content_box}`}>
-            <div onClick={toggleMacros} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+            <div onClick={() => toggleDispatch({type: 'toggle-macro'})} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                 {selectedMacro?
                     <div>
                         <DownOutlined 
@@ -220,8 +145,7 @@ function Periodization() {
                             style={showMacros ? null : {rotate: '180deg'}}
                     /> MACRO CYCLES </div>}
             </div>
-            <div 
-                style={showMacros ? {display: 'none'} : {display: 'flex'}}
+            <div style={showMacros ? {display: 'none'} : {display: 'flex'}}
                  className={`${styles.macro_box} ${styles.cycle_box}`}> 
                 {macroCycles ? macroCycles
                     .sort((a, b) => a.start_date > b.start_date)
@@ -229,7 +153,7 @@ function Periodization() {
                         <div  key={macro.id} onClick={() => {
                             setShowMesos(false)
                                 setSelectedMacro(macro)
-                                setShowMacros(true)
+                                // setShowMacros(true)
                             }}>
                             <MacroCard 
                                 key={macro.id}
@@ -240,7 +164,7 @@ function Periodization() {
                 : null}
                 <PlaceholderCard  cycleType={'macro'}/>
             </div>
-            <div onClick={toggleMesos} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+            <div onClick={() => toggleDispatch({type: 'toggle-meso'})} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
             {selectedMeso?
                     <div>
                         <DownOutlined 
@@ -253,8 +177,7 @@ function Periodization() {
                             /> MESO CYCLES 
                     </div>}
             </div>
-            <div 
-                style={showMesos ? {display: 'none'} : {display: 'flex'}}
+            <div style={showMesos ? {display: 'none'} : {display: 'flex'}}
                 className={`${styles.meso_box} ${styles.cycle_box}`}> 
                 {(currentMesoCyclesList) ?
                     currentMesoCyclesList
@@ -264,7 +187,8 @@ function Periodization() {
                         key={meso.id} onClick={() => {
                                 setSelectedMeso(meso)
                                 setShowMicros(false)
-                                }}>
+                                }}
+                                >
                             <MesoCard 
                                 key={meso.id}
                                 meso={meso}
@@ -274,8 +198,7 @@ function Periodization() {
                 : null}
                 <PlaceholderCard  cycleType={'meso'}/>
             </div>
-
-            <div onClick={toggleMicros} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
+            <div onClick={() => toggleDispatch({type: 'toggle-micro'})} className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                     <div>
                     <DownOutlined 
                             style={showMacros ? null: {rotate: '180deg'}}
@@ -289,8 +212,7 @@ function Periodization() {
                     currentMicroCyclesList
                     .sort((a, b) => a.start_date > b.start_date)
                     .map((micro) => 
-                        <div
-                        key={micro.id} onClick={() => setSelectedMicro(micro)}>
+                        <div key={micro.id} onClick={() => setSelectedMicro(micro)}>
                             <MicroCard
                                 key={micro.id}
                                 cycle={micro}

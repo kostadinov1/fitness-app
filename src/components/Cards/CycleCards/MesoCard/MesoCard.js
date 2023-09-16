@@ -18,14 +18,14 @@ const MesoCard = ({meso, onDelete}) => {
                 <span>dd -</span>
                 <span> mm</span>
             </div> 
-            {startDate.slice(0, 5)}
+            {startDate?.slice(0, 5)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_3}`}> 
         <div className={`${styles.mmdd_box}`}>
                 <span>dd -</span>
                 <span> mm</span>
             </div> 
-            {endDate.slice(0, 5)}
+            {endDate?.slice(0, 5)}
         </div>
         <div className={`${styles.cycle} ${styles.cycle_4}`}> 
           <button className={`${styles.button}`}>

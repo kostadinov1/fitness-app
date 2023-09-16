@@ -14,16 +14,15 @@ function MicroCard({cycle, onDelete}) {
                 {cycle.name}
             </div>
             <div className={`${styles.cycle} ${styles.cycle_2}`}> 
-                <div>start</div>
-                {startDate.slice(0, 5)}
+                <div></div>
+                {startDate?.slice(0, 5)}
                 <div className={`${styles.mmdd_box}`}>
                     <span>dd -</span>
                     <span> mm</span>
                 </div> 
             </div>
             <div className={`${styles.cycle} ${styles.cycle_3}`}> 
-            <div>end</div>
-                {endDate.slice(0, 5)}
+                {endDate?.slice(0, 5)}
                 <div className={`${styles.mmdd_box}`}>
                     <span>dd -</span>
                     <span> mm</span>
