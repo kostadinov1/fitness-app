@@ -12,18 +12,20 @@
     text-align: center;
     font-weight: bold;
     font-size: 1.2rem;
+    color: var(--text);
     letter-spacing: 1.2;
-    background-color: var(--dimmer-2);
+    background-color: var(--sec-3);
 
 }
 
-.exercise {
+.exercises {
+    
     display: grid;
     
     font-size: .8rem;
     font-weight: 600;
     padding: .4em;
-    border: 1px solid var(--prime-1);
+    /* border: 1px solid var(--prime-1); */
 
 }
 

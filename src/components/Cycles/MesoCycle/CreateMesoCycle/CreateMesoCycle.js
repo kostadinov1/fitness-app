@@ -40,17 +40,19 @@ function CreateMesoCycle() {
     const onValueChange = (e, data) => {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
-    const onGoalSelectChange = (value, label) => {
-        setFormData((state) => ({...state, goals: value}))
-    }
     const onMacroSelectChange = (value, label) => {
         setFormData((state) => ({...state, macro_cycle: value}))
     }
+    // TODO FOR THE PERIODIZATION ALGO TO WORK MESO MUST START ON MONDAY !!! start_date='MONDAY'
 	const onStartDateChangeHandler = (date, dateString) => {
+        // TODO EXEPTION HANDLING IF NOT MONDAY!!!!!
         setFormData((state) => ({...state, start_date: dateString}))
 	}
+   // TODO FOR THE PERIODIZATION ALGO TO WORK MESO MUST END SUNDAY !!!
     const onEndDateChangeHandler = (date, dateString) => {
         setFormData((state) => ({...state, end_date: dateString}))
+        // TODO EXEPTION HANDLING IF NOT SUNDAY!!!!!
+
 	}
     const incrementDate = (djangoDate, increment) => {
         // To increment correctly and more reliably

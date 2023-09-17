@@ -32,12 +32,6 @@ function CreateMacroCycle() {
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     }
      
-    // TODO are you setting new value or spreading the goal values?
-    const onSelectChange = (value, label) => {
-        console.log(value, label, 'e data');
-        setFormData((state) => ({...state, goals: value}))
-
-    }
 	const onStartDateChangeHandler = (date, dateString) => {
         setFormData((state) => ({...state, start_date: dateString}))
 	}

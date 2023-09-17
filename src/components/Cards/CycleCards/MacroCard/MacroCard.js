@@ -6,10 +6,9 @@ import { DeleteFilled, EditOutlined } from '@ant-design/icons'
 import { useTransformDate } from '../../../../hooks/useTransformDate'
 
 const MacroCard = ({macro, onDelete}) => {
-    //TODO fix path to Edit Cycle
-
     const startDate = useTransformDate(macro.start_date)
     const endDate = useTransformDate(macro.end_date)
+    
   return (
     <div  className={`${styles.cycle_card}`}>
         <div className={`${styles.cycle} ${styles.cycle_1}`}> 

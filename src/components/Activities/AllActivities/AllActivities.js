@@ -55,6 +55,9 @@ function AllActivities() {
                                     onDeleteConfirm={onDeleteConfirm}
                                     /> : null}
             <div className={`${styles.content}`}>
+
+            {/* TODO Add Toolbar to filter Activities by given param */}
+            
                 {activites ? activites.map((activity) => <ActivityCard
                                                                 key={activity.id}
                                                                 activity={activity}

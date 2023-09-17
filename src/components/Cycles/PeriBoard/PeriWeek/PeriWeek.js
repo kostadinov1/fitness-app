@@ -14,17 +14,22 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
     const [fridayData, setFridayData] = useState(undefined)
     const [saturdayData, setSaturdayData] = useState(undefined)
     const [sundayData, setSundayData] = useState(undefined)
-    const [ showActivityCreateModal,setShowCreateActivityModal] = useState(false)
-    const [ showExerciceCreateModal,setShowCreateExerciseModal] = useState(false)
+    const [ showCreateActivityModal,setShowCreateActivityModal] = useState(false)
+
+    const [ showEditActivityModal,setShowEditActivityModal] = useState(false)
+
+    const [ showCreateExerciseModal,setShowCreateExerciseModal] = useState(false)
     const [selectedDay, setSelectdDay] = useState(1)// monday
     const [state, dispatch] = useReducer(reducer, false)
         // Reducer to Show / Hide Modals
     function reducer(state, action) {
         switch (action.type){
             case 'activity':
-                return showActivityCreateModal ? setShowCreateActivityModal(false) : setShowCreateActivityModal(true)
+                return showCreateActivityModal ? setShowCreateActivityModal(false) : setShowCreateActivityModal(true)
             case 'exercise':
-                return showExerciceCreateModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
+                return showCreateExerciseModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
+            case 'tollgeEditActivityModal':
+                return showEditActivityModal ? setShowEditActivityModal(false) : setShowCreateActivityModal(true)
             default:
                 return state
         }
@@ -39,14 +44,16 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
         setSaturdayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 6))
         setSundayData(activities?.filter((acty) => getWeekDay(acty['start_time']) === 0))
     }, [activities])
-    const getWeekDay = (activityDate) => {  
+
+    function getWeekDay(activityDate) {  
         const activityDayNum = new Date(activityDate)
         return activityDayNum?.getDay()
     }
 
+
   return (
     <div className={`${styles.periweek}`}>
-            {showActivityCreateModal ? 
+            {showCreateActivityModal ? 
                 <CreateActivityModal 
                     setShowCreateActivityModal={setShowCreateActivityModal} 
                     selectedMicro={selectedMicro}
@@ -54,11 +61,9 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                     selectedDay={selectedDay}
                     />
             : null}
-        <div onClick={() => setSelectdDay(1)}
-            className={`${styles.cell} ${styles.cell_1}`}>
-            <div className={`${styles.week_day}`}>
-                MONADAY
-            </div>
+
+        <div onClick={() => setSelectdDay(1)} className={`${styles.cell} ${styles.cell_1}`}>
+            <div className={`${styles.week_day}`}>MONADAY</div>
             <div className={`${styles.grid_day}`}>
 
                 {mondayData?.length > 0 ? 
@@ -72,12 +77,10 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
         </div>
-        <div className={`${styles.cell} ${styles.cell_2}`}>
-            <div className={`${styles.week_day}`}>
-                TUESDAY
-            </div>
-            <div onClick={() => setSelectdDay(2)}
-                className={`${styles.grid_day}`}>
+
+        <div  onClick={() => setSelectdDay(2)} className={`${styles.cell} ${styles.cell_2}`}>
+            <div className={`${styles.week_day}`}>TUESDAY</div>
+            <div className={`${styles.grid_day}`}>
             {tuesdayData?.length > 0 ? 
                 tuesdayData.map((activity) =>                    
                     <PeriActivity 
@@ -89,11 +92,9 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
         </div>
-        <div onClick={() => setSelectdDay(3)}
-            className={`${styles.cell} ${styles.cell_3}`}>
-            <div className={`${styles.week_day}`}>
-                WEDNESDAY
-            </div>
+
+        <div onClick={() => setSelectdDay(3)} className={`${styles.cell} ${styles.cell_3}`}>
+            <div className={`${styles.week_day}`}>WEDNESDAY</div>
             <div className={`${styles.grid_day}`}>
             {wednesdayData?.length > 0 ? 
                 wednesdayData.map((activity) => 
@@ -106,11 +107,9 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                     <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
         </div>
-        <div onClick={() => setSelectdDay(4)}
-            className={`${styles.cell} ${styles.cell_4}`}>
-            <div className={`${styles.week_day}`}>
-                THURSDAY
-            </div>
+
+        <div onClick={() => setSelectdDay(4)} className={`${styles.cell} ${styles.cell_4}`}>
+            <div className={`${styles.week_day}`}>THURSDAY</div>
             <div className={`${styles.grid_day}`}>
             {thursdayData?.length > 0 ? 
                 thursdayData.map((activity) => 
@@ -123,11 +122,9 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
         </div>
-        <div onClick={() => setSelectdDay(5)}
-            className={`${styles.cell} ${styles.cell_5}`}>
-            <div className={`${styles.week_day}`}>
-                FRIDAY
-            </div>
+
+        <div onClick={() => setSelectdDay(5)} className={`${styles.cell} ${styles.cell_5}`}>
+            <div className={`${styles.week_day}`}>FRIDAY</div>
             <div className={`${styles.grid_day}`}>
             {fridayData?.length > 0 ? 
                 fridayData.map((activity) => 
@@ -141,11 +138,8 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             </div>
         </div>
 
-        <div onClick={() => setSelectdDay(6)}
-            className={`${styles.cell} ${styles.cell_6}`}>
-            <div className={`${styles.week_day}`}>
-                SATURDAY
-            </div>
+        <div onClick={() => setSelectdDay(6)} className={`${styles.cell} ${styles.cell_6}`}>
+            <div className={`${styles.week_day}`}>SATURDAY</div>
             <div className={`${styles.grid_day}`}>
             {saturdayData?.length > 0 ? 
                 saturdayData.map((activity) => 
@@ -158,12 +152,9 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
         </div>
-        
-        <div onClick={() => setSelectdDay(7)} 
-            className={`${styles.cell} ${styles.cell_7}`}>
-            <div className={`${styles.week_day}`}>
-                SUNDAY
-            </div>
+
+        <div onClick={() => setSelectdDay(7)} className={`${styles.cell} ${styles.cell_7}`}>
+            <div className={`${styles.week_day}`}>SUNDAY</div>
             <div className={`${styles.grid_day}`}>
             {sundayData?.length > 0 ? 
                 sundayData.map((activity) => 

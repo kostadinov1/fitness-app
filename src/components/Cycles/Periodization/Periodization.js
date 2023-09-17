@@ -26,14 +26,16 @@ function Periodization() {
     const [selectedMacro, setSelectedMacro] = useState()
     const [selectedMeso, setSelectedMeso] = useState()
     const [selectedMicro, setSelectedMicro] = useState()
+
     const [currentMesoCyclesList, setCurrentMesoCyclesList] = useState([])
     const [currentMicroCyclesList, setCurrentMicroCyclesList] = useState([])
     // Show / Hide
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showDeleteMicroModal, setShowDeleteMicroModal] = useState(false)
     const [showDeleteMacroModal, setShowDeleteMacroModal] = useState(false)
+
     const [showMacros, setShowMacros] = useState(false)
-    const [showMesos, setShowMesos] = useState(true)
+    const [showMesos, setShowMesos] = useState(false)
     const [showMicros, setShowMicros] = useState(true)
     // Number of weeks to be created in Mesocycle 
     const [state, dispatch] = useReducer(reducer, false)
@@ -43,7 +45,9 @@ function Periodization() {
     // GET AND SET MAIN STATE
     useEffect(() => {
         getAllMacroCycles(user)
-            .then((res) => {setMacroCycles(res)})
+            .then((res) => {
+                setMacroCycles(res)
+            })
             .catch((res) => {})
         setCurrentMesoCyclesList(selectedMacro?.meso_cycles)
         setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
@@ -134,42 +138,46 @@ function Periodization() {
                 // Assign custom Values to Current Microcycle(Week) for next Iteration
                 currMicro = {...newMicroData}
                 // Make a Create Request for the current Microcycle
+                let newMicroCreated;
+
+
+
                 createMicroCycle(user, newMicroData)
                     .then((res) => {
                         // Set State
+                        newMicroCreated = {...res}
                         setSelectedMeso((state) =>
                         ({...state, micro_cycles: [...state.micro_cycles, newMicroData ]}))
                         setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
-                      
-
                     })
                     .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})
+                console.log(newMicroCreated, 'newMicroCreated IN PERIODIZATION')
                 // Create the Activties for each Microcycle
                 for (let activity = 0; activity < currentActivities?.length; activity++) {
                     const currActivity = currentActivities[activity];
-                    cloneActivity(currActivity)
+                    cloneActivity(user, currActivity, newMicroCreated)
                     // Create the Exercises for each Activity
                     currActivity?.exercises?.forEach((exercise) => {
                             cloneExercise( exercise, currActivity.id, 1, 2, 1)
                         });
                 }
 
-                setSelectedMacro((state) => 
-                ({...state, meso_cycles: [...state.meso_cycles, selectedMeso] }))
+                // setSelectedMacro((state) => 
+                // ({...state, meso_cycles: [...state.meso_cycles, selectedMeso] }))
             
                 // setSelectedMacro((state) => 
                 // ({...state, meso_cycles: [...state.meso_cycles, selectedMeso] }))
             }
-            function cloneActivity(user, activity) {
+            function cloneActivity(user, activity, newMicro) {
                 const activityData = {
                     name: activity.name,
-                    micro_cycle: activity.micro_cycle,
+                    micro_cycle: newMicro.id,
                     user: user.user_id
                 }
-                // console.log(activityData, 'ACTIVITY DATA')
-                // createActivity(user, activityData)
-                //     .then((res) => {console.log('SUCCESS IN CLONE ACTIVITY', res)})
-                //     .catch((res) => {console.log('ERROR IN CLONE ACTIVITY', res)})
+                console.log(activityData, 'ACTIVITY DATA')
+                createActivity(user, activityData)
+                    .then((res) => {console.log('SUCCESS IN CLONE ACTIVITY', res)})
+                    .catch((res) => {console.log('ERROR IN CLONE ACTIVITY', res)})
             }
             function cloneExercise(user, exercise, activityID, setsIncrease, repsIncrease, weightIncrease) {
                 const exerciseData = {
@@ -348,11 +356,18 @@ function Periodization() {
                             <div className={`${styles.form_field} ${styles.form_field_3}`}>
                                 <button 
                                 onClick={(e) => e.preventDefault()}
-                                className={`${styles.button}`}>EDIT</button>
+                                className={`${styles.button}`}>DELOADING WEAK</button>
                             </div>
                             <div className={`${styles.form_field} ${styles.form_field_4}`}>
+                                {/* // TODO Add - Are You sure modal? */}
                                 <button 
-                                className={`${styles.button}`}> SAVE PERIODIZATION</button>
+                                className={`${styles.button}`}> SAVE</button>
+                            </div>
+                            {/* // TODO Change Button to Save when DELOADING WEEK MODAL IN TRUE? */}
+                            <div className={`${styles.form_field} ${styles.form_field_4}`}>
+                                {/* // TODO Are You sure modal? */}
+                                <button 
+                                className={`${styles.button}`}> CREATE PERIODIZATION</button>
                             </div>
                             <div className={`${styles.form_field} ${styles.form_field_5} ${styles.cancel_button}`}>
                                 <button 

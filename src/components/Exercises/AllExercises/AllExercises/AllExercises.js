@@ -52,6 +52,7 @@ function AllExercises() {
                 </ul>
             </div>
             <div className={`${styles.content}`}>
+                {/* TODO Add Toolbar to filter exercises by param */}
                 {exercises ? exercises.map((exercise) => <ExerciseCard 
                                                             key={exercise.id}
                                                             exercise={exercise}

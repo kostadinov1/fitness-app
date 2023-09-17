@@ -19,8 +19,8 @@ const CreateActivityModal = ({setShowCreateActivityModal, selectedMicro, setSele
         const resultDate = `${year}-${month}-${day}`
         return resultDate
     }           
-
-    const activityStartDate = incrementDate(selectedMicro.start_date, selectedDay + 1)
+    // THIS IS TRUE ONLY IF THE RELATED MESOCYCLE STARTS MONDAY !!!!!!!!!!
+    const activityStartDate = incrementDate(selectedMicro.start_date, selectedDay - 1)  // THE LAST NUMBER HERE - HARD CODED PROBLEM
     const [formData, setFormData] = useState({
             name: '',
             start_time: activityStartDate,
@@ -28,6 +28,7 @@ const CreateActivityModal = ({setShowCreateActivityModal, selectedMicro, setSele
             micro_cycle: selectedMicro?.id,
             user: user.user_id
     })
+    console.log(formData,'formData createAcri Modal')
 
   useEffect(() => {
         listActivityTypes()
