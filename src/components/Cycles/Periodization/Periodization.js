@@ -53,18 +53,17 @@ function Periodization() {
     function reducer(state, action) {
         switch (action.type){
             case 'showMacroDelete':
-                return setShowDeleteMacroModal(true)
+                return setShowDeleteMacroModal(true);
             case 'hideMacroDelete':
-                return setShowDeleteMacroModal(false)
+                return setShowDeleteMacroModal(false);
             case 'showMesoDelete':
-                return setShowDeleteModal(true)
+                return setShowDeleteModal(true);
             case 'hideMesoDelete':
-                return setShowDeleteModal(false)
+                return setShowDeleteModal(false);
             case 'showMicroDelete':
-                return setShowDeleteMicroModal(true)
+                return setShowDeleteMicroModal(true);
             case 'hideMicroDelete':
-                return setShowDeleteMicroModal(false)    
-                
+                return setShowDeleteMicroModal(false);    
             case 'showCreateActivityModal':
             default:
                 return state
@@ -268,18 +267,19 @@ function Periodization() {
                 className={`${styles.meso_box} ${styles.cycle_box}`}> 
                 {(currentMesoCyclesList) ?
                     currentMesoCyclesList
-                    .sort((a, b) => a.start_date > b.start_date)
-                    .map((meso) => 
-                        <div key={meso.id} onClick={() => {
-                            setSelectedMeso(meso)
-                            setShowMicros(false)
-                            }}>
-                            <MesoCard 
-                                key={meso.id}
-                                meso={meso}
-                                onDelete={() => dispatch({type: 'showMesoDelete'})}
-                                />
-                        </div>)    
+                        .sort((a, b) => a.start_date > b.start_date)
+                        .map((meso) => 
+                            <div key={meso.id} onClick={() => {
+                                setSelectedMeso(meso)
+                                setShowMicros(false)
+                                setSelectedMicro()
+                                }}>
+                                <MesoCard 
+                                    key={meso.id}
+                                    meso={meso}
+                                    onDelete={() => dispatch({type: 'showMesoDelete'})}
+                                    />
+                            </div>)    
                 : null}
                 <PlaceholderCard  cycleType={'meso'}/>
             </div>
@@ -295,17 +295,15 @@ function Periodization() {
                 className={`${styles.micro_box} ${styles.cycle_box}`}> 
                 {(currentMicroCyclesList) ?
                     currentMicroCyclesList
-                    .sort((a, b) => a.start_date > b.start_date)
-                    .map((micro) => 
-                        <div key={micro.id} onClick={() => setSelectedMicro(micro)}>
-                            <MicroCard
-                                key={micro.id}
-                                cycle={micro}
-                                // onDelete={onDelete}
-                                />
-                        </div>)    
+                        .sort((a, b) => a.start_date > b.start_date)
+                        .map((micro) => 
+                            <div key={micro.id} onClick={() => setSelectedMicro(micro)}>
+                                <MicroCard
+                                    key={micro.id}
+                                    cycle={micro}
+                                    />
+                           </div>)    
                 : null}
-                <PlaceholderCard  cycleType={'micro'}/>
             </div>
             <div className={`${styles.cycle_title} ${styles.cycle_box}`}> 
                     {selectedMicro?
@@ -314,7 +312,11 @@ function Periodization() {
             </div>
             <div className={`${styles.micro_edit} ${styles.cycle_box}`}> 
                 {selectedMicro?.activities ?
-                        <PeriWeek activities={selectedMicro?.activities}></PeriWeek>          
+                        <PeriWeek 
+                        activities={selectedMicro?.activities}
+                        selectedMicro={selectedMicro}
+                        setSelectedMicro={setSelectedMicro}
+                        />          
                     : null}
 
             {selectedMicro?.activities ?

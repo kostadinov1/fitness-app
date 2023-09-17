@@ -3,7 +3,7 @@
 import styles from './DeleteMacroCycleModal.module.css'
 import React from 'react'
 
-const DeleteMacroCycleModal = ({cycle, dispatch, onDeleteMacroConfirm,  onNoClick}) => {
+const DeleteMacroCycleModal = ({cycle, dispatch, onDeleteMacroConfirm}) => {
         
   return (
     <div className={`${styles.delete_modal}`}>

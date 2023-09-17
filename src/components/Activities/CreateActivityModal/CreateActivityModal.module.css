@@ -15,16 +15,15 @@
 .form {
     display: grid;
     gap: 1em;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-areas: 
-        "one one one one two two"
-        "three three four four five five"
-        "six six six seven seven seven "
+        "one one one two two"
+        "three three three four four"
     ;
     background-color: var(--dimmer-2);
     padding: 2em;
     margin: auto auto;
-    max-width: 70em;
+    max-width: 50em;
 }
 .item {
     display: grid;

@@ -1,11 +1,9 @@
-import { DeleteFilled, EditOutlined } from '@ant-design/icons'
 import { useTransformDate } from '../../../../hooks/useTransformDate'
 import styles from './MicroCard.module.css'
 import React from 'react'
 
 
-function MicroCard({cycle, onDelete}) {
-    // console.log(cycle, 'cycle in card');
+function MicroCard({cycle}) {
     const startDate = useTransformDate(cycle.start_date)
     const endDate = useTransformDate(cycle.end_date)
     return (
@@ -27,16 +25,6 @@ function MicroCard({cycle, onDelete}) {
                     <span>dd -</span>
                     <span> mm</span>
                 </div> 
-            </div>
-            <div className={`${styles.cycle} ${styles.cycle_4}`}> 
-                <button className={`${styles.button}`}>
-                    <EditOutlined/>
-                </button>
-            </div>
-            <div className={`${styles.cycle} ${styles.cycle_5}`}> 
-                <button onClick={onDelete} className={`${styles.button}`}>
-                <DeleteFilled />
-                </button>
             </div>
       </div>
     )
