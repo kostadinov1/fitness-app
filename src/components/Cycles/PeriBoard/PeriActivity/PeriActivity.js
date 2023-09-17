@@ -7,10 +7,12 @@ import AddIconListPlaceholder from '../../../Cards/AddToListPlaceholder/AddToLis
 
 
 const PeriActivity = ({activity}) => {
+
+    console.log('PeriActivity', activity);
     
   return (
     <div className={`${styles.peri_activity}`}>
-        <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
+        {/* <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
             {activity.name}
         </Link>
         <div className={`${styles.exercise_box}`}>
@@ -25,9 +27,9 @@ const PeriActivity = ({activity}) => {
                             <div>reps x {exercise.reps}  </div>
                         </div>                            
                     </div>)
-            :<AddIconListPlaceholder item={activity} type={'activity'}/>}
+            :<AddIconListPlaceholder item={activity} itemType={'activity'}/>}
         </div>
-        <AddIconListPlaceholder  type={'exercise'}/>
+        <AddIconListPlaceholder  itemType={'exercise'}/> */}
     </div>
   )
 }

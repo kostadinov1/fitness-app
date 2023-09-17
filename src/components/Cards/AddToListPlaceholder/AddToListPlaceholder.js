@@ -1,45 +1,23 @@
 
 import { Link } from 'react-router-dom'
 import styles from './AddToListPlaceholder.module.css'
-import React, { useState } from 'react'
+import React from 'react'
 import { PlusCircleFilled } from '@ant-design/icons'
-import CreateActivityModal from './../../Activities/CreateActivityModal/CreateActivityModal'
-import CreateExercise from './../../Exercises/CreateExercise/CreateExercise'
-const AddIconListPlaceholder = ({item, type}) => {
 
-    // console.log('STSRT', item , 'item in ADDiconLISTplaceholder')
-    
-    const [ showActivityCreateModal,setShowCreateActivityModal] = useState(false)
-    const [ showExerciceCreateModal,setShowCreateExerciseModal] = useState(false)
 
-    const onClickHandler = () => {
-        if (type === 'activity'){
-            setShowCreateActivityModal(true) 
-        } else if (type === 'exercise') {
-            setShowCreateExerciseModal(true)
-        }
+const AddIconListPlaceholder = ({itemType, dispatch}) => {
+
+
     
-    }
 
     return (
         <div>
-            <Link
-                onClick={onClickHandler}
-                className={`${styles.placeholder}`}>
-                    Create {type} <PlusCircleFilled />
+            <Link 
+                onClick={() => { dispatch({type: itemType})} }
+                className={`${styles.placeholder}`}
+                >
+                CREATE {itemType} <PlusCircleFilled />
             </Link>
-            
-            {showActivityCreateModal ? 
-                <CreateActivityModal 
-                    setShowCreateActivityModal={setShowCreateActivityModal} />
-
-            : null}
-
-            {showExerciceCreateModal ?
-                <CreateExercise 
-                    // setShowCreateExerciseModal={setShowCreateExerciseModal}
-                    />
-            : null}
         </div>
   )
 }

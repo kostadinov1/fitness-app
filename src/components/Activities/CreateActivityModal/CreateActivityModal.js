@@ -8,7 +8,7 @@ import { createActivity } from '../../../api/activities'
 import { UserContext } from '../../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 
-const CreateActivityModal = ({setShowCreateActivityModal}) => {
+const CreateActivityModal = ({setShowCreateActivityModal, relatedMicro, dayOfWeek}) => {
 
     // TODO When creating an activity to attach Micro Cycle Relation by default !!!
     // and set the date to be the selected day of the periweek
@@ -19,8 +19,16 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
     // const [microCycle, setMicroCycle] = useState(' micro to  be')
     const [activityTypes, setActivityTypes] = useState([])
   
+
+    const getActDate = (dayOfWeek, relMicroStartDate) => {
+        // relMicrostartDate is always monday + dayOfWeek
+        // if dayOfWeek === 1 { do nothing} else { add day of week to MicroStartDate} 
+        // and that gives the date of the activity
+    }
+
     const [formData, setFormData] = useState({
             name: '',
+            start_time: undefined,
             duration: 0,
             description: '',
             distance: 0,
@@ -34,7 +42,7 @@ const CreateActivityModal = ({setShowCreateActivityModal}) => {
             exercises: undefined,
             type: undefined,
             goal: undefined,
-            micro_cycle: undefined,
+            micro_cycle: relatedMicro?.id,
             user: user.user_id
     })
 
