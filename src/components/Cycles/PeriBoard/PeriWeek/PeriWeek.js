@@ -3,6 +3,7 @@ import styles from './PeriWeek.module.css'
 import AddIconListPlaceholder from "../../../Cards/AddToListPlaceholder/AddToListPlaceholder"
 import { Link } from "react-router-dom"
 import CreateActivityModal from "../../../Activities/CreateActivityModal/CreateActivityModal"
+import PeriActivity from "../PeriActivity/PeriActivity"
 
 
 function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
@@ -61,27 +62,12 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             <div className={`${styles.grid_day}`}>
 
                 {mondayData?.length > 0 ? 
-                    mondayData.map((activity) =>      
-                        <div className={`${styles.peri_activity}`}>
-                            <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
-                                {activity.name}
-                            </Link>
-                            <div className={`${styles.exercise_box}`}>
-                                {activity  ?
-                                    activity?.exercises?.map((exercise) => 
-                                        <div className={`${styles.exercise}`} key={exercise.id} >
-                                            <div className={`${styles.exercise_title}`}>
-                                                {exercise.name}:
-                                            </div>
-                                            <div className={`${styles.exercise_stats}`}>
-                                                <div>sets:{exercise.sets}</div>
-                                                <div>reps x {exercise.reps}  </div>
-                                            </div>                            
-                                        </div>)
-                                : null}
-                            </div>
-                            <AddIconListPlaceholder  itemType={'exercise'} dispatch={dispatch}/>
-                        </div>)
+                    mondayData.map((activity) =>                       
+                        <PeriActivity 
+                            key={activity.id}
+                            activity={activity}
+                            dispatch={dispatch}
+                        />)
                         : null}
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
@@ -94,26 +80,11 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                 className={`${styles.grid_day}`}>
             {tuesdayData?.length > 0 ? 
                 tuesdayData.map((activity) =>                    
-                    <div className={`${styles.peri_activity}`}>
-                        <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
-                            {activity.name}
-                        </Link>
-                        <div className={`${styles.exercise_box}`}>
-                            {activity  ?
-                                activity?.exercises?.map((exercise) => 
-                                    <div className={`${styles.exercise}`} key={exercise.id} >
-                                        <div className={`${styles.exercise_title}`}>
-                                            {exercise.name}:
-                                        </div>
-                                        <div className={`${styles.exercise_stats}`}>
-                                            <div>sets:{exercise.sets}</div>
-                                            <div>reps x {exercise.reps}  </div>
-                                        </div>                            
-                                    </div>)
-                            : null}
-                        </div>
-                        <AddIconListPlaceholder itemType={'exercise'} dispatch={dispatch}/>
-                    </div>)
+                    <PeriActivity 
+                        key={activity.id}
+                        activity={activity}
+                        dispatch={dispatch}
+                    />)
                 : null}
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
@@ -125,27 +96,12 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             </div>
             <div className={`${styles.grid_day}`}>
             {wednesdayData?.length > 0 ? 
-                wednesdayData.map((activity) =>  
-                    <div className={`${styles.peri_activity}`}>
-                        <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
-                            {activity.name}
-                        </Link>
-                        <div className={`${styles.exercise_box}`}>
-                            {activity  ?
-                                activity?.exercises?.map((exercise) => 
-                                    <div className={`${styles.exercise}`} key={exercise.id} >
-                                        <div className={`${styles.exercise_title}`}>
-                                            {exercise.name}:
-                                        </div>
-                                        <div className={`${styles.exercise_stats}`}>
-                                            <div>sets:{exercise.sets}</div>
-                                            <div>reps x {exercise.reps}  </div>
-                                        </div>                            
-                                    </div>)
-                            : null}
-                        </div>
-                        <AddIconListPlaceholder  itemType={'exercise'} dispatch={dispatch}/>
-                    </div>)
+                wednesdayData.map((activity) => 
+                    <PeriActivity 
+                        key={activity.id}
+                        activity={activity}
+                        dispatch={dispatch}
+                    />)
                 : null}
                     <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
@@ -158,26 +114,11 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             <div className={`${styles.grid_day}`}>
             {thursdayData?.length > 0 ? 
                 thursdayData.map((activity) => 
-                    <div className={`${styles.peri_activity}`}>
-                        <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
-                            {activity.name}
-                        </Link>
-                        <div className={`${styles.exercise_box}`}>
-                            {activity  ?
-                                activity?.exercises?.map((exercise) => 
-                                    <div className={`${styles.exercise}`} key={exercise.id} >
-                                        <div className={`${styles.exercise_title}`}>
-                                            {exercise.name}:
-                                        </div>
-                                        <div className={`${styles.exercise_stats}`}>
-                                            <div>sets:{exercise.sets}</div>
-                                            <div>reps x {exercise.reps}  </div>
-                                        </div>                            
-                                    </div>)
-                            : null}
-                        </div>
-                        <AddIconListPlaceholder  itemType={'exercise'} dispatch={dispatch}/>
-                    </div>)
+                    <PeriActivity 
+                        key={activity.id}
+                        activity={activity}
+                        dispatch={dispatch}
+                    />)
                 : null}
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
@@ -190,26 +131,11 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             <div className={`${styles.grid_day}`}>
             {fridayData?.length > 0 ? 
                 fridayData.map((activity) => 
-                    <div className={`${styles.peri_activity}`}>
-                        <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
-                            {activity.name}
-                        </Link>
-                        <div className={`${styles.exercise_box}`}>
-                            {activity  ?
-                                activity?.exercises?.map((exercise) => 
-                                    <div className={`${styles.exercise}`} key={exercise.id} >
-                                        <div className={`${styles.exercise_title}`}>
-                                            {exercise.name}:
-                                        </div>
-                                        <div className={`${styles.exercise_stats}`}>
-                                            <div>sets:{exercise.sets}</div>
-                                            <div>reps x {exercise.reps}  </div>
-                                        </div>                            
-                                    </div>)
-                            : null}
-                        </div>
-                        <AddIconListPlaceholder  itemType={'exercise'} dispatch={dispatch}/>
-                    </div>)
+                    <PeriActivity 
+                        key={activity.id}
+                        activity={activity}
+                        dispatch={dispatch}
+                    />)
                 : null}
                     <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
@@ -223,26 +149,11 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             <div className={`${styles.grid_day}`}>
             {saturdayData?.length > 0 ? 
                 saturdayData.map((activity) => 
-                    <div className={`${styles.peri_activity}`}>
-                        <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
-                            {activity.name}
-                        </Link>
-                        <div className={`${styles.exercise_box}`}>
-                            {activity  ?
-                                activity?.exercises?.map((exercise) => 
-                                    <div className={`${styles.exercise}`} key={exercise.id} >
-                                        <div className={`${styles.exercise_title}`}>
-                                            {exercise.name}:
-                                        </div>
-                                        <div className={`${styles.exercise_stats}`}>
-                                            <div>sets:{exercise.sets}</div>
-                                            <div>reps x {exercise.reps}  </div>
-                                        </div>                            
-                                    </div>)
-                            : null}
-                        </div>
-                        <AddIconListPlaceholder  itemType={'exercise'} dispatch={dispatch}/>
-                    </div>)
+                    <PeriActivity 
+                        key={activity.id}
+                        activity={activity}
+                        dispatch={dispatch}
+                    />)
                 : null}
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
@@ -256,26 +167,11 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             <div className={`${styles.grid_day}`}>
             {sundayData?.length > 0 ? 
                 sundayData.map((activity) => 
-                    <div className={`${styles.peri_activity}`}>
-                        <Link to={`/edit-activity/${activity.id}`} className={`${styles.activity_title}`} >
-                            {activity.name}
-                        </Link>
-                        <div className={`${styles.exercise_box}`}>
-                            {activity  ?
-                                activity?.exercises?.map((exercise) => 
-                                    <div className={`${styles.exercise}`} key={exercise.id} >
-                                        <div className={`${styles.exercise_title}`}>
-                                            {exercise.name}:
-                                        </div>
-                                        <div className={`${styles.exercise_stats}`}>
-                                            <div>sets:{exercise.sets}</div>
-                                            <div>reps x {exercise.reps}  </div>
-                                        </div>                            
-                                    </div>)
-                            : null}
-                        </div>
-                        <AddIconListPlaceholder  itemType={'exercise'} dispatch={dispatch}/>
-                    </div>)
+                    <PeriActivity 
+                        key={activity.id}
+                        activity={activity}
+                        dispatch={dispatch}
+                    />)
                 : null}
                 <AddIconListPlaceholder itemType={'activity'} dispatch={dispatch}/>
             </div>
