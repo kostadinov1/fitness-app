@@ -56,7 +56,6 @@ function CreateMicroCycle() {
 
         createMicroCycle(user, formData)
             .then((res) => {
-                console.log(formData, 'formData create micro')
                 navigate('/periodization')
             })
             .catch((res) => {})

@@ -15,6 +15,7 @@ import { createExercise } from '../../../api/exercises'
 import { createActivity } from '../../../api/activities'
 import { useTransformDate } from '../../../hooks/useTransformDate'
 import { createMicroCycle } from '../../../api/cycles/microCycle'
+import { SELECTION_ALL } from 'antd/es/table/hooks/useSelection'
 // import { createMesoPeriodization } from '../../../utils/createMesoPeriodization.js'
 
 // TODO Create Meso Periodization 
@@ -118,68 +119,55 @@ function Periodization() {
         createMesoPeriodization(user, selectedMicro, selectedMeso, microCount)
     }
 
+
   // CLONE MICROS FACTORY - Clone Microcycle by given Increase argument
-    function createMesoPeriodization(user, initialMicro, selectedMeso, weekCount) {
-        let currMicro = {...initialMicro}
-        for (let weekNum = 1; weekNum <= weekCount - 1; weekNum++) {
-            const currentActivities = currMicro?.activities
-            const startDate = incrementDate(currMicro.start_date, 7) // Increment by a Week
-            const endDate = incrementDate(currMicro.end_date, 7) // Increment by a Week
-            // Generate new Microcycle Object
-            const newMicroData = {
-                name:`WEEK ${weekNum + 1}`,
+    async function createMesoPeriodization(user, selectedMicro, selectedMeso, weekCount) {
+        const currentActivities = selectedMicro?.activities
+        let  currentMicroCycleInLoop = ({...selectedMicro})
+
+        for (let weekNum = 1; weekNum <= weekCount - 1; weekNum++) {    
+            const startDate = incrementDate(currentMicroCycleInLoop?.start_date, 7) // Increment by a Week
+            const endDate = incrementDate(currentMicroCycleInLoop?.end_date, 7) // Increment by a Week
+            const sendForm = {
+                name:`Week ${weekNum + 1}`,
                 start_date: startDate,
                 end_date: endDate,
-                description: undefined, 
-                goals: undefined,
                 meso_cycle : selectedMeso.id,
                 user: user.user_id
             }
-                // Assign custom Values to Current Microcycle(Week) for next Iteration
-                currMicro = {...newMicroData}
-                // Make a Create Request for the current Microcycle
-                let newMicroCreated;
-
-
-
-                createMicroCycle(user, newMicroData)
-                    .then((res) => {
-                        // Set State
-                        newMicroCreated = {...res}
-                        setSelectedMeso((state) =>
-                        ({...state, micro_cycles: [...state.micro_cycles, newMicroData ]}))
-                        setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
-                    })
-                    .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})
-                console.log(newMicroCreated, 'newMicroCreated IN PERIODIZATION')
-                // Create the Activties for each Microcycle
-                for (let activity = 0; activity < currentActivities?.length; activity++) {
+            await createMicroCycle(user, sendForm)
+                // eslint-disable-next-line no-loop-func
+                .then((res) => {
+                    currentMicroCycleInLoop = ({...res})
+                    setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
+                    setSelectedMeso((state) =>
+                    ({...state, micro_cycles: [...state.micro_cycles, res ]}))
+                    currentMicroCycleInLoop = ({...res});                    
+                })
+                .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})                
+                for (let activity = 0; activity < currentActivities.length; activity++) {
                     const currActivity = currentActivities[activity];
-                    cloneActivity(user, currActivity, newMicroCreated)
-                    // Create the Exercises for each Activity
-                    currActivity?.exercises?.forEach((exercise) => {
-                            cloneExercise( exercise, currActivity.id, 1, 2, 1)
-                        });
+                    cloneActivity(user, currActivity, currentMicroCycleInLoop)
                 }
-
-                // setSelectedMacro((state) => 
-                // ({...state, meso_cycles: [...state.meso_cycles, selectedMeso] }))
-            
-                // setSelectedMacro((state) => 
-                // ({...state, meso_cycles: [...state.meso_cycles, selectedMeso] }))
             }
-            function cloneActivity(user, activity, newMicro) {
+
+            async function cloneActivity(user, activity, newMicro) {
+                // console.log(newMicro, ' Micro in CLONE ACTIVITY')
                 const activityData = {
-                    name: activity.name,
-                    micro_cycle: newMicro.id,
+                    name: activity?.name,
+                    start_time: incrementDate(activity?.start_time, 7),
+                    micro_cycle: newMicro?.id,
                     user: user.user_id
                 }
-                console.log(activityData, 'ACTIVITY DATA')
-                createActivity(user, activityData)
-                    .then((res) => {console.log('SUCCESS IN CLONE ACTIVITY', res)})
-                    .catch((res) => {console.log('ERROR IN CLONE ACTIVITY', res)})
+                await createActivity(user, activityData)
+                    .then((res) => {
+                        // console.log('SUCCESS IN CLONE ACTIVITY', res)
+                    })
+                    .catch((res) => {
+                        console.log('ERROR IN CLONE ACTIVITY', res)
+                    })
             }
-            function cloneExercise(user, exercise, activityID, setsIncrease, repsIncrease, weightIncrease) {
+            async function cloneExercise(user, exercise, activityID, setsIncrease, repsIncrease, weightIncrease) {
                 const exerciseData = {
                     name: exercise.name,
                     reps: exercise.reps,
@@ -189,7 +177,7 @@ function Periodization() {
                     user: user.user_id
                 }
                 // console.log(exerciseData, 'EXERCISE DATA')
-                // createExercise(user, exerciseData)
+                //await  createExercise(user, exerciseData)
                 //     .then((res) => {console.log('SUCCESS IN CLONE EXERCISE', res)})
                 //     .catch((res) => {console.log('ERROR IN CLONE EXERCISE', res)})
             }

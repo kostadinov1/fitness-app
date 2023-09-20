@@ -28,7 +28,7 @@ const CreateActivityModal = ({setShowCreateActivityModal, selectedMicro, setSele
             micro_cycle: selectedMicro?.id,
             user: user.user_id
     })
-    console.log(formData,'formData createAcri Modal')
+    // console.log(formData,'formData createAcri Modal')
 
   useEffect(() => {
         listActivityTypes()
