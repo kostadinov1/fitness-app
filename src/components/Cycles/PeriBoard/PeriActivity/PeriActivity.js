@@ -1,4 +1,5 @@
 
+import AddIconListPlaceholder from '../../../Cards/AddToListPlaceholder/AddToListPlaceholder'
 import styles from './PeriActivity.module.css'
 import React from 'react'
 
@@ -11,7 +12,7 @@ const PeriActivity = ({activity, dispatch}) => {
                 {activity.name}
             </button>
             <div className={`${styles.exercise_box}`}>
-                {activity  ?
+                {activity?.exercises  ?
                     activity?.exercises?.map((exercise) => 
                         <div className={`${styles.exercises}`} key={exercise.id} >
                             <div className={`${styles.exercise_title}`}>
@@ -23,7 +24,8 @@ const PeriActivity = ({activity, dispatch}) => {
                                 <div>kgs x {exercise?.reps}  </div>
                             </div>                            
                         </div>)
-                : null}
+                : <AddIconListPlaceholder itemType={'exercise'} dispatch={dispatch}/>}
+                <AddIconListPlaceholder itemType={'exercise'} dispatch={dispatch}/>
             </div>
         </div>
     )

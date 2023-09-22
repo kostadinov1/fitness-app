@@ -1,12 +1,14 @@
 import { useEffect, useReducer, useState } from "react"
 import styles from './PeriWeek.module.css'
 import AddIconListPlaceholder from "../../../Cards/AddToListPlaceholder/AddToListPlaceholder"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import CreateActivityModal from "../../../Activities/CreateActivityModal/CreateActivityModal"
 import PeriActivity from "../PeriActivity/PeriActivity"
 
 
 function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
+    const navigate = useNavigate()
+
     const [mondayData, setMondayData] = useState(undefined)
     const [tuesdayData, setTuesdayData] = useState(undefined)
     const [wednesdayData, setWednesdayData] = useState(undefined)
@@ -27,7 +29,8 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             case 'activity':
                 return showCreateActivityModal ? setShowCreateActivityModal(false) : setShowCreateActivityModal(true)
             case 'exercise':
-                return showCreateExerciseModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
+                navigate('/create-exercise')
+                // return showCreateExerciseModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
             case 'tollgeEditActivityModal':
                 return showEditActivityModal ? setShowEditActivityModal(false) : setShowCreateActivityModal(true)
             default:

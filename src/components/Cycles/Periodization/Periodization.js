@@ -122,10 +122,16 @@ function Periodization() {
 
   // CLONE MICROS FACTORY - Clone Microcycle by given Increase argument
     async function createMesoPeriodization(user, selectedMicro, selectedMeso, weekCount) {
-        const currentActivities = selectedMicro?.activities
+        let currentActivities = selectedMicro?.activities
         let  currentMicroCycleInLoop = ({...selectedMicro})
+        let newWeekActivities = []
+        console.log(currentActivities,'CURRENT ACTIVITYES IN BEFORE LOOPS')
 
-        for (let weekNum = 1; weekNum <= weekCount - 1; weekNum++) {    
+        // Iterate for given number of weeks to create new incremented one
+        for (let weekNum = 1; weekNum <= weekCount- 1; weekNum++) {  
+
+        console.log(currentActivities,'CURRENT ACTIVITYES IN AFTER FIRST  LOOP')
+
             const startDate = incrementDate(currentMicroCycleInLoop?.start_date, 7) // Increment by a Week
             const endDate = incrementDate(currentMicroCycleInLoop?.end_date, 7) // Increment by a Week
             const sendForm = {
@@ -144,28 +150,50 @@ function Periodization() {
                     ({...state, micro_cycles: [...state.micro_cycles, res ]}))
                     currentMicroCycleInLoop = ({...res});                    
                 })
-                .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})                
-                for (let activity = 0; activity < currentActivities.length; activity++) {
-                    const currActivity = currentActivities[activity];
-                    cloneActivity(user, currActivity, currentMicroCycleInLoop)
+                .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})   
+                // Iterate over all activities in the initial week and add them to the new week    
+                if (currentActivities?.length > 0) {
+                    
+                    for (let activity = 0; activity < currentActivities.length; activity++) {
+                        const currActivity = currentActivities[activity];
+                        await cloneActivity(user, currActivity, currentMicroCycleInLoop)
+    
+                        const currExercises = currActivity?.exercises
+                        if (currExercises?.length > 0) {
+                            
+                            // Iterate over all exercises in the given activity and create them for each new activity
+                            for (let exercise = 0; exercise < currExercises?.length; exercise++) {
+                                const currentExercise = currExercises[exercise];
+                                console.log(currentExercise)
+                                await cloneExercise(user, currentExercise, currActivity.id)
+                            }
+                        }
+                    }
                 }
+                console.log(newWeekActivities, 'NEW WEEK ACTIVITIES IN THE END OF THE LOOP')
             }
 
-            async function cloneActivity(user, activity, newMicro) {
+
+            async function cloneActivity(user, activityy, newMicro) {
                 // console.log(newMicro, ' Micro in CLONE ACTIVITY')
                 const activityData = {
-                    name: activity?.name,
-                    start_time: incrementDate(activity?.start_time, 7),
+                    name: activityy?.name,
+                    start_time: incrementDate(activityy?.start_time, 7),
                     micro_cycle: newMicro?.id,
                     user: user.user_id
                 }
+
+                console.log(activityy , 'ACTIVITYY  ')
                 await createActivity(user, activityData)
                     .then((res) => {
                         // console.log('SUCCESS IN CLONE ACTIVITY', res)
+                        currentActivities =[ ...currentActivities.filter((acty) => acty.id !== activityy.id)]
+                        newWeekActivities.push(res)
                     })
                     .catch((res) => {
                         console.log('ERROR IN CLONE ACTIVITY', res)
                     })
+                    // console.log(newActivity, 'NEW ACTIVITY')
             }
             async function cloneExercise(user, exercise, activityID, setsIncrease, repsIncrease, weightIncrease) {
                 const exerciseData = {
@@ -177,9 +205,9 @@ function Periodization() {
                     user: user.user_id
                 }
                 // console.log(exerciseData, 'EXERCISE DATA')
-                //await  createExercise(user, exerciseData)
-                //     .then((res) => {console.log('SUCCESS IN CLONE EXERCISE', res)})
-                //     .catch((res) => {console.log('ERROR IN CLONE EXERCISE', res)})
+                await  createExercise(user, exerciseData)
+                    .then((res) => {console.log('SUCCESS IN CLONE EXERCISE', res)})
+                    .catch((res) => {console.log('ERROR IN CLONE EXERCISE', res)})
             }
             function incrementDate(djangoDate, increment) {
                 // To increment correctly and more reliably

@@ -179,14 +179,14 @@ function CreateExercise() {
             <div className={`${styles.form_field} ${styles.form_field_10}`}>
                 <label>Related Activity</label>
                 <select
-                 
+                    //TODO not able to choose the first option if its is just one in the list
                     value={formData.activity}
                     onChange={onValueChange}
                     name='activity'
                     className={styles.form_input}>
                         { activities ? 
                         activities.map((activity) =>
-                        <option value={activity.id} key={activity.id}>{activity.name}</option>)
+                        <option value={activity.id} key={activity.id}>{activity.name}_____ Micro: {activity.micro_cycle?.name}</option>)
                         : <option>No Activities yet</option>}
                 </select>
             </div>
