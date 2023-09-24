@@ -93,6 +93,9 @@ function CreateMesoCycle() {
     const onFormSubmitHandler = (e) => {
         e.preventDefault()
 
+        if (mondayError || sundayError) {
+            return
+        }
         createMesoCycle(user, formData)
             .then((res) => {
                 const endDate = incrementDate(res.start_date, 7)
