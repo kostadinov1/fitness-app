@@ -49,5 +49,9 @@
     margin: .5em;
 }
 
+.error {
+    font-size: 0.8rem;
+    color: red;
+}
 /* .form_field_6 {} */
 /* .form_field_7 {} */

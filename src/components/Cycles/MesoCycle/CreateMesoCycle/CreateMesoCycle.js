@@ -15,6 +15,8 @@ function CreateMesoCycle() {
     const navigate = useNavigate()
     const {user} = useContext(UserContext)
     const [goals, setGoals] = useState([])
+    const [mondayError, setMonadayError] = useState(false)
+    const [sundayError, setSundayError] = useState(false)
     const [macroCycles, setMacroCycles] = useState([])
     const [formData, setFormData] = useState({
         name: undefined,
@@ -43,17 +45,32 @@ function CreateMesoCycle() {
     const onMacroSelectChange = (value, label) => {
         setFormData((state) => ({...state, macro_cycle: value}))
     }
-    // TODO FOR THE PERIODIZATION ALGO TO WORK MESO MUST START ON MONDAY !!! start_date='MONDAY'
 	const onStartDateChangeHandler = (date, dateString) => {
-        // TODO EXEPTION HANDLING IF NOT MONDAY!!!!!
-        setFormData((state) => ({...state, start_date: dateString}))
+        let startDate = getWeekDay(dateString)
+        if (startDate !== 1) {
+            setMonadayError(true)
+        } else {
+            setMonadayError(false)
+            setFormData((state) => ({...state, start_date: dateString}))
+        }
 	}
    // TODO FOR THE PERIODIZATION ALGO TO WORK MESO MUST END SUNDAY !!!
     const onEndDateChangeHandler = (date, dateString) => {
-        setFormData((state) => ({...state, end_date: dateString}))
+        let endDate = getWeekDay(dateString)
+        if (endDate !== 0) {
+            setSundayError(true)
+        } else {
+            setSundayError(false)
+            setFormData((state) => ({...state, end_date: dateString}))
+        }
         // TODO EXEPTION HANDLING IF NOT SUNDAY!!!!!
 
 	}
+    function getWeekDay(activityDate) {  
+        const activityDayNum = new Date(activityDate)
+        return activityDayNum?.getDay()
+    }
+
     const incrementDate = (djangoDate, increment) => {
         // To increment correctly and more reliably
         // Transform django format date to js Date object
@@ -129,26 +146,25 @@ function CreateMesoCycle() {
 
                     <div className={`${styles.form_field} ${styles.form_field_3}`}>
                         <label>Start Date</label>
+                        {mondayError ? <span className={`${styles.error}`}>Meso Must Start on MONADAY!!</span> : null}
                         <DatePicker
                             name='start_date'
                             // value={formData.start_date}
 							onChange={onStartDateChangeHandler}
 							status="warning"
-							style={{
-								width: '100%',
-							}}
+							style={mondayError ? {backgroundColor: 'red'} : {backgroundColor: 'green'}}
                             />
                     </div>
                     <div className={`${styles.form_field} ${styles.form_field_4}`}>
                         <label>End Date</label>
+                        {sundayError ? <span className={`${styles.error}`}>Meso Must End On SUNDAY!!</span> : null}
                         <DatePicker
                             name='end_date'
                             // value={formData.end_date}
 							onChange={onEndDateChangeHandler}
 							status="warning"
-							style={{
-								width: '100%',
-							}}
+							style={sundayError ? {backgroundColor: 'red'} : {backgroundColor: 'green'}}
+
                             />
                     </div>
                     <button  className={`${styles.form_field} ${styles.form_field_5}`}>
