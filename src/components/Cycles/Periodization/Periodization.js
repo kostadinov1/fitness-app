@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
-import { createMacroCycle, deleteMacroCycle, getAllMacroCycles } from '../../../api/cycles/macroCycle'
+import { deleteMacroCycle, getAllMacroCycles } from '../../../api/cycles/macroCycle'
 import { UserContext } from '../../../contexts/UserContext'
 import styles from './Periodization.module.css'
 import PeriWeek from '../PeriBoard/PeriWeek/PeriWeek'
@@ -13,13 +13,8 @@ import MicroCard from '../../Cards/CycleCards/MicroCard/MicroCard'
 import { DownOutlined } from '@ant-design/icons'
 import { createExercise } from '../../../api/exercises'
 import { createActivity } from '../../../api/activities'
-import { useTransformDate } from '../../../hooks/useTransformDate'
 import { createMicroCycle } from '../../../api/cycles/microCycle'
-import { SELECTION_ALL } from 'antd/es/table/hooks/useSelection'
-// import { createMesoPeriodization } from '../../../utils/createMesoPeriodization.js'
 
-// TODO Create Meso Periodization 
-    // and by that visualize Nivo Chart for Progression and Tree for the Cycles
 function Periodization() {
     const { user } = useContext(UserContext) 
     // Objects
@@ -122,16 +117,10 @@ function Periodization() {
 
   // CLONE MICROS FACTORY - Clone Microcycle by given Increase argument
     async function createMesoPeriodization(user, selectedMicro, selectedMeso, weekCount) {
-        let currentActivities = selectedMicro?.activities
-        let  currentMicroCycleInLoop = ({...selectedMicro})
-        let newWeekActivities = []
-        console.log(currentActivities,'CURRENT ACTIVITYES IN BEFORE LOOPS')
+        let currentMicroCycleInLoop = ({...selectedMicro})
+        let initialActivities =  [...selectedMicro?.activities]
 
-        // Iterate for given number of weeks to create new incremented one
         for (let weekNum = 1; weekNum <= weekCount- 1; weekNum++) {  
-
-        console.log(currentActivities,'CURRENT ACTIVITYES IN AFTER FIRST  LOOP')
-
             const startDate = incrementDate(currentMicroCycleInLoop?.start_date, 7) // Increment by a Week
             const endDate = incrementDate(currentMicroCycleInLoop?.end_date, 7) // Increment by a Week
             const sendForm = {
@@ -144,71 +133,48 @@ function Periodization() {
             await createMicroCycle(user, sendForm)
                 // eslint-disable-next-line no-loop-func
                 .then((res) => {
-                    currentMicroCycleInLoop = ({...res})
-                    setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
-                    setSelectedMeso((state) =>
-                    ({...state, micro_cycles: [...state.micro_cycles, res ]}))
-                    currentMicroCycleInLoop = ({...res});                    
-                })
-                .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})   
-                // Iterate over all activities in the initial week and add them to the new week    
-                if (currentActivities?.length > 0) {
-                    
-                    for (let activity = 0; activity < currentActivities.length; activity++) {
-                        const currActivity = currentActivities[activity];
-                        await cloneActivity(user, currActivity, currentMicroCycleInLoop)
-    
-                        const currExercises = currActivity?.exercises
-                        if (currExercises?.length > 0) {
-                            
-                            // Iterate over all exercises in the given activity and create them for each new activity
-                            for (let exercise = 0; exercise < currExercises?.length; exercise++) {
-                                const currentExercise = currExercises[exercise];
-                                console.log(currentExercise)
-                                await cloneExercise(user, currentExercise, currActivity.id)
-                            }
-                        }
-                    }
-                }
-                console.log(newWeekActivities, 'NEW WEEK ACTIVITIES IN THE END OF THE LOOP')
-            }
+                        setCurrentMicroCyclesList(selectedMeso?.micro_cycles)
+                        setSelectedMeso((state) => ({...state, micro_cycles: [...state.micro_cycles, res ]}))
+                        currentMicroCycleInLoop = ({...res});                    
+                    })
+                .catch((res) => {console.log('ERROR IN CLONE MICRO', res)})
 
-
-            async function cloneActivity(user, activityy, newMicro) {
-                // console.log(newMicro, ' Micro in CLONE ACTIVITY')
+            // Iterate over current Micro Activities   
+            for (let activity = 0; activity < initialActivities.length; activity++) {
+                const currActivity = initialActivities[activity];
+                // Data to Create New Activity
                 const activityData = {
-                    name: activityy?.name,
-                    start_time: incrementDate(activityy?.start_time, 7),
-                    micro_cycle: newMicro?.id,
+                    name: currActivity?.name,
+                    start_time: incrementDate(currActivity?.start_time, 7),
+                    micro_cycle: currentMicroCycleInLoop?.id,
                     user: user.user_id
                 }
-
-                console.log(activityy , 'ACTIVITYY  ')
+                let nextActivity = {}
                 await createActivity(user, activityData)
-                    .then((res) => {
-                        // console.log('SUCCESS IN CLONE ACTIVITY', res)
-                        currentActivities =[ ...currentActivities.filter((acty) => acty.id !== activityy.id)]
-                        newWeekActivities.push(res)
-                    })
-                    .catch((res) => {
-                        console.log('ERROR IN CLONE ACTIVITY', res)
-                    })
-                    // console.log(newActivity, 'NEW ACTIVITY')
-            }
-            async function cloneExercise(user, exercise, activityID, setsIncrease, repsIncrease, weightIncrease) {
-                const exerciseData = {
-                    name: exercise.name,
-                    reps: exercise.reps,
-                    sets: exercise.sets,
-                    weights_in_kg: exercise.weights_in_kg,
-                    activity: activityID,
-                    user: user.user_id
-                }
-                // console.log(exerciseData, 'EXERCISE DATA')
+                // eslint-disable-next-line no-loop-func
+                    .then((res) => { nextActivity = {...res} })
+                    .catch((res) => {console.log('ERROR IN CLONE ACTIVITY', res)})
+                
+                    // Iterate over current activity exercises
+                const currExercises = currActivity?.exercises
+                for (let exercise = 0; exercise < currExercises?.length; exercise++) {
+                    const currentExercise = currExercises[exercise];
+                    const exerciseData = {
+                        name: currentExercise.name,
+                        reps: currentExercise.reps + 2,
+                        sets: currentExercise.sets + 3,
+                        weights_in_kg: currentExercise.weights_in_kg + 1,
+                        activity: nextActivity.id,
+                        user: user.user_id
+                    }
+                console.log(exerciseData, 'EXERCISE DATA IN CLONE EXERCISE')
                 await  createExercise(user, exerciseData)
                     .then((res) => {console.log('SUCCESS IN CLONE EXERCISE', res)})
                     .catch((res) => {console.log('ERROR IN CLONE EXERCISE', res)})
+                    }
+                }
             }
+
             function incrementDate(djangoDate, increment) {
                 // To increment correctly and more reliably
                 // Transform django format date to js Date object

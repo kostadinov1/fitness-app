@@ -30,6 +30,7 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                 return showCreateActivityModal ? setShowCreateActivityModal(false) : setShowCreateActivityModal(true)
             case 'exercise':
                 navigate('/create-exercise')
+                break;
                 // return showCreateExerciseModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
             case 'tollgeEditActivityModal':
                 return showEditActivityModal ? setShowEditActivityModal(false) : setShowCreateActivityModal(true)

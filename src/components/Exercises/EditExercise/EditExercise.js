@@ -21,6 +21,7 @@ function EditExercise() {
         weights_in_kg: 0,
         calories_burned: 0,
         type: undefined,
+        // TODO Selecet element can NOT select activy if array.length === 1
         activity: undefined,
         user: user.user_id
     })
@@ -40,7 +41,7 @@ function EditExercise() {
         getAllActivities(user)
             .then((res) => setActivities(res))            
             .catch((res) => {console.log('res', res)})
-    }, [])
+    }, [user, id])
 
     const onEdit = (e) => {
         e.preventDefault()
