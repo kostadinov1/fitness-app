@@ -115,12 +115,21 @@
     
 }
 
+.exercise_increments_box {
+    display: flex;
+    gap: .6em;
+    padding: .2em;
+}
+.exercise_increment_input {
+    width: 4em;
+}
 .button {
     background-color: var(--acc-1);
 }
 .cancel_button {
     margin-left: auto;
 }
+
 
 
 

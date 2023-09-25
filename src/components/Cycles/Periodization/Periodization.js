@@ -36,7 +36,15 @@ export function Periodization() {
     // Number of weeks to be created in Mesocycle 
     const [state, dispatch] = useReducer(reducer, false);
     const [toggleState, toggleDispatch] = useReducer(toggleReducer, false);
+
     const [microCount, setMicroCount] = useState(4);
+    const [dataIncrement, setDataIncrement] = useState({
+        distance: 0,
+        sets: 0,
+        reps: 0,
+        kg: 0,
+    })
+
 
     // GET AND SET MAIN STATE
     useEffect(() => {
@@ -106,6 +114,11 @@ export function Periodization() {
             .catch((res) => { });
         setShowDeleteMacroModal(false);
     }
+    // Handle Microcycle toolbar value changes
+    const onValueChange = (e) => {
+        console.log(e.target.value, 'data increment')
+       setDataIncrement((state) => ({...state, [e.target.name]: e.target.value}))
+    } 
     // Handle Submit Meso Periodization
     function onFormSubmitHandler(e) {
         e.preventDefault();
@@ -141,7 +154,8 @@ export function Periodization() {
                 const currActivity = initialActivities[activity];
                 // Data to Create New Activity
                 const activityData = {
-                    name: `${currActivity.name} ${weekNum}`,
+                    name: `${currActivity.name}`,
+                    // distance: currActivity?.distance + dataIncrement.distance,
                     start_time: incrementDate(currActivity?.start_time, 7),
                     micro_cycle: currentMicroCycleInLoop?.id,
                     user: user.user_id
@@ -163,9 +177,9 @@ export function Periodization() {
                     const currentExercise = currExercises[exercise];
                     const exerciseData = {
                         name: currentExercise.name,
-                        reps: currentExercise.reps + 6, 
-                        sets: currentExercise.sets + 5,
-                        weights_in_kg: currentExercise.weights_in_kg + 1,
+                        reps: currentExercise.reps + dataIncrement.reps, 
+                        sets: currentExercise.sets + dataIncrement.sets,
+                        weights_in_kg: currentExercise.weights_in_kg + dataIncrement.kg,
                         activity: nextActivity.id,
                         user: user.user_id
                     };
@@ -334,18 +348,67 @@ export function Periodization() {
                                                 className={`${styles.slider}`} />
                                         </div>
                                     </div>
+
                                     <div className={`${styles.form_field} ${styles.form_field_3}`}>
-                                        <button
+                                        <div>Activity</div>
+                                        <div>Distance</div>
+                                        <input
+                                                name={'distance'}
+                                            value={dataIncrement.distance}
+                                            onChange={onValueChange}
+                                            className={`${styles.week_adjust_2}`}
+                                            min="0"
+                                            max="100"
+                                            type='number' />
+                                            
+                                    </div>
+
+                                    <div className={`${styles.form_field} ${styles.form_field_4}`}>
+                                    <div>Exercise</div>
+                                    <div className={`${styles.exercise_increments_box}`}>
+                                        <div className={`${styles.exercise_increment_title}`}>Sets</div>
+                                        <input
+                                                name={'sets'}
+                                                value={dataIncrement.sets}
+                                                onChange={onValueChange}
+                                                className={`${styles.exercise_increment_input}`}
+                                                type='number' 
+                                                min="0"
+                                                max="100"
+                                                />
+                                    </div>
+                                    <div className={`${styles.exercise_increments_box}`}>
+                                        <div className={`${styles.exercise_increment_title}`}>Reps</div>
+                                        <input
+                                                name={'reps'}
+                                                value={dataIncrement.reps}
+                                                onChange={onValueChange}
+                                                className={`${styles.exercise_increment_input}`}
+                                                type='number' 
+                                                min="0"
+                                                max="100"
+                                                />
+                                    </div>
+                                    <div className={`${styles.exercise_increments_box}`}>
+                                        <div className={`${styles.exercise_increment_title}`}>Weight</div>
+                                        <input
+                                                name={'kg'}
+                                                value={dataIncrement.kg}
+                                                onChange={onValueChange}
+                                                className={`${styles.exercise_increment_input}`}
+                                                type='number' 
+                                                min="0"
+                                                max="100"
+                                                />
+                                    </div>
+                                    </div>
+                                    <div className={`${styles.form_field} ${styles.form_field_5}`}>
+                                    <button
                                             onClick={(e) => e.preventDefault()}
                                             className={`${styles.button}`}>DELOADING WEAK</button>
                                     </div>
-                                    <div className={`${styles.form_field} ${styles.form_field_4}`}>
-                                        {/* // TODO Add - Are You sure modal? */}
-                                        <button
-                                            className={`${styles.button}`}> SAVE</button>
-                                    </div>
                                     {/* // TODO Change Button to Save when DELOADING WEEK MODAL IN TRUE? */}
-                                    <div className={`${styles.form_field} ${styles.form_field_4}`}>
+                                    <div className={`${styles.form_field} ${styles.form_field_6}`}>
                                         {/* // TODO Are You sure modal? */}
                                         <button
                                             className={`${styles.button}`}> CREATE PERIODIZATION</button>
@@ -353,7 +416,7 @@ export function Periodization() {
                                     <div className={`${styles.form_field} ${styles.form_field_5} ${styles.cancel_button}`}>
                                         <button
                                             onClick={(e) => e.preventDefault()}
-                                            className={`${styles.button}`}>CANCEL</button>
+                                            className={`${styles.button}`}>RESET</button>
                                     </div>
                                 </form>
                             </div>
