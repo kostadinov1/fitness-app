@@ -4,6 +4,7 @@ import AddIconListPlaceholder from "../../../Cards/AddToListPlaceholder/AddToLis
 import { Link, useNavigate } from "react-router-dom"
 import CreateActivityModal from "../../../Activities/CreateActivityModal/CreateActivityModal"
 import PeriActivity from "../PeriActivity/PeriActivity"
+import CreateExerciseModal from "../../../Exercises/CreateExerciseModal/CreateExerciseModal"
 
 
 function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
@@ -22,16 +23,16 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
 
     const [ showCreateExerciseModal,setShowCreateExerciseModal] = useState(false)
     const [selectedDay, setSelectdDay] = useState(1)// monday
+    const [selectedActivity, setSelectedActivity] = useState({})
     const [state, dispatch] = useReducer(reducer, false)
+    
         // Reducer to Show / Hide Modals
     function reducer(state, action) {
         switch (action.type){
             case 'activity':
                 return showCreateActivityModal ? setShowCreateActivityModal(false) : setShowCreateActivityModal(true)
             case 'exercise':
-                navigate('/create-exercise')
-                break;
-                // return showCreateExerciseModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
+                return showCreateExerciseModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
             case 'tollgeEditActivityModal':
                 return showEditActivityModal ? setShowEditActivityModal(false) : setShowCreateActivityModal(true)
             default:
@@ -66,6 +67,12 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
                     />
             : null}
 
+{showCreateExerciseModal ? 
+                <CreateExerciseModal 
+                    setShowCreateExerciseModal={setShowCreateExerciseModal} 
+                    selectedActivity={selectedActivity}
+                    />
+            : null}
         <div onClick={() => setSelectdDay(1)} className={`${styles.cell} ${styles.cell_1}`}>
             <div className={`${styles.week_day}`}>MONADAY</div>
             <div className={`${styles.grid_day}`}>

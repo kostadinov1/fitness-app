@@ -15,6 +15,8 @@ import { createExercise } from '../../../api/exercises';
 import { createActivity, getActivity } from '../../../api/activities';
 import { createMicroCycle } from '../../../api/cycles/microCycle';
 
+// TODO create exercise modal with the attached activity
+
 export function Periodization() {
     const { user } = useContext(UserContext);
     // Objects

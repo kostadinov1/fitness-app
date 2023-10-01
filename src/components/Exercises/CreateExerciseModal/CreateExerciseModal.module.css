@@ -1,0 +1,88 @@
+.modal {
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    min-height: 50vh;
+    display: grid;
+    gap: .4em;
+    padding: 0.2em;
+    border-radius: var(--b-radius);
+    background-color: var(--dimmer);
+}
+
+
+.form {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    max-height: 70vh;
+    max-width: 50vw;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+        "eleven eleven eleven eleven eleven eleven"
+        "one one one one ten ten"
+        "two two two two five six"
+        "three three three three seven eight"
+        "four four four four four four"
+        "nine nine nine nine nine nine"
+        ;
+    background-color: var(--sec-2);
+    gap: 0em;
+    margin: auto auto;
+    padding: 2em;
+    overflow: hidden;
+    border-radius: var(--b-radius);
+}
+.form_field {
+    display: grid;
+    padding: 0.6em;
+    margin: 0.6em;
+    background-color: var(--dimmer-3);
+    border: 1px solid var(--sec-2);
+    border-radius: var(--b-radius);
+}
+
+.form button {
+    margin-top: 1.4em;
+    display: grid;
+}
+.form label {
+    font-weight: bold;
+}
+.form_error {
+    color: red;
+}
+
+
+.form_field_1 { grid-area: one;}
+.form_field_2 { grid-area: two;}
+.form_field_3 { grid-area: three;}
+.form_field_4 { grid-area: four;}
+.form_field_5 { grid-area: five;}
+.form_field_6 { grid-area: six;}
+.form_field_7 { grid-area: seven;}
+.form_field_8 { grid-area: eight;}
+.form_field_9 { 
+    width: 33%;
+    margin: auto auto;
+    color: var(--prime-2);
+    background-color: var(--acc-1);
+    font-size: 1.4rem;
+    grid-area: nine;}
+.form_field_10 { grid-area: ten;}
+.form_field_11 { grid-area: eleven;}
+
+.form h1 {
+    border-top: 1px solid var(--acc-1);
+    border-bottom: 6px solid var(--acc-1);
+    border-radius: var(--b-radius);
+    font-size: 2rem;
+
+    text-align: center;
+    grid-area: ten;}
+
+
+.form_error {
+    color: red;
+}
