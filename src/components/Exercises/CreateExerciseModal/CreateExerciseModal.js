@@ -7,11 +7,10 @@ import ListCard from '../../Cards/ListCard/ListCard'
 import styles from './CreateExerciseModal.module.css'
 import React, { useContext, useEffect, useState } from 'react'
 
-const CreateExerciseModal = ({selectedActivity}) => {
+const CreateExerciseModal = ({setShowCreateExerciseModal,selectedActivity}) => {
     const {user} = useContext(UserContext)
     const navigate = useNavigate()
     const [exerciseTypes, setExerciseTypes] = useState([])
-    const [activities, setActivities] = useState([])
     // const [formError, setFormError] = useState(false)
 
 
@@ -24,7 +23,7 @@ const CreateExerciseModal = ({selectedActivity}) => {
             weights_in_kg: 0,
             calories_burned: 0,
             type: undefined,
-            activity: undefined,
+            activity: selectedActivity.id,
             user: user.user_id
     })
 
@@ -33,10 +32,7 @@ const CreateExerciseModal = ({selectedActivity}) => {
             .then((res) => {
               setExerciseTypes(res)})
             .catch((res) => {})
-        getAllActivities(user)
-            .then((res) => {
-                setActivities(res)})            
-            .catch((res) => {console.log('res', res)})
+
     }, [user, ])
 
     const onCreate = (e) => {
@@ -52,9 +48,11 @@ const CreateExerciseModal = ({selectedActivity}) => {
     }
 
     const onValueChange = (e) => {
-
         setFormData((state) => ({...state, [e.target.name]: e.target.value}))
     } 
+    function onCancelClick(e) {
+        setShowCreateExerciseModal(false)
+    }
 
     
     return (
@@ -164,6 +162,10 @@ const CreateExerciseModal = ({selectedActivity}) => {
 
                 <button className={`${styles.form_field} ${styles.form_field_9}`}>
                     Create
+                </button>
+
+               <button onClick={onCancelClick} className={`${styles.form_field} ${styles.form_field_10}`}>
+                    Cancel
                 </button>
 
 

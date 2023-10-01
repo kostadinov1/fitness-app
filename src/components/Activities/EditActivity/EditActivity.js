@@ -22,7 +22,7 @@ function EditActivity() {
         listActivityTypes()
             .then((res) => { setActivityTypes(res)})
             .catch((res) => { console.log('___IN___ useEffect:', res)})
-    }, [])
+    }, [id])
     const onEdit = (e) => {
         e.preventDefault()
         editActivity(user, Number(id), {...activity, user:user.user_id})
@@ -51,21 +51,21 @@ function EditActivity() {
             <div className={`${styles.edit_box}`}>
 
                 <div className={styles.form_box}>
-                <h1 className={`title_outlined`}>Edit Activity: {activity.name}</h1>
+                <h1 className={`title_outlined`}>Edit Activity: {activity?.name}</h1>
                 <form onSubmit={onEdit} className={styles.form}>
         
                         <div className={`${styles.form_input} ${styles.form_item_box_1} ${styles.item}`}>
                             <label>
                                 Name
                                 </label>
-                                {activity.name === '' ?
+                                {activity?.name === '' ?
                                 <span className={`${styles.form_error}`}>
                                     You need to enter name
                                 </span> 
                                 : null}
                             <input
                                 name='name' 
-                                value={activity.name}
+                                value={activity?.name}
                                 onChange={onValueChange}
                                 className={styles.form_input}  
                                 placeholder='Choose a good name' />
@@ -78,7 +78,7 @@ function EditActivity() {
                                 </label>
                             <select 
                                 name='type'
-                                value={activity.type}
+                                value={activity?.type}
                                 onChange={onValueChange}
                                 className={styles.form_input}>
                                     { activityTypes ? 
@@ -96,7 +96,7 @@ function EditActivity() {
                                 </label>
                             <textarea 
                                 name='description'
-                                value={activity.description}
+                                value={activity?.description}
                                 onChange={onValueChange}
                                 type={'text'} 
                                 className={styles.form_input}  
@@ -110,7 +110,7 @@ function EditActivity() {
                                 </label>
                             <input 
                                 name='duration'  
-                                value={activity.duration}
+                                value={activity?.duration}
                                 onChange={onValueChange}
                                 type={'number'}
                                 min={0}
@@ -125,7 +125,7 @@ function EditActivity() {
                                 </label>
                             <input 
                                 name='distance'  
-                                value={activity.distance}
+                                value={activity?.distance}
                                 onChange={onValueChange}
                                 type={'number'}
                                 min={0}
@@ -140,7 +140,7 @@ function EditActivity() {
                                 </label>
                             <input 
                                 name='pace'
-                                value={activity.pace}
+                                value={activity?.pace}
                                 onChange={onValueChange}
                                 type={'number'}
                                 min={0}
@@ -155,7 +155,7 @@ function EditActivity() {
                                 </label>
                             <input 
                                 name='speed'
-                                value={activity.speed}
+                                value={activity?.speed}
                                 onChange={onValueChange}
                                 type={'number'}
                                 min={0}
@@ -170,7 +170,7 @@ function EditActivity() {
                             </label>
                             <input 
                                 name='heart_rate'
-                                value={activity.heart_rate}
+                                value={activity?.heart_rate}
                                 onChange={onValueChange}
                                 type={'number'}
                                 min={0}
@@ -185,7 +185,7 @@ function EditActivity() {
                                 </label>
                             <input 
                                 name='rpe'
-                                value={activity.rpe}
+                                value={activity?.rpe}
                                 onChange={onValueChange}
                                 type={'number'}
                                 min={0}
@@ -210,7 +210,7 @@ function EditActivity() {
                              <Radio.Group
                                 name='public'
                                 onChange={onValueChange}
-                                defaultValue={activity.public}
+                                defaultValue={activity?.public}
                                 buttonStyle="solid"
                                 size='small'
                                 >
@@ -223,7 +223,7 @@ function EditActivity() {
                         <Radio.Group
                                 name='complete'
                                 onChange={onValueChange}
-                                defaultValue={activity.complete}
+                                defaultValue={activity?.complete}
                                 buttonStyle="solid"
                                 size='small'
                                 >
@@ -237,7 +237,7 @@ function EditActivity() {
                         <input 
                             name='intensity'
                             type={'number'}
-                            value={activity.intensity}
+                            value={activity?.intensity}
                             onChange={onValueChange}
                             min={0}
                             max={100}

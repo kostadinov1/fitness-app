@@ -8,7 +8,7 @@ const PeriActivity = ({activity, dispatch}) => {
 
     return (
         <div className={`${styles.peri_activity}`}>
-            <button onClick={() => dispatch({type: 'tollgeEditActivityModal'})} className={`${styles.activity_title}`} >
+            <button onClick={() => dispatch({type: 'tollgeEditActivityModal', payload: activity})} className={`${styles.activity_title}`} >
                 {activity.name}
             </button>
             <div className={`${styles.exercise_box}`}>
@@ -24,9 +24,10 @@ const PeriActivity = ({activity, dispatch}) => {
                                 <div>kgs x {exercise?.reps}  </div>
                             </div>                            
                         </div>)
-                : <AddIconListPlaceholder itemType={'exercise'} dispatch={dispatch}/>}
-                {/* <AddIconListPlaceholder itemType={'exercise'} dispatch={dispatch}/> */}
+                : null}
+                
             </div>
+                <AddIconListPlaceholder itemType={'exercise'} dispatch={dispatch}/>
         </div>
     )
 }
