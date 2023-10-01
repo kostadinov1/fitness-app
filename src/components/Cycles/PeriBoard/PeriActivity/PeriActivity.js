@@ -27,7 +27,7 @@ const PeriActivity = ({activity, dispatch}) => {
                 : null}
                 
             </div>
-                <AddIconListPlaceholder itemType={'exercise'} dispatch={dispatch}/>
+                <AddIconListPlaceholder itemType={'exercise'} relatedActivity={activity} dispatch={dispatch}/>
         </div>
     )
 }

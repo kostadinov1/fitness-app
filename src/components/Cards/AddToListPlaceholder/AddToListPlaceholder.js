@@ -5,7 +5,7 @@ import React from 'react'
 import { PlusCircleFilled } from '@ant-design/icons'
 
 
-const AddIconListPlaceholder = ({itemType, dispatch}) => {
+const AddIconListPlaceholder = ({itemType, dispatch, relatedActivity}) => {
 
 
     
@@ -13,7 +13,7 @@ const AddIconListPlaceholder = ({itemType, dispatch}) => {
     return (
         <div>
             <Link 
-                onClick={() => { dispatch({type: itemType})} }
+                onClick={() => { dispatch({type: itemType, payload: relatedActivity})} }
                 className={`${styles.placeholder}`}
                 >
                 CREATE {itemType} <PlusCircleFilled />

@@ -32,6 +32,7 @@ function PeriWeek({activities, selectedMicro, setSelectedMicro}) {
             case 'activity':
                 return showCreateActivityModal ? setShowCreateActivityModal(false) : setShowCreateActivityModal(true)
             case 'exercise':
+                setSelectedActivity(action.payload)
                 return showCreateExerciseModal ? setShowCreateExerciseModal(false) : setShowCreateExerciseModal(true)
             case 'tollgeEditActivityModal':
                 console.log(action.payload)    
